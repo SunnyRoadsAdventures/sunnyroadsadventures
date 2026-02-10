@@ -2,23 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enter Thee Saga</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Saga</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: black;
+      overflow: hidden;
+    }
+
+    img, video {
+      position: absolute;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    #sagaBtn, #enterBtn {
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+    }
+
+    #sagaBtn {
+      bottom: 5%;
+      width: 300px;
+    }
+
+    #enterBtn {
+      bottom: 4%;
+      width: 220px;
+      display: none;
+    }
+
+    #heyVideo {
+      bottom: 10%;
+      left: 5%;
+      width: 300px;
+    }
+
+    #gateVideo {
+      bottom: 2%;
+      right: 5%;
+      width: 300px;
+    }
+
+    #missionVideo {
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+    }
+
+    #beginsVideo {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+  </style>
 </head>
+
 <body>
 
-  <!-- Saga button -->
-  <img src="saga.png" id="sagaBtn" alt="Enter Thee Saga">
+  <img id="sagaBtn" src="saga.png" alt="Saga Button">
+  <img id="enterBtn" src="enter.png" alt="Enter Button">
 
-  <!-- Enter button (appears after saga click) -->
-  <img src="enter.png" id="enterBtn" alt="Enter Button">
-
-  <!-- Videos -->
-  <video id="heyVideo" src="hey.mp4" preload="auto"></video>
-  <video id="gateVideo" src="gate.mp4" preload="auto"></video>
-  <video id="missionVideo" src="mission.mp4" preload="auto"></video>
+  <video id="heyVideo" src="hey.mp4"></video>
+  <video id="gateVideo" src="gate.mp4"></video>
+  <video id="missionVideo" src="mission.mp4"></video>
+  <video id="beginsVideo" src="begins.mp4"></video>
 
   <script src="javascript.js"></script>
 </body>
-</html> 
+</html>
