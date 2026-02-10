@@ -5,33 +5,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const gateVideo = document.getElementById('gateVideo');
   const missionVideo = document.getElementById('missionVideo');
 
-  // Show saga button at 2s
+  // Fade in saga button at 2s
   setTimeout(() => sagaBtn.style.opacity = 1, 2000);
 
   sagaBtn.addEventListener('click', () => {
     sagaBtn.style.display = 'none'; // hide saga button
 
-    // Fade to black (can also overlay a black div if needed)
+    // Fade to black over 2s
     document.body.style.transition = "background-color 2s ease";
     document.body.style.backgroundColor = "#000";
 
-    // Show videos at specific times
+    // Schedule videos and enter button fade-in
     setTimeout(() => {
       heyVideo.style.display = 'block';
       heyVideo.style.opacity = 1;
-      heyVideo.play().catch(err => console.log(err));
+      heyVideo.muted = false;   // UNMUTED
+      heyVideo.play().catch(err => console.log("Autoplay blocked:", err));
     }, 3000);
 
     setTimeout(() => {
       gateVideo.style.display = 'block';
       gateVideo.style.opacity = 1;
-      gateVideo.play().catch(err => console.log(err));
+      gateVideo.muted = false;  // UNMUTED
+      gateVideo.play().catch(err => console.log("Autoplay blocked:", err));
     }, 4000);
 
     setTimeout(() => {
       missionVideo.style.display = 'block';
       missionVideo.style.opacity = 1;
-      missionVideo.play().catch(err => console.log(err));
+      missionVideo.muted = false; // UNMUTED
+      missionVideo.play().catch(err => console.log("Autoplay blocked:", err));
     }, 7000);
 
     // Show enter button at 10s
