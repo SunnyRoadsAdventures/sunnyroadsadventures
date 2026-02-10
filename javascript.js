@@ -1,5 +1,3 @@
-alert("JS LOADED");
-
 document.addEventListener("DOMContentLoaded", () => {
 
   const sagaBtn = document.getElementById("sagaBtn");
@@ -10,13 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const missionVideo = document.getElementById("missionVideo");
   const beginsVideo = document.getElementById("beginsVideo");
 
-  // Initial saga fade in
+  /* Initial saga fade-in */
   setTimeout(() => {
     sagaBtn.style.opacity = 1;
   }, 2000);
 
-  // SAGA CLICK (only once)
+  /* SAGA CLICK (once only) */
   sagaBtn.addEventListener("click", () => {
+
     sagaBtn.style.opacity = 0;
     sagaBtn.style.pointerEvents = "none";
 
@@ -24,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
       sagaBtn.style.display = "none";
     }, 2000);
 
-    // hey.mp4
+    /* hey.mp4 */
     setTimeout(() => {
       heyVideo.style.opacity = 1;
       heyVideo.muted = false;
@@ -32,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       heyVideo.play();
     }, 3000);
 
-    // gate.mp4
+    /* gate.mp4 */
     setTimeout(() => {
       gateVideo.style.opacity = 1;
       gateVideo.muted = false;
@@ -40,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
       gateVideo.play();
     }, 4000);
 
-    // mission.mp4
+    /* mission.mp4 */
     setTimeout(() => {
       missionVideo.style.opacity = 1;
       missionVideo.muted = false;
@@ -48,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
       missionVideo.play();
     }, 7000);
 
-    // enter.png
+    /* enter.png */
     setTimeout(() => {
       enterBtn.style.display = "block";
       enterBtn.style.opacity = 1;
@@ -56,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, { once: true });
 
-  // ENTER CLICK → FADE TO BEGINNING
+  /* ENTER CLICK → FADE TO BEGINNING */
   enterBtn.addEventListener("click", () => {
 
     enterBtn.style.opacity = 0;
@@ -78,7 +77,6 @@ document.addEventListener("DOMContentLoaded", () => {
       beginsVideo.volume = 1;
       beginsVideo.play();
     }, 2000);
-
   });
 
 });
