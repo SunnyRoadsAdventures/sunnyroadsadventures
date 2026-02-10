@@ -1,24 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
   const startBtn = document.querySelector('.saga-button');
-  const stage = document.querySelector('.stage');
+  const overlay = document.querySelector('.overlay');
 
   // Fade-in button after 2 seconds
   setTimeout(() => {
     startBtn.classList.add('fade-in');
   }, 2000);
 
-  // Click event → fade screen to black and hide button
+  // Click event → hide button, fade overlay
   startBtn.addEventListener('click', () => {
     // Hide button
     startBtn.style.display = 'none';
 
-    // Fade screen to black
-    stage.classList.add('fade-black');
+    // Trigger overlay fade to black
+    overlay.classList.add('active');
 
     // Placeholder for next sequence after 2s
     setTimeout(() => {
       console.log("Next sequence triggered!");
-      // You can replace this with video, text, or next div
+      // Trigger videos, next div, etc. here
     }, 2000);
   });
 });
