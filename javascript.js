@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const gateVideo = document.getElementById('gateVideo');
   const missionVideo = document.getElementById('missionVideo');
 
-  // Fade in saga button at 2s
+  // Saga button fades in at 2s
   setTimeout(() => sagaBtn.style.opacity = 1, 2000);
 
-  // Saga button click - only once
+  // Saga click - only once
   sagaBtn.addEventListener('click', () => {
     sagaBtn.style.display = 'none'; // hide saga button
 
@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.transition = "background-color 2s ease";
     document.body.style.backgroundColor = "#000";
 
-    // Schedule videos and enter button fade-in
+    // Videos fade in sequence
     setTimeout(() => {
       heyVideo.style.display = 'block';
       heyVideo.style.opacity = 1;
       heyVideo.muted = false;
       heyVideo.volume = 1.0; // max volume
-      heyVideo.play().catch(err => console.log("Autoplay blocked:", err));
+      heyVideo.play().catch(err => console.log(err));
     }, 3000);
 
     setTimeout(() => {
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gateVideo.style.opacity = 1;
       gateVideo.muted = false;
       gateVideo.volume = 1.0; // max volume
-      gateVideo.play().catch(err => console.log("Autoplay blocked:", err));
+      gateVideo.play().catch(err => console.log(err));
     }, 4000);
 
     setTimeout(() => {
@@ -38,14 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
       missionVideo.style.opacity = 1;
       missionVideo.muted = false;
       missionVideo.volume = 1.0; // max volume
-      missionVideo.play().catch(err => console.log("Autoplay blocked:", err));
+      missionVideo.play().catch(err => console.log(err));
     }, 7000);
 
+    // Enter button fades in at 10s
     setTimeout(() => {
       enterBtn.style.display = 'block';
       enterBtn.style.opacity = 1;
     }, 10000);
-  }, { once: true }); // ensures saga click runs only once
+  }, { once: true }); // ensures saga click only triggers once
 
   // Enter button click
   enterBtn.addEventListener('click', () => {
