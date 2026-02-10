@@ -72,10 +72,10 @@ img, video {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 75vw;           /* wider */
-  height: 75vh;          /* taller for phones */
+  width: 65vw;
+  height: 65vh;
   transform: translate(-50%, -50%);
-  object-fit: cover;     /* THIS is the key fix */
+  object-fit: cover;
   opacity: 0;
   display: none;
 }
