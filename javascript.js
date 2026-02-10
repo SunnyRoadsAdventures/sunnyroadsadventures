@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Fade in saga button at 2s
   setTimeout(() => sagaBtn.style.opacity = 1, 2000);
 
+  // Saga button click - only once
   sagaBtn.addEventListener('click', () => {
     sagaBtn.style.display = 'none'; // hide saga button
 
@@ -40,14 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
       missionVideo.play().catch(err => console.log("Autoplay blocked:", err));
     }, 7000);
 
-    // Show enter button at 10s
     setTimeout(() => {
       enterBtn.style.display = 'block';
       enterBtn.style.opacity = 1;
     }, 10000);
-  });
+  }, { once: true }); // ensures saga click runs only once
 
-  // Click event for enter button
+  // Enter button click
   enterBtn.addEventListener('click', () => {
     enterBtn.style.display = 'none';
     console.log("Enter button clicked - trigger next sequence here");
