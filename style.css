@@ -32,8 +32,7 @@ video {
   opacity: 0; /* fade in */
   transition: opacity 1s ease;
 }
-
 /* Video positions */
-#heyVideo { left: 5%; bottom: 27%; }
-#gateVideo { right: 5%; bottom: 12%; }
-#missionVideo { left: 50%; top: 12%; transform: translateX(-50%); }
+#heyVideo { left: 5%; bottom: 27%; }           /* stays the same */
+#gateVideo { right: 5%; bottom: 14%; }         /* pulled up 1 more notch */
+#missionVideo { left: 50%; top: 10%; transform: translateX(-50%); } /* pulled up 1 more notch */
