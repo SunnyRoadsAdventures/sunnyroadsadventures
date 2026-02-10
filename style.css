@@ -1,4 +1,3 @@
-/* FULL BLACK BACKGROUND */
 html, body {
   width: 100%;
   height: 100%;
@@ -12,29 +11,29 @@ html, body {
 #sagaBtn, #enterBtn {
   width: 128px;
   cursor: pointer;
-  opacity: 0; /* fade-in with JS */
+  opacity: 0; /* start invisible */
   transition: opacity 1s ease;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
 
-/* Saga button stays at bottom 5vh */
+/* Saga button at bottom */
 #sagaBtn { bottom: 5vh; }
 
-/* Enter button slightly lower than saga */
-#enterBtn { bottom: 3vh; } /* pulled down a notch */
+/* Enter button slightly lower */
+#enterBtn { bottom: 3vh; }
 
-/* Common video styles */
+/* Videos */
 video {
   position: absolute;
-  width: 40%; 
+  width: 40%;
   height: auto;
-  opacity: 0; /* fade in with JS */
+  opacity: 0; /* fade in */
   transition: opacity 1s ease;
 }
 
 /* Video positions */
-#heyVideo { left: 5%; bottom: 27%; }  /* pulled up 1 notch */
-#gateVideo { right: 5%; bottom: 12%; } /* pulled up 1 notch */
-#missionVideo { left: 50%; top: 12%; transform: translateX(-50%); } /* pulled up 1 notch */
+#heyVideo { left: 5%; bottom: 27%; }
+#gateVideo { right: 5%; bottom: 12%; }
+#missionVideo { left: 50%; top: 12%; transform: translateX(-50%); }
