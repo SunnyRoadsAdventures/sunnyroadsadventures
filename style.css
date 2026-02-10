@@ -24,10 +24,10 @@ html, body {
   left: 50%;
   bottom: 6vh;
   transform: translateX(-50%);
-  width: 128px;  /* doubled size */
+  width: 128px;  /* double original size */
   height: auto;
   display: block;
-  opacity: 0;    /* invisible at first for fade-in */
+  opacity: 0;    /* invisible at first */
   cursor: pointer;
   transition: opacity 1s ease;
 }
@@ -51,6 +51,7 @@ html, body {
 
 .overlay.active {
   opacity: 1;
+  pointer-events: all;
 }
 
 /* VIDEO STYLES */
@@ -59,14 +60,11 @@ html, body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;     /* adjust as needed */
+  width: 80%;
   height: auto;
   display: none;  /* hidden initially */
+  opacity: 0;     /* for fade-in */
   z-index: 10;
-}
-
-.video {
-  opacity: 0;
   transition: opacity 1s ease;
 }
 
