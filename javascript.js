@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const sagaBtn = document.getElementById('sagaBtn');
-  const video = document.getElementById('heyVideo');
+  const heyVideo = document.getElementById('heyVideo');
+  const gateVideo = document.getElementById('gateVideo');
 
   // Fade-in button after 2 seconds
   setTimeout(() => {
@@ -12,9 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
     // Hide button
     sagaBtn.style.display = 'none';
 
-    // Show and play video
-    video.style.display = 'block';
-    video.muted = false; // optional: allow sound
-    video.play().catch(err => console.log("Autoplay blocked:", err));
+    // Show and play both videos
+    heyVideo.style.display = 'block';
+    heyVideo.muted = false;
+    heyVideo.play().catch(err => console.log("Autoplay blocked:", err));
+
+    gateVideo.style.display = 'block';
+    gateVideo.muted = false;
+    gateVideo.play().catch(err => console.log("Autoplay blocked:", err));
   });
 });
