@@ -64,3 +64,12 @@ html, body {
   display: none;  /* hidden initially */
   z-index: 10;
 }
+
+.video {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.video.show {
+  opacity: 1;
+}
