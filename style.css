@@ -1,4 +1,4 @@
-/* RESET + BLACK VOID */
+/* RESET + BLACK BACKGROUND */
 * {
   margin: 0;
   padding: 0;
@@ -8,29 +8,26 @@
 html, body {
   width: 100%;
   height: 100%;
-  background: #000;
+  background-color: #000; /* total black */
   overflow: hidden;
 }
 
-/* STAGE */
+/* STAGE CONTAINER */
 .stage {
   width: 100vw;
   height: 100vh;
   position: relative;
 }
 
-/* BUTTON — FORCED VISIBILITY */
+/* BUTTON IMAGE */
 .saga-button {
   position: absolute;
   left: 50%;
-  bottom: 6vh;
-
+  bottom: 6vh;          /* near bottom */
   transform: translateX(-50%);
-  width: 80px;          /* small but clearly visible */
+  width: 64px;           /* small and visible */
   height: auto;
-
   display: block;
   opacity: 1;
-
   cursor: pointer;
 }
