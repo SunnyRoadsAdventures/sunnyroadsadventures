@@ -1,20 +1,20 @@
-startBtn.addEventListener('click', () => {
-  // Hide button
-  startBtn.style.display = 'none';
+document.addEventListener('DOMContentLoaded', () => {
+  const sagaBtn = document.getElementById('sagaBtn');
+  const video = document.getElementById('heyVideo');
 
-  // Fade overlay
-  overlay.classList.add('active');
-
-  // After 2s fade, show and play video
+  // Fade-in button after 2 seconds
   setTimeout(() => {
-    video.style.display = 'block';
-    video.muted = false; // optional: unmute after play if you want
-    video.play().catch(err => console.log("Autoplay blocked:", err));
+    sagaBtn.classList.add('show');
   }, 2000);
-});
 
-setTimeout(() => {
-  video.style.display = 'block';
-  video.classList.add('show');
-  video.play().catch(err => console.log("Autoplay blocked:", err));
-}, 2000);
+  // Button click
+  sagaBtn.addEventListener('click', () => {
+    // Hide button
+    sagaBtn.style.display = 'none';
+
+    // Show and play video
+    video.style.display = 'block';
+    video.muted = false; // optional: allow sound
+    video.play().catch(err => console.log("Autoplay blocked:", err));
+  });
+});
