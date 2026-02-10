@@ -5,37 +5,47 @@ document.addEventListener('DOMContentLoaded', () => {
   const gateVideo = document.getElementById('gateVideo');
   const missionVideo = document.getElementById('missionVideo');
 
-  // Scenario 1: Beginning
-  setTimeout(() => {
-    sagaBtn.classList.add('show'); // fade in saga button
-  }, 2000);
+  // Fade in saga button at 2s
+  setTimeout(() => sagaBtn.classList.add('show'), 2000);
 
   sagaBtn.addEventListener('click', () => {
     sagaBtn.style.display = 'none'; // hide saga button
 
-    // Show and play the 3 videos
-    heyVideo.style.display = 'block';
-    heyVideo.muted = false;
-    heyVideo.play().catch(err => console.log("Autoplay blocked:", err));
+    // Fade to black (optional: if saga.mp4 plays, you can overlay or just use fade)
+    document.body.style.transition = "background-color 2s ease";
+    document.body.style.backgroundColor = "#000";
 
-    gateVideo.style.display = 'block';
-    gateVideo.muted = false;
-    gateVideo.play().catch(err => console.log("Autoplay blocked:", err));
+    // Schedule videos and enter button fade-in
+    setTimeout(() => {
+      heyVideo.style.display = 'block';
+      heyVideo.style.opacity = 1;
+      heyVideo.muted = false;
+      heyVideo.play().catch(err => console.log("Autoplay blocked:", err));
+    }, 3000); // hey.mp4 at 3s
 
-    missionVideo.style.display = 'block';
-    missionVideo.muted = false;
-    missionVideo.play().catch(err => console.log("Autoplay blocked:", err));
+    setTimeout(() => {
+      gateVideo.style.display = 'block';
+      gateVideo.style.opacity = 1;
+      gateVideo.muted = false;
+      gateVideo.play().catch(err => console.log("Autoplay blocked:", err));
+    }, 4000); // gate.mp4 at 4s
 
-    // Show enter button for next scenario
-    enterBtn.style.opacity = 1;
+    setTimeout(() => {
+      missionVideo.style.display = 'block';
+      missionVideo.style.opacity = 1;
+      missionVideo.muted = false;
+      missionVideo.play().catch(err => console.log("Autoplay blocked:", err));
+    }, 6000); // mission.mp4 at 6s
+
+    setTimeout(() => {
+      enterBtn.style.display = 'block';
+      enterBtn.classList.add('show'); // fade in
+    }, 10000); // enter.png at 10s
   });
 
-  // Scenario 2: Later sequence
+  // Click event for enter button
   enterBtn.addEventListener('click', () => {
     console.log("Enter button clicked - trigger next sequence here");
     enterBtn.style.display = 'none';
-
-    // Here you can load next scenario or videos
-    // saga button is NOT present in this sequence
   });
 });
