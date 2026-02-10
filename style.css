@@ -23,11 +23,11 @@ html, body {
   position: absolute;
   left: 50%;
   bottom: 6vh;
-  transform: translateX(-50%) scale(1.2); /* slightly bigger */
-  width: 64px;
+  transform: translateX(-50%) scale(2); /* doubled size */
+  width: 64px;  /* original size, doubled by scale */
   height: auto;
   display: block;
-  opacity: 0; /* start invisible for fade-in */
+  opacity: 0;    /* invisible at first for fade-in */
   cursor: pointer;
   transition: opacity 1s ease, transform 0.5s ease;
 }
@@ -35,7 +35,7 @@ html, body {
 /* FADE-IN CLASS */
 .fade-in {
   opacity: 1;
-  transform: translateX(-50%) scale(1.2);
+  transform: translateX(-50%) scale(2);
 }
 
 /* FADE-TO-BLACK OVERLAY */
