@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Saga</title>
+
   <style>
     html, body {
       margin: 0;
@@ -19,33 +20,36 @@
       transition: opacity 2s ease;
     }
 
-    #sagaBtn, #enterBtn {
+    /* SAGA BUTTON */
+    #sagaBtn {
+      bottom: 5%;
       left: 50%;
       transform: translateX(-50%);
+      width: 600px;
       cursor: pointer;
     }
 
-    #sagaBtn {
-      bottom: 5%;
-      width: 300px;
-    }
-
+    /* ENTER BUTTON */
     #enterBtn {
       bottom: 4%;
-      width: 220px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 260px;
+      cursor: pointer;
       display: none;
     }
 
+    /* VIDEOS */
     #heyVideo {
       bottom: 10%;
       left: 5%;
-      width: 300px;
+      width: 340px;
     }
 
     #gateVideo {
       bottom: 2%;
       right: 5%;
-      width: 300px;
+      width: 340px;
     }
 
     #missionVideo {
@@ -55,12 +59,13 @@
       width: 320px;
     }
 
+    /* BEGINNING VIDEO (NEW, HALF SIZE) */
     #beginsVideo {
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      top: 50%;
+      left: 50%;
+      width: 50vw;
+      transform: translate(-50%, -50%);
+      object-fit: contain;
       display: none;
     }
   </style>
@@ -68,13 +73,15 @@
 
 <body>
 
-  <img id="sagaBtn" src="saga.png" alt="Saga Button">
-  <img id="enterBtn" src="enter.png" alt="Enter Button">
+  <!-- BUTTONS -->
+  <img id="sagaBtn" src="saga.png" alt="Saga">
+  <img id="enterBtn" src="enter.png" alt="Enter">
 
+  <!-- VIDEOS -->
   <video id="heyVideo" src="hey.mp4"></video>
   <video id="gateVideo" src="gate.mp4"></video>
   <video id="missionVideo" src="mission.mp4"></video>
-  <video id="beginsVideo" src="begins.mp4"></video>
+  <video id="beginsVideo" src="beginning.mp4"></video>
 
   <script src="javascript.js"></script>
 </body>
