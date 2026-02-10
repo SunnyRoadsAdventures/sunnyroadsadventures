@@ -23,27 +23,32 @@ html, body {
   position: absolute;
   left: 50%;
   bottom: 6vh;
-  transform: translateX(-50%) scale(2); /* doubled size */
-  width: 64px;  /* original size, doubled by scale */
+  transform: translateX(-50%);
+  width: 128px;  /* doubled from 64px */
   height: auto;
   display: block;
   opacity: 0;    /* invisible at first for fade-in */
   cursor: pointer;
-  transition: opacity 1s ease, transform 0.5s ease;
+  transition: opacity 1s ease;
 }
 
 /* FADE-IN CLASS */
 .fade-in {
   opacity: 1;
-  transform: translateX(-50%) scale(2);
 }
 
 /* FADE-TO-BLACK OVERLAY */
-.fade-black {
-  animation: fadeBlack 2s forwards;
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0;
+  pointer-events: none; /* let clicks go through until fade */
+  transition: opacity 2s ease;
 }
-
-@keyframes fadeBlack {
-  from { background-color: transparent; }
-  to   { background-color: #000; }
+.overlay.active {
+  opacity: 1;
 }
