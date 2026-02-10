@@ -5,47 +5,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const gateVideo = document.getElementById('gateVideo');
   const missionVideo = document.getElementById('missionVideo');
 
-  // Fade in saga button at 2s
-  setTimeout(() => sagaBtn.classList.add('show'), 2000);
+  // Show saga button at 2s
+  setTimeout(() => sagaBtn.style.opacity = 1, 2000);
 
   sagaBtn.addEventListener('click', () => {
     sagaBtn.style.display = 'none'; // hide saga button
 
-    // Fade to black over 2s
+    // Fade to black (can also overlay a black div if needed)
     document.body.style.transition = "background-color 2s ease";
     document.body.style.backgroundColor = "#000";
 
-    // Schedule videos and enter button fade-in
+    // Show videos at specific times
     setTimeout(() => {
       heyVideo.style.display = 'block';
       heyVideo.style.opacity = 1;
-      heyVideo.muted = false;
-      heyVideo.play().catch(err => console.log("Autoplay blocked:", err));
-    }, 3000); // hey.mp4 at 3s
+      heyVideo.play().catch(err => console.log(err));
+    }, 3000);
 
     setTimeout(() => {
       gateVideo.style.display = 'block';
       gateVideo.style.opacity = 1;
-      gateVideo.muted = false;
-      gateVideo.play().catch(err => console.log("Autoplay blocked:", err));
-    }, 4000); // gate.mp4 at 4s
+      gateVideo.play().catch(err => console.log(err));
+    }, 4000);
 
     setTimeout(() => {
       missionVideo.style.display = 'block';
       missionVideo.style.opacity = 1;
-      missionVideo.muted = false;
-      missionVideo.play().catch(err => console.log("Autoplay blocked:", err));
-    }, 7000); // mission.mp4 at 7s
+      missionVideo.play().catch(err => console.log(err));
+    }, 7000);
 
+    // Show enter button at 10s
     setTimeout(() => {
       enterBtn.style.display = 'block';
-      enterBtn.classList.add('show'); // fade in
-    }, 10000); // enter.png at 10s
+      enterBtn.style.opacity = 1;
+    }, 10000);
   });
 
-  // Click event for enter button
   enterBtn.addEventListener('click', () => {
-    console.log("Enter button clicked - trigger next sequence here");
     enterBtn.style.display = 'none';
+    console.log("Enter button clicked - trigger next sequence here");
   });
 });
