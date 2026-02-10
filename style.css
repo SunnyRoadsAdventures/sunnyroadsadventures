@@ -1,73 +1,27 @@
-/* RESET + BLACK BACKGROUND */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+document.addEventListener('DOMContentLoaded', () => {
+  const startBtn = document.querySelector('.saga-button');
+  const overlay = document.querySelector('.overlay');
+  const video = document.getElementById('heyVideo');
 
-html, body {
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  overflow: hidden;
-}
+  // Fade-in button after 2 seconds
+  setTimeout(() => {
+    startBtn.classList.add('fade-in');
+  }, 2000);
 
-.stage {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-}
+  // Click event → hide button, fade overlay, show video
+  startBtn.addEventListener('click', () => {
+    // Hide button
+    startBtn.style.display = 'none';
 
-/* BUTTON IMAGE */
-.saga-button {
-  position: absolute;
-  left: 50%;
-  bottom: 6vh;
-  transform: translateX(-50%);
-  width: 128px;  /* double original size */
-  height: auto;
-  display: block;
-  opacity: 0;    /* invisible at first */
-  cursor: pointer;
-  transition: opacity 1s ease;
-}
+    // Fade overlay
+    overlay.classList.add('active');
 
-.fade-in {
-  opacity: 1;
-}
-
-/* FADE-TO-BLACK OVERLAY */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 2s ease;
-}
-
-.overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-/* VIDEO STYLES */
-.video {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: auto;
-  display: none;  /* hidden initially */
-  opacity: 0;     /* for fade-in */
-  z-index: 10;
-  transition: opacity 1s ease;
-}
-
-.video.show {
-  opacity: 1;
-}
+    // After 2s fade, show and play video
+    setTimeout(() => {
+      video.style.display = 'block';
+      video.classList.add('show');
+      video.muted = false;   // optional: unmute if browser allows
+      video.play().catch(err => console.log("Autoplay blocked:", err));
+    }, 2000);
+  });
+});
