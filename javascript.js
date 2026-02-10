@@ -19,21 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       heyVideo.style.display = 'block';
       heyVideo.style.opacity = 1;
-      heyVideo.muted = false;   // UNMUTED
+      heyVideo.muted = false;
+      heyVideo.volume = 1.0; // max volume
       heyVideo.play().catch(err => console.log("Autoplay blocked:", err));
     }, 3000);
 
     setTimeout(() => {
       gateVideo.style.display = 'block';
       gateVideo.style.opacity = 1;
-      gateVideo.muted = false;  // UNMUTED
+      gateVideo.muted = false;
+      gateVideo.volume = 1.0; // max volume
       gateVideo.play().catch(err => console.log("Autoplay blocked:", err));
     }, 4000);
 
     setTimeout(() => {
       missionVideo.style.display = 'block';
       missionVideo.style.opacity = 1;
-      missionVideo.muted = false; // UNMUTED
+      missionVideo.muted = false;
+      missionVideo.volume = 1.0; // max volume
       missionVideo.play().catch(err => console.log("Autoplay blocked:", err));
     }, 7000);
 
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 10000);
   });
 
+  // Click event for enter button
   enterBtn.addEventListener('click', () => {
     enterBtn.style.display = 'none';
     console.log("Enter button clicked - trigger next sequence here");
