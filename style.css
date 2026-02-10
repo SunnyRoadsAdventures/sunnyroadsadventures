@@ -1,10 +1,29 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  overflow: hidden;
+}
+
+/* Shared fade behavior */
+img, video {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 2s ease;
+}
+
+/* ======================
+   BUTTONS
+====================== */
+
 /* SAGA BUTTON */
 #sagaBtn {
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px; /* DOUBLED from ~300 */
-  opacity: 0;
+  width: 600px;          /* doubled size */
   cursor: pointer;
 }
 
@@ -13,44 +32,48 @@
   bottom: 4%;
   left: 50%;
   transform: translateX(-50%);
-  width: 260px; /* slight increase */
-  opacity: 0;
-  display: none;
+  width: 260px;          /* slightly bigger */
   cursor: pointer;
+  display: none;
 }
 
-/* HEY VIDEO */
+/* ======================
+   VIDEOS (STAGE)
+====================== */
+
+/* hey.mp4 */
 #heyVideo {
   bottom: 10%;
   left: 5%;
-  width: 340px; /* slight increase */
-  opacity: 0;
+  width: 340px;          /* slight increase */
 }
 
-/* GATE VIDEO */
+/* gate.mp4 */
 #gateVideo {
   bottom: 2%;
   right: 5%;
-  width: 340px; /* slight increase */
-  opacity: 0;
+  width: 340px;          /* slight increase */
 }
 
-/* MISSION stays as-is */
+/* mission.mp4 */
 #missionVideo {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
   width: 320px;
-  opacity: 0;
 }
 
-/* BEGINS VIDEO stays fullscreen */
+/* ======================
+   BEGINNING VIDEO
+   (cinematic, phone-friendly)
+====================== */
+
 #beginsVideo {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
+  top: 50%;
+  left: 50%;
+  width: 70vw;           /* cinematic width */
+  max-height: 70vh;      /* vertical presence for phones */
+  transform: translate(-50%, -50%);
+  object-fit: contain;
   display: none;
 }
