@@ -12,3 +12,9 @@ startBtn.addEventListener('click', () => {
     video.play().catch(err => console.log("Autoplay blocked:", err));
   }, 2000);
 });
+
+setTimeout(() => {
+  video.style.display = 'block';
+  video.classList.add('show');
+  video.play().catch(err => console.log("Autoplay blocked:", err));
+}, 2000);
