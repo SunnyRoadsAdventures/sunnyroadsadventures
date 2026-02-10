@@ -5,9 +5,7 @@ html, body {
   background-color: #000;
   margin: 0;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end; /* button near bottom */
+  position: relative;
 }
 
 /* Saga button */
@@ -16,36 +14,39 @@ html, body {
   cursor: pointer;
   opacity: 0;
   transition: opacity 1s ease;
-  margin-bottom: 5vh;
+  position: absolute;
+  left: 50%;
+  bottom: 5vh;
+  transform: translateX(-50%);
 }
 
 #sagaBtn.show {
   opacity: 1;
 }
 
-/* Videos common style */
+/* Common video styles */
 video {
   position: absolute;
-  transform: translate(-50%, -50%);
-  width: 40%;
+  width: 40%; /* adjust as needed */
   height: auto;
   display: none; /* hidden at first */
 }
 
-/* Left video */
+/* Bottom left video */
 #heyVideo {
-  left: 20%;
-  top: 50%;
+  left: 5%;
+  bottom: 5%;
 }
 
-/* Right video */
+/* Just above bottom right */
 #gateVideo {
-  right: 20%;
-  top: 50%;
+  right: 5%;
+  bottom: 20%; /* slightly higher than bottom */
 }
 
-/* Center top video */
+/* Centered between center and top */
 #missionVideo {
   left: 50%;
-  top: 25%;  /* higher than the other two */
+  top: 30%;
+  transform: translateX(-50%);
 }
