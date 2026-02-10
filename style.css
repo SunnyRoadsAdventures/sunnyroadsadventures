@@ -45,14 +45,14 @@ img, video {
 #heyVideo {
   bottom: 10%;
   left: 5%;
-  width: 340px;          /* slight increase */
+  width: 340px;
 }
 
 /* gate.mp4 */
 #gateVideo {
   bottom: 2%;
   right: 5%;
-  width: 340px;          /* slight increase */
+  width: 340px;
 }
 
 /* mission.mp4 */
@@ -65,15 +65,17 @@ img, video {
 
 /* ======================
    BEGINNING VIDEO
-   (cinematic, phone-friendly)
+   (cinematic expansion FIX)
 ====================== */
 
 #beginsVideo {
+  position: absolute;
   top: 50%;
   left: 50%;
-  width: 70vw;           /* cinematic width */
-  max-height: 70vh;      /* vertical presence for phones */
+  width: 75vw;           /* wider */
+  height: 75vh;          /* taller for phones */
   transform: translate(-50%, -50%);
-  object-fit: contain;
+  object-fit: cover;     /* THIS is the key fix */
+  opacity: 0;
   display: none;
 }
