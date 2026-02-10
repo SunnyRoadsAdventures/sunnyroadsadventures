@@ -8,11 +8,10 @@
 html, body {
   width: 100%;
   height: 100%;
-  background-color: #000; /* total black */
+  background-color: #000;
   overflow: hidden;
 }
 
-/* STAGE CONTAINER */
 .stage {
   width: 100vw;
   height: 100vh;
@@ -23,11 +22,28 @@ html, body {
 .saga-button {
   position: absolute;
   left: 50%;
-  bottom: 6vh;          /* near bottom */
-  transform: translateX(-50%);
-  width: 64px;           /* small and visible */
+  bottom: 6vh;
+  transform: translateX(-50%) scale(1.2); /* slightly bigger */
+  width: 64px;
   height: auto;
   display: block;
-  opacity: 1;
+  opacity: 0; /* start invisible for fade-in */
   cursor: pointer;
+  transition: opacity 1s ease, transform 0.5s ease;
+}
+
+/* FADE-IN CLASS */
+.fade-in {
+  opacity: 1;
+  transform: translateX(-50%) scale(1.2);
+}
+
+/* FADE-TO-BLACK OVERLAY */
+.fade-black {
+  animation: fadeBlack 2s forwards;
+}
+
+@keyframes fadeBlack {
+  from { background-color: transparent; }
+  to   { background-color: #000; }
 }
