@@ -32,21 +32,21 @@ video {
   display: none; /* hidden at first */
 }
 
-/* Bottom left video */
+/* Bottom left video, pulled up slightly */
 #heyVideo {
   left: 5%;
-  bottom: 5%;
+  bottom: 10%;  /* was 5%, now slightly higher */
 }
 
-/* Just above bottom right */
+/* Just above bottom right, pulled down a bit */
 #gateVideo {
   right: 5%;
-  bottom: 20%; /* slightly higher than bottom */
+  bottom: 15%;  /* was 20%, now a bit lower */
 }
 
-/* Centered between center and top */
+/* Centered between center and top, pulled up */
 #missionVideo {
   left: 50%;
-  top: 30%;
+  top: 25%;   /* was 30%, now a bit higher */
   transform: translateX(-50%);
 }
