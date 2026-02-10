@@ -10,7 +10,7 @@ html, body {
 /* Buttons */
 #sagaBtn, #enterBtn {
   cursor: pointer;
-  opacity: 0; /* fade-in with JS */
+  opacity: 0; /* fade-in */
   transition: opacity 1s ease;
   position: absolute;
   left: 50%;
@@ -23,9 +23,9 @@ html, body {
   bottom: 5vh;
 }
 
-/* Enter button slightly lower than saga */
+/* Enter button slightly lower */
 #enterBtn {
-  width: 128px; /* original size */
+  width: 128px;
   bottom: 3vh;
 }
 
@@ -39,6 +39,6 @@ video {
 }
 
 /* Video positions */
-#heyVideo { left: 5%; bottom: 27%; }            /* slightly above bottom-left */
-#gateVideo { right: 5%; bottom: 16%; }          /* pulled 2 notches up */
+#heyVideo { left: 5%; bottom: 27%; }
+#gateVideo { right: 5%; bottom: 16%; }      /* pulled 2 notches up */
 #missionVideo { left: 50%; top: 8%; transform: translateX(-50%); } /* pulled 2 notches up */
