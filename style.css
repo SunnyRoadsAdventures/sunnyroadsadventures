@@ -12,7 +12,7 @@ html, body {
 
 /* Saga button */
 #sagaBtn {
-  width: 128px;   /* double original size */
+  width: 128px;
   cursor: pointer;
   opacity: 0;
   transition: opacity 1s ease;
@@ -23,20 +23,29 @@ html, body {
   opacity: 1;
 }
 
-/* Videos */
+/* Videos common style */
 video {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 40%;     /* each video takes ~half width */
+  transform: translate(-50%, -50%);
+  width: 40%;
   height: auto;
-  display: none;  /* hidden initially */
+  display: none; /* hidden at first */
 }
 
+/* Left video */
 #heyVideo {
-  left: 20%;      /* left side */
+  left: 20%;
+  top: 50%;
 }
 
+/* Right video */
 #gateVideo {
-  right: 20%;     /* right side */
+  right: 20%;
+  top: 50%;
+}
+
+/* Center top video */
+#missionVideo {
+  left: 50%;
+  top: 25%;  /* higher than the other two */
 }
