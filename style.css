@@ -24,7 +24,7 @@ html, body {
   left: 50%;
   bottom: 6vh;
   transform: translateX(-50%);
-  width: 128px;  /* doubled from 64px */
+  width: 128px;  /* doubled size */
   height: auto;
   display: block;
   opacity: 0;    /* invisible at first for fade-in */
@@ -32,7 +32,6 @@ html, body {
   transition: opacity 1s ease;
 }
 
-/* FADE-IN CLASS */
 .fade-in {
   opacity: 1;
 }
@@ -46,9 +45,22 @@ html, body {
   height: 100%;
   background-color: #000;
   opacity: 0;
-  pointer-events: none; /* let clicks go through until fade */
+  pointer-events: none;
   transition: opacity 2s ease;
 }
+
 .overlay.active {
   opacity: 1;
+}
+
+/* VIDEO STYLES */
+.video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;     /* adjust as needed */
+  height: auto;
+  display: none;  /* hidden initially */
+  z-index: 10;
 }
