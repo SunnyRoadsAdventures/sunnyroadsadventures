@@ -8,11 +8,11 @@ html, body {
   position: relative;
 }
 
-/* Saga button */
-#sagaBtn {
+/* Buttons */
+#sagaBtn, #enterBtn {
   width: 128px;
   cursor: pointer;
-  opacity: 0;
+  opacity: 0; /* start invisible, fade in with JS */
   transition: opacity 1s ease;
   position: absolute;
   left: 50%;
@@ -20,46 +20,20 @@ html, body {
   transform: translateX(-50%);
 }
 
-#sagaBtn.show {
+#sagaBtn.show, #enterBtn.show {
   opacity: 1;
-}
-
-/* Enter button */
-#enterBtn {
-  width: 128px;           /* adjust size as needed */
-  cursor: pointer;
-  opacity: 0;             /* fade in later if needed */
-  transition: opacity 1s ease;
-  position: absolute;
-  left: 50%;
-  bottom: 5vh;            /* bottom of screen */
-  transform: translateX(-50%);
-  display: block;         /* visible immediately */
 }
 
 /* Common video styles */
 video {
   position: absolute;
-  width: 40%; /* adjust as needed */
+  width: 40%; 
   height: auto;
-  display: none; /* hidden initially */
+  opacity: 0; /* fade in with JS */
+  transition: opacity 1s ease;
 }
 
-/* Bottom left video */
-#heyVideo {
-  left: 5%;
-  bottom: 25%;  /* adjusted position */
-}
-
-/* Just above bottom right */
-#gateVideo {
-  right: 5%;
-  bottom: 10%;  /* adjusted position */
-}
-
-/* Centered video, pulled up more */
-#missionVideo {
-  left: 50%;
-  top: 15%;   /* pulled higher */
-  transform: translateX(-50%);
-}
+/* Video positions */
+#heyVideo { left: 5%; bottom: 25%; }
+#gateVideo { right: 5%; bottom: 10%; }
+#missionVideo { left: 50%; top: 15%; transform: translateX(-50%); }
