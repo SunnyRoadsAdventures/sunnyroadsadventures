@@ -1,8 +1,18 @@
-/* Button positions */
+/* FULL BLACK BACKGROUND */
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Buttons */
 #sagaBtn, #enterBtn {
   width: 128px;
   cursor: pointer;
-  opacity: 0;
+  opacity: 0; /* fade-in with JS */
   transition: opacity 1s ease;
   position: absolute;
   left: 50%;
@@ -14,6 +24,15 @@
 
 /* Enter button slightly lower than saga */
 #enterBtn { bottom: 3vh; } /* pulled down a notch */
+
+/* Common video styles */
+video {
+  position: absolute;
+  width: 40%; 
+  height: auto;
+  opacity: 0; /* fade in with JS */
+  transition: opacity 1s ease;
+}
 
 /* Video positions */
 #heyVideo { left: 5%; bottom: 27%; }  /* pulled up 1 notch */
