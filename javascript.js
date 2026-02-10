@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   sagaBtn.addEventListener('click', () => {
     sagaBtn.style.display = 'none'; // hide saga button
 
-    // Fade to black (optional: if saga.mp4 plays, you can overlay or just use fade)
+    // Fade to black over 2s
     document.body.style.transition = "background-color 2s ease";
     document.body.style.backgroundColor = "#000";
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       missionVideo.style.opacity = 1;
       missionVideo.muted = false;
       missionVideo.play().catch(err => console.log("Autoplay blocked:", err));
-    }, 6000); // mission.mp4 at 6s
+    }, 7000); // mission.mp4 at 7s
 
     setTimeout(() => {
       enterBtn.style.display = 'block';
