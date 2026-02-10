@@ -5,16 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const gateVideo = document.getElementById('gateVideo');
   const missionVideo = document.getElementById('missionVideo');
 
-  // Saga button fade-in after 2s
+  // Scenario 1: Beginning
   setTimeout(() => {
-    sagaBtn.classList.add('show');
+    sagaBtn.classList.add('show'); // fade in saga button
   }, 2000);
 
-  // Click event for saga button
   sagaBtn.addEventListener('click', () => {
     sagaBtn.style.display = 'none'; // hide saga button
 
-    // Show and play videos
+    // Show and play the 3 videos
     heyVideo.style.display = 'block';
     heyVideo.muted = false;
     heyVideo.play().catch(err => console.log("Autoplay blocked:", err));
@@ -27,14 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
     missionVideo.muted = false;
     missionVideo.play().catch(err => console.log("Autoplay blocked:", err));
 
-    // Show the second button enter.png
+    // Show enter button for next scenario
     enterBtn.style.opacity = 1;
   });
 
-  // Click event for enter button
+  // Scenario 2: Later sequence
   enterBtn.addEventListener('click', () => {
-    console.log("Enter button clicked - trigger next cinematic sequence here");
+    console.log("Enter button clicked - trigger next sequence here");
     enterBtn.style.display = 'none';
-    // Add next sequence actions here
+
+    // Here you can load next scenario or videos
+    // saga button is NOT present in this sequence
   });
 });
