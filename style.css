@@ -1,44 +1,56 @@
-html, body {
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  margin: 0;
-  overflow: hidden;
-  position: relative;
-}
-
-/* Buttons */
-#sagaBtn, #enterBtn {
-  cursor: pointer;
-  opacity: 0; /* fade-in */
-  transition: opacity 1s ease;
-  position: absolute;
+/* SAGA BUTTON */
+#sagaBtn {
+  bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
+  width: 600px; /* DOUBLED from ~300 */
+  opacity: 0;
+  cursor: pointer;
 }
 
-/* Saga button doubled in size */
-#sagaBtn {
-  width: 256px; /* doubled from 128px */
-  bottom: 5vh;
-}
-
-/* Enter button slightly lower */
+/* ENTER BUTTON */
 #enterBtn {
-  width: 128px;
-  bottom: 3vh;
+  bottom: 4%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px; /* slight increase */
+  opacity: 0;
+  display: none;
+  cursor: pointer;
 }
 
-/* Common video styles */
-video {
-  position: absolute;
-  width: 40%;
-  height: auto;
-  opacity: 0; /* fade in */
-  transition: opacity 1s ease;
+/* HEY VIDEO */
+#heyVideo {
+  bottom: 10%;
+  left: 5%;
+  width: 340px; /* slight increase */
+  opacity: 0;
 }
 
-/* Video positions */
-#heyVideo { left: 5%; bottom: 27%; }
-#gateVideo { right: 5%; bottom: 16%; }      /* pulled 2 notches up */
-#missionVideo { left: 50%; top: 8%; transform: translateX(-50%); } /* pulled 2 notches up */
+/* GATE VIDEO */
+#gateVideo {
+  bottom: 2%;
+  right: 5%;
+  width: 340px; /* slight increase */
+  opacity: 0;
+}
+
+/* MISSION stays as-is */
+#missionVideo {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  opacity: 0;
+}
+
+/* BEGINS VIDEO stays fullscreen */
+#beginsVideo {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  display: none;
+}
