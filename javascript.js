@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const heyVideo = document.getElementById("heyVideo");
   const gateVideo = document.getElementById("gateVideo");
   const missionVideo = document.getElementById("missionVideo");
+
+  // This now points ONLY to beginning.mp4 via HTML
   const beginsVideo = document.getElementById("beginsVideo");
 
   /* Initial saga fade-in */
@@ -13,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sagaBtn.style.opacity = 1;
   }, 2000);
 
-  /* SAGA CLICK (once only) */
+  /* SAGA CLICK (only once) */
   sagaBtn.addEventListener("click", () => {
 
     sagaBtn.style.opacity = 0;
@@ -55,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, { once: true });
 
-  /* ENTER CLICK → FADE TO BEGINNING */
+  /* ENTER CLICK → FADE TO beginning.mp4 */
   enterBtn.addEventListener("click", () => {
 
     enterBtn.style.opacity = 0;
@@ -77,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       beginsVideo.volume = 1;
       beginsVideo.play();
     }, 2000);
+
   });
 
 });
