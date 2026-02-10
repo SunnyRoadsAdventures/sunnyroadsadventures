@@ -7,14 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     startBtn.classList.add('fade-in');
   }, 2000);
 
-  // Click event → fade screen to black
+  // Click event → fade screen to black and hide button
   startBtn.addEventListener('click', () => {
+    // Hide button
+    startBtn.style.display = 'none';
+
+    // Fade screen to black
     stage.classList.add('fade-black');
 
-    // You can trigger next sequence here after 2s
+    // Placeholder for next sequence after 2s
     setTimeout(() => {
-      console.log("Next sequence triggered!"); // placeholder
-      // Trigger videos, next screen, etc. here
+      console.log("Next sequence triggered!");
+      // You can replace this with video, text, or next div
     }, 2000);
   });
 });
