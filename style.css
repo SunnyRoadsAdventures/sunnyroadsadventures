@@ -24,29 +24,42 @@ html, body {
   opacity: 1;
 }
 
+/* Enter button */
+#enterBtn {
+  width: 128px;           /* adjust size as needed */
+  cursor: pointer;
+  opacity: 0;             /* fade in later if needed */
+  transition: opacity 1s ease;
+  position: absolute;
+  left: 50%;
+  bottom: 5vh;            /* bottom of screen */
+  transform: translateX(-50%);
+  display: block;         /* visible immediately */
+}
+
 /* Common video styles */
 video {
   position: absolute;
   width: 40%; /* adjust as needed */
   height: auto;
-  display: none; /* hidden at first */
+  display: none; /* hidden initially */
 }
 
-/* Bottom left video, moved straight up more */
+/* Bottom left video */
 #heyVideo {
   left: 5%;
-  bottom: 25%;  /* moved up significantly */
+  bottom: 25%;  /* adjusted position */
 }
 
-/* Bottom right video, moved down a bit */
+/* Just above bottom right */
 #gateVideo {
   right: 5%;
-  bottom: 10%;  /* moved down slightly */
+  bottom: 10%;  /* adjusted position */
 }
 
 /* Centered video, pulled up more */
 #missionVideo {
   left: 50%;
-  top: 15%;   /* pulled higher than before */
+  top: 15%;   /* pulled higher */
   transform: translateX(-50%);
 }
