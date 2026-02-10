@@ -23,7 +23,7 @@ img, video {
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;          /* doubled size */
+  width: 600px;
   cursor: pointer;
 }
 
@@ -32,7 +32,7 @@ img, video {
   bottom: 4%;
   left: 50%;
   transform: translateX(-50%);
-  width: 260px;          /* slightly bigger */
+  width: 260px;
   cursor: pointer;
   display: none;
 }
@@ -65,17 +65,15 @@ img, video {
 
 /* ======================
    BEGINNING VIDEO
-   (cinematic expansion FIX)
+   (cinematic + responsive)
 ====================== */
 
 #beginsVideo {
-  position: absolute;
   top: 50%;
   left: 50%;
   width: 65vw;
   height: 65vh;
   transform: translate(-50%, -50%);
   object-fit: cover;
-  opacity: 0;
   display: none;
 }
