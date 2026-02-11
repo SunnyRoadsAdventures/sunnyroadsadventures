@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const beginsVideo = document.getElementById("beginsVideo");
   const journeyVideo = document.getElementById("journeyVideo");
+  const greetingsVideo = document.getElementById("greetingsVideo"); // NEW VIDEO
 
   /* Initial saga fade-in */
   setTimeout(() => {
@@ -92,6 +93,31 @@ document.addEventListener("DOMContentLoaded", () => {
         journeyVideo.volume = 1;
         journeyVideo.play();
       }, 500); // small fade
+    };
+
+    /* After journey.mp4 ends → slow fade to black, then greetings.mp4 */
+    journeyVideo.onended = () => {
+
+      let fadeOpacity = 1; // current opacity
+      const fadeStep = 0.005; // very slow
+      const fadeInterval = setInterval(() => {
+        fadeOpacity -= fadeStep;
+        if (fadeOpacity <= 0) {
+          fadeOpacity = 0;
+          clearInterval(fadeInterval);
+
+          // After 2 seconds total darkness, show greetings.mp4
+          setTimeout(() => {
+            greetingsVideo.style.display = "block";
+            setTimeout(() => { greetingsVideo.style.opacity = 1; }, 50);
+            greetingsVideo.muted = false;
+            greetingsVideo.volume = 1;
+            greetingsVideo.play();
+          }, 2000);
+
+        }
+        journeyVideo.style.opacity = fadeOpacity;
+      }, 16); // ~60fps
     };
 
   });
