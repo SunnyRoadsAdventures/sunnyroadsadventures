@@ -48,15 +48,16 @@ img, video {
   width: 340px;
 }
 
-/* gate / blackie.mp4 */
+/* blackie.mp4 */
 #gateVideo {
   top: 50%; 
   right: 2%; 
   transform: translateY(-50%); 
-  width: 220px;       /* slim vertical cinematic */
-  height: auto;       /* maintain aspect ratio */
-  object-fit: cover;  /* fill nicely without distortion */
-  z-index: 5;         /* above background, below buttons */
+  width: 250px;       /* slightly wider */
+  max-height: 85vh;   /* much taller, cinematic */
+  height: auto;       
+  object-fit: cover;  
+  z-index: 5;         
 }
 
 /* mission.mp4 */
