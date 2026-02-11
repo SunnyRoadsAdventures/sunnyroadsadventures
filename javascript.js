@@ -12,9 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const greetingsVideo = document.getElementById("greetingsVideo");
 
   /* Initial saga fade-in */
-  setTimeout(() => {
-    sagaBtn.style.opacity = 1;
-  }, 2000);
+  setTimeout(() => { sagaBtn.style.opacity = 1; }, 2000);
 
   /* SAGA CLICK */
   sagaBtn.addEventListener("click", () => {
@@ -22,22 +20,17 @@ document.addEventListener("DOMContentLoaded", () => {
     sagaBtn.style.pointerEvents = "none";
     setTimeout(() => sagaBtn.style.display = "none", 2000);
 
-    // Pause background videos
     heyVideo.style.opacity = 0;
     heyVideo.pause();
     gateVideo.style.opacity = 0;
     gateVideo.pause();
 
-    // Show mission.mp4
     missionVideo.style.display = "block";
     missionVideo.style.opacity = 1;
-    missionVideo.muted = false;
-    missionVideo.volume = 1;
     missionVideo.play();
-
   }, { once: true });
 
-  /* Close mission.mp4 when clicking outside */
+  /* Close mission.mp4 on outside click */
   document.addEventListener("click", (e) => {
     if (missionVideo.style.display === "block") {
       const rect = missionVideo.getBoundingClientRect();
@@ -45,18 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
       const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
 
       if (!insideX || !insideY) {
-        // Fade out mission.mp4
         missionVideo.style.opacity = 0;
-
         setTimeout(() => {
           missionVideo.style.display = "none";
           missionVideo.pause();
 
-          // Start lower-half videos: hey and blackie
           heyVideo.style.display = "block";
           heyVideo.style.opacity = 1;
-          heyVideo.muted = false;
-          heyVideo.volume = 1;
           heyVideo.play();
 
           gateVideo.style.display = "block";
@@ -64,25 +52,29 @@ document.addEventListener("DOMContentLoaded", () => {
           gateVideo.currentTime = 0;
           gateVideo.play();
 
-          // Enter button appears 5 seconds later
+          // Enter button appears after 5s
           setTimeout(() => {
             enterBtn.style.display = "block";
             enterBtn.style.opacity = 1;
           }, 5000);
 
-        }, 1000); // match mission fade
+        }, 1000);
       }
     }
   });
 
-  /* ENTER CLICK → full-screen beginning & journey */
+  /* ENTER CLICK → beginning & journey */
   enterBtn.addEventListener("click", () => {
+
+    // Stop lower-half videos immediately
+    gateVideo.pause();
+    heyVideo.pause();
+    gateVideo.style.opacity = 0;
+    heyVideo.style.opacity = 0;
+
+    // Hide enter button
     enterBtn.style.opacity = 0;
     setTimeout(() => enterBtn.style.display = "none", 2000);
-
-    // Fade out lower-half videos
-    heyVideo.style.opacity = 0;
-    gateVideo.style.opacity = 0;
 
     // Play beginning.mp4 full screen
     beginsVideo.style.display = "block";
@@ -90,11 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
     beginsVideo.currentTime = 0;
     beginsVideo.play();
 
-    // When beginning ends, play journey.mp4
     beginsVideo.onended = () => {
       beginsVideo.style.opacity = 0;
       beginsVideo.style.display = "none";
 
+      // Play journey.mp4 full screen
       journeyVideo.style.display = "block";
       journeyVideo.style.opacity = 1;
       journeyVideo.currentTime = 0;
@@ -102,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  /* blackie fade to black at 1:05.2 */
+  /* blackie fade at 1:05.2 */
   gateVideo.addEventListener("timeupdate", () => {
     if (gateVideo.currentTime >= 65.2) {
       gateVideo.style.opacity = 0;
