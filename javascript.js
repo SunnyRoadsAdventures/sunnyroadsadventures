@@ -1,78 +1,47 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
 const sagaBtn = document.getElementById("sagaBtn");
 const missionVideo = document.getElementById("missionVideo");
 
-const gateVideo = document.getElementById("gateVideo"); // blackie.mp4
-const heyVideo = document.getElementById("heyVideo");
-const enterBtn = document.getElementById("enterBtn");
-
-/* =========================
-   1. Saga fades in
-========================= */
-
-setTimeout(function () {
-    sagaBtn.style.opacity = "1";
+/* Fade in saga after 2 seconds */
+setTimeout(() => {
+    sagaBtn.style.transition = "opacity 2s ease";
+    sagaBtn.style.opacity = 1;
 }, 2000);
 
-/* =========================
-   2. Click saga → mission.mp4
-========================= */
+/* Click saga → show mission */
+sagaBtn.addEventListener("click", () => {
 
-sagaBtn.addEventListener("click", function (e) {
-
-    e.stopPropagation();
-
-    sagaBtn.style.opacity = "0";
+    sagaBtn.style.opacity = 0;
     sagaBtn.style.pointerEvents = "none";
 
-    setTimeout(function () {
+    setTimeout(() => {
         sagaBtn.style.display = "none";
-    }, 1000);
+    }, 2000);
 
     missionVideo.style.display = "block";
-    missionVideo.style.opacity = "1";
-    missionVideo.currentTime = 0;
-    missionVideo.play();
+
+    setTimeout(() => {
+        missionVideo.style.transition = "opacity 1s ease";
+        missionVideo.style.opacity = 1;
+        missionVideo.currentTime = 0;
+        missionVideo.play();
+    }, 50);
 
 });
 
-/* =========================
-   3. Tap anywhere → close mission
-      → start rest of system
-========================= */
-
-document.addEventListener("click", function () {
+/* Click anywhere → close mission */
+document.addEventListener("click", () => {
 
     if (missionVideo.style.display === "block") {
 
-        missionVideo.style.opacity = "0";
+        missionVideo.style.opacity = 0;
 
-        setTimeout(function () {
-
+        setTimeout(() => {
             missionVideo.pause();
             missionVideo.style.display = "none";
-
-            /* NOW REST STARTS */
-
-            // blackie.mp4
-            gateVideo.style.display = "block";
-            gateVideo.style.opacity = "1";
-            gateVideo.currentTime = 0;
-            gateVideo.play();
-
-            // hey.mp4
-            heyVideo.style.display = "block";
-            heyVideo.style.opacity = "1";
-            heyVideo.play();
-
-            // enter button
-            setTimeout(function () {
-                enterBtn.style.display = "block";
-                enterBtn.style.opacity = "1";
-            }, 3000);
-
         }, 1000);
+
     }
 
 });
