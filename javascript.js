@@ -1,49 +1,28 @@
-document.addEventListener("DOMContentLoaded", () => {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Tour</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-const sagaBtn = document.getElementById("sagaBtn");
-const missionVideo = document.getElementById("missionVideo");
+<!-- SAGA BUTTON -->
+<img id="sagaBtn" src="saga.png" alt="Saga Button">
 
-/* Fade in saga after 2 seconds */
-setTimeout(() => {
-    sagaBtn.style.transition = "opacity 2s ease";
-    sagaBtn.style.opacity = 1;
-}, 2000);
+<!-- MISSION VIDEO -->
+<video id="missionVideo" src="mission.mp4"></video>
 
-/* Click saga → show mission */
-sagaBtn.addEventListener("click", () => {
+<!-- BLACKIE VIDEO (TOP CENTER) -->
+<video id="blackieVideo" src="blackie.mp4" loop></video>
 
-    sagaBtn.style.opacity = 0;
-    sagaBtn.style.pointerEvents = "none";
+<!-- HEY VIDEO (BOTTOM LEFT) -->
+<video id="heyVideo" src="hey.mp4" loop></video>
 
-    setTimeout(() => {
-        sagaBtn.style.display = "none";
-    }, 2000);
+<!-- ENTER BUTTON -->
+<img id="enterBtn" src="enter.png" alt="Enter Button">
 
-    missionVideo.style.display = "block";
-
-    setTimeout(() => {
-        missionVideo.style.transition = "opacity 1s ease";
-        missionVideo.style.opacity = 1;
-        missionVideo.currentTime = 0;
-        missionVideo.play();
-    }, 50);
-
-});
-
-/* Click anywhere → close mission */
-document.addEventListener("click", () => {
-
-    if (missionVideo.style.display === "block") {
-
-        missionVideo.style.opacity = 0;
-
-        setTimeout(() => {
-            missionVideo.pause();
-            missionVideo.style.display = "none";
-        }, 1000);
-
-    }
-
-});
-
-});
+<script src="javascript.js"></script>
+</body>
+</html>
