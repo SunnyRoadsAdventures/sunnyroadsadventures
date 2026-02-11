@@ -94,6 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
+  /* Fade journey.mp4 at exactly 25s */
+  journeyVideo.addEventListener("timeupdate", () => {
+    if (journeyVideo.currentTime >= 25) {
+      journeyVideo.style.transition = "opacity 1s ease"; // fade over 1 second
+      journeyVideo.style.opacity = 0;
+      journeyVideo.pause();
+    }
+  });
+
   /* blackie fade at 1:05.2 */
   gateVideo.addEventListener("timeupdate", () => {
     if (gateVideo.currentTime >= 65.2) {
