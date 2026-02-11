@@ -10,7 +10,7 @@ overflow: hidden;
 img, video {
 position: absolute;
 opacity: 0;
-transition: opacity 1.5s ease;
+transition: opacity 1s ease;
 }
 
 /* SAGA */
@@ -20,10 +20,9 @@ left: 50%;
 transform: translateX(-50%);
 width: 500px;
 cursor: pointer;
-z-index: 10;
 }
 
-/* MISSION center */
+/* MISSION */
 #missionVideo {
 top: 50%;
 left: 50%;
@@ -32,11 +31,10 @@ width: 70vw;
 height: 70vh;
 object-fit: cover;
 display: none;
-z-index: 20;
-cursor: pointer;
+z-index: 10;
 }
 
-/* BLACKIE top */
+/* BLACKIE */
 #blackieVideo {
 top: 0;
 left: 50%;
@@ -45,19 +43,17 @@ width: 100vw;
 height: 50vh;
 object-fit: cover;
 display: none;
-z-index: 5;
 }
 
-/* HEY bottom left */
+/* HEY */
 #heyVideo {
 bottom: 5%;
 left: 2%;
 width: 320px;
 display: none;
-z-index: 8;
 }
 
-/* ENTER bottom center */
+/* ENTER */
 #enterBtn {
 bottom: 5%;
 left: 50%;
@@ -65,5 +61,4 @@ transform: translateX(-50%);
 width: 250px;
 display: none;
 cursor: pointer;
-z-index: 15;
 }
