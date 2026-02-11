@@ -19,55 +19,59 @@ document.addEventListener("DOMContentLoaded", () => {
   /* SAGA CLICK (only once) */
   sagaBtn.addEventListener("click", () => {
 
+    // Fade saga button
     sagaBtn.style.opacity = 0;
     sagaBtn.style.pointerEvents = "none";
-
     setTimeout(() => sagaBtn.style.display = "none", 2000);
 
-    /* hey.mp4 */
-    setTimeout(() => {
-      heyVideo.style.opacity = 1;
-      heyVideo.muted = false;
-      heyVideo.volume = 1;
-      heyVideo.play();
-    }, 3000);
+    // PAUSE background videos initially
+    heyVideo.style.opacity = 0;
+    heyVideo.pause();
+    gateVideo.style.opacity = 0;
+    gateVideo.pause();
 
-    /* blackie.mp4 */
-    setTimeout(() => {
-      gateVideo.style.opacity = 1;
-      gateVideo.muted = false;
-      gateVideo.volume = 1;
-      gateVideo.play();
-
-      // Fade to black instantly at exactly 1:05.2
-      const fadeTime = 65.2; // seconds
-      const checkFade = () => {
-        if (gateVideo.currentTime >= fadeTime) {
-          gateVideo.style.opacity = 0;
-          gateVideo.pause();
-          gateVideo.removeEventListener("timeupdate", checkFade);
-        }
-      };
-      gateVideo.addEventListener("timeupdate", checkFade);
-
-    }, 4000);
-
-    /* mission.mp4 popup appears 2 seconds after saga click */
-    setTimeout(() => {
-      missionVideo.style.display = "block";
-      missionVideo.style.opacity = 1;
-      missionVideo.muted = false;
-      missionVideo.volume = 1;
-      missionVideo.play();
-    }, 2000);
-
-    /* enter.png */
-    setTimeout(() => {
-      enterBtn.style.display = "block";
-      enterBtn.style.opacity = 1;
-    }, 10000);
+    // mission.mp4 appears immediately
+    missionVideo.style.display = "block";
+    missionVideo.style.opacity = 1;
+    missionVideo.muted = false;
+    missionVideo.volume = 1;
+    missionVideo.play();
 
   }, { once: true });
+
+  /* Close mission.mp4 when clicking outside */
+  document.addEventListener("click", (e) => {
+    if (missionVideo.style.display === "block") {
+      const rect = missionVideo.getBoundingClientRect();
+      const insideX = e.clientX >= rect.left && e.clientX <= rect.right;
+      const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
+
+      if (!insideX || !insideY) {
+
+        // Fade out mission.mp4
+        missionVideo.style.opacity = 0;
+        setTimeout(() => {
+          missionVideo.style.display = "none";
+          missionVideo.pause();
+
+          // RESUME background videos
+          heyVideo.style.opacity = 1;
+          heyVideo.muted = false;
+          heyVideo.volume = 1;
+          heyVideo.play();
+
+          gateVideo.style.opacity = 1;
+          gateVideo.muted = false;
+          gateVideo.volume = 1;
+          gateVideo.play();
+
+          // Show enter button again
+          enterBtn.style.opacity = 1;
+
+        }, 1000); // match CSS fade duration
+      }
+    }
+  });
 
   /* ENTER CLICK → FADE TO beginning.mp4 */
   enterBtn.addEventListener("click", () => {
@@ -94,24 +98,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  /* Close mission.mp4 when clicking outside */
-  document.addEventListener("click", (e) => {
-    if (missionVideo.style.display === "block") {
-      const rect = missionVideo.getBoundingClientRect();
-      const insideX = e.clientX >= rect.left && e.clientX <= rect.right;
-      const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
-      if (!insideX || !insideY) {
-        missionVideo.style.opacity = 0;
-        setTimeout(() => {
-          missionVideo.style.display = "none";
-          missionVideo.pause();
-
-          // Fade back to background
-          heyVideo.style.opacity = 1;
-          gateVideo.style.opacity = 1;
-          enterBtn.style.opacity = 1;
-        }, 1000); 
-      }
+  /* blackie.mp4 fade to black at 1:05.2 */
+  gateVideo.addEventListener("timeupdate", () => {
+    if (gateVideo.currentTime >= 65.2) {
+      gateVideo.style.opacity = 0;
+      gateVideo.pause();
     }
   });
 
