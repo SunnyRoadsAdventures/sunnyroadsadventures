@@ -31,12 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
       heyVideo.play();
     }, 3000);
 
-    /* blackie.mp4 (formerly gate.mp4) */
+    /* blackie.mp4 */
     setTimeout(() => {
       gateVideo.style.opacity = 1;
       gateVideo.muted = false;
       gateVideo.volume = 1;
       gateVideo.play();
+
+      // Fade to black at exactly 1:05.2
+      gateVideo.addEventListener("timeupdate", () => {
+        if (gateVideo.currentTime >= 65.2) {
+          gateVideo.style.opacity = 0;
+          gateVideo.pause();
+        }
+      });
+
     }, 4000);
 
     /* mission.mp4 */
@@ -78,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 2000);
   });
 
-  /* Fade journey.mp4 slowly after begins.mp4 sequence (example) */
+  /* Fade journey.mp4 slowly after begins.mp4 sequence */
   beginsVideo.addEventListener("ended", () => {
     journeyVideo.style.display = "block";
     journeyVideo.style.opacity = 1;
@@ -90,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
     journeyVideo.addEventListener("timeupdate", () => {
       if (journeyVideo.currentTime >= 24) { // video length 28s
         let remaining = 28 - journeyVideo.currentTime;
-        journeyVideo.style.opacity = remaining / 4; // slow fade to 0 over 4s
+        journeyVideo.style.opacity = remaining / 4; // slow fade to 0
       }
     });
   });
