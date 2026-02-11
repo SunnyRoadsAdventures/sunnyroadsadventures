@@ -3,101 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Saga</title>
-
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background: black;
-      overflow: hidden;
-    }
-
-    img, video {
-      position: absolute;
-      opacity: 0;
-      transition: opacity 2s ease;
-    }
-
-    /* ======================
-       BUTTONS
-    ====================== */
-    #sagaBtn {
-      bottom: 5%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      cursor: pointer;
-      z-index: 50;
-    }
-
-    #enterBtn {
-      bottom: 4%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 260px;
-      cursor: pointer;
-      display: none;
-      z-index: 50;
-    }
-
-    /* ======================
-       SMALL STAGE VIDEOS
-    ====================== */
-    #heyVideo {
-      bottom: 10%;
-      left: 5%;
-      width: 340px;
-      z-index: 40;
-    }
-
-    #gateVideo {
-      bottom: 2%;
-      right: 5%;
-      width: 340px;
-      z-index: 40;
-    }
-
-    #missionVideo {
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 320px;
-      z-index: 40;
-    }
-
-    /* ======================
-       FULLSCREEN VIDEOS
-    ====================== */
-    #beginsVideo,
-    #journeyVideo {
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      z-index: 100; /* ensure above all buttons and stage videos */
-      display: none;
-    }
-
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
   <!-- BUTTONS -->
   <img id="sagaBtn" src="saga.png" alt="Saga">
   <img id="enterBtn" src="enter.png" alt="Enter">
 
-  <!-- SMALL STAGE VIDEOS -->
-  <video id="heyVideo" src="hey.mp4" playsinline></video>
-  <video id="gateVideo" src="gate.mp4" playsinline></video>
-  <video id="missionVideo" src="mission.mp4" playsinline></video>
+  <!-- VIDEOS -->
+  <video id="heyVideo" src="hey.mp4"></video>
+  <video id="gateVideo" src="gate.mp4"></video>
+  <video id="missionVideo" src="mission.mp4"></video>
 
-  <!-- FULLSCREEN VIDEOS -->
-  <video id="beginsVideo" src="beginning.mp4" playsinline></video>
-  <video id="journeyVideo" src="journey.mp4" playsinline></video>
+  <video id="beginsVideo" src="beginning.mp4"></video>
+  <video id="journeyVideo" src="journey.mp4"></video>
+  <video id="greetingsVideo" src="greetings.mp4"></video>
 
   <script src="javascript.js"></script>
 </body>
