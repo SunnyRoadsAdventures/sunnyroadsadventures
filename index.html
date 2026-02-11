@@ -1,31 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunny Roads Adventures</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<head>    
+  <meta charset="UTF-8">    
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+  <title>Interactive Tour</title>    
+  <link rel="stylesheet" href="style.css">    
+</head>    
 
-    <!-- GREETINGS VIDEO -->
-    <video 
-        id="greetingsVideo"
-        class="fullscreen-video"
-        src="greetings.mp4"
-        autoplay
-        muted
-        playsinline>
-    </video>
+<body>    
 
-    <!-- MARKET IMAGE -->
-    <img 
-        id="marketImage"
-        class="fullscreen-image hidden"
-        src="market.png"
-        alt="Market Scene"
-    >
+<!-- ======================    
+       BUTTONS    
+===================== -->    
 
-    <script src="javascript.js"></script>
+<!-- Saga button -->    
+<img id="sagaBtn" src="saga.png" alt="Saga Button" style="opacity:0; cursor:pointer; position:absolute; bottom:5%; left:50%; transform:translateX(-50%); width:600px;">
+
+<!-- Enter button -->    
+<img id="enterBtn" src="enter.png" alt="Enter Button" style="opacity:0; display:none; cursor:pointer; position:absolute; bottom:4%; left:50%; transform:translateX(-50%); width:260px;">
+
+<!-- Tours button on plaza -->    
+<img id="toursBtn" src="tours_icon.png" alt="Tours Button" style="opacity:0; display:none; position:absolute; top:70%; left:5%; width:150px; cursor:pointer;">
+
+<!-- WhatsApp button on plaza -->    
+<img id="whatsappBtn" src="whatsapp_icon.png" alt="WhatsApp Button" style="opacity:0; display:none; position:absolute; top:70%; left:20%; width:100px; cursor:pointer;">
+
+<!-- ======================    
+       VIDEOS    
+===================== -->    
+
+<!-- Lower-half/side videos -->  
+<video id="heyVideo" src="hey.mp4" muted loop style="position:absolute; bottom:10%; left:5%; width:340px; opacity:0;"></video>  
+
+<video id="gateVideo" src="blackie.mp4" muted loop style="position:absolute; top:25%; left:50%; width:100vw; max-height:70vh; transform:translateX(-50%); object-fit:cover; z-index:5; opacity:1;"></video>    
+
+<!-- Popup -->  
+<video id="missionVideo" src="mission.mp4" muted style="position:absolute; top:50%; left:50%; width:70vw; height:70vh; max-width:90vw; max-height:90vh; transform:translate(-50%, -50%); object-fit:cover; z-index:20; display:none; opacity:0; cursor:default;"></video>    
+
+<!-- Beginning cinematic -->  
+<video id="beginsVideo" src="beginning.mp4" muted style="position:absolute; top:50%; left:50%; width:65vw; height:65vh; transform:translate(-50%, -50%); object-fit:cover; display:none; opacity:0;"></video>    
+
+<!-- Journey and greetings full screen -->  
+<video id="journeyVideo" src="journey.mp4" muted style="position:absolute; top:50%; left:50%; width:100vw; height:100vh; transform:translate(-50%, -50%); object-fit:cover; display:none; opacity:0;"></video>  
+
+<video id="greetingsVideo" src="greetings.mp4" muted style="position:absolute; top:50%; left:50%; width:100vw; height:100vh; transform:translate(-50%, -50%); object-fit:cover; display:none; opacity:0;"></video>
+
+<!-- Plaza -->    
+<img id="plazaImg" src="plaza.png" alt="Plaza" style="opacity:0; display:none; position:absolute; top:0; left:0; width:100vw; height:100vh; object-fit:cover;">
+
+<!-- ======================    
+       SCRIPTS    
+===================== -->    
+
+<script src="script.js"></script>  
+
 </body>
 </html>
