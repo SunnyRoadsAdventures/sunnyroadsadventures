@@ -7,24 +7,115 @@ html, body {
   overflow: hidden;
 }
 
-/* Shared fade */
+/* Shared fade behavior */
 img, video {
   position: absolute;
   opacity: 0;
   transition: opacity 2s ease;
 }
 
-/* Buttons */
-#sagaBtn { bottom:5%; left:50%; transform:translateX(-50%); width:600px; cursor:pointer; z-index:25; display:block; }
-#enterBtn { bottom:4%; left:50%; transform:translateX(-50%); width:260px; cursor:pointer; display:none; z-index:30; }
-#toursBtn { top:70%; left:5%; width:150px; cursor:pointer; display:none; z-index:55; }
-#whatsappBtn { top:70%; left:20%; width:100px; cursor:pointer; display:none; z-index:55; }
+/* ======================
+BUTTONS
+====================== */
 
-/* Videos */
-#heyVideo { bottom:5%; left:2%; width:340px; z-index:15; }
-#gateVideo { top:0; left:50%; width:100vw; height:50vh; transform:translateX(-50%); object-fit:cover; z-index:5; display:none; }
-#missionVideo { top:50%; left:50%; width:70vw; height:70vh; max-width:90vw; max-height:90vh; transform:translate(-50%,-50%); object-fit:cover; z-index:20; display:none; cursor:default; }
-#beginsVideo, #journeyVideo, #greetingsVideo { top:50%; left:50%; width:100vw; height:100vh; transform:translate(-50%,-50%); object-fit:cover; z-index:40; display:none; }
+/* SAGA BUTTON */
+#sagaBtn {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  cursor: pointer;
+  z-index: 25;
+}
 
-/* Plaza */
-#plazaImg { top:0; left:0; width:100vw; height:100vh; object-fit:cover; z-index:50; display:none; }
+/* ENTER BUTTON */
+#enterBtn {
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  cursor: pointer;
+  display: none;
+  z-index: 30;
+}
+
+/* ======================
+VIDEOS
+====================== */
+
+/* hey.mp4 (lower left) */
+#heyVideo {
+  bottom: 5%;
+  left: 2%;
+  width: 340px;
+  z-index: 15;
+}
+
+/* blackie.mp4 (upper half only) */
+#gateVideo {
+  display: none;       /* hidden at first */
+  opacity: 0;
+  top: 0;              /* align with top */
+  left: 50%;
+  width: 100vw;        /* full width */
+  height: 50vh;        /* upper half only */
+  transform: translateX(-50%);
+  object-fit: cover;
+  z-index: 5;          /* behind lower-half buttons/videos */
+}
+
+/* mission.mp4 popup */
+#missionVideo {
+  top: 50%;
+  left: 50%;
+  width: 70vw;
+  height: 70vh;
+  max-width: 90vw;
+  max-height: 90vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 20;
+  opacity: 0;
+  display: none;
+  cursor: default;
+  transition: opacity 1s ease;
+}
+
+/* BEGINNING VIDEO full screen */
+#beginsVideo {
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  display: none;
+  z-index: 40;
+}
+
+/* journey.mp4 full screen */
+#journeyVideo {
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  display: none;
+  z-index: 40;
+}
+
+/* journey/greetings could still use these if needed */
+#greetingsVideo {
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  display: none;
+  z-index: 40;
+}
