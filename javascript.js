@@ -1,28 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interactive Tour</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+document.addEventListener("DOMContentLoaded", () => {
 
-<!-- SAGA BUTTON -->
-<img id="sagaBtn" src="saga.png" alt="Saga Button">
+const sagaBtn = document.getElementById("sagaBtn");
+const missionVideo = document.getElementById("missionVideo");
+const blackieVideo = document.getElementById("blackieVideo");
+const heyVideo = document.getElementById("heyVideo");
+const enterBtn = document.getElementById("enterBtn");
 
-<!-- MISSION VIDEO -->
-<video id="missionVideo" src="mission.mp4"></video>
+/* Fade in saga after 2 seconds */
+setTimeout(() => {
+    sagaBtn.style.opacity = 1;
+}, 2000);
 
-<!-- BLACKIE VIDEO (TOP CENTER) -->
-<video id="blackieVideo" src="blackie.mp4" loop></video>
+/* Click saga → show mission */
+sagaBtn.addEventListener("click", () => {
 
-<!-- HEY VIDEO (BOTTOM LEFT) -->
-<video id="heyVideo" src="hey.mp4" loop></video>
+    sagaBtn.style.opacity = 0;
 
-<!-- ENTER BUTTON -->
-<img id="enterBtn" src="enter.png" alt="Enter Button">
+    setTimeout(() => {
+        sagaBtn.style.display = "none";
 
-<script src="javascript.js"></script>
-</body>
-</html>
+        missionVideo.style.display = "block";
+        missionVideo.style.opacity = 1;
+        missionVideo.currentTime = 0;
+        missionVideo.play();
+
+    }, 1000);
+
+});
+
+/* Click mission → close and continue */
+missionVideo.addEventListener("click", () => {
+
+    missionVideo.style.opacity = 0;
+
+    setTimeout(() => {
+
+        missionVideo.pause();
+        missionVideo.style.display = "none";
+
+        blackieVideo.style.display = "block";
+        blackieVideo.style.opacity = 1;
+        blackieVideo.play();
+
+        heyVideo.style.display = "block";
+        heyVideo.style.opacity = 1;
+        heyVideo.play();
+
+        enterBtn.style.display = "block";
+        enterBtn.style.opacity = 1;
+
+    }, 1000);
+
+});
+
+});
