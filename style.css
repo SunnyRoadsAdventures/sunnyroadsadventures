@@ -50,14 +50,14 @@ img, video {
 
 /* blackie.mp4 (edge-to-edge horizontal, center-to-top cover) */
 #gateVideo {
-  top: 15%;                /* higher on the screen, covers center to top */
+  top: 25%;                /* slightly down from top so bottom stays visible */
   left: 50%;               /* center horizontally */
   width: 100vw;            /* full viewport width */
-  height: 75vh;            /* taller to cover more vertical space */
+  max-height: 70vh;        /* still tall but not too tall */
   transform: translateX(-50%);
-  object-fit: cover;       /* fills width & height without stretching */
-  z-index: 5;
-  opacity: 1;
+  object-fit: cover;       /* cover center area nicely */
+  z-index: 5;              
+  opacity: 1;              
 }
 
 /* mission.mp4 popup */
