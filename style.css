@@ -14,7 +14,7 @@ opacity: 0;
 transition: opacity 2s ease;
 }
 
-/* Saga bottom center */
+/* SAGA */
 #sagaBtn {
 bottom: 5%;
 left: 50%;
@@ -24,7 +24,7 @@ cursor: pointer;
 z-index: 10;
 }
 
-/* Mission video center */
+/* MISSION center */
 #missionVideo {
 top: 50%;
 left: 50%;
@@ -34,4 +34,36 @@ height: 70vh;
 object-fit: cover;
 display: none;
 z-index: 20;
+}
+
+/* BLACKIE top center full width */
+#blackieVideo {
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 100vw;
+height: 50vh;
+object-fit: cover;
+display: none;
+z-index: 5;
+}
+
+/* HEY bottom left */
+#heyVideo {
+bottom: 5%;
+left: 2%;
+width: 320px;
+display: none;
+z-index: 8;
+}
+
+/* ENTER bottom center */
+#enterBtn {
+bottom: 5%;
+left: 50%;
+transform: translateX(-50%);
+width: 250px;
+cursor: pointer;
+display: none;
+z-index: 15;
 }
