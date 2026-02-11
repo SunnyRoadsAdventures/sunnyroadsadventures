@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const missionVideo = document.getElementById("missionVideo");
 
   const beginsVideo = document.getElementById("beginsVideo");
-  const journeyVideo = document.getElementById("journeyVideo"); // NEW
+  const journeyVideo = document.getElementById("journeyVideo");
 
   /* Initial saga fade-in */
   setTimeout(() => {
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       sagaBtn.style.display = "none";
     }, 2000);
 
+    /* hey.mp4 */
     setTimeout(() => {
       heyVideo.style.opacity = 1;
       heyVideo.muted = false;
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       heyVideo.play();
     }, 3000);
 
+    /* gate.mp4 */
     setTimeout(() => {
       gateVideo.style.opacity = 1;
       gateVideo.muted = false;
@@ -39,6 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
       gateVideo.play();
     }, 4000);
 
+    /* mission.mp4 */
     setTimeout(() => {
       missionVideo.style.opacity = 1;
       missionVideo.muted = false;
@@ -46,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
       missionVideo.play();
     }, 7000);
 
+    /* enter.png */
     setTimeout(() => {
       enterBtn.style.display = "block";
       enterBtn.style.opacity = 1;
@@ -53,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, { once: true });
 
-  /* ENTER CLICK → beginning.mp4 */
+  /* ENTER CLICK → FADE TO beginning.mp4 fullscreen */
   enterBtn.addEventListener("click", () => {
 
     enterBtn.style.opacity = 0;
@@ -68,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
       missionVideo.style.display = "none";
     }, 2000);
 
+    /* Show beginning.mp4 fullscreen */
     setTimeout(() => {
       beginsVideo.style.display = "block";
       beginsVideo.style.opacity = 1;
@@ -76,25 +81,18 @@ document.addEventListener("DOMContentLoaded", () => {
       beginsVideo.play();
     }, 2000);
 
-  });
-
-  /* NEW: After beginning.mp4 ends → black → journey.mp4 */
-  beginsVideo.addEventListener("ended", () => {
-
-    beginsVideo.style.opacity = 0;
-
-    setTimeout(() => {
-      beginsVideo.style.display = "none";
-    }, 2000);
-
-    // 1 second black screen AFTER fade completes
-    setTimeout(() => {
-      journeyVideo.style.display = "block";
-      journeyVideo.style.opacity = 1;
-      journeyVideo.muted = false;
-      journeyVideo.volume = 1;
-      journeyVideo.play();
-    }, 3000); // 2s fade + 1s black
+    /* After beginning.mp4 ends, fade to journey.mp4 fullscreen */
+    beginsVideo.onended = () => {
+      beginsVideo.style.opacity = 0;
+      setTimeout(() => {
+        beginsVideo.style.display = "none";
+        journeyVideo.style.display = "block";
+        journeyVideo.style.opacity = 1;
+        journeyVideo.muted = false;
+        journeyVideo.volume = 1;
+        journeyVideo.play();
+      }, 500); // small fade
+    };
 
   });
 
