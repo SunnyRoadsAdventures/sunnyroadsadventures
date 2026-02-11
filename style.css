@@ -29,47 +29,47 @@ img, video {
 
 /* ENTER BUTTON */
 #enterBtn {
-  bottom: 4%;
+  bottom: 2%;          /* bottom center */
   left: 50%;
   transform: translateX(-50%);
   width: 260px;
   cursor: pointer;
   display: none;
+  z-index: 15;
 }
 
 /* ======================
    VIDEOS
 ====================== */
 
-/* hey.mp4 */
+/* hey.mp4 (lower left) */
 #heyVideo {
-  bottom: 10%;
-  left: 5%;
+  bottom: 5%;
+  left: 2%;
   width: 340px;
-  opacity: 0;
+  z-index: 15;
 }
 
-/* blackie.mp4 (upper half, edge-to-edge horizontally) */
+/* blackie.mp4 (upper half only) */
 #gateVideo {
-  display: none;          /* hidden at first */
+  display: none;       /* hidden at first */
   opacity: 0;
-  top: 0;                 /* start at the top of the screen */
-  left: 50%;              /* center horizontally */
-  width: 100vw;           /* full viewport width */
-  height: 55vh;           /* covers top half to roughly center */
+  top: 0;              /* align with top */
+  left: 50%;
+  width: 100vw;        /* full width */
+  height: 50vh;        /* exactly upper half */
   transform: translateX(-50%);
-  object-fit: cover;      /* fill width & height nicely */
-  z-index: 5;
-}
+  object-fit: cover;
+  z-index: 5;          /* behind lower half buttons/videos */
 }
 
 /* mission.mp4 popup */
 #missionVideo {
   top: 50%;
   left: 50%;
-  width: 70vw;         
+  width: 70vw;
   height: 70vh;
-  max-width: 90vw;     
+  max-width: 90vw;
   max-height: 90vh;
   transform: translate(-50%, -50%);
   object-fit: cover;
@@ -80,7 +80,7 @@ img, video {
   transition: opacity 1s ease;
 }
 
-/* BEGINNING VIDEO (half size, cinematic) */
+/* BEGINNING VIDEO */
 #beginsVideo {
   top: 50%;
   left: 50%;
