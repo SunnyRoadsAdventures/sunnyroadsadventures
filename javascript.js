@@ -94,12 +94,19 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  /* Fade journey.mp4 at exactly 25s */
+  /* Fade journey.mp4 at exactly 25s → fade in greetings.mp4 */
   journeyVideo.addEventListener("timeupdate", () => {
     if (journeyVideo.currentTime >= 25) {
-      journeyVideo.style.transition = "opacity 1s ease"; // fade over 1 second
+      journeyVideo.style.transition = "opacity 1s ease"; // fade over 1s
       journeyVideo.style.opacity = 0;
       journeyVideo.pause();
+
+      // Fade in greetings.mp4
+      greetingsVideo.style.display = "block";
+      setTimeout(() => {
+        greetingsVideo.style.transition = "opacity 2s ease"; // smooth fade
+        greetingsVideo.style.opacity = 1;
+      }, 50);
     }
   });
 
