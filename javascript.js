@@ -63,10 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ENTER CLICK → beginning & journey */
+  /* ENTER CLICK → beginning & journey full screen */
   enterBtn.addEventListener("click", () => {
 
-    // Stop lower-half videos immediately
+    // Stop lower-half videos
     gateVideo.pause();
     heyVideo.pause();
     gateVideo.style.opacity = 0;
@@ -82,11 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
     beginsVideo.currentTime = 0;
     beginsVideo.play();
 
+    // When beginning ends, play journey.mp4 full screen
     beginsVideo.onended = () => {
       beginsVideo.style.opacity = 0;
       beginsVideo.style.display = "none";
 
-      // Play journey.mp4 full screen
       journeyVideo.style.display = "block";
       journeyVideo.style.opacity = 1;
       journeyVideo.currentTime = 0;
