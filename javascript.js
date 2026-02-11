@@ -13,26 +13,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const sunnyPlazaImg = document.getElementById("sunnyPlazaImg");
 
-  /* Initial saga fade-in */
   setTimeout(() => { sagaBtn.style.opacity = 1; }, 2000);
 
-  /* SAGA CLICK */
   sagaBtn.addEventListener("click", () => {
+
     sagaBtn.style.opacity = 0;
     sagaBtn.style.pointerEvents = "none";
     setTimeout(() => sagaBtn.style.display = "none", 2000);
 
-    heyVideo.pause();
-    gateVideo.pause();
-
     missionVideo.style.display = "block";
     missionVideo.style.opacity = 1;
     missionVideo.play();
+
   }, { once: true });
 
-  /* Close mission.mp4 on outside click */
   document.addEventListener("click", (e) => {
+
     if (missionVideo.style.display === "block") {
+
       const rect = missionVideo.getBoundingClientRect();
       const insideX = e.clientX >= rect.left && e.clientX <= rect.right;
       const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
@@ -51,7 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
           gateVideo.style.display = "block";
           gateVideo.style.opacity = 1;
-          gateVideo.currentTime = 0;
           gateVideo.play();
 
           setTimeout(() => {
@@ -64,21 +61,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ENTER CLICK */
   enterBtn.addEventListener("click", () => {
 
     gateVideo.pause();
     heyVideo.pause();
 
-    gateVideo.style.opacity = 0;
-    heyVideo.style.opacity = 0;
-
-    enterBtn.style.opacity = 0;
-    setTimeout(() => enterBtn.style.display = "none", 2000);
-
     beginsVideo.style.display = "block";
     beginsVideo.style.opacity = 1;
-    beginsVideo.currentTime = 0;
     beginsVideo.play();
 
     beginsVideo.onended = () => {
@@ -86,13 +75,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       journeyVideo.style.display = "block";
       journeyVideo.style.opacity = 1;
-      journeyVideo.currentTime = 0;
       journeyVideo.play();
     };
   });
 
-  /* Journey fade at 26.5s */
   journeyVideo.addEventListener("timeupdate", () => {
+
     if (journeyVideo.currentTime >= 26.5) {
 
       journeyVideo.style.opacity = 0;
@@ -102,15 +90,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
         greetingsVideo.style.display = "block";
         greetingsVideo.style.opacity = 1;
-        greetingsVideo.currentTime = 0;
         greetingsVideo.play();
 
       }, 2000);
     }
   });
 
-  /* Close greetings → show sunnyplaza */
+  /* CLOSE GREETINGS → SHOW HALF SCREEN SUNNY PLAZA */
   document.addEventListener("click", () => {
+
     if (greetingsVideo.style.display === "block") {
 
       greetingsVideo.style.opacity = 0;
@@ -121,6 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         sunnyPlazaImg.style.display = "block";
         sunnyPlazaImg.style.opacity = 1;
+
+        console.log("Sunny Plaza should now be visible.");
 
       }, 1000);
     }
