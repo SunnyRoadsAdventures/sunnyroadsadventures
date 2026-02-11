@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const beginsVideo = document.getElementById("beginsVideo");
   const journeyVideo = document.getElementById("journeyVideo");
-  const greetingsVideo = document.getElementById("greetingsVideo"); // NEW VIDEO
+  // const greetingsVideo = document.getElementById("greetingsVideo"); // optional, not yet used
 
   /* Initial saga fade-in */
   setTimeout(() => {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       beginsVideo.play();
     }, 2000);
 
-    /* After beginning.mp4 ends, fade to journey.mp4 fullscreen */
+    /* After beginning.mp4 ends → journey.mp4 fullscreen */
     beginsVideo.onended = () => {
       beginsVideo.style.opacity = 0;
       setTimeout(() => {
@@ -95,31 +95,25 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 500); // small fade
     };
 
-    /* After journey.mp4 ends → slow fade to black, then greetings.mp4 */
-    journeyVideo.onended = () => {
+    /* Slow 3-second fade-out for journey.mp4 */
+    journeyVideo.addEventListener("timeupdate", () => {
+      const fadeDuration = 3; // seconds
+      const remainingTime = journeyVideo.duration - journeyVideo.currentTime;
 
-      let fadeOpacity = 1; // current opacity
-      const fadeStep = 0.005; // very slow
-      const fadeInterval = setInterval(() => {
-        fadeOpacity -= fadeStep;
-        if (fadeOpacity <= 0) {
-          fadeOpacity = 0;
-          clearInterval(fadeInterval);
+      if (remainingTime <= fadeDuration) {
+        journeyVideo.style.opacity = remainingTime / fadeDuration;
+      }
+    });
 
-          // After 2 seconds total darkness, show greetings.mp4
-          setTimeout(() => {
-            greetingsVideo.style.display = "block";
-            setTimeout(() => { greetingsVideo.style.opacity = 1; }, 50);
-            greetingsVideo.muted = false;
-            greetingsVideo.volume = 1;
-            greetingsVideo.play();
-          }, 2000);
-
-        }
-        journeyVideo.style.opacity = fadeOpacity;
-      }, 16); // ~60fps
-    };
-
+    // Optionally, after journey.mp4 ends, you could fade in greetings.mp4
+    // journeyVideo.onended = () => {
+    //   journeyVideo.style.display = "none";
+    //   greetingsVideo.style.display = "block";
+    //   setTimeout(() => { greetingsVideo.style.opacity = 1; }, 50);
+    //   greetingsVideo.muted = false;
+    //   greetingsVideo.volume = 1;
+    //   greetingsVideo.play();
+    // };
   });
 
 });
