@@ -65,10 +65,23 @@ img, video {
 
 /* ======================
    BEGINNING VIDEO
-   (cinematic + responsive)
 ====================== */
 
 #beginsVideo {
+  top: 50%;
+  left: 50%;
+  width: 65vw;
+  height: 65vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  display: none;
+}
+
+/* ======================
+   JOURNEY VIDEO (NEW)
+====================== */
+
+#journeyVideo {
   top: 50%;
   left: 50%;
   width: 65vw;
