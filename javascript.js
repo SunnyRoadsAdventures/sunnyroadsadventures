@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sagaBtn.style.opacity = 1;
   }, 2000);
 
-  /* SAGA CLICK (only once) */
+  /* SAGA CLICK */
   sagaBtn.addEventListener("click", () => {
 
     // Fade saga button
@@ -24,13 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
     sagaBtn.style.pointerEvents = "none";
     setTimeout(() => sagaBtn.style.display = "none", 2000);
 
-    // PAUSE background videos initially
+    // Pause background videos
     heyVideo.style.opacity = 0;
     heyVideo.pause();
+
     gateVideo.style.opacity = 0;
     gateVideo.pause();
 
-    // mission.mp4 appears immediately
+    // Show mission.mp4
     missionVideo.style.display = "block";
     missionVideo.style.opacity = 1;
     missionVideo.muted = false;
@@ -55,24 +56,30 @@ document.addEventListener("DOMContentLoaded", () => {
           missionVideo.style.display = "none";
           missionVideo.pause();
 
-          // RESUME background videos immediately
+          // =========================
+          // START BACKGROUND VIDEOS
+          // =========================
+
+          heyVideo.style.display = "block";
           heyVideo.style.opacity = 1;
           heyVideo.muted = false;
           heyVideo.volume = 1;
           heyVideo.play();
 
+          gateVideo.style.display = "block"; // now blackie appears
           gateVideo.style.opacity = 1;
-          gateVideo.muted = false;
-          gateVideo.volume = 1;
+          gateVideo.currentTime = 0;
           gateVideo.play();
 
-          // DELAYED enter button fade-in (5 seconds after mission closes)
+          // =========================
+          // DELAYED enter button fade-in
+          // =========================
           setTimeout(() => {
             enterBtn.style.display = "block";
             enterBtn.style.opacity = 1;
-          }, 5000); // 5000ms = 5 seconds
+          }, 5000); // 5 seconds after mission closes
 
-        }, 1000); // match mission fade-out duration
+        }, 1000); // match mission fade duration
       }
     }
   });
@@ -102,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  /* blackie.mp4 fade to black at 1:05.2 */
+  /* blackie fade to black at 1:05.2 */
   gateVideo.addEventListener("timeupdate", () => {
     if (gateVideo.currentTime >= 65.2) {
       gateVideo.style.opacity = 0;
