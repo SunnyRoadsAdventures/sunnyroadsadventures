@@ -25,17 +25,18 @@ img, video {
   transform: translateX(-50%);
   width: 600px;
   cursor: pointer;
+  z-index: 25;
 }
 
 /* ENTER BUTTON */
 #enterBtn {
-  bottom: 2%;          /* bottom center */
+  bottom: 2%;
   left: 50%;
   transform: translateX(-50%);
   width: 260px;
   cursor: pointer;
   display: none;
-  z-index: 15;
+  z-index: 30;
 }
 
 /* ======================
@@ -57,10 +58,10 @@ img, video {
   top: 0;              /* align with top */
   left: 50%;
   width: 100vw;        /* full width */
-  height: 50vh;        /* exactly upper half */
+  height: 50vh;        /* upper half only */
   transform: translateX(-50%);
   object-fit: cover;
-  z-index: 5;          /* behind lower half buttons/videos */
+  z-index: 5;          /* behind lower-half buttons/videos */
 }
 
 /* mission.mp4 popup */
@@ -80,20 +81,8 @@ img, video {
   transition: opacity 1s ease;
 }
 
-/* BEGINNING VIDEO */
+/* BEGINNING VIDEO full screen */
 #beginsVideo {
-  top: 50%;
-  left: 50%;
-  width: 65vw;
-  height: 65vh;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  opacity: 0;
-  display: none;
-}
-
-/* journey.mp4 and greetings.mp4 full screen */
-#journeyVideo, #greetingsVideo {
   top: 50%;
   left: 50%;
   width: 100vw;
@@ -102,4 +91,31 @@ img, video {
   object-fit: cover;
   opacity: 0;
   display: none;
+  z-index: 40;
+}
+
+/* journey.mp4 full screen */
+#journeyVideo {
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  display: none;
+  z-index: 40;
+}
+
+/* journey/greetings could still use these if needed */
+#greetingsVideo {
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  display: none;
+  z-index: 40;
 }
