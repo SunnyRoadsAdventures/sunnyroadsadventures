@@ -48,13 +48,13 @@ img, video {
   width: 340px;
 }
 
-/* blackie.mp4 (taller & slightly wider) */
+/* blackie.mp4 (much taller & much wider) */
 #gateVideo {
   top: 50%; 
   right: 2%; 
   transform: translateY(-50%); 
-  width: 280px;       /* slightly wider */
-  max-height: 95vh;   /* much taller, nearly full height */
+  width: 380px;       /* much wider now */
+  max-height: 95vh;   /* very tall */
   height: auto;       
   object-fit: cover;  
   z-index: 5;         
