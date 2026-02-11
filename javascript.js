@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const greetingsVideo = document.getElementById("greetingsVideo");
 
   const plazaImg = document.getElementById("plazaImg");
+  const toursBtn = document.getElementById("toursBtn");
+  const whatsappBtn = document.getElementById("whatsappBtn");
 
   /* Initial saga fade-in */
   setTimeout(() => { sagaBtn.style.opacity = 1; }, 2000);
@@ -150,5 +152,19 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  /* TOURS CLICK → open tours.jpg */
+  if (toursBtn) {
+    toursBtn.addEventListener("click", () => {
+      window.open("tours.jpg", "_blank");
+    });
+  }
+
+  /* WHATSAPP CLICK → open WhatsApp chat */
+  if (whatsappBtn) {
+    whatsappBtn.addEventListener("click", () => {
+      window.open("https://wa.me/50558365522", "_blank");
+    });
+  }
 
 });
