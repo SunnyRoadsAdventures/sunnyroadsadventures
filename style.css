@@ -7,25 +7,28 @@ background: black;
 overflow: hidden;
 }
 
-/* Shared base */
+/* Shared fade */
 img, video {
 position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
 opacity: 0;
 transition: opacity 2s ease;
 }
 
-/* Saga button */
+/* Saga bottom center */
 #sagaBtn {
+bottom: 5%;
+left: 50%;
+transform: translateX(-50%);
 width: 500px;
 cursor: pointer;
 z-index: 10;
 }
 
-/* Mission video */
+/* Mission video center */
 #missionVideo {
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
 width: 70vw;
 height: 70vh;
 object-fit: cover;
