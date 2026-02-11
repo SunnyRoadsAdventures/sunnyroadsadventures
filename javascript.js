@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const beginsVideo = document.getElementById("beginsVideo");
   const journeyVideo = document.getElementById("journeyVideo");
-  // const greetingsVideo = document.getElementById("greetingsVideo"); // optional, not yet used
+  const greetingsVideo = document.getElementById("greetingsVideo"); // Optional, can be added later
 
   /* Initial saga fade-in */
   setTimeout(() => {
@@ -95,25 +95,32 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 500); // small fade
     };
 
-    /* Slow 3-second fade-out for journey.mp4 */
+    /* Slow fade out starting 6 seconds before end (so 3 seconds before fully black) */
     journeyVideo.addEventListener("timeupdate", () => {
-      const fadeDuration = 3; // seconds
+      const fadeDuration = 6; // seconds, start fading earlier
       const remainingTime = journeyVideo.duration - journeyVideo.currentTime;
 
       if (remainingTime <= fadeDuration) {
+        // opacity goes from 1 → 0 over fadeDuration
         journeyVideo.style.opacity = remainingTime / fadeDuration;
       }
     });
 
-    // Optionally, after journey.mp4 ends, you could fade in greetings.mp4
-    // journeyVideo.onended = () => {
-    //   journeyVideo.style.display = "none";
-    //   greetingsVideo.style.display = "block";
-    //   setTimeout(() => { greetingsVideo.style.opacity = 1; }, 50);
-    //   greetingsVideo.muted = false;
-    //   greetingsVideo.volume = 1;
-    //   greetingsVideo.play();
-    // };
+    // Optionally, after journey.mp4 ends, fade in greetings.mp4
+    journeyVideo.onended = () => {
+      journeyVideo.style.opacity = 0;
+      journeyVideo.style.display = "none";
+
+      // greetings.mp4 fade-in after 2 seconds black
+      setTimeout(() => {
+        greetingsVideo.style.display = "block";
+        setTimeout(() => { greetingsVideo.style.opacity = 1; }, 50);
+        greetingsVideo.muted = false;
+        greetingsVideo.volume = 1;
+        greetingsVideo.play();
+      }, 2000);
+    };
+
   });
 
 });
