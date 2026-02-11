@@ -94,9 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  /* Fade journey.mp4 at exactly 25s → fade in greetings.mp4 */
+  /* Fade journey.mp4 at exactly 26.2s → fade in greetings.mp4 */
   journeyVideo.addEventListener("timeupdate", () => {
-    if (journeyVideo.currentTime >= 25) {
+    if (journeyVideo.currentTime >= 26.2) {
       journeyVideo.style.transition = "opacity 1s ease"; // fade over 1s
       journeyVideo.style.opacity = 0;
       journeyVideo.pause();
