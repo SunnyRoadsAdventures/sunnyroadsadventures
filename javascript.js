@@ -8,17 +8,17 @@ setTimeout(() => {
     sagaBtn.style.opacity = "1";
 }, 2000);
 
-/* Click saga → show mission.mp4 */
+/* Click saga → fade in mission */
 sagaBtn.addEventListener("click", () => {
 
-    // Hide saga
+    // Fade out saga
     sagaBtn.style.opacity = "0";
 
     setTimeout(() => {
         sagaBtn.style.display = "none";
     }, 2000);
 
-    // Show mission video
+    // Show mission
     missionVideo.style.display = "block";
 
     setTimeout(() => {
