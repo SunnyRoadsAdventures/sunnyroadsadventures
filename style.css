@@ -7,7 +7,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Shared fade behavior */
+/* Shared fade behavior for all images and videos */
 img, video {
   position: absolute;
   opacity: 0;
@@ -25,6 +25,7 @@ img, video {
   transform: translateX(-50%);
   width: 600px;
   cursor: pointer;
+  z-index: 50;
 }
 
 /* ENTER BUTTON */
@@ -35,10 +36,11 @@ img, video {
   width: 260px;
   cursor: pointer;
   display: none;
+  z-index: 50;
 }
 
 /* ======================
-   VIDEOS (STAGE)
+   SMALL STAGE VIDEOS
 ====================== */
 
 /* hey.mp4 */
@@ -46,6 +48,7 @@ img, video {
   bottom: 10%;
   left: 5%;
   width: 340px;
+  z-index: 40;
 }
 
 /* gate.mp4 */
@@ -53,6 +56,7 @@ img, video {
   bottom: 2%;
   right: 5%;
   width: 340px;
+  z-index: 40;
 }
 
 /* mission.mp4 */
@@ -61,32 +65,22 @@ img, video {
   left: 50%;
   transform: translateX(-50%);
   width: 320px;
+  z-index: 40;
 }
 
 /* ======================
-   BEGINNING VIDEO
+   FULLSCREEN VIDEOS
 ====================== */
-
-#beginsVideo {
-  top: 50%;
-  left: 50%;
-  width: 65vw;
-  height: 65vh;
-  transform: translate(-50%, -50%);
+#beginsVideo,
+#journeyVideo,
+#greetingsVideo {   /* greetings.mp4 added */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   object-fit: cover;
+  z-index: 100; /* ensure above all buttons and stage videos */
   display: none;
-}
-
-/* ======================
-   JOURNEY VIDEO (NEW)
-====================== */
-
-#journeyVideo {
-  top: 50%;
-  left: 50%;
-  width: 65vw;
-  height: 65vh;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  display: none;
+  opacity: 0;
+  transition: opacity 2s ease;
 }
