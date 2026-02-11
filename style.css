@@ -7,102 +7,28 @@ background: black;
 overflow: hidden;
 }
 
-/* ALL MEDIA DEFAULT */
+/* Shared base */
 img, video {
-position: fixed;
-top: 0;
-left: 0;
-width: 100vw;
-height: 100vh;
-object-fit: cover;
-opacity: 0;
-transition: opacity 1.5s ease;
-}
-
-/* SAGA BUTTON */
-#sagaBtn {
 position: absolute;
-width: 600px;
-bottom: 5%;
-left: 50%;
-transform: translateX(-50%);
-z-index: 20;
-cursor: pointer;
-}
-
-/* ENTER BUTTON */
-#enterBtn {
-position: absolute;
-width: 260px;
-bottom: 4%;
-left: 50%;
-transform: translateX(-50%);
-display: none;
-z-index: 30;
-cursor: pointer;
-}
-
-/* HEY VIDEO lower left */
-#heyVideo {
-width: 340px;
-height: auto;
-bottom: 5%;
-left: 2%;
-top: auto;
-z-index: 10;
-}
-
-/* BLACKIE upper half */
-#gateVideo {
-height: 50vh;
-width: 100vw;
-top: 0;
-left: 0;
-z-index: 5;
-display: none;
-}
-
-/* MISSION popup */
-#missionVideo {
-width: 70vw;
-height: 70vh;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-z-index: 40;
-display: none;
+opacity: 0;
+transition: opacity 2s ease;
 }
 
-/* CINEMATIC FULL */
-#beginsVideo,
-#journeyVideo,
-#greetingsVideo {
-z-index: 50;
-display: none;
-}
-
-/* MARKET FULL SCREEN */
-#plazaImg {
-display: none;
-z-index: 60;
-}
-
-/* TOURS + WHATSAPP */
-#toursBtn,
-#whatsappBtn {
-position: absolute;
-bottom: 8%;
-display: none;
-z-index: 70;
+/* Saga button */
+#sagaBtn {
+width: 500px;
 cursor: pointer;
+z-index: 10;
 }
 
-#toursBtn {
-left: 5%;
-width: 150px;
-}
-
-#whatsappBtn {
-left: 20%;
-width: 120px;
+/* Mission video */
+#missionVideo {
+width: 70vw;
+height: 70vh;
+object-fit: cover;
+display: none;
+z-index: 20;
 }
