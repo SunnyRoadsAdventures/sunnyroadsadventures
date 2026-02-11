@@ -48,16 +48,16 @@ img, video {
   width: 340px;
 }
 
-/* blackie.mp4 (much taller & wider) */
+/* blackie.mp4 (edge-to-edge horizontal, center-to-top cover) */
 #gateVideo {
-  top: 50%; 
-  right: 2%; 
-  transform: translateY(-50%); 
-  width: 380px;       
-  max-height: 95vh;   
-  height: auto;       
-  object-fit: cover;  
-  z-index: 5;         
+  top: 25%;                /* slightly down from top so bottom stays visible */
+  left: 50%;               /* center horizontally */
+  width: 100vw;            /* full viewport width */
+  max-height: 70vh;        /* still tall but not too tall */
+  transform: translateX(-50%);
+  object-fit: cover;       /* cover center area nicely */
+  z-index: 5;              
+  opacity: 1;              
 }
 
 /* mission.mp4 popup */
