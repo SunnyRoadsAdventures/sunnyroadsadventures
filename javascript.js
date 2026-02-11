@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* Show beginning.mp4 fullscreen */
     setTimeout(() => {
       beginsVideo.style.display = "block";
-      beginsVideo.style.opacity = 1;
+      setTimeout(() => { beginsVideo.style.opacity = 1; }, 50);
       beginsVideo.muted = false;
       beginsVideo.volume = 1;
       beginsVideo.play();
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         beginsVideo.style.display = "none";
         journeyVideo.style.display = "block";
-        journeyVideo.style.opacity = 1;
+        setTimeout(() => { journeyVideo.style.opacity = 1; }, 50);
         journeyVideo.muted = false;
         journeyVideo.volume = 1;
         journeyVideo.play();
