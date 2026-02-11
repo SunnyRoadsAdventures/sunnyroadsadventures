@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
 const sagaBtn = document.getElementById("sagaBtn");
 const missionVideo = document.getElementById("missionVideo");
@@ -6,65 +6,48 @@ const blackieVideo = document.getElementById("blackieVideo");
 const heyVideo = document.getElementById("heyVideo");
 const enterBtn = document.getElementById("enterBtn");
 
-let missionActive = false;
-
 /* Fade in saga after 2 seconds */
-setTimeout(() => {
+setTimeout(function () {
     sagaBtn.style.opacity = "1";
 }, 2000);
 
-/* Click saga → open mission */
-sagaBtn.addEventListener("click", () => {
+/* Click saga → show mission */
+sagaBtn.addEventListener("click", function () {
 
     sagaBtn.style.opacity = "0";
-    setTimeout(() => {
-        sagaBtn.style.display = "none";
-    }, 1500);
+    sagaBtn.style.display = "none";
 
     missionVideo.style.display = "block";
+    missionVideo.style.opacity = "1";
+    missionVideo.play();
 
-    setTimeout(() => {
-        missionVideo.style.opacity = "1";
-        missionVideo.play();
-        missionActive = true;
-    }, 50);
+});
 
-}, { once: true });
+/* Tap anywhere → close mission */
+document.addEventListener("click", function () {
 
-/* Click anywhere → close mission and continue */
-document.addEventListener("click", () => {
+    if (missionVideo.style.display === "block") {
 
-    if (!missionActive) return;
+        missionVideo.style.opacity = "0";
 
-    missionActive = false;
+        setTimeout(function () {
 
-    missionVideo.style.opacity = "0";
+            missionVideo.pause();
+            missionVideo.style.display = "none";
 
-    setTimeout(() => {
-        missionVideo.pause();
-        missionVideo.style.display = "none";
-
-        // Show blackie
-        blackieVideo.style.display = "block";
-        setTimeout(() => {
+            blackieVideo.style.display = "block";
             blackieVideo.style.opacity = "1";
             blackieVideo.play();
-        }, 50);
 
-        // Show hey
-        heyVideo.style.display = "block";
-        setTimeout(() => {
+            heyVideo.style.display = "block";
             heyVideo.style.opacity = "1";
             heyVideo.play();
-        }, 50);
 
-        // Show enter
-        enterBtn.style.display = "block";
-        setTimeout(() => {
+            enterBtn.style.display = "block";
             enterBtn.style.opacity = "1";
-        }, 50);
 
-    }, 1500);
+        }, 1000);
+    }
 
 });
 
