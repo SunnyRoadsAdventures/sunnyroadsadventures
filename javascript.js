@@ -94,21 +94,23 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  /* Fade journey.mp4 at exactly 26.2s → fade in greetings.mp4 */
+  /* Fade journey.mp4 slowly at 26.5s → fade in greetings.mp4 */
   journeyVideo.addEventListener("timeupdate", () => {
-    if (journeyVideo.currentTime >= 26.2) {
-      journeyVideo.style.transition = "opacity 1s ease"; // fade over 1s
+    if (journeyVideo.currentTime >= 26.5) {
+      journeyVideo.style.transition = "opacity 2s ease"; // smooth 2s fade
       journeyVideo.style.opacity = 0;
-      journeyVideo.pause();
 
-      // Fade in greetings.mp4 and start playing
-      greetingsVideo.style.display = "block";
-      greetingsVideo.currentTime = 0; // start from beginning
-      greetingsVideo.play();
+      // Start fade-in of greetings.mp4 slightly after fade begins
       setTimeout(() => {
+        journeyVideo.pause();
+
+        greetingsVideo.style.display = "block";
+        greetingsVideo.currentTime = 0; // start from beginning
+        greetingsVideo.play();
+
         greetingsVideo.style.transition = "opacity 2s ease"; // smooth fade
         greetingsVideo.style.opacity = 1;
-      }, 50);
+      }, 2000); // wait for journey fade to complete
     }
   });
 
