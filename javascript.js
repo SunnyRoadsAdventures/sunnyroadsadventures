@@ -2,45 +2,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const sagaBtn = document.getElementById("sagaBtn");
   const enterBtn = document.getElementById("enterBtn");
-
   const heyVideo = document.getElementById("heyVideo");
   const gateVideo = document.getElementById("gateVideo");
   const missionVideo = document.getElementById("missionVideo");
-
   const beginsVideo = document.getElementById("beginsVideo");
   const journeyVideo = document.getElementById("journeyVideo");
   const greetingsVideo = document.getElementById("greetingsVideo");
-
   const plazaImg = document.getElementById("plazaImg");
   const toursBtn = document.getElementById("toursBtn");
   const whatsappBtn = document.getElementById("whatsappBtn");
 
-  /* Initial saga fade-in */
+  /* Saga fade-in */
   setTimeout(() => { sagaBtn.style.opacity = 1; }, 2000);
 
-  /* SAGA CLICK */
+  /* Saga click → mission */
   sagaBtn.addEventListener("click", () => {
     sagaBtn.style.opacity = 0;
     sagaBtn.style.pointerEvents = "none";
     setTimeout(() => sagaBtn.style.display = "none", 2000);
 
-    heyVideo.style.opacity = 0;
-    heyVideo.pause();
-    gateVideo.style.opacity = 0;
-    gateVideo.pause();
-
     missionVideo.style.display = "block";
     missionVideo.style.opacity = 1;
+    missionVideo.currentTime = 0;
     missionVideo.play();
   }, { once: true });
 
-  /* ENTER CLICK → beginning & journey full screen */
+  /* Enter click → beginning + journey */
   enterBtn.addEventListener("click", () => {
-
-    gateVideo.pause();
     heyVideo.pause();
-    gateVideo.style.opacity = 0;
+    gateVideo.pause();
     heyVideo.style.opacity = 0;
+    gateVideo.style.opacity = 0;
 
     enterBtn.style.opacity = 0;
     setTimeout(() => enterBtn.style.display = "none", 2000);
@@ -61,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  /* Fade journey.mp4 at 26.5s → fade in greetings.mp4 */
+  /* Journey fade at 26.5s → greetings */
   journeyVideo.addEventListener("timeupdate", () => {
     if (journeyVideo.currentTime >= 26.5) {
       journeyVideo.style.transition = "opacity 2s ease";
@@ -69,17 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
       setTimeout(() => {
         journeyVideo.pause();
-
         greetingsVideo.style.display = "block";
         greetingsVideo.currentTime = 0;
         greetingsVideo.play();
-        greetingsVideo.style.transition = "opacity 2s ease";
         greetingsVideo.style.opacity = 1;
       }, 2000);
     }
   });
 
-  /* blackie fade at 1:05.2 */
+  /* Blackie stops at 1:05.2 */
   gateVideo.addEventListener("timeupdate", () => {
     if (gateVideo.currentTime >= 65.2) {
       gateVideo.style.opacity = 0;
@@ -87,14 +77,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* Unified click handler for mission & greetings → plaza */
+  /* Unified click handler */
   document.addEventListener("click", (e) => {
 
-    // 1. Close mission.mp4 if click outside
-    if (missionVideo.style.display === "block") {
+    // Mission outside click
+    if (missionVideo.style.display !== "none") {
       const rect = missionVideo.getBoundingClientRect();
       if (!(e.clientX >= rect.left && e.clientX <= rect.right &&
             e.clientY >= rect.top && e.clientY <= rect.bottom)) {
+
         missionVideo.style.opacity = 0;
         setTimeout(() => {
           missionVideo.style.display = "none";
@@ -102,6 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           heyVideo.style.display = "block";
           heyVideo.style.opacity = 1;
+          heyVideo.currentTime = 0;
           heyVideo.play();
 
           gateVideo.style.display = "block";
@@ -116,23 +108,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }, 1000);
       }
-      return; // prevent plaza logic
+      return;
     }
 
-    // 2. Close greetings.mp4 and fade in plaza.png
-    if (greetingsVideo.style.display === "block") {
-      greetingsVideo.style.transition = "opacity 1s ease";
+    // Greetings click → fade in plaza
+    if (greetingsVideo.style.display !== "none") {
       greetingsVideo.style.opacity = 0;
-
       setTimeout(() => {
         greetingsVideo.pause();
         greetingsVideo.style.display = "none";
 
         plazaImg.style.display = "block";
-        plazaImg.style.transition = "opacity 2s ease";
         plazaImg.style.opacity = 1;
 
-        // Show Tours & WhatsApp buttons
         toursBtn.style.display = "block";
         toursBtn.style.opacity = 1;
         whatsappBtn.style.display = "block";
@@ -143,12 +131,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   });
 
-  /* TOURS CLICK → open tours.jpg */
+  /* Tours button → tours.jpg */
   toursBtn.addEventListener("click", () => {
     window.open("tours.jpg", "_blank");
   });
 
-  /* WHATSAPP CLICK → open WhatsApp chat */
+  /* WhatsApp button → chat */
   whatsappBtn.addEventListener("click", () => {
     window.open("https://wa.me/50558365522", "_blank");
   });
