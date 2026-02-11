@@ -11,6 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const journeyVideo = document.getElementById("journeyVideo");
   const greetingsVideo = document.getElementById("greetingsVideo");
 
+  const plazaImg = document.getElementById("plazaImg");
+  const toursBtn = document.getElementById("toursBtn");
+  const whatsappBtn = document.getElementById("whatsappBtn");
+
   /* Initial saga fade-in */
   setTimeout(() => {
     sagaBtn.style.opacity = 1;
@@ -22,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
     sagaBtn.style.pointerEvents = "none";
     setTimeout(() => sagaBtn.style.display = "none", 2000);
 
-    // Pause background videos
+    // Pause lower-half videos
     heyVideo.style.opacity = 0;
     heyVideo.pause();
     gateVideo.style.opacity = 0;
@@ -31,8 +35,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Show mission.mp4
     missionVideo.style.display = "block";
     missionVideo.style.opacity = 1;
-    missionVideo.muted = false;
-    missionVideo.volume = 1;
     missionVideo.play();
 
   }, { once: true });
@@ -45,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
 
       if (!insideX || !insideY) {
-        // Fade out mission.mp4
         missionVideo.style.opacity = 0;
 
         setTimeout(() => {
@@ -55,8 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
           // Start lower-half videos: hey and blackie
           heyVideo.style.display = "block";
           heyVideo.style.opacity = 1;
-          heyVideo.muted = false;
-          heyVideo.volume = 1;
           heyVideo.play();
 
           gateVideo.style.display = "block";
@@ -108,6 +107,41 @@ document.addEventListener("DOMContentLoaded", () => {
       gateVideo.style.opacity = 0;
       gateVideo.pause();
     }
+  });
+
+  /* Click outside greetings.mp4 → show plaza */
+  greetingsVideo.addEventListener("click", (e) => {
+    const rect = greetingsVideo.getBoundingClientRect();
+    const insideX = e.clientX >= rect.left && e.clientX <= rect.right;
+    const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
+
+    if (!insideX || !insideY) {
+      greetingsVideo.style.opacity = 0;
+
+      setTimeout(() => {
+        greetingsVideo.style.display = "none";
+
+        // Show plaza.png full screen
+        plazaImg.style.display = "block";
+        setTimeout(() => plazaImg.style.opacity = 1, 50);
+
+        // Show buttons
+        toursBtn.style.opacity = 1;
+        whatsappBtn.style.opacity = 1;
+      }, 1000); // 1s fade
+    }
+  });
+
+  /* Tours Button opens tours.jpg */
+  toursBtn.addEventListener("click", () => {
+    window.open("tours.jpg", "_blank");
+  });
+
+  /* WhatsApp Button opens chat */
+  whatsappBtn.addEventListener("click", () => {
+    const phone = "+50558365522";
+    const url = `https://wa.me/${phone.replace(/\D/g, "")}`;
+    window.open(url, "_blank");
   });
 
 });
