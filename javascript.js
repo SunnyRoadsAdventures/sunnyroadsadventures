@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const enterBtn = document.getElementById("enterBtn");
 
   const heyVideo = document.getElementById("heyVideo");
-  const gateVideo = document.getElementById("gateVideo");
+  const gateVideo = document.getElementById("gateVideo"); // blackie.mp4
   const missionVideo = document.getElementById("missionVideo");
 
   const beginsVideo = document.getElementById("beginsVideo");
@@ -18,13 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* SAGA CLICK */
   sagaBtn.addEventListener("click", () => {
-
     sagaBtn.style.opacity = 0;
     sagaBtn.style.pointerEvents = "none";
 
-    setTimeout(() => {
-      sagaBtn.style.display = "none";
-    }, 2000);
+    setTimeout(() => sagaBtn.style.display = "none", 2000);
 
     /* hey.mp4 */
     setTimeout(() => {
@@ -34,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
       heyVideo.play();
     }, 3000);
 
-    /* gate.mp4 */
+    /* blackie.mp4 (formerly gate.mp4) */
     setTimeout(() => {
       gateVideo.style.opacity = 1;
       gateVideo.muted = false;
@@ -58,9 +55,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, { once: true });
 
-  /* ENTER CLICK → beginning.mp4 fullscreen */
+  /* ENTER CLICK → FADE TO beginning.mp4 */
   enterBtn.addEventListener("click", () => {
-
     enterBtn.style.opacity = 0;
     heyVideo.style.opacity = 0;
     gateVideo.style.opacity = 0;
@@ -73,57 +69,30 @@ document.addEventListener("DOMContentLoaded", () => {
       missionVideo.style.display = "none";
     }, 2000);
 
-    /* BEGINNING VIDEO */
     setTimeout(() => {
       beginsVideo.style.display = "block";
-      setTimeout(() => { beginsVideo.style.opacity = 1; }, 50);
+      beginsVideo.style.opacity = 1;
       beginsVideo.muted = false;
       beginsVideo.volume = 1;
       beginsVideo.play();
     }, 2000);
+  });
 
-    /* AFTER BEGINNING ENDS → JOURNEY VIDEO */
-    beginsVideo.onended = () => {
-      beginsVideo.style.opacity = 0;
-      setTimeout(() => {
-        beginsVideo.style.display = "none";
-        journeyVideo.style.display = "block";
-        setTimeout(() => { journeyVideo.style.opacity = 1; }, 50);
-        journeyVideo.muted = false;
-        journeyVideo.volume = 1;
-        journeyVideo.play();
-      }, 500);
-    };
+  /* Fade journey.mp4 slowly after begins.mp4 sequence (example) */
+  beginsVideo.addEventListener("ended", () => {
+    journeyVideo.style.display = "block";
+    journeyVideo.style.opacity = 1;
+    journeyVideo.muted = false;
+    journeyVideo.volume = 1;
+    journeyVideo.play();
 
-    /* JOURNEY FADE-OUT (exactly 24s → 28s) */
+    // Fade out last 3 seconds to black
     journeyVideo.addEventListener("timeupdate", () => {
-      const fadeStart = 24;
-      const fadeEnd = 28;
-      const currentTime = journeyVideo.currentTime;
-
-      if (currentTime >= fadeStart && currentTime <= fadeEnd) {
-        const fadeProgress = (currentTime - fadeStart) / (fadeEnd - fadeStart);
-        journeyVideo.style.opacity = 1 - fadeProgress;
+      if (journeyVideo.currentTime >= 24) { // video length 28s
+        let remaining = 28 - journeyVideo.currentTime;
+        journeyVideo.style.opacity = remaining / 4; // slow fade to 0 over 4s
       }
     });
-
-    /* AFTER JOURNEY ENDS → 2s BLACK → GREETINGS */
-    journeyVideo.onended = () => {
-      journeyVideo.style.opacity = 0;
-      journeyVideo.style.display = "none";
-
-      setTimeout(() => {
-        greetingsVideo.style.display = "block";
-        setTimeout(() => { 
-          greetingsVideo.style.opacity = 1;
-          greetingsVideo.style.transform = "translate(-50%, -50%) scale(1)";
-        }, 50);
-        greetingsVideo.muted = false;
-        greetingsVideo.volume = 1;
-        greetingsVideo.play();
-      }, 2000); // 2s black
-    };
-
   });
 
 });
