@@ -49,17 +49,18 @@ img, video {
   opacity: 0;
 }
 
-/* blackie.mp4 (hidden at first, center-to-top, edge-to-edge horizontal) */
+/* blackie.mp4 (upper half, edge-to-edge horizontally) */
 #gateVideo {
-  display: none;          /* completely hidden at first */
+  display: none;          /* hidden at first */
   opacity: 0;
-  top: 15%;               /* center-to-top coverage */
+  top: 0;                 /* start at the top of the screen */
   left: 50%;              /* center horizontally */
-  width: 100vw;           /* full width */
-  height: 75vh;           /* tall enough for cinematic view */
+  width: 100vw;           /* full viewport width */
+  height: 55vh;           /* covers top half to roughly center */
   transform: translateX(-50%);
-  object-fit: cover;
+  object-fit: cover;      /* fill width & height nicely */
   z-index: 5;
+}
 }
 
 /* mission.mp4 popup */
