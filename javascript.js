@@ -18,8 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* SAGA CLICK */
   sagaBtn.addEventListener("click", () => {
-
-    // Fade saga button
     sagaBtn.style.opacity = 0;
     sagaBtn.style.pointerEvents = "none";
     setTimeout(() => sagaBtn.style.display = "none", 2000);
@@ -27,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Pause background videos
     heyVideo.style.opacity = 0;
     heyVideo.pause();
-
     gateVideo.style.opacity = 0;
     gateVideo.pause();
 
@@ -48,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
 
       if (!insideX || !insideY) {
-
         // Fade out mission.mp4
         missionVideo.style.opacity = 0;
 
@@ -56,57 +52,54 @@ document.addEventListener("DOMContentLoaded", () => {
           missionVideo.style.display = "none";
           missionVideo.pause();
 
-          // =========================
-          // START BACKGROUND VIDEOS
-          // =========================
-
+          // Start lower-half videos: hey and blackie
           heyVideo.style.display = "block";
           heyVideo.style.opacity = 1;
           heyVideo.muted = false;
           heyVideo.volume = 1;
           heyVideo.play();
 
-          gateVideo.style.display = "block"; // now blackie appears
+          gateVideo.style.display = "block";
           gateVideo.style.opacity = 1;
           gateVideo.currentTime = 0;
           gateVideo.play();
 
-          // =========================
-          // DELAYED enter button fade-in
-          // =========================
+          // Enter button appears 5 seconds later
           setTimeout(() => {
             enterBtn.style.display = "block";
             enterBtn.style.opacity = 1;
-          }, 5000); // 5 seconds after mission closes
+          }, 5000);
 
-        }, 1000); // match mission fade duration
+        }, 1000); // match mission fade
       }
     }
   });
 
-  /* ENTER CLICK → FADE TO beginning.mp4 */
+  /* ENTER CLICK → full-screen beginning & journey */
   enterBtn.addEventListener("click", () => {
-
     enterBtn.style.opacity = 0;
+    setTimeout(() => enterBtn.style.display = "none", 2000);
+
+    // Fade out lower-half videos
     heyVideo.style.opacity = 0;
     gateVideo.style.opacity = 0;
-    missionVideo.style.opacity = 0;
 
-    setTimeout(() => {
-      enterBtn.style.display = "none";
-      heyVideo.style.display = "none";
-      gateVideo.style.display = "none";
-      missionVideo.style.display = "none";
-    }, 2000);
+    // Play beginning.mp4 full screen
+    beginsVideo.style.display = "block";
+    beginsVideo.style.opacity = 1;
+    beginsVideo.currentTime = 0;
+    beginsVideo.play();
 
-    setTimeout(() => {
-      beginsVideo.style.display = "block";
-      beginsVideo.style.opacity = 1;
-      beginsVideo.muted = false;
-      beginsVideo.volume = 1;
-      beginsVideo.play();
-    }, 2000);
+    // When beginning ends, play journey.mp4
+    beginsVideo.onended = () => {
+      beginsVideo.style.opacity = 0;
+      beginsVideo.style.display = "none";
 
+      journeyVideo.style.display = "block";
+      journeyVideo.style.opacity = 1;
+      journeyVideo.currentTime = 0;
+      journeyVideo.play();
+    };
   });
 
   /* blackie fade to black at 1:05.2 */
