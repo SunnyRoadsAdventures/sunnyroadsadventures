@@ -7,11 +7,10 @@ background: black;
 overflow: hidden;
 }
 
-/* Shared fade */
 img, video {
 position: absolute;
 opacity: 0;
-transition: opacity 2s ease;
+transition: opacity 1.5s ease;
 }
 
 /* SAGA */
@@ -34,9 +33,10 @@ height: 70vh;
 object-fit: cover;
 display: none;
 z-index: 20;
+cursor: pointer;
 }
 
-/* BLACKIE top center full width */
+/* BLACKIE top */
 #blackieVideo {
 top: 0;
 left: 50%;
@@ -63,7 +63,7 @@ bottom: 5%;
 left: 50%;
 transform: translateX(-50%);
 width: 250px;
-cursor: pointer;
 display: none;
+cursor: pointer;
 z-index: 15;
 }
