@@ -48,7 +48,7 @@ img, video {
   width: 340px;
 }
 
-/* blackie.mp4 (much taller & much wider) */
+/* blackie.mp4 (much taller & wider) */
 #gateVideo {
   top: 50%; 
   right: 2%; 
@@ -75,20 +75,6 @@ img, video {
   display: none;
   cursor: default;
   transition: opacity 1s ease;
-}
-
-/* mission.mp4 stays above other videos */
-#missionVideo::after {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
-
-/* mission video is on top of enter/other buttons when visible */
-#missionVideo.visible {
-  opacity: 1;
-  display: block;
 }
 
 /* BEGINNING VIDEO (half size, cinematic) */
