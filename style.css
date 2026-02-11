@@ -53,15 +53,15 @@ img, video {
 
 /* blackie.mp4 (upper half only) */
 #gateVideo {
-  display: none;       /* hidden at first */
+  display: none;
   opacity: 0;
-  top: 0;              /* align with top */
+  top: 0;
   left: 50%;
-  width: 100vw;        /* full width */
-  height: 50vh;        /* upper half only */
+  width: 100vw;
+  height: 50vh;
   transform: translateX(-50%);
   object-fit: cover;
-  z-index: 5;          /* behind lower-half buttons/videos */
+  z-index: 5;
 }
 
 /* mission.mp4 popup */
@@ -107,7 +107,7 @@ img, video {
   z-index: 40;
 }
 
-/* journey/greetings could still use these if needed */
+/* greetings.mp4 full screen */
 #greetingsVideo {
   top: 50%;
   left: 50%;
@@ -118,4 +118,40 @@ img, video {
   opacity: 0;
   display: none;
   z-index: 40;
+}
+
+/* Plaza full screen */
+#plazaImg {
+  display: none;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0;
+  z-index: 50;
+  transition: opacity 1s ease;
+}
+
+/* Tours Button on stall */
+#toursBtn {
+  position: absolute;
+  top: 45%;
+  left: 15%;
+  width: 200px;
+  cursor: pointer;
+  z-index: 60;
+  opacity: 0;
+}
+
+/* WhatsApp Button */
+#whatsappBtn {
+  position: absolute;
+  top: 45%;
+  right: 15%;
+  width: 200px;
+  cursor: pointer;
+  z-index: 60;
+  opacity: 0;
 }
