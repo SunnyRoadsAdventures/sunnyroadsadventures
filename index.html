@@ -29,6 +29,7 @@
       transform: translateX(-50%);
       width: 600px;
       cursor: pointer;
+      z-index: 50;
     }
 
     #enterBtn {
@@ -38,21 +39,24 @@
       width: 260px;
       cursor: pointer;
       display: none;
+      z-index: 50;
     }
 
     /* ======================
-       VIDEOS (STAGE)
+       SMALL STAGE VIDEOS
     ====================== */
     #heyVideo {
       bottom: 10%;
       left: 5%;
       width: 340px;
+      z-index: 40;
     }
 
     #gateVideo {
       bottom: 2%;
       right: 5%;
       width: 340px;
+      z-index: 40;
     }
 
     #missionVideo {
@@ -60,6 +64,7 @@
       left: 50%;
       transform: translateX(-50%);
       width: 320px;
+      z-index: 40;
     }
 
     /* ======================
@@ -72,7 +77,7 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
-      z-index: 1;
+      z-index: 100; /* ensure above all buttons and stage videos */
       display: none;
     }
 
@@ -85,12 +90,14 @@
   <img id="sagaBtn" src="saga.png" alt="Saga">
   <img id="enterBtn" src="enter.png" alt="Enter">
 
-  <!-- VIDEOS -->
-  <video id="heyVideo" src="hey.mp4"></video>
-  <video id="gateVideo" src="gate.mp4"></video>
-  <video id="missionVideo" src="mission.mp4"></video>
-  <video id="beginsVideo" src="beginning.mp4"></video>
-  <video id="journeyVideo" src="journey.mp4"></video>
+  <!-- SMALL STAGE VIDEOS -->
+  <video id="heyVideo" src="hey.mp4" playsinline></video>
+  <video id="gateVideo" src="gate.mp4" playsinline></video>
+  <video id="missionVideo" src="mission.mp4" playsinline></video>
+
+  <!-- FULLSCREEN VIDEOS -->
+  <video id="beginsVideo" src="beginning.mp4" playsinline></video>
+  <video id="journeyVideo" src="journey.mp4" playsinline></video>
 
   <script src="javascript.js"></script>
 </body>
