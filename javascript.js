@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const beginsVideo = document.getElementById("beginsVideo");
   const journeyVideo = document.getElementById("journeyVideo");
-  const greetingsVideo = document.getElementById("greetingsVideo"); // make sure this exists in HTML
+  const greetingsVideo = document.getElementById("greetingsVideo");
 
   /* Initial saga fade-in */
   setTimeout(() => {
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, { once: true });
 
-  /* ENTER CLICK → fade to beginning.mp4 fullscreen */
+  /* ENTER CLICK → beginning.mp4 fullscreen */
   enterBtn.addEventListener("click", () => {
 
     enterBtn.style.opacity = 0;
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       missionVideo.style.display = "none";
     }, 2000);
 
-    /* Show beginning.mp4 fullscreen */
+    /* BEGINNING VIDEO */
     setTimeout(() => {
       beginsVideo.style.display = "block";
       setTimeout(() => { beginsVideo.style.opacity = 1; }, 50);
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
       beginsVideo.play();
     }, 2000);
 
-    /* After beginning.mp4 ends → journey.mp4 fullscreen */
+    /* AFTER BEGINNING ENDS → JOURNEY VIDEO */
     beginsVideo.onended = () => {
       beginsVideo.style.opacity = 0;
       setTimeout(() => {
@@ -92,13 +92,13 @@ document.addEventListener("DOMContentLoaded", () => {
         journeyVideo.muted = false;
         journeyVideo.volume = 1;
         journeyVideo.play();
-      }, 500); // small fade
+      }, 500);
     };
 
-    /* Fade-out journey.mp4 slowly from 24s → 28s */
+    /* JOURNEY FADE-OUT (exactly 24s → 28s) */
     journeyVideo.addEventListener("timeupdate", () => {
-      const fadeStart = 24; // fade starts at 24s
-      const fadeEnd = 28;   // video ends at 28s
+      const fadeStart = 24;
+      const fadeEnd = 28;
       const currentTime = journeyVideo.currentTime;
 
       if (currentTime >= fadeStart && currentTime <= fadeEnd) {
@@ -107,19 +107,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    /* After journey.mp4 ends → 2s black → greetings.mp4 fade-in */
+    /* AFTER JOURNEY ENDS → 2s BLACK → GREETINGS */
     journeyVideo.onended = () => {
       journeyVideo.style.opacity = 0;
       journeyVideo.style.display = "none";
 
-      // 2 seconds of total black
       setTimeout(() => {
         greetingsVideo.style.display = "block";
-        setTimeout(() => { greetingsVideo.style.opacity = 1; }, 50);
+        setTimeout(() => { 
+          greetingsVideo.style.opacity = 1;
+          greetingsVideo.style.transform = "translate(-50%, -50%) scale(1)";
+        }, 50);
         greetingsVideo.muted = false;
         greetingsVideo.volume = 1;
         greetingsVideo.play();
-      }, 2000);
+      }, 2000); // 2s black
     };
 
   });
