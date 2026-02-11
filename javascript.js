@@ -101,8 +101,10 @@ document.addEventListener("DOMContentLoaded", () => {
       journeyVideo.style.opacity = 0;
       journeyVideo.pause();
 
-      // Fade in greetings.mp4
+      // Fade in greetings.mp4 and start playing
       greetingsVideo.style.display = "block";
+      greetingsVideo.currentTime = 0; // start from beginning
+      greetingsVideo.play();
       setTimeout(() => {
         greetingsVideo.style.transition = "opacity 2s ease"; // smooth fade
         greetingsVideo.style.opacity = 1;
