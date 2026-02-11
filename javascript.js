@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const beginsVideo = document.getElementById("beginsVideo");
   const journeyVideo = document.getElementById("journeyVideo");
-  const greetingsVideo = document.getElementById("greetingsVideo"); // Optional, can be added later
+  const greetingsVideo = document.getElementById("greetingsVideo"); // make sure this exists in HTML
 
   /* Initial saga fade-in */
   setTimeout(() => {
@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, { once: true });
 
-  /* ENTER CLICK → FADE TO beginning.mp4 fullscreen */
+  /* ENTER CLICK → fade to beginning.mp4 fullscreen */
   enterBtn.addEventListener("click", () => {
 
     enterBtn.style.opacity = 0;
@@ -95,23 +95,24 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 500); // small fade
     };
 
-    /* Slow fade out starting 6 seconds before end (so 3 seconds before fully black) */
+    /* Fade-out journey.mp4 slowly from 24s → 28s */
     journeyVideo.addEventListener("timeupdate", () => {
-      const fadeDuration = 6; // seconds, start fading earlier
-      const remainingTime = journeyVideo.duration - journeyVideo.currentTime;
+      const fadeStart = 24; // fade starts at 24s
+      const fadeEnd = 28;   // video ends at 28s
+      const currentTime = journeyVideo.currentTime;
 
-      if (remainingTime <= fadeDuration) {
-        // opacity goes from 1 → 0 over fadeDuration
-        journeyVideo.style.opacity = remainingTime / fadeDuration;
+      if (currentTime >= fadeStart && currentTime <= fadeEnd) {
+        const fadeProgress = (currentTime - fadeStart) / (fadeEnd - fadeStart);
+        journeyVideo.style.opacity = 1 - fadeProgress;
       }
     });
 
-    // Optionally, after journey.mp4 ends, fade in greetings.mp4
+    /* After journey.mp4 ends → 2s black → greetings.mp4 fade-in */
     journeyVideo.onended = () => {
       journeyVideo.style.opacity = 0;
       journeyVideo.style.display = "none";
 
-      // greetings.mp4 fade-in after 2 seconds black
+      // 2 seconds of total black
       setTimeout(() => {
         greetingsVideo.style.display = "block";
         setTimeout(() => { greetingsVideo.style.opacity = 1; }, 50);
