@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const journeyVideo = document.getElementById("journeyVideo");
   const greetingsVideo = document.getElementById("greetingsVideo");
 
+  const plazaImg = document.getElementById("plazaImg");
+
   /* Initial saga fade-in */
   setTimeout(() => { sagaBtn.style.opacity = 1; }, 2000);
 
@@ -100,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       journeyVideo.style.transition = "opacity 2s ease"; // smooth 2s fade
       journeyVideo.style.opacity = 0;
 
-      // Start fade-in of greetings.mp4 slightly after fade begins
+      // Start fade-in of greetings.mp4 after journey fade completes
       setTimeout(() => {
         journeyVideo.pause();
 
@@ -110,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         greetingsVideo.style.transition = "opacity 2s ease"; // smooth fade
         greetingsVideo.style.opacity = 1;
-      }, 2000); // wait for journey fade to complete
+      }, 2000); // match journey fade duration
     }
   });
 
@@ -119,6 +121,33 @@ document.addEventListener("DOMContentLoaded", () => {
     if (gateVideo.currentTime >= 65.2) {
       gateVideo.style.opacity = 0;
       gateVideo.pause();
+    }
+  });
+
+  /* Click outside greetings.mp4 → fade to black + show plaza */
+  document.addEventListener("click", (e) => {
+    if (greetingsVideo.style.display === "block") {
+      const rect = greetingsVideo.getBoundingClientRect();
+      const insideX = e.clientX >= rect.left && e.clientX <= rect.right;
+      const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
+
+      if (!insideX || !insideY) {
+        // Fade greetings to black
+        greetingsVideo.style.transition = "opacity 1s ease";
+        greetingsVideo.style.opacity = 0;
+
+        setTimeout(() => {
+          greetingsVideo.pause();
+          greetingsVideo.style.display = "none";
+
+          // Show plaza.png
+          if (plazaImg) {
+            plazaImg.style.display = "block";
+            plazaImg.style.transition = "opacity 2s ease";
+            plazaImg.style.opacity = 1;
+          }
+        }, 1000); // match fade duration
+      }
     }
   });
 
