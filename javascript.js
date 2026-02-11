@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const enterBtn = document.getElementById("enterBtn");
 
   const heyVideo = document.getElementById("heyVideo");
-  const gateVideo = document.getElementById("gateVideo"); // blackie.mp4
+  const gateVideo = document.getElementById("gateVideo");
   const missionVideo = document.getElementById("missionVideo");
 
   const beginsVideo = document.getElementById("beginsVideo");
@@ -16,8 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     sagaBtn.style.opacity = 1;
   }, 2000);
 
-  /* SAGA CLICK */
+  /* SAGA CLICK (only once) */
   sagaBtn.addEventListener("click", () => {
+
     sagaBtn.style.opacity = 0;
     sagaBtn.style.pointerEvents = "none";
 
@@ -38,23 +39,27 @@ document.addEventListener("DOMContentLoaded", () => {
       gateVideo.volume = 1;
       gateVideo.play();
 
-      // Fade to black at exactly 1:05.2
-      gateVideo.addEventListener("timeupdate", () => {
-        if (gateVideo.currentTime >= 65.2) {
+      // Fade to black instantly at exactly 1:05.2
+      const fadeTime = 65.2; // seconds
+      const checkFade = () => {
+        if (gateVideo.currentTime >= fadeTime) {
           gateVideo.style.opacity = 0;
           gateVideo.pause();
+          gateVideo.removeEventListener("timeupdate", checkFade);
         }
-      });
+      };
+      gateVideo.addEventListener("timeupdate", checkFade);
 
     }, 4000);
 
-    /* mission.mp4 */
+    /* mission.mp4 popup appears 2 seconds after saga click */
     setTimeout(() => {
+      missionVideo.style.display = "block";
       missionVideo.style.opacity = 1;
       missionVideo.muted = false;
       missionVideo.volume = 1;
       missionVideo.play();
-    }, 7000);
+    }, 2000);
 
     /* enter.png */
     setTimeout(() => {
@@ -66,6 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ENTER CLICK → FADE TO beginning.mp4 */
   enterBtn.addEventListener("click", () => {
+
     enterBtn.style.opacity = 0;
     heyVideo.style.opacity = 0;
     gateVideo.style.opacity = 0;
@@ -85,23 +91,28 @@ document.addEventListener("DOMContentLoaded", () => {
       beginsVideo.volume = 1;
       beginsVideo.play();
     }, 2000);
+
   });
 
-  /* Fade journey.mp4 slowly after begins.mp4 sequence */
-  beginsVideo.addEventListener("ended", () => {
-    journeyVideo.style.display = "block";
-    journeyVideo.style.opacity = 1;
-    journeyVideo.muted = false;
-    journeyVideo.volume = 1;
-    journeyVideo.play();
+  /* Close mission.mp4 when clicking outside */
+  document.addEventListener("click", (e) => {
+    if (missionVideo.style.display === "block") {
+      const rect = missionVideo.getBoundingClientRect();
+      const insideX = e.clientX >= rect.left && e.clientX <= rect.right;
+      const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
+      if (!insideX || !insideY) {
+        missionVideo.style.opacity = 0;
+        setTimeout(() => {
+          missionVideo.style.display = "none";
+          missionVideo.pause();
 
-    // Fade out last 3 seconds to black
-    journeyVideo.addEventListener("timeupdate", () => {
-      if (journeyVideo.currentTime >= 24) { // video length 28s
-        let remaining = 28 - journeyVideo.currentTime;
-        journeyVideo.style.opacity = remaining / 4; // slow fade to 0
+          // Fade back to background
+          heyVideo.style.opacity = 1;
+          gateVideo.style.opacity = 1;
+          enterBtn.style.opacity = 1;
+        }, 1000); 
       }
-    });
+    }
   });
 
 });
