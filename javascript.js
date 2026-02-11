@@ -126,30 +126,23 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* Click outside greetings.mp4 → fade to black + show plaza */
-  document.addEventListener("click", (e) => {
+  /* ANY CLICK → close greetings.mp4 and fade in plaza.png */
+  document.addEventListener("click", () => {
     if (greetingsVideo.style.display === "block") {
-      const rect = greetingsVideo.getBoundingClientRect();
-      const insideX = e.clientX >= rect.left && e.clientX <= rect.right;
-      const insideY = e.clientY >= rect.top && e.clientY <= rect.bottom;
+      greetingsVideo.style.transition = "opacity 1s ease";
+      greetingsVideo.style.opacity = 0;
 
-      if (!insideX || !insideY) {
-        // Fade greetings to black
-        greetingsVideo.style.transition = "opacity 1s ease";
-        greetingsVideo.style.opacity = 0;
+      setTimeout(() => {
+        greetingsVideo.pause();
+        greetingsVideo.style.display = "none";
 
-        setTimeout(() => {
-          greetingsVideo.pause();
-          greetingsVideo.style.display = "none";
-
-          // Show plaza.png
-          if (plazaImg) {
-            plazaImg.style.display = "block";
-            plazaImg.style.transition = "opacity 2s ease";
-            plazaImg.style.opacity = 1;
-          }
-        }, 1000); // match fade duration
-      }
+        // Show plaza.png
+        if (plazaImg) {
+          plazaImg.style.display = "block";
+          plazaImg.style.transition = "opacity 2s ease";
+          plazaImg.style.opacity = 1;
+        }
+      }, 1000);
     }
   });
 
