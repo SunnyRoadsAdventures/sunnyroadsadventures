@@ -46,19 +46,20 @@ img, video {
   bottom: 10%;
   left: 5%;
   width: 340px;
+  opacity: 0;
 }
 
-/* blackie.mp4 (edge-to-edge horizontal, center-to-top cover, hidden initially) */
+/* blackie.mp4 (hidden at first, center-to-top, edge-to-edge horizontal) */
 #gateVideo {
-  top: 15%;               /* higher on the screen for center-to-top coverage */
+  display: none;          /* completely hidden at first */
+  opacity: 0;
+  top: 15%;               /* center-to-top coverage */
   left: 50%;              /* center horizontally */
-  width: 100vw;           /* full viewport width */
-  height: 75vh;           /* taller to cover more vertical space */
+  width: 100vw;           /* full width */
+  height: 75vh;           /* tall enough for cinematic view */
   transform: translateX(-50%);
-  object-fit: cover;      /* keeps aspect ratio */
+  object-fit: cover;
   z-index: 5;
-  opacity: 0;             /* start hidden until mission closes */
-  display: none;          /* ensure hidden at first frame */
 }
 
 /* mission.mp4 popup */
