@@ -1,63 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    const sraVideo = document.getElementById("sraVideo");
-    const missionVideo = document.getElementById("missionVideo");
-    const goBtn = document.getElementById("goBtn");
-    const skipBtn = document.getElementById("skipBtn");
-    const container = document.getElementById("container");
-    const fadeOverlay = document.getElementById("fadeOverlay");
+    const mission = document.getElementById("missionVideo");
+    const blackie = document.getElementById("blackieVideo");
+    const hey = document.getElementById("heyVideo");
 
-    let missionActive = false;
-
-
-    /* Intro Fade In */
-    sraVideo.style.opacity = "1";
-
-    setTimeout(() => {
-        goBtn.style.opacity = "1";
-        skipBtn.style.opacity = "1";
-    }, 2000);
-
-
-    /* GO Click → Cinematic Transition */
-    goBtn.addEventListener("click", function () {
-
-        container.style.opacity = "0";
-
-        setTimeout(() => {
-            fadeOverlay.style.opacity = "1";
-        }, 1500);
-
-        setTimeout(() => {
-            missionVideo.style.opacity = "1";
-            missionVideo.play();
-            fadeOverlay.style.opacity = "0";
-            missionActive = true;
-        }, 4200);
+    // Click mission to start
+    mission.addEventListener("click", function () {
+        mission.play();
     });
 
+    // When mission ends
+    mission.addEventListener("ended", function () {
 
-    /* TAP ANYWHERE TO CLOSE SCROLL */
-    document.addEventListener("click", function () {
+        // Hide mission
+        mission.style.display = "none";
 
-        if (missionActive) {
+        // Show blackie + hey
+        blackie.style.display = "block";
+        hey.style.display = "block";
 
-            missionActive = false;
-
-            // Fade to black
-            fadeOverlay.style.opacity = "1";
-
-            setTimeout(() => {
-                missionVideo.pause();
-                missionVideo.style.opacity = "0";
-
-                // NEXT SCENE GOES HERE
-                console.log("Ready for next scene");
-
-                fadeOverlay.style.opacity = "0";
-            }, 2000);
-        }
-
+        // Play both
+        blackie.play();
+        hey.play();
     });
 
 });
