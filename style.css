@@ -1,114 +1,97 @@
 html, body {
-margin: 0;
-padding: 0;
-width: 100%;
-height: 100%;
-background: black;
-overflow: hidden;
-transition: background 1.5s ease;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    overflow: hidden;
 }
 
 /* Shared fade */
 img, video {
-position: absolute;
-opacity: 0;
-transition: opacity 1.5s ease;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1.5s ease;
 }
 
 /* ======================
    SAGA BUTTON
 ====================== */
 #sagaBtn {
-bottom: 5%;
-left: 50%;
-transform: translateX(-50%);
-width: 600px;
-cursor: pointer;
-z-index: 10;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    cursor: pointer;
+    z-index: 10;
 }
 
 /* ======================
-   MISSION VIDEO (POPUP)
+   MISSION VIDEO
 ====================== */
 #missionVideo {
-top: 50%;
-left: 50%;
-width: 80vw;
-height: 80vh;
-transform: translate(-50%, -50%);
-object-fit: cover;
-z-index: 20;
-display: none;
-cursor: pointer;
+    top: 50%;
+    left: 50%;
+    width: 80vw;
+    height: 80vh;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: 20;
+    display: none;
+    cursor: pointer;
 }
 
 /* ======================
-   BLACKIE VIDEO (TOP HALF)
+   BLACKIE (TOP HALF)
 ====================== */
 #blackieVideo {
-top: 0;
-left: 50%;
-transform: translateX(-50%);
-width: 100vw;
-height: 50vh;
-object-fit: cover;
-display: none;
-z-index: 5;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 50vh;
+    object-fit: cover;
+    display: none;
+    z-index: 5;
 }
 
 /* ======================
    HEY VIDEO (HALF SIZE)
 ====================== */
 #heyVideo {
-bottom: 5%;
-left: 2%;
-width: 170px;
-display: none;
-z-index: 6;
-}
-/* ======================
-   CINEMATIC FULLSCREEN VIDEOS
-====================== */
-#beginningVideo,
-#journeyVideo {
-top: 50%;
-left: 50%;
-width: 100vw;
-height: 100vh;
-transform: translate(-50%, -50%);
-object-fit: cover;
-display: none;
-z-index: 50;
+    bottom: 5%;
+    left: 2%;
+    width: 170px;
+    display: none;
+    z-index: 6;
 }
 
 /* ======================
    ENTER BUTTON (HALF SIZE)
 ====================== */
 #enterBtn {
-bottom: 2%;
-left: 50%;
-transform: translateX(-50%);
-width: 130px;
-display: none;
-cursor: pointer;
-z-index: 7;
+    bottom: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+    display: none;
+    cursor: pointer;
+    z-index: 7;
 }
 
 /* =========================
-   FULLSCREEN CINEMATIC VIDEOS
+   BEGINNING & JOURNEY (NORMAL SIZE - PHONE SAFE)
 ========================= */
-
 #beginsVideo,
 #journeyVideo {
-    position: fixed;          /* lock to screen */
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;        /* fill screen without distortion */
+    top: 50%;
+    left: 50%;
+    width: 90vw;        /* responsive on phone */
+    height: auto;       /* keep natural ratio */
+    max-height: 80vh;   /* prevent overflow */
+    transform: translate(-50%, -50%);
+    object-fit: contain;
     display: none;
     opacity: 0;
-    z-index: 50;              /* above everything */
-    background: black;
+    z-index: 50;
 }
-
