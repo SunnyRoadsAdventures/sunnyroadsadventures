@@ -101,18 +101,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* GREETINGS → MARKET */
-  greetingsVideo.addEventListener("click", () => {
+greetingsVideo.addEventListener("click", () => {
     greetingsVideo.pause();
     greetingsVideo.style.display = "none";
 
+    // Show market full screen
     marketImg.style.display = "block";
-    marketImg.style.opacity = 1;
+    marketImg.style.opacity = 0;  // start fade
+    setTimeout(() => {
+        marketImg.style.opacity = 1; // fade in smoothly
+    }, 50);
 
+    // Show market buttons
     toursBtn.style.display = "block";
     whatsappBtn.style.display = "block";
 
     toursBtn.style.opacity = 1;
     whatsappBtn.style.opacity = 1;
+});
   });
 
   /* MARKET BUTTONS */
