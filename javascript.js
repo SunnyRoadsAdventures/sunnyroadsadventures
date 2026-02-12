@@ -15,10 +15,10 @@ window.onload = () => {
     }, 2000);
 };
 
-/* GO Click Sequence */
+/* GO Click → Start Story */
 goBtn.addEventListener("click", () => {
 
-    // Fade everything out
+    // Fade intro away
     container.style.opacity = "0";
 
     // Fade to black
