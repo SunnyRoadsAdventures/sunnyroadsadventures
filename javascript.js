@@ -5,14 +5,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const missionVideo = document.getElementById("missionVideo");
     const blackieVideo = document.getElementById("blackieVideo");
     const heyVideo = document.getElementById("heyVideo");
+    const sagaBtn = document.getElementById("sagaBtn");
+    const beginningVideo = document.getElementById("beginningVideo");
+    const journeyVideo = document.getElementById("journeyVideo");
     const greetingsVideo = document.getElementById("greetingsVideo");
 
-    // Initial setup: hide and disable buttons
+    // Initial fade-in sequence
     sraVideo.style.opacity = 0;
     goBtn.style.opacity = 0; goBtn.style.pointerEvents = "none";
     skipBtn.style.opacity = 0; skipBtn.style.pointerEvents = "none";
 
-    // Fade-in sequence
     setTimeout(() => { sraVideo.style.opacity = 1; }, 1500);
     setTimeout(() => { goBtn.style.opacity = 1; goBtn.style.pointerEvents = "auto"; }, 2300);
     setTimeout(() => { skipBtn.style.opacity = 1; skipBtn.style.pointerEvents = "auto"; }, 4000);
@@ -34,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => missionVideo.style.opacity = 1, 100);
             missionVideo.play();
 
-            // Click anywhere to close mission
+            // Click anywhere on mission to close
             missionVideo.addEventListener("click", () => {
                 missionVideo.style.opacity = 0;
                 missionVideo.style.pointerEvents = "none";
@@ -45,12 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     // === Show blackie + hey ===
                     blackieVideo.style.display = "block";
                     heyVideo.style.display = "block";
-
                     setTimeout(() => {
                         blackieVideo.style.opacity = 1;
                         heyVideo.style.opacity = 1;
                     }, 100);
-
                     blackieVideo.play();
                     heyVideo.play();
 
@@ -60,6 +60,10 @@ document.addEventListener("DOMContentLoaded", () => {
                             blackieVideo.style.opacity = 0;
                             blackieVideo.style.pointerEvents = "none";
                             blackieVideo.pause();
+
+                            // Show saga.png after blackie fades
+                            sagaBtn.style.display = "block";
+                            setTimeout(() => sagaBtn.style.opacity = 1, 100);
                         }
                     });
 
@@ -85,12 +89,43 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => greetingsVideo.style.opacity = 1, 100);
             greetingsVideo.play();
 
-            // Click anywhere on greetings to close
             greetingsVideo.addEventListener("click", () => {
                 greetingsVideo.style.opacity = 0;
                 greetingsVideo.style.pointerEvents = "none";
                 setTimeout(() => greetingsVideo.style.display = "none", 1000);
             });
         }, 1000);
+    });
+
+    // saga.png click → beginning.mp4 → journey.mp4 → greetings.mp4
+    sagaBtn.addEventListener("click", () => {
+        sagaBtn.style.opacity = 0;
+        sagaBtn.style.pointerEvents = "none";
+        setTimeout(() => sagaBtn.style.display = "none", 500);
+
+        // Play beginning.mp4
+        beginningVideo.style.display = "block";
+        setTimeout(() => beginningVideo.style.opacity = 1, 100);
+        beginningVideo.play();
+
+        beginningVideo.addEventListener("ended", () => {
+            beginningVideo.style.opacity = 0;
+            beginningVideo.style.display = "none";
+
+            // Play journey.mp4 fullscreen
+            journeyVideo.style.display = "block";
+            setTimeout(() => journeyVideo.style.opacity = 1, 100);
+            journeyVideo.play();
+
+            journeyVideo.addEventListener("ended", () => {
+                journeyVideo.style.opacity = 0;
+                journeyVideo.style.display = "none";
+
+                // Show greetings.mp4
+                greetingsVideo.style.display = "block";
+                setTimeout(() => greetingsVideo.style.opacity = 1, 100);
+                greetingsVideo.play();
+            });
+        });
     });
 });
