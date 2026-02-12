@@ -7,12 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const heyVideo = document.getElementById("heyVideo");
     const greetingsVideo = document.getElementById("greetingsVideo");
 
-    // Fade in SRA + buttons
+    // Initial setup: hide and disable buttons
+    sraVideo.style.opacity = 0;
+    goBtn.style.opacity = 0; goBtn.style.pointerEvents = "none";
+    skipBtn.style.opacity = 0; skipBtn.style.pointerEvents = "none";
+
+    // Fade-in sequence
     setTimeout(() => { sraVideo.style.opacity = 1; }, 1500);
     setTimeout(() => { goBtn.style.opacity = 1; goBtn.style.pointerEvents = "auto"; }, 2300);
     setTimeout(() => { skipBtn.style.opacity = 1; skipBtn.style.pointerEvents = "auto"; }, 4000);
 
-    // go.png → mission.mp4
+    // go.png click → mission.mp4
     goBtn.addEventListener("click", () => {
         sraVideo.style.opacity = 0;
         goBtn.style.opacity = 0;
@@ -29,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => missionVideo.style.opacity = 1, 100);
             missionVideo.play();
 
-            // Click anywhere on mission → close and load blackie + hey
+            // Click anywhere to close mission
             missionVideo.addEventListener("click", () => {
                 missionVideo.style.opacity = 0;
                 missionVideo.style.pointerEvents = "none";
@@ -37,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     missionVideo.style.display = "none";
 
-                    // Show blackie + hey
+                    // === Show blackie + hey ===
                     blackieVideo.style.display = "block";
                     heyVideo.style.display = "block";
 
@@ -49,40 +54,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     blackieVideo.play();
                     heyVideo.play();
 
-                    // Click anywhere on blackie → close both
-                    blackieVideo.addEventListener("click", () => {
-                        blackieVideo.style.opacity = 0;
-                        heyVideo.style.opacity = 0;
-                        blackieVideo.style.pointerEvents = "none";
-                        heyVideo.style.pointerEvents = "none";
-
-                        setTimeout(() => {
-                            blackieVideo.style.display = "none";
-                            heyVideo.style.display = "none";
-                            console.log("Blackie + Hey closed → next scene");
-                        }, 1000);
+                    // Blackie fades out at 65s
+                    blackieVideo.addEventListener("timeupdate", () => {
+                        if (blackieVideo.currentTime >= 65) {
+                            blackieVideo.style.opacity = 0;
+                            blackieVideo.style.pointerEvents = "none";
+                            blackieVideo.pause();
+                        }
                     });
 
-                    // Click anywhere on hey → same effect
-                    heyVideo.addEventListener("click", () => {
-                        blackieVideo.style.opacity = 0;
-                        heyVideo.style.opacity = 0;
-                        blackieVideo.style.pointerEvents = "none";
-                        heyVideo.style.pointerEvents = "none";
-
-                        setTimeout(() => {
-                            blackieVideo.style.display = "none";
-                            heyVideo.style.display = "none";
-                            console.log("Blackie + Hey closed → next scene");
-                        }, 1000);
-                    });
-
-                }, 500);
+                }, 1000);
             });
         }, 1000);
     });
 
-    // skip.png → greetings.mp4
+    // skip.png click → greetings.mp4
     skipBtn.addEventListener("click", () => {
         sraVideo.style.opacity = 0;
         goBtn.style.opacity = 0;
@@ -99,12 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => greetingsVideo.style.opacity = 1, 100);
             greetingsVideo.play();
 
+            // Click anywhere on greetings to close
             greetingsVideo.addEventListener("click", () => {
                 greetingsVideo.style.opacity = 0;
                 greetingsVideo.style.pointerEvents = "none";
                 setTimeout(() => greetingsVideo.style.display = "none", 1000);
-
-                console.log("Skipped → greetings ended");
             });
         }, 1000);
     });
