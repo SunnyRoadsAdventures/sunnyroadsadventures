@@ -10,7 +10,7 @@ body {
     height: 100vh;
 }
 
-/* Keep video + button grouped */
+/* Keep video + buttons grouped */
 #container {
     text-align: center;
 }
@@ -25,15 +25,24 @@ body {
     margin: 0 auto;
 }
 
-/* GO button */
-#goBtn {
-    width: 160px;
+/* Buttons row */
+#buttonRow {
     margin-top: 40px;
-    opacity: 0;
-    transition: opacity 1.5s ease, transform 0.25s ease;
-    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
 }
 
-#goBtn:hover {
+/* Buttons */
+#goBtn,
+#skipBtn {
+    width: 160px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 1.5s ease, transform 0.25s ease;
+}
+
+#goBtn:hover,
+#skipBtn:hover {
     transform: scale(1.08);
 }
