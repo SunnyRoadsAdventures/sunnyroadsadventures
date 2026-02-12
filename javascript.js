@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             showVideo(missionVideo);
 
-            // Click anywhere on mission to close
             missionVideo.addEventListener("click", () => {
                 fadeOutElements([missionVideo], () => {
                     missionVideo.style.display = "none";
@@ -80,21 +79,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== SAGA BUTTON CLICK → beginning + journey =====
     sagaBtn.addEventListener("click", () => {
-        fadeOutElements([blackieVideo, heyVideo, sagaBtn], () => {
-            blackieVideo.style.display = "none";
-            heyVideo.style.display = "none";
-            sagaBtn.style.display = "none";
+        // Stop blackie and hey immediately
+        blackieVideo.pause();
+        blackieVideo.style.display = "none";
+        heyVideo.pause();
+        heyVideo.style.display = "none";
+        fadeOutElements([sagaBtn], () => sagaBtn.style.display = "none");
 
-            showVideo(beginningVideo, true);
-            showVideo(journeyVideo, true);
+        // Start full-screen videos
+        showVideo(beginningVideo, true);
+        showVideo(journeyVideo, true);
 
-            // journey fades to black at 26.7s
-            journeyVideo.addEventListener("timeupdate", () => {
-                if (journeyVideo.currentTime >= 26.7) {
-                    fadeOutElements([journeyVideo], () => journeyVideo.style.display = "none");
-                }
-            });
-        });
+        // journey fades to black at 27s and triggers greetings
+        const journeyFadeHandler = () => {
+            if (journeyVideo.currentTime >= 27) {
+                fadeOutElements([journeyVideo], () => {
+                    journeyVideo.style.display = "none";
+
+                    // Fade in greetings.mp4
+                    greetingsVideo.style.display = "block";
+                    greetingsVideo.muted = false;
+                    greetingsVideo.volume = 1;
+                    setTimeout(() => greetingsVideo.style.opacity = 1, 50);
+                    greetingsVideo.play();
+
+                    // Click to close greetings
+                    greetingsVideo.addEventListener("click", () => {
+                        fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
+                    }, { once: true });
+                });
+                journeyVideo.removeEventListener("timeupdate", journeyFadeHandler);
+            }
+        };
+        journeyVideo.addEventListener("timeupdate", journeyFadeHandler);
     });
 
     // ===== SKIP BUTTON CLICK → greetings.mp4 =====
@@ -111,11 +128,9 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => greetingsVideo.style.opacity = 1, 50);
             greetingsVideo.play();
 
-            const closeGreetings = () => {
+            greetingsVideo.addEventListener("click", () => {
                 fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
-                greetingsVideo.removeEventListener("click", closeGreetings);
-            };
-            greetingsVideo.addEventListener("click", closeGreetings, { once: true });
+            }, { once: true });
         });
     });
 
