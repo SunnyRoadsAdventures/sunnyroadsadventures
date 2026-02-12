@@ -117,19 +117,7 @@ sagaBtn.addEventListener("click", () => {
 });
 }
 
-/* ===== BEGINNING & JOURNEY (FULL SCREEN) ===== */
-#beginningVideo,
-#journeyVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none;
-    opacity: 0;
-    z-index: 20;
-}
+
 
 /* ===== GREETINGS VIDEO ===== */
 #greetingsVideo {
