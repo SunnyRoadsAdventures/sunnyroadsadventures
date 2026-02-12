@@ -15,10 +15,10 @@ body {
     text-align: center;
 }
 
-/* 🎬 Massive Cinematic Video */
+/* Cinematic Video */
 #sraVideo {
-    width: 850px;          /* dramatic scale */
-    max-width: 95vw;       /* keeps it responsive */
+    width: 850px;
+    max-width: 95vw;
     opacity: 0;
     transition: opacity 1.5s ease;
     display: block;
@@ -27,25 +27,36 @@ body {
 
 /* Button Row */
 #buttonRow {
-    margin-top: 80px;      /* more vertical drama */
+    margin-top: 90px;
     display: flex;
     justify-content: center;
-    gap: 160px;            /* strong horizontal spacing */
+    align-items: center;
+    gap: 160px;
 }
 
-/* ⚔️ Large Medieval Buttons */
-#goBtn,
-#skipBtn {
-    width: 300px;          /* bold presence */
+/* ⚔️ GO Button (Primary) */
+#goBtn {
+    width: 380px;   /* BIGGER */
     opacity: 0;
     cursor: pointer;
-    transition: 
-        opacity 1.5s ease, 
+    transition:
+        opacity 1.5s ease,
         transform 0.3s ease,
         filter 0.3s ease;
 }
 
-/* Hover Effect */
+/* 🛡️ SKIP Button (Secondary) */
+#skipBtn {
+    width: 260px;   /* smaller than GO */
+    opacity: 0;
+    cursor: pointer;
+    transition:
+        opacity 1.5s ease,
+        transform 0.3s ease,
+        filter 0.3s ease;
+}
+
+/* Hover Effects */
 #goBtn:hover,
 #skipBtn:hover {
     transform: scale(1.12);
