@@ -19,9 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* SAGA BUTTON */
-  setTimeout(() => {
-    sagaBtn.style.opacity = 1;
-  }, 2000);
+  setTimeout(() => sagaBtn.style.opacity = 1, 2000);
 
   sagaBtn.addEventListener("click", () => {
     sagaBtn.style.opacity = 0;
@@ -94,14 +92,12 @@ document.addEventListener("DOMContentLoaded", () => {
       greetingsVideo.currentTime = 0;
       greetingsVideo.play();
 
-      setTimeout(() => {
-        greetingsVideo.style.opacity = 1;
-      }, 50);
+      setTimeout(() => greetingsVideo.style.opacity = 1, 50);
     }
   });
 
   /* GREETINGS → MARKET */
-greetingsVideo.addEventListener("click", () => {
+  greetingsVideo.addEventListener("click", () => {
     greetingsVideo.pause();
     greetingsVideo.style.display = "none";
 
@@ -115,19 +111,12 @@ greetingsVideo.addEventListener("click", () => {
     // Show market buttons
     toursBtn.style.display = "block";
     whatsappBtn.style.display = "block";
-
     toursBtn.style.opacity = 1;
     whatsappBtn.style.opacity = 1;
-});
   });
 
   /* MARKET BUTTONS */
-  toursBtn.addEventListener("click", () => {
-    window.open("tours.jpg", "_blank");
-  });
-
-  whatsappBtn.addEventListener("click", () => {
-    window.open("https://wa.me/50558365522", "_blank");
-  });
+  toursBtn.addEventListener("click", () => window.open("tours.jpg", "_blank"));
+  whatsappBtn.addEventListener("click", () => window.open("https://wa.me/50558365522", "_blank"));
 
 });
