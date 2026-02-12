@@ -104,3 +104,17 @@ VIDEOS
   z-index: 15;
   display: none;
 }
+/* ======================
+FULLSCREEN VIDEOS
+====================== */
+#beginningVideo,
+#journeyVideo {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;  /* ensures aspect ratio without stretching */
+  display: none;      /* will be shown via JS */
+  opacity: 0;         /* for fade-in transitions */
+  z-index: 40;        /* on top of other elements */
+}
