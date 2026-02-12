@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const beginningVideo = document.getElementById("beginningVideo");
   const journeyVideo = document.getElementById("journeyVideo");
+  const greetingsVideo = document.getElementById("greetingsVideo");
 
   /* MAX VOLUME */
   const allVideos = document.querySelectorAll("video");
@@ -94,7 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
   });
 
-  /* FADE JOURNEY AT 26.5s + BLACK SCREEN AFTER */
+  /* FADE OUT JOURNEY AT 26.5s → fade to black */
   journeyVideo.addEventListener("timeupdate", () => {
       if (journeyVideo.currentTime >= 26.5) {
           journeyVideo.style.transition = "opacity 2s ease";
@@ -103,10 +104,16 @@ document.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
               journeyVideo.pause();
               journeyVideo.style.display = "none";
-              
-              // Fade to black
-              document.body.style.background = "black";
-          }, 2000);
+
+              // Fade in greetings.mp4
+              greetingsVideo.style.display = "block";
+              greetingsVideo.style.opacity = 0;
+              greetingsVideo.currentTime = 0;
+              greetingsVideo.play();
+              greetingsVideo.style.transition = "opacity 2s ease";
+              greetingsVideo.style.opacity = 1;
+
+          }, 2000); // match journey fade duration
       }
   });
 
