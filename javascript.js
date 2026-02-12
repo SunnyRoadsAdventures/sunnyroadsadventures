@@ -132,3 +132,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 });
+
+// CLICK TO CLOSE GREETINGS
+greetingsVideo.addEventListener("click", () => {
+  greetingsVideo.style.transition = "opacity 1.5s ease";
+  greetingsVideo.style.opacity = 0;
+
+  setTimeout(() => {
+    greetingsVideo.pause();
+    greetingsVideo.style.display = "none";
+
+    // fade to black if needed
+    document.body.style.background = "black";
+  }, 1500);
+});
