@@ -1,51 +1,28 @@
-const missionVideo = document.getElementById("missionVideo");
-const greetingsVideo = document.getElementById("greetingsVideo");
-const blackFade = document.getElementById("blackFade");
+const introVideo = document.getElementById("introVideo");
+const goBtn = document.getElementById("goBtn");
+const skipBtn = document.getElementById("skipBtn");
 
-let started = false;
+/* Fade in intro video at 1.5s */
+setTimeout(() => {
+    introVideo.style.opacity = "1";
+    introVideo.play();
+}, 1500);
 
-document.body.addEventListener("click", function () {
+/* Fade in go button at 2.3s */
+setTimeout(() => {
+    goBtn.style.opacity = "1";
+}, 2300);
 
-    if (!started) {
-        started = true;
+/* Fade in skip button at 4s */
+setTimeout(() => {
+    skipBtn.style.opacity = "1";
+}, 4000);
 
-        missionVideo.style.display = "block";
-
-        setTimeout(() => {
-            missionVideo.style.opacity = "1";
-            missionVideo.play();
-
-            // Slow fade from black into mission
-            blackFade.style.opacity = "0";
-        }, 100);
-    }
-
+/* Button actions */
+goBtn.addEventListener("click", function() {
+    window.location.href = "mission.mp4";
 });
 
-missionVideo.onended = function () {
-
-    // Fade to black slowly
-    blackFade.style.opacity = "1";
-
-    setTimeout(() => {
-
-        missionVideo.style.display = "none";
-
-        // Cinematic pause before greetings appears
-        setTimeout(() => {
-
-            greetingsVideo.style.display = "block";
-
-            setTimeout(() => {
-                greetingsVideo.style.opacity = "1";
-                greetingsVideo.play();
-
-                // Fade back from black
-                blackFade.style.opacity = "0";
-
-            }, 100);
-
-        }, 1200); // dramatic delay
-
-    }, 2500); // wait for fade-to-black to finish
-};
+skipBtn.addEventListener("click", function() {
+    window.location.href = "greetings.mp4";
+});
