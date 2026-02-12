@@ -96,18 +96,25 @@ body {
     z-index: 6;
 }
 
-/* ===== SAGA BUTTON ===== */
-#sagaBtn {
-    position: fixed;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 1s ease, transform 0.3s ease, filter 0.3s ease;
-    z-index: 15;
-    display: none;
+// ===== SAGA BUTTON CLICK → GREETINGS =====
+sagaBtn.addEventListener("click", () => {
+    // Stop blackie and hey immediately
+    blackieVideo.pause();
+    heyVideo.pause();
+    blackieVideo.style.display = "none";
+    heyVideo.style.display = "none";
+
+    // Hide saga button
+    fadeOutElements([sagaBtn], () => sagaBtn.style.display = "none");
+
+    // Show greetings scroll immediately
+    showVideo(greetingsVideo);
+
+    // Click anywhere on greetings to fade out
+    greetingsVideo.addEventListener("click", () => {
+        fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
+    }, { once: true });
+});
 }
 
 /* ===== BEGINNING & JOURNEY (FULL SCREEN) ===== */
