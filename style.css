@@ -10,8 +10,10 @@ body {
     height: 100vh;
 }
 
-/* Centered Video */
+/* Centered Video with Fade */
 #sraVideo {
     width: 500px;
     max-width: 90vw;
+    opacity: 0;
+    transition: opacity 1.5s ease;
 }
