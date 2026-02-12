@@ -61,7 +61,9 @@ body {
 
 /* ===== MISSION + GREETINGS VIDEO ===== */
 #missionVideo,
-#greetingsVideo {
+#greetingsVideo,
+#beginningVideo,
+#journeyVideo {
     width: 85%;
     max-width: 1000px;
     display: none;
@@ -97,4 +99,22 @@ body {
     opacity: 0;
     transition: opacity 1s ease;
     z-index: 6;
+}
+
+/* ===== SAGA BUTTON ===== */
+#sagaBtn {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    max-width: 50%;
+    cursor: pointer;
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease, transform 0.3s ease;
+    z-index: 10;
+}
+#sagaBtn:hover {
+    transform: translateX(-50%) scale(1.1);
 }
