@@ -13,9 +13,10 @@ body {
 #container {
     text-align: center;
     transition: opacity 1.5s ease;
+    z-index: 1;
 }
 
-/* Cinematic Video */
+/* Cinematic Intro Video */
 #sraVideo {
     width: 850px;
     max-width: 95vw;
@@ -23,17 +24,6 @@ body {
     transition: opacity 1.5s ease;
     display: block;
     margin: 0 auto;
-}
-
-/* Mission Video */
-#missionVideo {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 2s ease;
-    z-index: 5;
 }
 
 /* Button Row */
@@ -45,7 +35,7 @@ body {
     gap: 140px;
 }
 
-/* Buttons */
+/* GO Button */
 #goBtn {
     width: 500px;
     opacity: 0;
@@ -53,6 +43,7 @@ body {
     transition: opacity 1.5s ease, transform 0.3s ease;
 }
 
+/* SKIP Button */
 #skipBtn {
     width: 420px;
     opacity: 0;
@@ -65,14 +56,30 @@ body {
     transform: scale(1.12);
 }
 
+/* Mission Video (hidden initially) */
+#missionVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    pointer-events: none;   /* ✅ Allows GO to be clickable */
+    transition: opacity 2s ease;
+    z-index: 5;
+}
+
 /* Fade Overlay */
 #fadeOverlay {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background: black;
     opacity: 0;
-    pointer-events: none;
+    pointer-events: none;   /* ✅ Prevents blocking clicks */
     transition: opacity 2s ease;
     z-index: 10;
 }
