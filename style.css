@@ -5,8 +5,8 @@ body {
     overflow: hidden;
 }
 
-/* Center everything */
-#introContainer {
+/* Center entire group permanently */
+#centerGroup {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -14,8 +14,8 @@ body {
     text-align: center;
 }
 
-/* Center video */
-#introVideo {
+/* SRA video */
+#sraVideo {
     width: 500px;
     max-width: 80vw;
     display: block;
@@ -24,8 +24,8 @@ body {
     transition: opacity 1.5s ease;
 }
 
-/* Buttons container */
-#buttonContainer {
+/* Buttons row */
+#buttonsRow {
     margin-top: 40px;
     display: flex;
     justify-content: center;
