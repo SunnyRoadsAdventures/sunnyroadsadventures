@@ -94,3 +94,21 @@ cursor: pointer;
 z-index: 7;
 }
 
+/* =========================
+   FULLSCREEN CINEMATIC VIDEOS
+========================= */
+
+#beginsVideo,
+#journeyVideo {
+    position: fixed;          /* lock to screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;        /* fill screen without distortion */
+    display: none;
+    opacity: 0;
+    z-index: 50;              /* above everything */
+    background: black;
+}
+
