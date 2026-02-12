@@ -7,7 +7,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Shared fade */
+/* Shared fade for all images & videos */
 img, video {
   position: absolute;
   opacity: 0;
@@ -92,18 +92,19 @@ img, video {
   transition: opacity 1.5s ease;
 }
 
-/* MARKET IMAGE FULLSCREEN */
+/* MARKET IMAGE FULLSCREEN FIX */
 #marketImg {
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;       /* full viewport width */
-    height: 100vh;      /* full viewport height */
-    object-fit: cover;  /* cover the entire area without distortion */
-    display: none;      /* initially hidden */
+    width: 100vw;           /* full width */
+    height: 100vh;          /* full height */
+    object-fit: contain;     /* ensures entire image is visible */
+    display: none;
     opacity: 0;
     transition: opacity 2s ease;
-    z-index: 10;
-}
+    z-index: 100;           /* above everything */
+    background: black;
 }
 
 /* MARKET BUTTONS */
@@ -113,43 +114,17 @@ img, video {
   opacity: 0;
   display: none;
   transition: opacity 1.5s ease;
-  z-index: 50;
+  z-index: 101;
   pointer-events: auto;
 }
 
 #toursBtn { top: 70%; left: 5%; width: 150px; }
 #whatsappBtn { top: 70%; left: 20%; width: 100px; }
 
-/* Remove default controls */
+/* Remove default video controls */
 video::-internal-media-controls-overlay-cast-button,
 video::-webkit-media-controls,
 video::-webkit-media-controls-enclosure,
 video::-webkit-media-controls-panel {
   display: none !important;
-}
-#marketImg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: fill;         /* stretch to fill entire screen */
-  display: none;
-  opacity: 0;
-  transition: opacity 2s ease;
-  z-index: 100;             /* above everything else */
-}
-/* ===== MARKET IMAGE FULL SCREEN ===== */
-#marketImg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;       /* full width of the viewport */
-    height: 100vh;      /* full height of the viewport */
-    object-fit: contain; /* ensures entire image is visible, no cropping */
-    display: none;
-    opacity: 0;
-    transition: opacity 2s ease;
-    z-index: 10;
-    background: black;   /* fallback behind image */
 }
