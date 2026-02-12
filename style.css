@@ -138,3 +138,16 @@ video::-webkit-media-controls-enclosure,
 video::-webkit-media-controls-panel {
   display: none !important;
 }
+
+/* Position buttons exactly on the market stalls */
+#toursBtn {
+  top: 38%;      /* tweak this to align with the tour stall icon */
+  left: 12%;     /* tweak this to align horizontally */
+  width: 120px;  /* match icon size */
+}
+
+#whatsappBtn {
+  top: 38%;      /* tweak to align with WhatsApp stall icon */
+  left: 28%;     /* adjust horizontal position */
+  width: 80px;   /* match icon size */
+}
