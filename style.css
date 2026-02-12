@@ -139,3 +139,17 @@ video::-webkit-media-controls-panel {
   transition: opacity 2s ease;
   z-index: 100;             /* above everything else */
 }
+/* ===== MARKET IMAGE FULL SCREEN ===== */
+#marketImg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;       /* full width of the viewport */
+    height: 100vh;      /* full height of the viewport */
+    object-fit: contain; /* ensures entire image is visible, no cropping */
+    display: none;
+    opacity: 0;
+    transition: opacity 2s ease;
+    z-index: 10;
+    background: black;   /* fallback behind image */
+}
