@@ -38,3 +38,33 @@
   border-radius: 10px;
   display: none;
 }
+
+#missionVideo {
+    width: 85%;
+    max-width: 1000px;
+    display: none;
+    margin: 60px auto;
+    cursor: pointer;
+}
+
+#blackieVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    display: none;
+    z-index: 5;
+}
+
+#heyVideo {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 320px;
+    max-width: 40%;
+    border-radius: 12px;
+    display: none;
+    z-index: 6;
+}
