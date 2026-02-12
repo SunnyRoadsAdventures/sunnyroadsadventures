@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
   const sagaBtn = document.getElementById("sagaBtn");
@@ -5,138 +6,118 @@ document.addEventListener("DOMContentLoaded", () => {
   const blackieVideo = document.getElementById("blackieVideo");
   const heyVideo = document.getElementById("heyVideo");
   const enterBtn = document.getElementById("enterBtn");
-
   const beginningVideo = document.getElementById("beginningVideo");
   const journeyVideo = document.getElementById("journeyVideo");
   const greetingsVideo = document.getElementById("greetingsVideo");
-
   const marketImg = document.getElementById("marketImg");
   const toursBtn = document.getElementById("toursBtn");
   const whatsappBtn = document.getElementById("whatsappBtn");
 
   /* MAX VOLUME */
-  const allVideos = document.querySelectorAll("video");
-  allVideos.forEach(video => {
-      video.muted = false;
-      video.volume = 1.0;
+  document.querySelectorAll("video").forEach(video => {
+    video.muted = false;
+    video.volume = 1.0;
   });
 
-  /* === SAGA BUTTON === */
+  /* SAGA BUTTON */
   setTimeout(() => {
-      sagaBtn.style.opacity = 1;
-      sagaBtn.style.pointerEvents = 'auto';
+    sagaBtn.style.opacity = 1;
   }, 2000);
 
   sagaBtn.addEventListener("click", () => {
-      sagaBtn.style.opacity = 0;
-      sagaBtn.style.pointerEvents = 'none';
-      setTimeout(() => {
-          sagaBtn.style.display = "none";
+    sagaBtn.style.opacity = 0;
+    sagaBtn.style.display = "none";
 
-          missionVideo.style.display = "block";
-          missionVideo.style.opacity = 1;
-          missionVideo.style.pointerEvents = 'auto';
-          missionVideo.currentTime = 0;
-          missionVideo.play();
-      }, 500);
+    missionVideo.style.display = "block";
+    missionVideo.style.opacity = 1;
+    missionVideo.currentTime = 0;
+    missionVideo.play();
   });
 
-  /* === MISSION CLICK === */
+  /* MISSION CLICK */
   missionVideo.addEventListener("click", () => {
-      missionVideo.style.opacity = 0;
-      missionVideo.style.pointerEvents = 'none';
-      setTimeout(() => {
-          missionVideo.pause();
-          missionVideo.style.display = "none";
+    missionVideo.pause();
+    missionVideo.style.display = "none";
 
-          blackieVideo.style.display = "block";
-          blackieVideo.style.opacity = 1;
-          blackieVideo.play();
+    blackieVideo.style.display = "block";
+    blackieVideo.style.opacity = 1;
+    blackieVideo.play();
 
-          heyVideo.style.display = "block";
-          heyVideo.style.opacity = 1;
-          heyVideo.play();
+    heyVideo.style.display = "block";
+    heyVideo.style.opacity = 1;
+    heyVideo.play();
 
-          enterBtn.style.display = "block";
-          enterBtn.style.opacity = 1;
-          enterBtn.style.pointerEvents = 'auto';
-      }, 500);
+    enterBtn.style.display = "block";
+    enterBtn.style.opacity = 1;
   });
 
-  /* === BLACKIE FADE AT 65.2s === */
+  /* BLACKIE FADE */
   blackieVideo.addEventListener("timeupdate", () => {
-      if (blackieVideo.currentTime >= 65.2) {
-          blackieVideo.style.opacity = 0;
-          blackieVideo.style.pointerEvents = 'none';
-          blackieVideo.pause();
-      }
-  });
-
-  /* === ENTER BUTTON CLICK === */
-  enterBtn.addEventListener("click", () => {
-      enterBtn.style.opacity = 0;
-      enterBtn.style.pointerEvents = 'none';
-      blackieVideo.style.opacity = 0;
-      blackieVideo.style.pointerEvents = 'none';
+    if (blackieVideo.currentTime >= 65.2) {
       blackieVideo.pause();
-      heyVideo.style.opacity = 0;
-      heyVideo.style.pointerEvents = 'none';
-      heyVideo.pause();
-
-      setTimeout(() => enterBtn.style.display = "none", 500);
-
-      beginningVideo.style.display = "block";
-      beginningVideo.style.opacity = 1;
-      beginningVideo.style.pointerEvents = 'auto';
-      beginningVideo.currentTime = 0;
-      beginningVideo.play();
-
-      beginningVideo.onended = () => {
-          beginningVideo.style.opacity = 0;
-          beginningVideo.style.pointerEvents = 'none';
-          beginningVideo.style.display = "none";
-
-          journeyVideo.style.display = "block";
-          journeyVideo.style.opacity = 1;
-          journeyVideo.style.pointerEvents = 'auto';
-          journeyVideo.currentTime = 0;
-          journeyVideo.play();
-      };
+      blackieVideo.style.opacity = 0;
+    }
   });
 
-  /* === JOURNEY FADE TO GREETINGS === */
+  /* ENTER BUTTON */
+  enterBtn.addEventListener("click", () => {
+    blackieVideo.pause();
+    heyVideo.pause();
+
+    blackieVideo.style.display = "none";
+    heyVideo.style.display = "none";
+    enterBtn.style.display = "none";
+
+    beginningVideo.style.display = "block";
+    beginningVideo.style.opacity = 1;
+    beginningVideo.currentTime = 0;
+    beginningVideo.play();
+
+    beginningVideo.onended = () => {
+      beginningVideo.style.display = "none";
+
+      journeyVideo.style.display = "block";
+      journeyVideo.style.opacity = 1;
+      journeyVideo.currentTime = 0;
+      journeyVideo.play();
+    };
+  });
+
+  /* JOURNEY → GREETINGS */
   journeyVideo.addEventListener("timeupdate", () => {
-      if (journeyVideo.currentTime >= 26.5) {
-          journeyVideo.style.opacity = 0;
-          journeyVideo.style.pointerEvents = 'none';
-          journeyVideo.pause();
+    if (journeyVideo.currentTime >= 26.5) {
+      journeyVideo.pause();
+      journeyVideo.style.display = "none";
 
-          greetingsVideo.style.display = "block";
-          greetingsVideo.style.opacity = 1;
-          greetingsVideo.style.pointerEvents = 'auto';
-          greetingsVideo.currentTime = 0;
-          greetingsVideo.play();
-      }
+      greetingsVideo.style.display = "block";
+      greetingsVideo.style.opacity = 1;
+      greetingsVideo.currentTime = 0;
+      greetingsVideo.play();
+    }
   });
 
-  /* === GREETINGS CLICK → SHOW MARKET === */
+  /* GREETINGS → MARKET (FIXED SECTION) */
   greetingsVideo.addEventListener("click", () => {
-      greetingsVideo.style.opacity = 0;
-      greetingsVideo.style.pointerEvents = 'none';
-      setTimeout(() => {
-          greetingsVideo.pause();
-          greetingsVideo.style.display = "none";
+    greetingsVideo.pause();
+    greetingsVideo.style.display = "none";
 
-          marketImg.style.display = "block";
-          marketImg.style.opacity = 1;
+    marketImg.style.display = "block";
+    marketImg.style.opacity = 1;
 
-          toursBtn.style.opacity = 1;
-          whatsappBtn.style.opacity = 1;
-      }, 500);
+    toursBtn.style.display = "block";
+    whatsappBtn.style.display = "block";
+
+    toursBtn.style.opacity = 1;
+    whatsappBtn.style.opacity = 1;
   });
 
   /* BUTTONS */
-  if (toursBtn) toursBtn.addEventListener("click", () => window.open("tours.jpg", "_blank"));
-  if (whatsappBtn) whatsappBtn.addEventListener("click", () => window.open("https://wa.me/50558365522", "_blank"));
+  toursBtn.addEventListener("click", () => {
+    window.open("tours.jpg", "_blank");
+  });
+
+  whatsappBtn.addEventListener("click", () => {
+    window.open("https://wa.me/50558365522", "_blank");
+  });
 
 });
