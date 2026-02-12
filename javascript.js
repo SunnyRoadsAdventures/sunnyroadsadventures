@@ -114,4 +114,21 @@ document.addEventListener("DOMContentLoaded", () => {
       }
   });
 
+  /* CLICK GREETINGS → FADE OUT & BLACK */
+  greetingsVideo.addEventListener("click", () => {
+      greetingsVideo.style.transition = "opacity 1.5s ease";
+      greetingsVideo.style.opacity = 0;
+
+      setTimeout(() => {
+          greetingsVideo.pause();
+          greetingsVideo.style.display = "none";
+
+          // Fade to black (body background already black)
+          document.body.style.transition = "background 1.5s ease";
+          document.body.style.backgroundColor = "black";
+
+          // Ready for next scene/chapter here
+      }, 1500);
+  });
+
 });
