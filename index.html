@@ -1,137 +1,40 @@
-/* ===== BODY ===== */
-body {
-    margin: 0;
-    padding: 0;
-    background: black;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SRA Intro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* ===== CONTAINER ===== */
-#container {
-    text-align: center;
-}
+    <div id="container">
+        <!-- SRA Video -->
+        <video id="sraVideo" src="sra.mp4" muted autoplay playsinline></video>
 
-/* ===== SRA VIDEO ===== */
-#sraVideo {
-    width: 1200px;
-    max-width: 95vw;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-    display: block;
-    margin: 0 auto;
-}
+        <!-- Buttons -->
+        <div id="buttonRow">
+            <img src="go.png" id="goBtn" alt="Go">
+            <img src="skip.png" id="skipBtn" alt="Skip">
+        </div>
+    </div>
 
-/* ===== BUTTON ROW ===== */
-#buttonRow {
-    margin-top: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 140px;
-}
+    <!-- Mission Video -->
+    <video id="missionVideo" src="mission.mp4" playsinline></video>
 
-/* ===== GO BUTTON ===== */
-#goBtn {
-    width: 450px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
-    pointer-events: none;
-}
+    <!-- Blackie & Hey -->
+    <video id="blackieVideo" src="blackie.mp4" playsinline></video>
+    <video id="heyVideo" src="hey.mp4" playsinline></video>
 
-/* ===== SKIP BUTTON ===== */
-#skipBtn {
-    width: 350px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
-    pointer-events: none;
-}
+    <!-- Saga Button -->
+    <img src="saga.png" id="sagaBtn" alt="Saga">
 
-/* ===== HOVER EFFECTS ===== */
-#goBtn:hover,
-#skipBtn:hover,
-#sagaBtn:hover {
-    transform: scale(1.12);
-    filter: brightness(1.15);
-}
+    <!-- Beginning & Journey (Full Screen) -->
+    <video id="beginningVideo" src="beginning.mp4" playsinline></video>
+    <video id="journeyVideo" src="journey.mp4" playsinline></video>
 
-/* ===== MISSION VIDEO ===== */
-#missionVideo {
-    width: 85%;
-    max-width: 1000px;
-    display: none;
-    margin: 60px auto;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 1s ease;
-    z-index: 10;
-}
+    <!-- Greetings Video -->
+    <video id="greetingsVideo" src="greetings.mp4" playsinline></video>
 
-/* ===== BLACKIE VIDEO (TOP CENTER) ===== */
-#blackieVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50vh;
-    object-fit: cover;
-    display: none;
-    z-index: 5;
-}
-
-/* ===== HEY VIDEO (BOTTOM LEFT) ===== */
-#heyVideo {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 320px;
-    max-width: 40%;
-    border-radius: 12px;
-    display: none;
-    z-index: 6;
-}
-
-/* ===== SAGA BUTTON ===== */
-#sagaBtn {
-    position: fixed;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 1s ease, transform 0.3s ease, filter 0.3s ease;
-    z-index: 15;
-    display: none;
-}
-
-/* ===== BEGINNING & JOURNEY (FULL SCREEN) ===== */
-#beginningVideo,
-#journeyVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none;
-    opacity: 0;
-    z-index: 20;
-}
-
-/* ===== GREETINGS VIDEO (READABLE SCROLL) ===== */
-#greetingsVideo {
-    width: 85%;
-    max-width: 1000px;
-    display: none;
-    margin: 60px auto;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 1s ease;
-    z-index: 10;
-}
+    <script src="javascript.js"></script>
+</body>
+</html>
