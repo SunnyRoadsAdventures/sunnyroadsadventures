@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const fadeDuration = 1000;
 
-    // ===== INITIAL FADE-IN =====
+    // Initial fade-in for sra + buttons
     sraVideo.style.opacity = 0;
     goBtn.style.opacity = 0;
     skipBtn.style.opacity = 0;
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => { goBtn.style.opacity = 1; goBtn.style.pointerEvents = "auto"; }, 2300);
     setTimeout(() => { skipBtn.style.opacity = 1; skipBtn.style.pointerEvents = "auto"; }, 4000);
 
-    // ===== HELPER FUNCTIONS =====
+    // Helper functions
     function fadeOutElements(elements, callback) {
         elements.forEach(el => el.style.opacity = 0);
         setTimeout(() => { if(callback) callback(); }, fadeDuration);
@@ -59,43 +59,56 @@ document.addEventListener("DOMContentLoaded", () => {
             missionVideo.addEventListener("click", () => {
                 fadeOutElements([missionVideo], () => {
                     missionVideo.style.display = "none";
+
+                    // Show blackie and hey
                     showVideo(blackieVideo);
                     showVideo(heyVideo);
 
-                    setTimeout(() => { sagaBtn.style.display = "block"; fadeInElement(sagaBtn); }, 4000);
+                    // Blackie auto fade at 65.5s
+                    blackieVideo.addEventListener("timeupdate", function fadeBlackie() {
+                        if(blackieVideo.currentTime >= 65.5) {
+                            fadeOutElements([blackieVideo], () => blackieVideo.style.display="none");
+                            blackieVideo.removeEventListener("timeupdate", fadeBlackie);
+                        }
+                    });
+
+                    setTimeout(() => { sagaBtn.style.display="block"; fadeInElement(sagaBtn); }, 4000);
                 });
             }, { once: true });
         });
     });
 
-    // ===== SAGA BUTTON CLICK → beginning + journey =====
+    // ===== SAGA BUTTON CLICK =====
     sagaBtn.addEventListener("click", () => {
-        // Stop blackie and hey immediately
+        // Stop blackie + hey immediately
         blackieVideo.pause(); blackieVideo.style.display="none";
         heyVideo.pause(); heyVideo.style.display="none";
-
         fadeOutElements([sagaBtn], () => sagaBtn.style.display="none");
 
-        // Show beginning then journey
+        // Beginning first, then journey
         showVideo(beginningVideo, true);
-        showVideo(journeyVideo, true);
+        beginningVideo.addEventListener("ended", () => {
+            showVideo(journeyVideo, true);
 
-        // Journey fades at 27s
-        journeyVideo.addEventListener("timeupdate", function fadeJourney() {
-            if(journeyVideo.currentTime >= 27) {
-                fadeOutElements([journeyVideo], () => { journeyVideo.style.display="none"; });
-                journeyVideo.removeEventListener("timeupdate", fadeJourney);
-                
-                // After journey fades, show greetings
-                showVideo(greetingsVideo);
-                greetingsVideo.addEventListener("click", () => {
-                    fadeOutElements([greetingsVideo], () => {
-                        greetingsVideo.style.display="none";
-                        marketScene.style.display="block";
-                    });
-                }, { once:true });
-            }
-        });
+            // Journey fades at 27s
+            journeyVideo.addEventListener("timeupdate", function fadeJourney() {
+                if(journeyVideo.currentTime >= 27) {
+                    fadeOutElements([journeyVideo], () => journeyVideo.style.display="none");
+                    journeyVideo.removeEventListener("timeupdate", fadeJourney);
+
+                    // Greetings scroll fades in
+                    showVideo(greetingsVideo, false, false);
+                    greetingsVideo.style.background = "black";
+
+                    greetingsVideo.addEventListener("click", () => {
+                        fadeOutElements([greetingsVideo], () => {
+                            greetingsVideo.style.display="none";
+                            marketScene.style.display="block";
+                        });
+                    }, { once:true });
+                }
+            });
+        }, { once:true });
     });
 
     // ===== SKIP BUTTON CLICK → greetings.mp4 =====
@@ -106,6 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
             skipBtn.style.display = "none";
 
             showVideo(greetingsVideo);
+            greetingsVideo.style.background = "black";
+
             greetingsVideo.addEventListener("click", () => {
                 fadeOutElements([greetingsVideo], () => {
                     greetingsVideo.style.display="none";
