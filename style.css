@@ -1,4 +1,4 @@
-/* General */
+/* ===== GENERAL STYLES ===== */
 body, html {
   margin: 0;
   padding: 0;
@@ -10,32 +10,35 @@ body, html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  animation: bgShift 20s infinite alternate;
 }
 
-/* SRA Logo */
+/* ===== SRA LOGO ===== */
 #sraLogo {
   width: 250px;
   height: auto;
   margin: 20px;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  animation: pulse 3s infinite;
+  opacity: 0;
+  animation: fadeIn 2s forwards, pulse 3s infinite 2s;
 }
 
-/* Grok Character */
+/* ===== GROK CHARACTER ===== */
 #grok {
   position: fixed;
   bottom: 10%;
-  left: 0%;
+  left: -10%;
   width: 80px;
   height: 100px;
   background: orange;
   border-radius: 10px;
   z-index: 50;
-  animation: walkGrok 8s linear infinite;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
 }
 
-/* Tours Section */
+/* ===== TOURS SECTION ===== */
 #toursContainer {
   width: 90%;
   max-width: 600px;
@@ -61,15 +64,18 @@ body, html {
   border-radius: 12px;
   font-weight: bold;
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 #toursList li:hover {
   transform: scale(1.05);
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  background: #81c6e8;
 }
 
-/* Contact Buttons */
+/* ===== CONTACT BUTTONS ===== */
 #contactButtons {
   display: flex;
   gap: 20px;
@@ -83,18 +89,23 @@ body, html {
   color: white;
   font-weight: bold;
   cursor: pointer;
+  transform: translateY(0);
   transition: transform 0.3s ease, background 0.3s ease;
 }
 
 #contactButtons div:hover {
-  transform: scale(1.1);
+  transform: translateY(-5px) scale(1.1);
   background-color: #1976a5;
 }
 
-/* Animations */
+/* ===== ANIMATIONS ===== */
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
 }
 
 @keyframes walkGrok {
@@ -103,4 +114,10 @@ body, html {
   50% { left: 50%; bottom: 15%; transform: rotate(5deg); }
   75% { left: 75%; bottom: 12%; transform: rotate(-5deg); }
   100% { left: 110%; bottom: 10%; transform: rotate(0deg); }
+}
+
+@keyframes bgShift {
+  0% { background: linear-gradient(120deg, #d9f0ff, #ffffff); }
+  50% { background: linear-gradient(120deg, #c2e6ff, #f0faff); }
+  100% { background: linear-gradient(120deg, #d9f0ff, #ffffff); }
 }
