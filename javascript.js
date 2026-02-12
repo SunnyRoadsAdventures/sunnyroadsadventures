@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const blackieVideo = document.getElementById("blackieVideo");
     const heyVideo = document.getElementById("heyVideo");
     const sagaBtn = document.getElementById("sagaBtn");
-    const beginningVideo = document.getElementById("beginningVideo");
-    const journeyVideo = document.getElementById("journeyVideo");
     const greetingsVideo = document.getElementById("greetingsVideo");
     const marketImg = document.getElementById("marketImg");
 
@@ -52,9 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ===== SAGA BUTTON CLICK → beginning + journey =====
+    // ===== SAGA BUTTON CLICK → GREETINGS =====
     sagaBtn.addEventListener("click", () => {
-
         // Stop blackie + hey immediately
         blackieVideo.pause();
         heyVideo.pause();
@@ -64,26 +61,26 @@ document.addEventListener("DOMContentLoaded", () => {
             heyVideo.style.display = "none";
             sagaBtn.style.display = "none";
 
-            showVideo(beginningVideo, true);
-            showVideo(journeyVideo, true);
+            // Show greetings scroll smoothly
+            greetingsVideo.style.display = "block";
+            greetingsVideo.style.opacity = 0;
+            greetingsVideo.style.pointerEvents = "auto";
 
-            // journey fades to black at 27s
-            journeyVideo.addEventListener("timeupdate", () => {
-                if (journeyVideo.currentTime >= 27) {
-                    fadeOutElements([journeyVideo], () => journeyVideo.style.display = "none");
+            setTimeout(() => {
+                greetingsVideo.style.opacity = 1;
+                greetingsVideo.play();
+            }, 50);
 
-                    // Start greetings after journey fades
-                    showVideo(greetingsVideo);
-                    greetingsVideo.addEventListener("click", () => {
-                        fadeOutElements([greetingsVideo], () => {
-                            greetingsVideo.style.display = "none";
+            // Click anywhere on greetings to fade out and show market
+            greetingsVideo.addEventListener("click", () => {
+                fadeOutElements([greetingsVideo], () => {
+                    greetingsVideo.style.display = "none";
 
-                            // Show market after greetings
-                            marketImg.style.display = "block";
-                        });
-                    }, { once: true });
-                }
-            });
+                    // Fade in market image smoothly
+                    marketImg.style.display = "block";
+                    setTimeout(() => marketImg.style.opacity = 1, 50);
+                });
+            }, { once: true });
         });
     });
 
@@ -94,22 +91,24 @@ document.addEventListener("DOMContentLoaded", () => {
             goBtn.style.display = "none";
             skipBtn.style.display = "none";
 
-            // Show greetings
+            // Show greetings scroll
             greetingsVideo.style.display = "block";
             greetingsVideo.style.opacity = 0;
             greetingsVideo.style.pointerEvents = "auto";
-            greetingsVideo.style.background = "black";
 
-            setTimeout(() => greetingsVideo.style.opacity = 1, 50);
-            greetingsVideo.play();
+            setTimeout(() => {
+                greetingsVideo.style.opacity = 1;
+                greetingsVideo.play();
+            }, 50);
 
-            // Click anywhere on greetings to fade out to black
+            // Click anywhere on greetings to fade out and show market
             greetingsVideo.addEventListener("click", () => {
                 fadeOutElements([greetingsVideo], () => {
                     greetingsVideo.style.display = "none";
 
-                    // Show market after greetings
+                    // Fade in market image smoothly
                     marketImg.style.display = "block";
+                    setTimeout(() => marketImg.style.opacity = 1, 50);
                 });
             }, { once: true });
         });
@@ -125,30 +124,12 @@ document.addEventListener("DOMContentLoaded", () => {
         element.style.opacity = 1;
     }
 
-    function showVideo(videoEl, fullscreen = false) {
+    function showVideo(videoEl) {
         videoEl.style.display = "block";
         videoEl.muted = false;
         videoEl.volume = 1;
-        if (fullscreen) {
-            videoEl.style.position = "fixed";
-            videoEl.style.top = "0";
-            videoEl.style.left = "0";
-            videoEl.style.width = "100%";
-            videoEl.style.height = "100%";
-            videoEl.style.objectFit = "cover";
-        }
         setTimeout(() => videoEl.style.opacity = 1, 100);
         videoEl.play();
     }
 
 });
-#marketImg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    display: none;
-    z-index: 30;
-}
