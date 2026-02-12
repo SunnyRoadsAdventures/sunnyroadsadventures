@@ -3,9 +3,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const goBtn = document.getElementById("goBtn");
     const skipBtn = document.getElementById("skipBtn");
     const missionVideo = document.getElementById("missionVideo");
+    const blackieVideo = document.getElementById("blackieVideo");
     const greetingsVideo = document.getElementById("greetingsVideo");
 
-    // Initial fade in sequence
+    // Fade in SRA + buttons
     setTimeout(() => { sraVideo.style.opacity = 1; }, 1500);
     setTimeout(() => { goBtn.style.opacity = 1; goBtn.style.pointerEvents = "auto"; }, 2300);
     setTimeout(() => { skipBtn.style.opacity = 1; skipBtn.style.pointerEvents = "auto"; }, 4000);
@@ -27,14 +28,28 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => missionVideo.style.opacity = 1, 100);
             missionVideo.play();
 
-            // Click anywhere to close mission
+            // Click anywhere on mission → close and load blackie
             missionVideo.addEventListener("click", () => {
                 missionVideo.style.opacity = 0;
                 missionVideo.style.pointerEvents = "none";
-                setTimeout(() => missionVideo.style.display = "none", 1000);
 
-                // Next scene placeholder
-                console.log("Mission ended → load next scene");
+                setTimeout(() => {
+                    missionVideo.style.display = "none";
+
+                    // Show blackie
+                    blackieVideo.style.display = "block";
+                    setTimeout(() => blackieVideo.style.opacity = 1, 100);
+                    blackieVideo.play();
+
+                    // Click anywhere to close blackie
+                    blackieVideo.addEventListener("click", () => {
+                        blackieVideo.style.opacity = 0;
+                        blackieVideo.style.pointerEvents = "none";
+                        setTimeout(() => blackieVideo.style.display = "none", 1000);
+
+                        console.log("Blackie closed → next scene");
+                    });
+                }, 500);
             });
         }, 1000);
     });
