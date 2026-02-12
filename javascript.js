@@ -71,20 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
             // journey fades out at 26.7s
             journeyVideo.addEventListener("timeupdate", () => {
                 if (journeyVideo.currentTime >= 26.7) {
-                    fadeOutElements([journeyVideo], () => journeyVideo.style.display = "none");
+                    fadeOutElements([journeyVideo, beginningVideo], () => {
+                        journeyVideo.style.display = "none";
+                        beginningVideo.style.display = "none";
 
-                    // STOP beginning video as well
-                    beginningVideo.pause();
-                    beginningVideo.style.display = "none";
-
-                    // Now fade in greetings
-                    [beginningVideo, journeyVideo, blackieVideo, heyVideo].forEach(v => v.style.display = "none");
-                    showVideo(greetingsVideo);
-
-                    // Click anywhere to close greetings
-                    greetingsVideo.addEventListener("click", () => {
-                        fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
-                    }, { once: true });
+                        // Now show greetings.mp4 with solid black background
+                        showGreetingsScroll();
+                    });
                 }
             });
         });
@@ -92,22 +85,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== SKIP BUTTON CLICK → greetings.mp4 =====
     skipBtn.addEventListener("click", () => {
-
-        // Hide everything behind the scroll
+        // Stop everything
         [sraVideo, goBtn, skipBtn, missionVideo, blackieVideo, heyVideo, beginningVideo, journeyVideo].forEach(v => {
             v.pause();
             v.style.display = "none";
         });
 
-        fadeOutElements([sraVideo, goBtn, skipBtn], () => {
-            showVideo(greetingsVideo);
-
-            // Click anywhere to close greetings
-            greetingsVideo.addEventListener("click", () => {
-                fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
-            }, { once: true });
-        });
+        // Show greetings with solid black background
+        showGreetingsScroll();
     });
+
+    // ===== SHOW GREETINGS FUNCTION =====
+    function showGreetingsScroll() {
+        // Ensure black background behind scroll
+        document.body.style.background = "black";
+
+        greetingsVideo.style.display = "block";
+        greetingsVideo.style.opacity = 0;
+        greetingsVideo.muted = false;
+        greetingsVideo.volume = 1;
+
+        setTimeout(() => greetingsVideo.style.opacity = 1, 100);
+        greetingsVideo.play();
+
+        // Click anywhere to close greetings
+        greetingsVideo.addEventListener("click", () => {
+            fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
+        }, { once: true });
+    }
 
     // ===== HELPER FUNCTIONS =====
     function fadeOutElements(elements, callback) {
