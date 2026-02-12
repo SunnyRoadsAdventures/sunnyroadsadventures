@@ -3,41 +3,67 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Granada Adventures</title>
+<title>Sunny Roads Adventures</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- HEADER -->
 <header>
-  <div class="logo">
-    <h1>Granada Adventures</h1>
-  </div>
-  <div class="grok">
-    <video id="grokVideo" src="sra.mp4" autoplay loop muted></video>
-  </div>
+    <video id="logoVideo" src="sra.mp4" autoplay muted loop></video>
+    <h1>Sunny Roads Adventures</h1>
+    <nav>
+        <ul>
+            <li><a href="#tours">Tours</a></li>
+            <li><a href="#character">Our Character</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 </header>
 
-<!-- MAIN TOURS SECTION -->
-<main>
-  <section class="tour" id="tour1">
-    <h2>City Tour</h2>
-    <button class="tourBtn" data-link="city-tour.html">Learn More</button>
-  </section>
-  <section class="tour" id="tour2">
-    <h2>Lake Nicaragua Adventure</h2>
-    <button class="tourBtn" data-link="lake-nicaragua.html">Learn More</button>
-  </section>
-  <section class="tour" id="tour3">
-    <h2>Volcano Hike</h2>
-    <button class="tourBtn" data-link="volcano.html">Learn More</button>
-  </section>
-</main>
+<!-- TOURS SECTION -->
+<section id="tours">
+    <h2>Our Tours</h2>
+    <div class="tour-card" id="tour1">
+        <h3>Volcano Exploration</h3>
+        <p>Climb majestic volcanoes and enjoy amazing views.</p>
+        <button class="bookBtn">Book Now</button>
+    </div>
+    <div class="tour-card" id="tour2">
+        <h3>Lakeside Relaxation</h3>
+        <p>Enjoy serene lake tours with kayaking and nature walks.</p>
+        <button class="bookBtn">Book Now</button>
+    </div>
+    <div class="tour-card" id="tour3">
+        <h3>Historical Granada</h3>
+        <p>Walk through colonial streets and discover the city's secrets.</p>
+        <button class="bookBtn">Book Now</button>
+    </div>
+    <div class="tour-card" id="tour4">
+        <h3>Jungle Adventure</h3>
+        <p>Zip-line, hike, and explore Nicaragua's lush jungles.</p>
+        <button class="bookBtn">Book Now</button>
+    </div>
+</section>
 
-<!-- CONTACT -->
+<!-- FUN CHARACTER -->
+<section id="character">
+    <h2>Meet Grog!</h2>
+    <video id="grogVideo" src="grog.mp4" autoplay loop muted></video>
+    <p>Our clumsy hero who guides you through all adventures!</p>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <h2>Contact Us</h2>
+    <p>Email: info@sunnyroadsadventures.com</p>
+    <p>WhatsApp: <a href="https://wa.me/50558365522" target="_blank">+505 5836 5522</a></p>
+    <button id="bookGeneralBtn">Book Any Tour</button>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <button id="whatsappBtn">WhatsApp Us</button>
-  <p>&copy; 2026 Granada Adventures</p>
+    <p>&copy; 2026 Sunny Roads Adventures. All rights reserved.</p>
 </footer>
 
 <script src="javascript.js"></script>
