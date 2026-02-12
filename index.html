@@ -2,36 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SRA Interactive Story</title>
+    <title>SRA Intro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div id="container">
+        <!-- SRA Video -->
         <video id="sraVideo" src="sra.mp4" muted autoplay playsinline></video>
 
+        <!-- Buttons -->
         <div id="buttonRow">
             <img src="go.png" id="goBtn" alt="Go">
             <img src="skip.png" id="skipBtn" alt="Skip">
         </div>
     </div>
 
-    <video id="missionVideo" src="mission.mp4" playsinline></video>
-    <video id="blackieVideo" src="blackie.mp4" playsinline></video>
-    <video id="heyVideo" src="hey.mp4" playsinline></video>
+    <!-- Mission Video -->
+    <video id="missionVideo" src="mission.mp4" muted playsinline></video>
 
+    <!-- Blackie & Hey -->
+    <video id="blackieVideo" src="blackie.mp4" muted playsinline></video>
+    <video id="heyVideo" src="hey.mp4" muted playsinline></video>
+
+    <!-- Saga / Enter Button -->
     <img src="saga.png" id="sagaBtn" alt="Saga">
 
-    <video id="beginningVideo" src="beginning.mp4" playsinline></video>
-    <video id="journeyVideo" src="journey.mp4" playsinline></video>
+    <!-- Beginning & Journey (Full Screen) -->
+    <video id="beginningVideo" src="beginning.mp4" muted playsinline></video>
+    <video id="journeyVideo" src="journey.mp4" muted playsinline></video>
 
-    <video id="greetingsVideo" src="greetings.mp4" playsinline></video>
+    <!-- Greetings Video -->
+    <video id="greetingsVideo" src="greetings.mp4" muted playsinline></video>
 
-    <div id="marketScene">
-        <img src="market.jpg" id="marketBg" alt="Market Background">
-        <img src="shopBtn.png" id="shopBtn" alt="Shop">
-        <img src="innBtn.png" id="innBtn" alt="Inn">
-    </div>
+    <!-- Market Image -->
+    <img src="market.png" id="marketImg" alt="Market">
 
     <script src="javascript.js"></script>
 </body>
