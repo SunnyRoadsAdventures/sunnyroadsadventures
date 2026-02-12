@@ -92,17 +92,18 @@ img, video {
   transition: opacity 1.5s ease;
 }
 
-/* MARKET IMAGE */
+/* MARKET IMAGE FULLSCREEN */
 #marketImg {
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  display: none;
-  opacity: 0;
-  transition: opacity 2s ease;
-  z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100vw;       /* full viewport width */
+    height: 100vh;      /* full viewport height */
+    object-fit: cover;  /* cover the entire area without distortion */
+    display: none;      /* initially hidden */
+    opacity: 0;
+    transition: opacity 2s ease;
+    z-index: 10;
+}
 }
 
 /* MARKET BUTTONS */
