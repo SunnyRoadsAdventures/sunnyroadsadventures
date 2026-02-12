@@ -13,15 +13,21 @@ body, html {
   animation: bgShift 20s infinite alternate;
 }
 
-/* ===== SRA LOGO ===== */
+/* ===== LOGO SECTION ===== */
+#logoSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
 #sraLogo {
-  width: 250px;
+  width: 180px;
   height: auto;
-  margin: 20px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
   opacity: 0;
-  animation: fadeIn 2s forwards, pulse 3s infinite 2s;
+  animation: fadeIn 2s forwards;
 }
 
 /* ===== GROK CHARACTER ===== */
@@ -99,11 +105,6 @@ body, html {
 }
 
 /* ===== ANIMATIONS ===== */
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
 @keyframes fadeIn {
   to { opacity: 1; }
 }
