@@ -14,11 +14,12 @@ body {
 #container {
     text-align: center;
     position: relative;
+    z-index: 1;
 }
 
 /* ===== SRA VIDEO ===== */
 #sraVideo {
-    width: 1200px;
+    width: 1200px;       /* large size */
     max-width: 95vw;
     opacity: 0;
     transition: opacity 1.5s ease;
@@ -53,15 +54,30 @@ body {
     pointer-events: none;
 }
 
+/* ===== SAGA BUTTON ===== */
+#sagaBtn {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 350px;
+    opacity: 0;
+    cursor: pointer;
+    pointer-events: none;
+    transition: opacity 1s ease, transform 0.3s ease;
+}
+
 /* ===== HOVER EFFECTS ===== */
 #goBtn:hover,
-#skipBtn:hover {
+#skipBtn:hover,
+#sagaBtn:hover {
     transform: scale(1.12);
     filter: brightness(1.15);
 }
 
-/* ===== MISSION VIDEO ===== */
-#missionVideo {
+/* ===== MISSION & GREETINGS VIDEOS (scrolls) ===== */
+#missionVideo,
+#greetingsVideo {
     width: 85%;
     max-width: 1000px;
     display: none;
@@ -71,7 +87,7 @@ body {
     transition: opacity 1s ease;
 }
 
-/* ===== BLACKIE VIDEO ===== */
+/* ===== BLACKIE & HEY VIDEOS ===== */
 #blackieVideo {
     position: fixed;
     top: 0;
@@ -80,12 +96,9 @@ body {
     height: 50vh;
     object-fit: cover;
     display: none;
-    opacity: 0;
     z-index: 5;
-    transition: opacity 1s ease;
 }
 
-/* ===== HEY VIDEO ===== */
 #heyVideo {
     position: fixed;
     bottom: 20px;
@@ -94,37 +107,21 @@ body {
     max-width: 40%;
     border-radius: 12px;
     display: none;
-    opacity: 0;
     z-index: 6;
-    transition: opacity 1s ease;
 }
 
-/* ===== SAGA BUTTON ===== */
-#sagaBtn {
-    display: none;
-    opacity: 0;
-    width: 450px;
-    cursor: pointer;
-    position: fixed;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: opacity 1.5s ease;
-    z-index: 10;
-}
-
-/* ===== BEGINNING & JOURNEY FULL SCREEN ===== */
+/* ===== FULLSCREEN VIDEOS ===== */
 #beginningVideo,
-#journeyVideo,
-#greetingsVideo {
-    display: none;
+#journeyVideo {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: none;
     opacity: 0;
-    z-index: 20;
+    z-index: 10;
+    cursor: pointer;
     transition: opacity 1s ease;
 }
