@@ -1,3 +1,4 @@
+/* ===== GENERAL BODY ===== */
 html, body {
   margin: 0;
   padding: 0;
@@ -7,14 +8,14 @@ html, body {
   overflow: hidden;
 }
 
-/* Shared fade */
+/* ===== SHARED FADE ===== */
 img, video {
   position: absolute;
   opacity: 0;
   transition: opacity 1.5s ease;
 }
 
-/* SAGA BUTTON */
+/* ===== SAGA BUTTON ===== */
 #sagaBtn {
   bottom: 5%;
   left: 50%;
@@ -25,7 +26,7 @@ img, video {
   pointer-events: auto;
 }
 
-/* MISSION VIDEO */
+/* ===== MISSION VIDEO ===== */
 #missionVideo {
   top: 50%;
   left: 50%;
@@ -39,7 +40,7 @@ img, video {
   pointer-events: auto;
 }
 
-/* BLACKIE VIDEO */
+/* ===== BLACKIE VIDEO ===== */
 #blackieVideo {
   top: 0;
   left: 50%;
@@ -52,7 +53,7 @@ img, video {
   pointer-events: none;
 }
 
-/* HEY VIDEO */
+/* ===== HEY VIDEO ===== */
 #heyVideo {
   bottom: 5%;
   left: 2%;
@@ -62,7 +63,7 @@ img, video {
   pointer-events: none;
 }
 
-/* ENTER BUTTON */
+/* ===== ENTER BUTTON ===== */
 #enterBtn {
   bottom: 2%;
   left: 50%;
@@ -74,7 +75,7 @@ img, video {
   pointer-events: auto;
 }
 
-/* FULLSCREEN VIDEOS */
+/* ===== FULLSCREEN VIDEOS ===== */
 #beginningVideo, #journeyVideo, #greetingsVideo {
   top: 0;
   left: 0;
@@ -86,55 +87,54 @@ img, video {
   pointer-events: auto;
 }
 
-/* GREETINGS VIDEO */
+/* ===== GREETINGS ===== */
 #greetingsVideo {
   background: black;
   transition: opacity 1.5s ease;
 }
 
-/* MARKET IMAGE */
+/* ===== MARKET IMAGE FULLSCREEN ===== */
 #marketImg {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: contain;  /* full image visible, no cropping */
+  width: 100vw;          /* full width */
+  height: 100vh;         /* full height */
+  object-fit: contain;    /* ensure full image visible */
   display: none;
   opacity: 0;
   transition: opacity 2s ease;
-  z-index: 100;
-  background: black;   /* fallback behind image */
+  z-index: 100;          /* above everything */
+  background: black;      /* fallback black behind image */
 }
 
-/* MARKET BUTTONS */
+/* ===== MARKET BUTTONS ===== */
 #toursBtn, #whatsappBtn {
   position: absolute;
   cursor: pointer;
   opacity: 0;
   display: none;
   transition: opacity 1.5s ease;
-  z-index: 110;
+  z-index: 110;          /* above market */
   pointer-events: auto;
 }
 
-#toursBtn { top: 70%; left: 5%; width: 150px; }
-#whatsappBtn { top: 70%; left: 20%; width: 100px; }
+#toursBtn {
+  top: 70%;
+  left: 5%;
+  width: 150px;
+}
 
-/* Remove default video controls */
+#whatsappBtn {
+  top: 70%;
+  left: 20%;
+  width: 100px;
+}
+
+/* ===== REMOVE DEFAULT VIDEO CONTROLS ===== */
 video::-internal-media-controls-overlay-cast-button,
 video::-webkit-media-controls,
 video::-webkit-media-controls-enclosure,
 video::-webkit-media-controls-panel {
   display: none !important;
-}
-
-#toursBtn, #whatsappBtn {
-  position: absolute;
-  cursor: pointer;
-  opacity: 0;
-  display: none;
-  transition: opacity 1.5s ease;
-  z-index: 110;
-  pointer-events: auto;  /* ensures clickable */
 }
