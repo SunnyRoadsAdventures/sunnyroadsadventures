@@ -1,45 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interactive Tour</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Sunroad Adventures</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- SAGA BUTTON -->
-<img id="sagaBtn" src="saga.png" alt="Saga Button">
+    <!-- Background -->
+    <div class="background"></div>
 
-<!-- MISSION VIDEO -->
-<video id="missionVideo" src="mission.mp4"></video>
+    <!-- Buttons -->
+    <div class="button-container">
+        <img src="go.png" id="goBtn" class="main-btn" alt="Go">
+        <img src="skip.png" id="skipBtn" class="main-btn" alt="Skip">
+    </div>
 
-<!-- BLACKIE VIDEO -->
-<video id="blackieVideo" src="blackie.mp4" loop></video>
+    <!-- Greetings Video -->
+    <video id="greetingsVideo" src="greetings.mp4"></video>
 
-<!-- HEY VIDEO -->
-<video id="heyVideo" src="hey.mp4" loop></video>
-
-<!-- ENTER BUTTON -->
-<img id="enterBtn" src="enter.png" alt="Enter Button">
-
-<!-- BEGINNING AND JOURNEY -->
-<video id="beginningVideo" src="beginning.mp4"></video>
-<video id="journeyVideo" src="journey.mp4"></video>
-
-<!-- GREETINGS -->
-<video id="greetingsVideo" src="greetings.mp4"></video>
-
-<!-- MARKET -->
-<img id="marketImg" src="market.png" alt="Market Image">
-
-<!-- MARKET BUTTONS -->
-<img id="toursBtn" src="tours_icon.png" alt="Tours Button">
-<img id="whatsappBtn" src="whatsapp_icon.png" alt="WhatsApp Button">
-
-<!-- BLACK FADE OVERLAY -->
-<div id="blackFade"></div>
-
-<script src="javascript.js"></script>
+    <script src="javascript.js"></script>
 </body>
 </html>
