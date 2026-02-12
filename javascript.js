@@ -1,42 +1,51 @@
-window.onload = function () {
+const missionVideo = document.getElementById("missionVideo");
+const greetingsVideo = document.getElementById("greetingsVideo");
+const blackFade = document.getElementById("blackFade");
 
-    const container = document.querySelector(".button-container");
-    const goBtn = document.getElementById("goBtn");
-    const skipBtn = document.getElementById("skipBtn");
-    const video = document.getElementById("greetingsVideo");
-    const background = document.querySelector(".background");
+let started = false;
 
-    // Fade buttons in (same timing as old enter)
-    setTimeout(() => {
-        container.style.opacity = "1";
-    }, 2000);
+document.body.addEventListener("click", function () {
 
+    if (!started) {
+        started = true;
 
-    // GO Button – cinematic transition
-    goBtn.addEventListener("click", function () {
-
-        container.style.opacity = "0";
-
-        background.style.transition = "transform 1.5s ease";
-        background.style.transform = "scale(1.1)";
+        missionVideo.style.display = "block";
 
         setTimeout(() => {
-            background.style.display = "none";
-            video.style.display = "block";
-            video.play();
-        }, 1500);
+            missionVideo.style.opacity = "1";
+            missionVideo.play();
 
-    });
+            // Slow fade from black into mission
+            blackFade.style.opacity = "0";
+        }, 100);
+    }
 
+});
 
-    // SKIP Button – instant teleport
-    skipBtn.addEventListener("click", function () {
+missionVideo.onended = function () {
 
-        container.style.opacity = "0";
-        background.style.display = "none";
-        video.style.display = "block";
-        video.play();
+    // Fade to black slowly
+    blackFade.style.opacity = "1";
 
-    });
+    setTimeout(() => {
 
+        missionVideo.style.display = "none";
+
+        // Cinematic pause before greetings appears
+        setTimeout(() => {
+
+            greetingsVideo.style.display = "block";
+
+            setTimeout(() => {
+                greetingsVideo.style.opacity = "1";
+                greetingsVideo.play();
+
+                // Fade back from black
+                blackFade.style.opacity = "0";
+
+            }, 100);
+
+        }, 1200); // dramatic delay
+
+    }, 2500); // wait for fade-to-black to finish
 };
