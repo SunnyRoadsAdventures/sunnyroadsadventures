@@ -29,9 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
             skipBtn.style.display = "none";
 
             missionVideo.style.display = "block";
+            missionVideo.volume = 1; // max volume
             setTimeout(() => missionVideo.style.opacity = 1, 100);
             missionVideo.play();
 
+            // Click anywhere on mission to close
             missionVideo.addEventListener("click", () => {
                 missionVideo.style.opacity = 0;
                 missionVideo.style.pointerEvents = "none";
@@ -39,19 +41,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Show blackie + hey
                 blackieVideo.style.display = "block";
+                blackieVideo.volume = 1;
                 heyVideo.style.display = "block";
+                heyVideo.volume = 1;
+
                 setTimeout(() => { blackieVideo.style.opacity = 1; heyVideo.style.opacity = 1; }, 100);
                 blackieVideo.play();
                 heyVideo.play();
 
                 // Fade out blackie at 65s
                 setTimeout(() => blackieVideo.style.opacity = 0, 65000);
+                // Fade out hey automatically at 70s
+                setTimeout(() => heyVideo.style.opacity = 0, 70000);
 
                 // Fade in saga.png at 4s
                 setTimeout(() => { sagaBtn.style.display = "block"; sagaBtn.style.opacity = 1; sagaBtn.style.pointerEvents = "auto"; }, 4000);
-
-                // Fade out hey automatically at 70s (or adjust)
-                setTimeout(() => heyVideo.style.opacity = 0, 70000);
             });
         }, 1000);
     });
@@ -70,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
             skipBtn.style.display = "none";
 
             greetingsVideo.style.display = "block";
+            greetingsVideo.volume = 1; // max volume
             setTimeout(() => greetingsVideo.style.opacity = 1, 100);
             greetingsVideo.play();
 
@@ -96,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
             heyVideo.style.display = "none";
 
             beginningVideo.style.display = "block";
+            beginningVideo.volume = 1; // max volume
             setTimeout(() => beginningVideo.style.opacity = 1, 100);
             beginningVideo.play();
 
@@ -105,6 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 beginningVideo.style.display = "none";
 
                 journeyVideo.style.display = "block";
+                journeyVideo.volume = 1; // max volume
                 setTimeout(() => journeyVideo.style.opacity = 1, 100);
                 journeyVideo.play();
 
