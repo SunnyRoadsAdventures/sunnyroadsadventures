@@ -13,13 +13,11 @@ body {
 /* ===== CONTAINER ===== */
 #container {
     text-align: center;
-    position: relative;
-    z-index: 1;
 }
 
 /* ===== SRA VIDEO ===== */
 #sraVideo {
-    width: 1200px;       /* large size */
+    width: 1200px;       /* very large */
     max-width: 95vw;
     opacity: 0;
     transition: opacity 1.5s ease;
@@ -54,30 +52,15 @@ body {
     pointer-events: none;
 }
 
-/* ===== SAGA BUTTON ===== */
-#sagaBtn {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 350px;
-    opacity: 0;
-    cursor: pointer;
-    pointer-events: none;
-    transition: opacity 1s ease, transform 0.3s ease;
-}
-
 /* ===== HOVER EFFECTS ===== */
 #goBtn:hover,
-#skipBtn:hover,
-#sagaBtn:hover {
+#skipBtn:hover {
     transform: scale(1.12);
     filter: brightness(1.15);
 }
 
-/* ===== MISSION & GREETINGS VIDEOS (scrolls) ===== */
-#missionVideo,
-#greetingsVideo {
+/* ===== MISSION VIDEO ===== */
+#missionVideo {
     width: 85%;
     max-width: 1000px;
     display: none;
@@ -85,9 +68,10 @@ body {
     cursor: pointer;
     opacity: 0;
     transition: opacity 1s ease;
+    z-index: 10;
 }
 
-/* ===== BLACKIE & HEY VIDEOS ===== */
+/* ===== BLACKIE VIDEO (CENTER TOP, EDGE TO EDGE) ===== */
 #blackieVideo {
     position: fixed;
     top: 0;
@@ -99,6 +83,7 @@ body {
     z-index: 5;
 }
 
+/* ===== HEY VIDEO (BOTTOM LEFT SMALL) ===== */
 #heyVideo {
     position: fixed;
     bottom: 20px;
@@ -110,18 +95,27 @@ body {
     z-index: 6;
 }
 
-/* ===== FULLSCREEN VIDEOS ===== */
-#beginningVideo,
-#journeyVideo {
+/* ===== SAGA BUTTON ===== */
+#sagaBtn {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: none;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
     opacity: 0;
-    z-index: 10;
     cursor: pointer;
+    transition: opacity 1s ease, transform 0.3s ease, filter 0.3s ease;
+    z-index: 15;
+}
+
+/* ===== GREETINGS VIDEO (SCROLL STYLE) ===== */
+#greetingsVideo {
+    width: 85%;          /* scroll-style, not full screen */
+    max-width: 1000px;
+    display: none;
+    margin: 60px auto;
+    cursor: pointer;
+    opacity: 0;
     transition: opacity 1s ease;
+    z-index: 10;
 }
