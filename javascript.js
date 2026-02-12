@@ -16,42 +16,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2000);
 
 
-    /* GO Click → Start Story */
+    /* GO Click → Cinematic Transition */
     goBtn.addEventListener("click", function () {
 
-    // Step 1 — Fade intro away
-    container.style.opacity = "0";
-
-    // Step 2 — After intro fades, go fully black
-    setTimeout(() => {
-        fadeOverlay.style.opacity = "1";
-    }, 1500);   // wait for container fade (1.5s)
-
-    // Step 3 — After screen is fully black, start mission
-    setTimeout(() => {
-        missionVideo.style.opacity = "1";
-        missionVideo.play();
-        fadeOverlay.style.opacity = "0";
-    }, 3500);   // 1.5s + 2s fade
-});
-
-    alert("GO is working");
-
-});
-
-        console.log("GO clicked"); // Debug check
-
+        // Fade intro out
         container.style.opacity = "0";
 
+        // Fade to black after intro fade
         setTimeout(() => {
             fadeOverlay.style.opacity = "1";
-        }, 1000);
+        }, 1500);
 
+        // Dramatic pause → Mission fade in
         setTimeout(() => {
             missionVideo.style.opacity = "1";
             missionVideo.play();
             fadeOverlay.style.opacity = "0";
-        }, 2500);
+        }, 4200);
+    });
+
+
+    /* Mission clickable (for future branching) */
+    missionVideo.addEventListener("click", function () {
+        console.log("Mission clicked - ready for branching");
     });
 
 });
