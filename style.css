@@ -1,5 +1,7 @@
+/* ===== BODY ===== */
 body {
     margin: 0;
+    padding: 0;
     background: black;
     overflow: hidden;
     display: flex;
@@ -8,67 +10,73 @@ body {
     height: 100vh;
 }
 
-/* Container */
+/* ===== CONTAINER ===== */
 #container {
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
 }
 
-/* Cinematic SRA video */
+/* ===== SRA VIDEO ===== */
 #sraVideo {
-    width: 90vw;           /* scale with viewport width */
+    width: 100%;
+    height: 100%;
     max-width: 1200px;
-    height: auto;
+    max-height: 90vh;   /* never exceed viewport height */
+    object-fit: contain; /* scale inside box without cropping */
     display: block;
     margin: 0 auto;
-    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease;
 }
 
-/* Button Row */
+/* ===== BUTTON ROW ===== */
 #buttonRow {
     position: absolute;
     bottom: 5%;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 60px; /* space between buttons */
+    gap: 60px; /* spacing between buttons */
 }
 
-/* GO and SKIP buttons */
+/* ===== GO BUTTON ===== */
 #goBtn {
-    width: 25vw;   /* scale with viewport */
+    width: 20vw;
     max-width: 420px;
     cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease, opacity 1.5s ease;
+    opacity: 0;
+    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
 }
 
+/* ===== SKIP BUTTON ===== */
 #skipBtn {
-    width: 20vw;
+    width: 16vw;
     max-width: 340px;
     cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease, opacity 1.5s ease;
+    opacity: 0;
+    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Hover Effects */
+/* ===== BUTTON HOVER ===== */
 #goBtn:hover,
 #skipBtn:hover {
     transform: scale(1.15);
     filter: brightness(1.15);
 }
 
-/* Mission Video */
+/* ===== MISSION VIDEO ===== */
 #missionVideo {
     width: 85%;
     max-width: 1000px;
+    max-height: 90vh;      /* never exceed screen height */
     display: none;
-    margin: 60px auto;
+    margin: 0 auto;
     cursor: pointer;
+    object-fit: contain;
 }
 
-/* Blackie (top edge-to-edge) */
+/* ===== BLACKIE VIDEO (TOP CENTER) ===== */
 #blackieVideo {
     position: fixed;
     top: 0;
@@ -80,7 +88,7 @@ body {
     z-index: 5;
 }
 
-/* Hey (bottom left) */
+/* ===== HEY VIDEO (BOTTOM LEFT) ===== */
 #heyVideo {
     position: fixed;
     bottom: 20px;
@@ -92,7 +100,7 @@ body {
     z-index: 6;
 }
 
-/* Fade overlay */
+/* ===== FADE OVERLAY ===== */
 #fadeOverlay {
     position: fixed;
     width: 100%;
