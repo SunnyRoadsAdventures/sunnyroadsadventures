@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
     /* GO Click → Start Story */
     goBtn.addEventListener("click", function () {
 
+    alert("GO is working");
+
+});
+
         console.log("GO clicked"); // Debug check
 
         container.style.opacity = "0";
