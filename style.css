@@ -1,4 +1,3 @@
-/* ===== BODY ===== */
 body {
     margin: 0;
     padding: 0;
@@ -10,12 +9,8 @@ body {
     height: 100vh;
 }
 
-/* ===== CONTAINER ===== */
-#container {
-    text-align: center;
-}
+#container { text-align: center; }
 
-/* ===== SRA VIDEO ===== */
 #sraVideo {
     width: 1200px;
     max-width: 95vw;
@@ -25,7 +20,6 @@ body {
     margin: 0 auto;
 }
 
-/* ===== BUTTON ROW ===== */
 #buttonRow {
     margin-top: 60px;
     display: flex;
@@ -34,7 +28,6 @@ body {
     gap: 140px;
 }
 
-/* ===== GO BUTTON ===== */
 #goBtn {
     width: 450px;
     opacity: 0;
@@ -43,7 +36,6 @@ body {
     pointer-events: none;
 }
 
-/* ===== SKIP BUTTON ===== */
 #skipBtn {
     width: 350px;
     opacity: 0;
@@ -52,17 +44,16 @@ body {
     pointer-events: none;
 }
 
-/* Hover Effects */
 #goBtn:hover,
 #skipBtn:hover {
     transform: scale(1.12);
     filter: brightness(1.15);
 }
 
-/* ===== MISSION, GREETINGS, BEGINNING VIDEO ===== */
 #missionVideo,
 #greetingsVideo,
-#beginningVideo {
+#beginningVideo,
+#journeyVideo {
     width: 85%;
     max-width: 1000px;
     display: none;
@@ -72,7 +63,6 @@ body {
     transition: opacity 1s ease;
 }
 
-/* ===== BLACKIE VIDEO (TOP CENTER EDGE-TO-EDGE) ===== */
 #blackieVideo {
     position: fixed;
     top: 0;
@@ -85,7 +75,6 @@ body {
     transition: opacity 1s ease;
 }
 
-/* ===== HEY VIDEO (BOTTOM LEFT SMALL) ===== */
 #heyVideo {
     position: fixed;
     bottom: 20px;
@@ -98,7 +87,6 @@ body {
     transition: opacity 1s ease;
 }
 
-/* ===== SAGA BUTTON ===== */
 #sagaBtn {
     position: fixed;
     bottom: 40px;
