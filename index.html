@@ -3,39 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Interactive Tour</title>
+<title>Granada Tours</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- SAGA BUTTON -->
-<img id="sagaBtn" src="saga.png" alt="Saga Button">
+<!-- HEADER -->
+<header>
+    <div class="logo">
+        <h1>Granada Adventures</h1>
+    </div>
+    <div class="grok">
+        <img src="grok.png" alt="Grok Character">
+    </div>
+</header>
 
-<!-- MISSION VIDEO -->
-<video id="missionVideo" src="mission.mp4"></video>
+<!-- HERO SECTION -->
+<section class="hero">
+    <div class="hero-text">
+        <h2>Explore Granada Like Never Before</h2>
+        <p>Join our tours and discover hidden gems, amazing views, and unforgettable experiences!</p>
+        <a href="#tours" class="btn">View Tours</a>
+    </div>
+    <div class="hero-img">
+        <img src="hero_placeholder.jpg" alt="Granada View">
+    </div>
+</section>
 
-<!-- BLACKIE VIDEO (TOP CENTER) -->
-<video id="blackieVideo" src="blackie.mp4" loop></video>
+<!-- TOURS SECTION -->
+<section id="tours">
+    <h2>Our Tours</h2>
+    <div class="tour-cards">
+        <div class="tour-card">
+            <img src="tour1.jpg" alt="Tour 1">
+            <h3>Granada City Tour</h3>
+            <p>2 hours • $25 per person</p>
+            <button class="whatsapp-btn" data-phone="50558365522">Book on WhatsApp</button>
+        </div>
+        <div class="tour-card">
+            <img src="tour2.jpg" alt="Tour 2">
+            <h3>Lake Nicaragua Adventure</h3>
+            <p>4 hours • $50 per person</p>
+            <button class="whatsapp-btn" data-phone="50558365522">Book on WhatsApp</button>
+        </div>
+        <div class="tour-card">
+            <img src="tour3.jpg" alt="Tour 3">
+            <h3>Masaya Volcano Excursion</h3>
+            <p>3 hours • $40 per person</p>
+            <button class="whatsapp-btn" data-phone="50558365522">Book on WhatsApp</button>
+        </div>
+        <div class="tour-card">
+            <img src="tour4.jpg" alt="Tour 4">
+            <h3>Islets of Granada</h3>
+            <p>5 hours • $60 per person</p>
+            <button class="whatsapp-btn" data-phone="50558365522">Book on WhatsApp</button>
+        </div>
+    </div>
+</section>
 
-<!-- HEY VIDEO (BOTTOM LEFT) -->
-<video id="heyVideo" src="hey.mp4" loop></video>
-
-<!-- ENTER BUTTON -->
-<img id="enterBtn" src="enter.png" alt="Enter Button">
-
-<!-- BEGINNING AND JOURNEY FULLSCREEN -->
-<video id="beginningVideo" src="beginning.mp4"></video>
-<video id="journeyVideo" src="journey.mp4"></video>
-
-<!-- GREETINGS POPUP -->
-<video id="greetingsVideo" src="greetings.mp4"></video>
-
-<!-- MARKET IMAGE -->
-<img id="marketImg" src="market.png" alt="Market Image">
-
-<!-- BUTTONS ON MARKET -->
-<img id="toursBtn" src="tours_icon.png" alt="Tours Button">
-<img id="whatsappBtn" src="whatsapp_icon.png" alt="WhatsApp Button">
+<!-- FOOTER -->
+<footer>
+    <p>Contact us: <a href="https://wa.me/50558365522" target="_blank">WhatsApp</a> | Email: info@granadatours.com</p>
+    <p>&copy; 2026 Granada Adventures</p>
+</footer>
 
 <script src="javascript.js"></script>
 </body>
