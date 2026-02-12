@@ -1,139 +1,42 @@
-document.addEventListener("DOMContentLoaded", () => {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Tour</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-  const sagaBtn = document.getElementById("sagaBtn");
-  const missionVideo = document.getElementById("missionVideo");
-  const blackieVideo = document.getElementById("blackieVideo");
-  const heyVideo = document.getElementById("heyVideo");
-  const enterBtn = document.getElementById("enterBtn");
+<!-- SAGA BUTTON -->
+<img id="sagaBtn" src="saga.png" alt="Saga Button">
 
-  const beginningVideo = document.getElementById("beginningVideo");
-  const journeyVideo = document.getElementById("journeyVideo");
-  const greetingsVideo = document.getElementById("greetingsVideo");
+<!-- MISSION VIDEO -->
+<video id="missionVideo" src="mission.mp4"></video>
 
-  const marketImg = document.getElementById("marketImg");
-  const toursBtn = document.getElementById("toursBtn");
-  const whatsappBtn = document.getElementById("whatsappBtn");
+<!-- BLACKIE VIDEO (TOP CENTER) -->
+<video id="blackieVideo" src="blackie.mp4" loop></video>
 
-  /* MAX VOLUME */
-  const allVideos = document.querySelectorAll("video");
-  allVideos.forEach(video => {
-      video.muted = false;
-      video.volume = 1.0;
-  });
+<!-- HEY VIDEO (BOTTOM LEFT) -->
+<video id="heyVideo" src="hey.mp4" loop></video>
 
-  /* SAGA FADE IN */
-  setTimeout(() => { sagaBtn.style.opacity = 1; }, 2000);
+<!-- ENTER BUTTON -->
+<img id="enterBtn" src="enter.png" alt="Enter Button">
 
-  /* CLICK SAGA → SHOW MISSION */
-  sagaBtn.addEventListener("click", () => {
-      sagaBtn.style.opacity = 0;
-      setTimeout(() => {
-          sagaBtn.style.display = "none";
-          missionVideo.style.display = "block";
-          missionVideo.style.opacity = 1;
-          missionVideo.currentTime = 0;
-          missionVideo.play();
-      }, 1000);
-  });
+<!-- BEGINNING & JOURNEY VIDEOS -->
+<video id="beginningVideo" src="beginning.mp4"></video>
+<video id="journeyVideo" src="journey.mp4"></video>
 
-  /* CLICK ANYWHERE ON MISSION → CLOSE AND CONTINUE */
-  missionVideo.addEventListener("click", () => {
-      missionVideo.style.opacity = 0;
-      setTimeout(() => {
-          missionVideo.pause();
-          missionVideo.style.display = "none";
+<!-- GREETINGS POPUP -->
+<video id="greetingsVideo" src="greetings.mp4"></video>
 
-          blackieVideo.style.display = "block";
-          blackieVideo.style.opacity = 1;
-          blackieVideo.play();
+<!-- MARKET IMAGE -->
+<img id="marketImg" src="market.png" alt="Market Image">
 
-          heyVideo.style.display = "block";
-          heyVideo.style.opacity = 1;
-          heyVideo.play();
+<!-- BUTTONS ON MARKET -->
+<img id="toursBtn" src="tours_icon.png" alt="Tours Button">
+<img id="whatsappBtn" src="whatsapp_icon.png" alt="WhatsApp Button">
 
-          enterBtn.style.display = "block";
-          enterBtn.style.opacity = 1;
-      }, 1000);
-  });
-
-  /* BLACKIE FADE AT 65.2s */
-  blackieVideo.addEventListener("timeupdate", () => {
-      if (blackieVideo.currentTime >= 65.2) {
-          blackieVideo.style.opacity = 0;
-          blackieVideo.pause();
-      }
-  });
-
-  /* ENTER CLICK → STOP LOWER VIDEOS & PLAY BEGINNING + JOURNEY */
-  enterBtn.addEventListener("click", () => {
-
-      blackieVideo.style.opacity = 0;
-      blackieVideo.pause();
-      heyVideo.style.opacity = 0;
-      heyVideo.pause();
-
-      enterBtn.style.opacity = 0;
-      setTimeout(() => enterBtn.style.display = "none", 1000);
-
-      /* PLAY BEGINNING VIDEO */
-      beginningVideo.style.display = "block";
-      beginningVideo.style.opacity = 1;
-      beginningVideo.currentTime = 0;
-      beginningVideo.play();
-
-      /* WHEN BEGINNING ENDS → PLAY JOURNEY */
-      beginningVideo.onended = () => {
-          beginningVideo.style.opacity = 0;
-          beginningVideo.style.display = "none";
-
-          journeyVideo.style.display = "block";
-          journeyVideo.style.opacity = 1;
-          journeyVideo.currentTime = 0;
-          journeyVideo.play();
-      };
-  });
-
-  /* FADE JOURNEY AT 26.5s → GREETINGS */
-  journeyVideo.addEventListener("timeupdate", () => {
-      if (journeyVideo.currentTime >= 26.5) {
-          journeyVideo.style.opacity = 0;
-          journeyVideo.pause();
-
-          greetingsVideo.style.display = "block";
-          greetingsVideo.style.opacity = 1;
-          greetingsVideo.currentTime = 0;
-          greetingsVideo.play();
-      }
-  });
-
-  /* CLICK GREETINGS → FADE TO BLACK + SHOW MARKET */
-  greetingsVideo.addEventListener("click", () => {
-      greetingsVideo.style.opacity = 0;
-      setTimeout(() => {
-          greetingsVideo.pause();
-          greetingsVideo.style.display = "none";
-
-          /* SHOW MARKET IMAGE */
-          marketImg.style.display = "block";
-          marketImg.style.opacity = 1;
-
-          /* SHOW BUTTONS */
-          toursBtn.style.opacity = 1;
-          whatsappBtn.style.opacity = 1;
-      }, 1000);
-  });
-
-  /* BUTTONS FUNCTIONALITY */
-  if (toursBtn) {
-      toursBtn.addEventListener("click", () => {
-          window.open("tours.jpg", "_blank");
-      });
-  }
-
-  if (whatsappBtn) {
-      whatsappBtn.addEventListener("click", () => {
-          window.open("https://wa.me/50558365522", "_blank");
-      });
-  }
-
-});
+<script src="javascript.js"></script>
+</body>
+</html>
