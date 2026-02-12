@@ -110,3 +110,25 @@ img, video {
 #greetingsVideo {
   cursor: pointer;
 }
+
+#marketImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 2s ease;
+  z-index: 10;
+}
+
+#toursBtn, #whatsappBtn {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  z-index: 20;
+}
+#toursBtn { top: 70%; left: 5%; width: 150px; }
+#whatsappBtn { top: 70%; left: 20%; width: 100px; }
