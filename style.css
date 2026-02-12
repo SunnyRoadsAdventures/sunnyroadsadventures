@@ -10,10 +10,30 @@ body {
     height: 100vh;
 }
 
-/* Centered Video with Fade */
+/* Keep video + button grouped */
+#container {
+    text-align: center;
+}
+
+/* Video */
 #sraVideo {
     width: 500px;
     max-width: 90vw;
     opacity: 0;
     transition: opacity 1.5s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+/* GO button */
+#goBtn {
+    width: 160px;
+    margin-top: 40px;
+    opacity: 0;
+    transition: opacity 1.5s ease, transform 0.25s ease;
+    cursor: pointer;
+}
+
+#goBtn:hover {
+    transform: scale(1.08);
 }
