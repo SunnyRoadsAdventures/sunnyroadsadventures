@@ -12,15 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const toursBtn = document.getElementById("toursBtn");
   const whatsappBtn = document.getElementById("whatsappBtn");
 
-  /* MAX VOLUME */
+  // Ensure all videos are unmuted at full volume
   document.querySelectorAll("video").forEach(video => {
     video.muted = false;
     video.volume = 1.0;
   });
 
-  /* SAGA BUTTON */
-  setTimeout(() => sagaBtn.style.opacity = 1, 2000);
+  // Show saga button after 2s
+  setTimeout(() => { sagaBtn.style.opacity = 1; }, 2000);
 
+  // ===== SAGA BUTTON CLICK → MISSION VIDEO =====
   sagaBtn.addEventListener("click", () => {
     sagaBtn.style.opacity = 0;
     sagaBtn.style.display = "none";
@@ -31,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     missionVideo.play();
   });
 
-  /* MISSION CLICK */
+  // ===== MISSION VIDEO CLICK → BLACKIE + HEY =====
   missionVideo.addEventListener("click", () => {
     missionVideo.pause();
     missionVideo.style.display = "none";
@@ -48,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
     enterBtn.style.opacity = 1;
   });
 
-  /* BLACKIE FADE */
+  // ===== BLACKIE VIDEO AUTO-FADE =====
   blackieVideo.addEventListener("timeupdate", () => {
     if (blackieVideo.currentTime >= 65.5) {
       blackieVideo.pause();
@@ -57,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  /* ENTER BUTTON */
+  // ===== ENTER BUTTON CLICK → BEGINNING + JOURNEY =====
   enterBtn.addEventListener("click", () => {
     blackieVideo.pause();
     heyVideo.pause();
@@ -80,7 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   });
 
-  /* JOURNEY → GREETINGS */
+  // ===== JOURNEY → GREETINGS =====
   journeyVideo.addEventListener("timeupdate", () => {
     if (journeyVideo.currentTime >= 26.5) {
       journeyVideo.pause();
@@ -92,31 +93,36 @@ document.addEventListener("DOMContentLoaded", () => {
       greetingsVideo.currentTime = 0;
       greetingsVideo.play();
 
-      setTimeout(() => greetingsVideo.style.opacity = 1, 50);
+      // Smooth fade-in
+      setTimeout(() => { greetingsVideo.style.opacity = 1; }, 50);
     }
   });
 
-  /* GREETINGS → MARKET */
+  // ===== GREETINGS → MARKET =====
   greetingsVideo.addEventListener("click", () => {
     greetingsVideo.pause();
     greetingsVideo.style.display = "none";
 
-    // Show market full screen
+    // Show full-screen market
     marketImg.style.display = "block";
-    marketImg.style.opacity = 0;  // start fade
-    setTimeout(() => {
-        marketImg.style.opacity = 1; // fade in smoothly
-    }, 50);
+    marketImg.style.opacity = 0;
+    setTimeout(() => { marketImg.style.opacity = 1; }, 50);
 
-    // Show market buttons
+    // Show buttons
     toursBtn.style.display = "block";
     whatsappBtn.style.display = "block";
+
     toursBtn.style.opacity = 1;
     whatsappBtn.style.opacity = 1;
   });
 
-  /* MARKET BUTTONS */
-  toursBtn.addEventListener("click", () => window.open("tours.jpg", "_blank"));
-  whatsappBtn.addEventListener("click", () => window.open("https://wa.me/50558365522", "_blank"));
+  // ===== MARKET BUTTONS =====
+  toursBtn.addEventListener("click", () => {
+    window.open("tours.jpg", "_blank");
+  });
+
+  whatsappBtn.addEventListener("click", () => {
+    window.open("https://wa.me/50558365522", "_blank");
+  });
 
 });
