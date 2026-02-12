@@ -1,3 +1,4 @@
+/* ===== BODY ===== */
 body {
     margin: 0;
     padding: 0;
@@ -9,10 +10,12 @@ body {
     height: 100vh;
 }
 
-/* Container for SRA */
-#container { text-align: center; }
+/* ===== CONTAINER ===== */
+#container {
+    text-align: center;
+}
 
-/* SRA Video */
+/* ===== SRA VIDEO ===== */
 #sraVideo {
     width: 1200px;
     max-width: 95vw;
@@ -22,7 +25,7 @@ body {
     margin: 0 auto;
 }
 
-/* Button Row */
+/* ===== BUTTON ROW ===== */
 #buttonRow {
     margin-top: 60px;
     display: flex;
@@ -31,23 +34,33 @@ body {
     gap: 140px;
 }
 
-/* Go & Skip Buttons */
-#goBtn, #skipBtn {
-    cursor: pointer;
+/* ===== GO BUTTON ===== */
+#goBtn {
+    width: 450px;
     opacity: 0;
+    cursor: pointer;
     transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
     pointer-events: none;
 }
-#goBtn { width: 450px; }
-#skipBtn { width: 350px; }
 
-/* Hover effect for buttons */
-#goBtn:hover, #skipBtn:hover, #sagaBtn:hover { 
+/* ===== SKIP BUTTON ===== */
+#skipBtn {
+    width: 350px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
+    pointer-events: none;
+}
+
+/* ===== HOVER EFFECTS ===== */
+#goBtn:hover,
+#skipBtn:hover,
+#sagaBtn:hover {
     transform: scale(1.12);
     filter: brightness(1.15);
 }
 
-/* Mission Video */
+/* ===== MISSION VIDEO ===== */
 #missionVideo {
     width: 85%;
     max-width: 1000px;
@@ -59,7 +72,7 @@ body {
     z-index: 10;
 }
 
-/* Blackie (top) */
+/* ===== BLACKIE VIDEO (TOP CENTER) ===== */
 #blackieVideo {
     position: fixed;
     top: 0;
@@ -71,7 +84,7 @@ body {
     z-index: 5;
 }
 
-/* Hey (bottom left) */
+/* ===== HEY VIDEO (BOTTOM LEFT) ===== */
 #heyVideo {
     position: fixed;
     bottom: 20px;
@@ -83,7 +96,7 @@ body {
     z-index: 6;
 }
 
-/* Saga Button */
+/* ===== SAGA BUTTON ===== */
 #sagaBtn {
     position: fixed;
     bottom: 50px;
@@ -97,8 +110,9 @@ body {
     display: none;
 }
 
-/* Beginning & Journey Full Screen */
-#beginningVideo, #journeyVideo {
+/* ===== BEGINNING & JOURNEY (FULL SCREEN) ===== */
+#beginningVideo,
+#journeyVideo {
     position: fixed;
     top: 0;
     left: 0;
@@ -110,7 +124,7 @@ body {
     z-index: 20;
 }
 
-/* Greetings Scroll */
+/* ===== GREETINGS VIDEO ===== */
 #greetingsVideo {
     width: 85%;
     max-width: 1000px;
@@ -119,5 +133,5 @@ body {
     cursor: pointer;
     opacity: 0;
     transition: opacity 1s ease;
-    z-index: 30;
+    z-index: 10;
 }
