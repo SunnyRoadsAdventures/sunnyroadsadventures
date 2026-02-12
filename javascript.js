@@ -1,21 +1,24 @@
 window.addEventListener("load", function () {
 
-    const introVideo = document.getElementById("introVideo");
+    const sraVideo = document.getElementById("sraVideo");
     const goBtn = document.getElementById("goBtn");
     const skipBtn = document.getElementById("skipBtn");
 
-    /* 1.5 seconds → fade in video */
+    /* Start loading video immediately */
+    sraVideo.load();
+
+    /* 1.5s → fade in video */
     setTimeout(() => {
-        introVideo.style.opacity = "1";
-        introVideo.play().catch(() => {});
+        sraVideo.style.opacity = "1";
+        sraVideo.play().catch(() => {});
     }, 1500);
 
-    /* 2.3 seconds → fade in GO button */
+    /* 2.3s → fade in GO */
     setTimeout(() => {
         goBtn.style.opacity = "1";
     }, 2300);
 
-    /* 4 seconds → fade in SKIP button */
+    /* 4s → fade in SKIP */
     setTimeout(() => {
         skipBtn.style.opacity = "1";
     }, 4000);
