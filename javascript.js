@@ -21,13 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
       video.volume = 1.0;
   });
 
-  /* SAGA FADE IN */
+  /* === SAGA BUTTON === */
   setTimeout(() => {
       sagaBtn.style.opacity = 1;
       sagaBtn.style.pointerEvents = 'auto';
   }, 2000);
 
-  /* CLICK SAGA → SHOW MISSION */
   sagaBtn.addEventListener("click", () => {
       sagaBtn.style.opacity = 0;
       sagaBtn.style.pointerEvents = 'none';
@@ -36,14 +35,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
           missionVideo.style.display = "block";
           missionVideo.style.opacity = 1;
+          missionVideo.style.pointerEvents = 'auto';
           missionVideo.currentTime = 0;
           missionVideo.play();
-      }, 1000);
+      }, 500);
   });
 
-  /* CLICK ANYWHERE ON MISSION → CLOSE AND CONTINUE */
+  /* === MISSION CLICK === */
   missionVideo.addEventListener("click", () => {
       missionVideo.style.opacity = 0;
+      missionVideo.style.pointerEvents = 'none';
       setTimeout(() => {
           missionVideo.pause();
           missionVideo.style.display = "none";
@@ -59,88 +60,83 @@ document.addEventListener("DOMContentLoaded", () => {
           enterBtn.style.display = "block";
           enterBtn.style.opacity = 1;
           enterBtn.style.pointerEvents = 'auto';
-      }, 1000);
+      }, 500);
   });
 
-  /* BLACKIE FADE AT 65.2s */
+  /* === BLACKIE FADE AT 65.2s === */
   blackieVideo.addEventListener("timeupdate", () => {
       if (blackieVideo.currentTime >= 65.2) {
           blackieVideo.style.opacity = 0;
+          blackieVideo.style.pointerEvents = 'none';
           blackieVideo.pause();
       }
   });
 
-  /* ENTER CLICK → STOP LOWER VIDEOS & PLAY BEGINNING + JOURNEY */
+  /* === ENTER BUTTON CLICK === */
   enterBtn.addEventListener("click", () => {
-
-      blackieVideo.style.opacity = 0;
-      blackieVideo.pause();
-      heyVideo.style.opacity = 0;
-      heyVideo.pause();
-
       enterBtn.style.opacity = 0;
       enterBtn.style.pointerEvents = 'none';
-      setTimeout(() => enterBtn.style.display = "none", 1000);
+      blackieVideo.style.opacity = 0;
+      blackieVideo.style.pointerEvents = 'none';
+      blackieVideo.pause();
+      heyVideo.style.opacity = 0;
+      heyVideo.style.pointerEvents = 'none';
+      heyVideo.pause();
 
-      /* PLAY BEGINNING VIDEO */
+      setTimeout(() => enterBtn.style.display = "none", 500);
+
       beginningVideo.style.display = "block";
       beginningVideo.style.opacity = 1;
+      beginningVideo.style.pointerEvents = 'auto';
       beginningVideo.currentTime = 0;
       beginningVideo.play();
 
-      /* WHEN BEGINNING ENDS → PLAY JOURNEY */
       beginningVideo.onended = () => {
           beginningVideo.style.opacity = 0;
+          beginningVideo.style.pointerEvents = 'none';
           beginningVideo.style.display = "none";
 
           journeyVideo.style.display = "block";
           journeyVideo.style.opacity = 1;
+          journeyVideo.style.pointerEvents = 'auto';
           journeyVideo.currentTime = 0;
           journeyVideo.play();
       };
   });
 
-  /* FADE JOURNEY AT 26.5s → GREETINGS */
+  /* === JOURNEY FADE TO GREETINGS === */
   journeyVideo.addEventListener("timeupdate", () => {
       if (journeyVideo.currentTime >= 26.5) {
           journeyVideo.style.opacity = 0;
+          journeyVideo.style.pointerEvents = 'none';
           journeyVideo.pause();
 
           greetingsVideo.style.display = "block";
           greetingsVideo.style.opacity = 1;
+          greetingsVideo.style.pointerEvents = 'auto';
           greetingsVideo.currentTime = 0;
           greetingsVideo.play();
       }
   });
 
-  /* CLICK GREETINGS → FADE TO BLACK + SHOW MARKET */
+  /* === GREETINGS CLICK → SHOW MARKET === */
   greetingsVideo.addEventListener("click", () => {
       greetingsVideo.style.opacity = 0;
+      greetingsVideo.style.pointerEvents = 'none';
       setTimeout(() => {
           greetingsVideo.pause();
           greetingsVideo.style.display = "none";
 
-          /* SHOW MARKET IMAGE */
           marketImg.style.display = "block";
           marketImg.style.opacity = 1;
 
-          /* SHOW BUTTONS */
           toursBtn.style.opacity = 1;
           whatsappBtn.style.opacity = 1;
-      }, 1000);
+      }, 500);
   });
 
-  /* BUTTONS FUNCTIONALITY */
-  if (toursBtn) {
-      toursBtn.addEventListener("click", () => {
-          window.open("tours.jpg", "_blank");
-      });
-  }
-
-  if (whatsappBtn) {
-      whatsappBtn.addEventListener("click", () => {
-          window.open("https://wa.me/50558365522", "_blank");
-      });
-  }
+  /* BUTTONS */
+  if (toursBtn) toursBtn.addEventListener("click", () => window.open("tours.jpg", "_blank"));
+  if (whatsappBtn) whatsappBtn.addEventListener("click", () => window.open("https://wa.me/50558365522", "_blank"));
 
 });
