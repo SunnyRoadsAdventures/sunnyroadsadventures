@@ -5,12 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const blackieVideo = document.getElementById("blackieVideo");
     const heyVideo = document.getElementById("heyVideo");
     const enterBtn = document.getElementById("enterBtn");
-
     const beginningVideo = document.getElementById("beginningVideo");
     const journeyVideo = document.getElementById("journeyVideo");
     const greetingsVideo = document.getElementById("greetingsVideo");
 
-    /* MAX VOLUME FOR ALL VIDEOS */
+    /* MAX VOLUME */
     const allVideos = document.querySelectorAll("video");
     allVideos.forEach(video => {
         video.muted = false;
@@ -42,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
             missionVideo.pause();
             missionVideo.style.display = "none";
 
-            /* SHOW LOWER VIDEOS */
             blackieVideo.style.display = "block";
             blackieVideo.style.opacity = 1;
             blackieVideo.play();
@@ -53,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             enterBtn.style.display = "block";
             enterBtn.style.opacity = 1;
+
         }, 1000);
     });
 
@@ -64,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    /* ENTER BUTTON CLICK → STOP LOWER VIDEOS & START BEGINNING + JOURNEY */
+    /* ENTER BUTTON CLICK → STOP LOWER VIDEOS & PLAY BEGINNING + JOURNEY */
     enterBtn.addEventListener("click", () => {
 
         /* fade out lower videos */
@@ -83,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
         beginningVideo.currentTime = 0;
         beginningVideo.play();
 
-        /* WHEN BEGINNING ENDS → PLAY JOURNEY VIDEO */
+        /* WHEN BEGINNING ENDS → PLAY JOURNEY */
         beginningVideo.onended = () => {
             beginningVideo.style.opacity = 0;
             beginningVideo.style.display = "none";
@@ -95,11 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     });
 
-    /* FADE OUT JOURNEY AT 26.5s → SHOW GREETINGS POPUP */
+    /* FADE JOURNEY AT 26.5s */
     journeyVideo.addEventListener("timeupdate", () => {
-        if (journeyVideo.currentTime >= 26.5 && !journeyVideo.hasFaded) {
-            journeyVideo.hasFaded = true;
-
+        if (journeyVideo.currentTime >= 26.5) {
             journeyVideo.style.transition = "opacity 2s ease";
             journeyVideo.style.opacity = 0;
 
@@ -107,12 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 journeyVideo.pause();
                 journeyVideo.style.display = "none";
 
-                /* Show greetings.mp4 popup */
+                /* Fade to black then optionally trigger greetings.mp4 here */
                 greetingsVideo.style.display = "block";
                 greetingsVideo.currentTime = 0;
+                greetingsVideo.play();
                 greetingsVideo.style.transition = "opacity 2s ease";
                 greetingsVideo.style.opacity = 1;
-                greetingsVideo.play();
             }, 2000);
         }
     });
