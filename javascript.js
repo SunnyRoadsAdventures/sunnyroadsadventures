@@ -13,27 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const fadeDuration = 1000;
 
-    // ===== INITIAL FADE-IN =====
-    sraVideo.style.opacity = 0;
-    goBtn.style.opacity = 0;
-    skipBtn.style.opacity = 0;
-    goBtn.style.pointerEvents = "none";
-    skipBtn.style.pointerEvents = "none";
-
+    // ===== Initial fade-in for SRA + buttons =====
     setTimeout(() => sraVideo.style.opacity = 1, 1500);
     setTimeout(() => { goBtn.style.opacity = 1; goBtn.style.pointerEvents = "auto"; }, 2300);
     setTimeout(() => { skipBtn.style.opacity = 1; skipBtn.style.pointerEvents = "auto"; }, 4000);
 
-    // ===== HELPER FUNCTIONS =====
-    function fadeOutElements(elements, callback) {
+    // ===== Helper functions =====
+    function fadeOut(elements, callback) {
         elements.forEach(el => el.style.opacity = 0);
-        setTimeout(() => { if(callback) callback(); }, fadeDuration);
+        setTimeout(callback, fadeDuration);
     }
-
-    function fadeInElement(element) {
-        element.style.opacity = 1;
-    }
-
+    function fadeIn(el) { el.style.opacity = 1; }
     function showVideo(videoEl, fullscreen = false) {
         videoEl.style.display = "block";
         videoEl.muted = false;
@@ -46,13 +36,13 @@ document.addEventListener("DOMContentLoaded", () => {
             videoEl.style.height = "100%";
             videoEl.style.objectFit = "cover";
         }
-        setTimeout(() => videoEl.style.opacity = 1, 100);
+        setTimeout(() => fadeIn(videoEl), 100);
         videoEl.play();
     }
 
-    // ===== GO BUTTON CLICK → mission.mp4 =====
+    // ===== GO BUTTON → Mission Scroll =====
     goBtn.addEventListener("click", () => {
-        fadeOutElements([sraVideo, goBtn, skipBtn], () => {
+        fadeOut([sraVideo, goBtn, skipBtn], () => {
             sraVideo.style.display = "none";
             goBtn.style.display = "none";
             skipBtn.style.display = "none";
@@ -60,81 +50,60 @@ document.addEventListener("DOMContentLoaded", () => {
             showVideo(missionVideo);
 
             missionVideo.addEventListener("click", () => {
-                fadeOutElements([missionVideo], () => {
+                fadeOut([missionVideo], () => {
                     missionVideo.style.display = "none";
 
                     // Show blackie + hey
                     showVideo(blackieVideo);
                     showVideo(heyVideo);
 
-                    // Saga button fades in after 4s
-                    setTimeout(() => {
-                        sagaBtn.style.display = "block";
-                        fadeInElement(sagaBtn);
-                    }, 4000);
+                    // Saga button fade in after 4s
+                    setTimeout(() => { sagaBtn.style.display = "block"; fadeIn(sagaBtn); }, 4000);
                 });
             }, { once: true });
         });
     });
 
-    // ===== SAGA BUTTON CLICK → beginning + journey =====
-    sagaBtn.addEventListener("click", () => {
-        // Stop blackie and hey immediately
-        blackieVideo.pause();
-        blackieVideo.style.display = "none";
-        heyVideo.pause();
-        heyVideo.style.display = "none";
-        fadeOutElements([sagaBtn], () => sagaBtn.style.display = "none");
-
-        // Play beginning first
-        showVideo(beginningVideo, true);
-
-        beginningVideo.addEventListener("ended", () => {
-            // Play journey after beginning ends
-            showVideo(journeyVideo, true);
-
-            // journey fades at 27s and triggers greetings
-            const journeyFadeHandler = () => {
-                if (journeyVideo.currentTime >= 27) {
-                    fadeOutElements([journeyVideo], () => journeyVideo.style.display = "none");
-
-                    // Fade in greetings.mp4
-                    greetingsVideo.style.display = "block";
-                    greetingsVideo.muted = false;
-                    greetingsVideo.volume = 1;
-                    setTimeout(() => greetingsVideo.style.opacity = 1, 50);
-                    greetingsVideo.play();
-
-                    // Click to close greetings
-                    greetingsVideo.addEventListener("click", () => {
-                        fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
-                    }, { once: true });
-
-                    journeyVideo.removeEventListener("timeupdate", journeyFadeHandler);
-                }
-            };
-            journeyVideo.addEventListener("timeupdate", journeyFadeHandler);
-        }, { once: true });
-    });
-
-    // ===== SKIP BUTTON CLICK → greetings.mp4 =====
+    // ===== SKIP BUTTON → Greetings Scroll =====
     skipBtn.addEventListener("click", () => {
-        fadeOutElements([sraVideo, goBtn, skipBtn], () => {
+        fadeOut([sraVideo, goBtn, skipBtn], () => {
             sraVideo.style.display = "none";
             goBtn.style.display = "none";
             skipBtn.style.display = "none";
 
-            // Show greetings video (click-to-close scroll)
-            greetingsVideo.style.display = "block";
-            greetingsVideo.muted = false;
-            greetingsVideo.volume = 1;
-            setTimeout(() => greetingsVideo.style.opacity = 1, 50);
-            greetingsVideo.play();
+            showVideo(greetingsVideo);
 
             greetingsVideo.addEventListener("click", () => {
-                fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
+                fadeOut([greetingsVideo], () => greetingsVideo.style.display = "none");
             }, { once: true });
         });
+    });
+
+    // ===== SAGA BUTTON → Beginning + Journey =====
+    sagaBtn.addEventListener("click", () => {
+        // Stop blackie + hey immediately
+        blackieVideo.pause(); blackieVideo.style.display = "none";
+        heyVideo.pause(); heyVideo.style.display = "none";
+        sagaBtn.style.display = "none";
+
+        showVideo(beginningVideo, true);
+
+        beginningVideo.addEventListener("ended", () => {
+            showVideo(journeyVideo, true);
+
+            // Fade journey to black at 27s
+            journeyVideo.addEventListener("timeupdate", () => {
+                if (journeyVideo.currentTime >= 27) {
+                    fadeOut([journeyVideo], () => journeyVideo.style.display = "none");
+
+                    // Fade in greetings scroll
+                    showVideo(greetingsVideo);
+                    greetingsVideo.addEventListener("click", () => {
+                        fadeOut([greetingsVideo], () => greetingsVideo.style.display = "none");
+                    }, { once: true });
+                }
+            });
+        }, { once: true });
     });
 
 });
