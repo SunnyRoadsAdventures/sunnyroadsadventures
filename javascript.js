@@ -1,35 +1,37 @@
-const sraVideo = document.getElementById("sraVideo");
-const missionVideo = document.getElementById("missionVideo");
-const goBtn = document.getElementById("goBtn");
-const skipBtn = document.getElementById("skipBtn");
-const container = document.getElementById("container");
-const fadeOverlay = document.getElementById("fadeOverlay");
+document.addEventListener("DOMContentLoaded", function () {
 
-/* Intro Fade In */
-window.onload = () => {
+    const sraVideo = document.getElementById("sraVideo");
+    const missionVideo = document.getElementById("missionVideo");
+    const goBtn = document.getElementById("goBtn");
+    const skipBtn = document.getElementById("skipBtn");
+    const container = document.getElementById("container");
+    const fadeOverlay = document.getElementById("fadeOverlay");
+
+    /* Intro Fade In */
     sraVideo.style.opacity = "1";
 
     setTimeout(() => {
         goBtn.style.opacity = "1";
         skipBtn.style.opacity = "1";
     }, 2000);
-};
 
-/* GO Click → Start Story */
-goBtn.addEventListener("click", () => {
 
-    // Fade intro away
-    container.style.opacity = "0";
+    /* GO Click → Start Story */
+    goBtn.addEventListener("click", function () {
 
-    // Fade to black
-    setTimeout(() => {
-        fadeOverlay.style.opacity = "1";
-    }, 1000);
+        console.log("GO clicked"); // Debug check
 
-    // Start mission video
-    setTimeout(() => {
-        missionVideo.style.opacity = "1";
-        missionVideo.play();
-        fadeOverlay.style.opacity = "0";
-    }, 2500);
+        container.style.opacity = "0";
+
+        setTimeout(() => {
+            fadeOverlay.style.opacity = "1";
+        }, 1000);
+
+        setTimeout(() => {
+            missionVideo.style.opacity = "1";
+            missionVideo.play();
+            fadeOverlay.style.opacity = "0";
+        }, 2500);
+    });
+
 });
