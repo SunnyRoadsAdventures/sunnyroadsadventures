@@ -66,6 +66,20 @@ width: 170px;
 display: none;
 z-index: 6;
 }
+/* ======================
+   CINEMATIC FULLSCREEN VIDEOS
+====================== */
+#beginningVideo,
+#journeyVideo {
+top: 50%;
+left: 50%;
+width: 100vw;
+height: 100vh;
+transform: translate(-50%, -50%);
+object-fit: cover;
+display: none;
+z-index: 50;
+}
 
 /* ======================
    ENTER BUTTON (HALF SIZE)
@@ -79,3 +93,4 @@ display: none;
 cursor: pointer;
 z-index: 7;
 }
+
