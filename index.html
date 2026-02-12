@@ -14,7 +14,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* soft turquoise to white */
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
   color: #333;
   overflow-x: hidden;
   position: relative;
@@ -125,7 +125,7 @@ nav {
 }
 
 nav button {
-  background: #00bcd4; /* turquoise */
+  background: #00bcd4;
   border: none;
   padding: 10px 22px;
   border-radius: 12px;
@@ -231,6 +231,19 @@ h1, h2 {
 @keyframes rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* GROK REACT TO TOUR */
+#grok.jump {
+  animation: jumpSpin 0.8s ease forwards;
+}
+
+@keyframes jumpSpin {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-60px) rotate(90deg); }
+  50% { transform: translateY(-80px) rotate(180deg); }
+  75% { transform: translateY(-60px) rotate(270deg); }
+  100% { transform: translateY(0) rotate(360deg); }
 }
 
 /* ===== POPUP ===== */
@@ -393,7 +406,14 @@ closePopup.addEventListener('click', () => {
 // ===== TOUR CARD CLICK =====
 document.querySelectorAll('.tour-card').forEach(card => {
   card.addEventListener('click', () => {
-    alert("Tour selected: " + card.querySelector('h3').textContent);
+    // Grok jumps and spins
+    grok.classList.add('jump');
+    setTimeout(() => { grok.classList.remove('jump'); }, 800);
+
+    // Show popup with tour info
+    popup.querySelector('h3').textContent = "Tour: " + card.querySelector('h3').textContent;
+    popup.querySelector('p').textContent = card.querySelector('p').textContent;
+    popup.classList.add('active');
   });
 });
 </script>
