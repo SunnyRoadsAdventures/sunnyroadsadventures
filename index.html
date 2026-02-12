@@ -14,7 +14,7 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom, #fdfdfd, #f0f8ff); /* soft white/blue */
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff); /* soft turquoise to white */
   color: #333;
   overflow-x: hidden;
 }
@@ -27,8 +27,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #fffaf0;
-  border-bottom: 2px solid #eee;
+  background: #f0f8ff;
+  border-bottom: 2px solid #d0e6f0;
 }
 
 #logoVideo {
@@ -36,7 +36,8 @@ header {
   height: 180px;
   object-fit: cover;
   border-radius: 50%;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  border: 3px solid #a0e1e0;
 }
 
 /* ===== NAVIGATION ===== */
@@ -49,19 +50,21 @@ nav {
 }
 
 nav button {
-  background: #ffb74d;
+  background: #00bcd4; /* turquoise */
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 10px 22px;
+  border-radius: 12px;
   font-size: 16px;
   cursor: pointer;
+  color: #fff;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
 nav button:hover {
+  background: #26c6da; /* lighter turquoise */
   transform: scale(1.1);
-  background: #ffa726;
-  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 /* ===== SECTIONS ===== */
@@ -73,43 +76,47 @@ section {
   justify-content: center;
   padding: 50px 20px;
   transition: background 1s ease;
+  text-align: center;
 }
 
 h1, h2 {
   margin-bottom: 20px;
-  text-align: center;
+  font-weight: 700;
 }
 
 /* ===== TOUR CARDS ===== */
 .tour-card {
   width: 280px;
   height: 180px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background: linear-gradient(to top, #ffffff, #e0f7fa);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   cursor: pointer;
+  border: 2px solid #a0e1e0;
 }
 
 .tour-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  background: #b2ebf2;
 }
 
 .tour-card h3 {
   margin-bottom: 10px;
   font-size: 18px;
+  color: #00796b;
 }
 
 .tour-card p {
   font-size: 14px;
   text-align: center;
-  color: #666;
+  color: #555;
 }
 
 /* ===== TOUR CONTAINER ===== */
@@ -125,7 +132,7 @@ h1, h2 {
 #grok {
   width: 120px;
   height: 120px;
-  background: #ffcc80;
+  background: #ffd54f; /* soft sunny yellow */
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -136,13 +143,17 @@ h1, h2 {
   bottom: 30px;
   right: 30px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  animation: float 3s ease-in-out infinite;
+  animation: float 3s ease-in-out infinite, rotate 8s linear infinite;
   z-index: 100;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* ===== POPUP ===== */
@@ -151,10 +162,10 @@ h1, h2 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  background: #fff;
-  border-radius: 12px;
+  background: #ffffff;
+  border-radius: 16px;
   padding: 30px;
-  width: 300px;
+  width: 320px;
   text-align: center;
   box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   z-index: 200;
@@ -167,17 +178,18 @@ h1, h2 {
 
 #popup button {
   margin-top: 20px;
-  padding: 8px 20px;
+  padding: 10px 22px;
   border: none;
-  border-radius: 6px;
-  background: #ffb74d;
+  border-radius: 8px;
+  background: #00bcd4;
+  color: #fff;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 #popup button:hover {
-  background: #ffa726;
-  color: #fff;
+  background: #26c6da;
 }
 
 /* ===== FOOTER ===== */
@@ -185,13 +197,14 @@ footer {
   width: 100%;
   padding: 30px;
   text-align: center;
-  background: #fffaf0;
-  border-top: 2px solid #eee;
+  background: #f0f8ff;
+  border-top: 2px solid #d0e6f0;
   margin-top: 50px;
 }
 
 footer p {
   color: #555;
+  font-weight: 500;
 }
 
 /* ===== RESPONSIVE ===== */
@@ -220,23 +233,25 @@ footer p {
 <!-- SECTIONS -->
 <section id="home">
   <h1>Welcome to Sunny Roads Adventures!</h1>
-  <p>Explore amazing tours, guided adventures, and fun experiences around the world.</p>
+  <p>Explore immersive tours, adventures, and experiences designed to delight and inspire.</p>
 </section>
 
 <section id="tours">
   <h2>Our Tours</h2>
   <div id="toursContainer">
-    <div class="tour-card"><h3>Volcano Hike</h3><p>Experience the thrill of walking up a volcano.</p></div>
-    <div class="tour-card"><h3>Lake Kayak</h3><p>Paddle peacefully on crystal clear waters.</p></div>
-    <div class="tour-card"><h3>City Highlights</h3><p>Discover hidden gems in the city streets.</p></div>
-    <div class="tour-card"><h3>Jungle Safari</h3><p>Meet nature up close with a guided safari.</p></div>
-    <div class="tour-card"><h3>Historic Walk</h3><p>Travel back in time with our expert guides.</p></div>
+    <div class="tour-card"><h3>Volcano Hike</h3><p>Feel the thrill of walking a majestic volcano.</p></div>
+    <div class="tour-card"><h3>Lake Kayak</h3><p>Paddle through serene waters and enjoy nature.</p></div>
+    <div class="tour-card"><h3>City Highlights</h3><p>Discover hidden gems and local secrets.</p></div>
+    <div class="tour-card"><h3>Jungle Safari</h3><p>Meet exotic wildlife on an unforgettable safari.</p></div>
+    <div class="tour-card"><h3>Historic Walk</h3><p>Travel through time with our expert guides.</p></div>
+    <div class="tour-card"><h3>Beach Escape</h3><p>Relax on pristine shores under the sun.</p></div>
+    <div class="tour-card"><h3>Sunset Cruise</h3><p>Enjoy breathtaking views on a relaxing boat tour.</p></div>
   </div>
 </section>
 
 <section id="about">
   <h2>About Us</h2>
-  <p>Sunny Roads Adventures brings you immersive travel experiences with comfort, safety, and fun. Our guides are experienced, friendly, and love to share local stories.</p>
+  <p>Sunny Roads Adventures brings immersive travel experiences with comfort, safety, and fun. Our guides are friendly, knowledgeable, and love to share local stories.</p>
 </section>
 
 <section id="contact">
