@@ -3,45 +3,15 @@ body {
     padding: 0;
     background: black;
     overflow: hidden;
-}
 
-/* Center entire group permanently */
-#centerGroup {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-/* SRA video */
-#sraVideo {
-    width: 500px;
-    max-width: 80vw;
-    display: block;
-    margin: 0 auto;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-}
-
-/* Buttons row */
-#buttonsRow {
-    margin-top: 40px;
     display: flex;
     justify-content: center;
-    gap: 80px;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Buttons */
-#goBtn,
-#skipBtn {
-    width: 160px;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 1.5s ease, transform 0.25s ease;
-}
-
-#goBtn:hover,
-#skipBtn:hover {
-    transform: scale(1.08);
+/* Centered Video */
+#sraVideo {
+    width: 500px;
+    max-width: 90vw;
 }
