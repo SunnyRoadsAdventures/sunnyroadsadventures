@@ -118,3 +118,25 @@ FULLSCREEN VIDEOS
   opacity: 0;         /* for fade-in transitions */
   z-index: 40;        /* on top of other elements */
 }
+
+/* ... your existing CSS ... */
+
+/* ======================
+REMOVE NATIVE VIDEO CONTROLS ICON
+====================== */
+video::-webkit-media-controls {
+    display: none !important;   
+}
+
+video::-webkit-media-controls-enclosure {
+    display: none !important;
+}
+
+video::-webkit-media-controls-overlay-play-button {
+    display: none !important;
+}
+
+video {
+    -webkit-appearance: none;
+    background: black;
+}
