@@ -27,16 +27,16 @@ body {
 
 /* Button Row */
 #buttonRow {
-    margin-top: 90px;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 160px;
+    gap: 140px;
 }
 
-/* ⚔️ GO Button (Primary) */
+/* ⚔️ GO Button (Primary Hero) */
 #goBtn {
-    width: 380px;   /* BIGGER */
+    width: 420px;
     opacity: 0;
     cursor: pointer;
     transition:
@@ -45,9 +45,9 @@ body {
         filter 0.3s ease;
 }
 
-/* 🛡️ SKIP Button (Secondary) */
+/* 🛡️ SKIP Button (Strong Secondary) */
 #skipBtn {
-    width: 260px;   /* smaller than GO */
+    width: 340px;
     opacity: 0;
     cursor: pointer;
     transition:
