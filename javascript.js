@@ -10,6 +10,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const journeyVideo = document.getElementById("journeyVideo");
     const greetingsVideo = document.getElementById("greetingsVideo");
 
+    const fadeDuration = 1000; // 1s fade
+
+    // Helper for fading volume
+    function fadeVolume(video, start, end, duration) {
+        const steps = 20;
+        const stepTime = duration / steps;
+        let currentStep = 0;
+        const delta = (end - start) / steps;
+        video.volume = start;
+
+        const interval = setInterval(() => {
+            currentStep++;
+            video.volume = Math.min(Math.max(video.volume + delta, 0), 1);
+            if (currentStep >= steps) clearInterval(interval);
+        }, stepTime);
+    }
+
     // Initial fade-in sequence
     setTimeout(() => sraVideo.style.opacity = 1, 1500);
     setTimeout(() => { goBtn.style.opacity = 1; goBtn.style.pointerEvents = "auto"; }, 2300);
@@ -17,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ==== GO BUTTON → MISSION VIDEO ====
     goBtn.addEventListener("click", () => {
+        // Fade out sra & buttons
         sraVideo.style.opacity = 0;
         goBtn.style.opacity = 0;
         skipBtn.style.opacity = 0;
@@ -29,35 +47,55 @@ document.addEventListener("DOMContentLoaded", () => {
             skipBtn.style.display = "none";
 
             missionVideo.style.display = "block";
-            missionVideo.volume = 1; // max volume
-            setTimeout(() => missionVideo.style.opacity = 1, 100);
+            missionVideo.style.opacity = 0;
             missionVideo.play();
+            fadeVolume(missionVideo, 0, 1, fadeDuration); // fade in audio
+            setTimeout(() => missionVideo.style.opacity = 1, 100);
 
-            // Click anywhere on mission to close
+            // Click anywhere to close mission
             missionVideo.addEventListener("click", () => {
                 missionVideo.style.opacity = 0;
+                fadeVolume(missionVideo, 1, 0, fadeDuration); // fade out audio
                 missionVideo.style.pointerEvents = "none";
-                setTimeout(() => missionVideo.style.display = "none", 1000);
+                setTimeout(() => missionVideo.style.display = "none", fadeDuration);
 
                 // Show blackie + hey
                 blackieVideo.style.display = "block";
-                blackieVideo.volume = 1;
-                heyVideo.style.display = "block";
-                heyVideo.volume = 1;
-
-                setTimeout(() => { blackieVideo.style.opacity = 1; heyVideo.style.opacity = 1; }, 100);
+                blackieVideo.style.opacity = 0;
                 blackieVideo.play();
+                fadeVolume(blackieVideo, 0, 1, fadeDuration);
+
+                heyVideo.style.display = "block";
+                heyVideo.style.opacity = 0;
                 heyVideo.play();
+                fadeVolume(heyVideo, 0, 1, fadeDuration);
+
+                setTimeout(() => {
+                    blackieVideo.style.opacity = 1;
+                    heyVideo.style.opacity = 1;
+                }, 100);
 
                 // Fade out blackie at 65s
-                setTimeout(() => blackieVideo.style.opacity = 0, 65000);
-                // Fade out hey automatically at 70s
-                setTimeout(() => heyVideo.style.opacity = 0, 70000);
+                setTimeout(() => {
+                    blackieVideo.style.opacity = 0;
+                    fadeVolume(blackieVideo, 1, 0, fadeDuration);
+                }, 65000);
+
+                // Fade out hey at 70s
+                setTimeout(() => {
+                    heyVideo.style.opacity = 0;
+                    fadeVolume(heyVideo, 1, 0, fadeDuration);
+                }, 70000);
 
                 // Fade in saga.png at 4s
-                setTimeout(() => { sagaBtn.style.display = "block"; sagaBtn.style.opacity = 1; sagaBtn.style.pointerEvents = "auto"; }, 4000);
+                setTimeout(() => {
+                    sagaBtn.style.display = "block";
+                    sagaBtn.style.opacity = 0;
+                    sagaBtn.style.pointerEvents = "auto";
+                    setTimeout(() => sagaBtn.style.opacity = 1, 100);
+                }, 4000);
             });
-        }, 1000);
+        }, fadeDuration);
     });
 
     // ==== SKIP BUTTON → GREETINGS VIDEO ====
@@ -74,16 +112,18 @@ document.addEventListener("DOMContentLoaded", () => {
             skipBtn.style.display = "none";
 
             greetingsVideo.style.display = "block";
-            greetingsVideo.volume = 1; // max volume
-            setTimeout(() => greetingsVideo.style.opacity = 1, 100);
+            greetingsVideo.style.opacity = 0;
             greetingsVideo.play();
+            fadeVolume(greetingsVideo, 0, 1, fadeDuration);
+            setTimeout(() => greetingsVideo.style.opacity = 1, 100);
 
             greetingsVideo.addEventListener("click", () => {
                 greetingsVideo.style.opacity = 0;
+                fadeVolume(greetingsVideo, 1, 0, fadeDuration);
                 greetingsVideo.style.pointerEvents = "none";
-                setTimeout(() => greetingsVideo.style.display = "none", 1000);
+                setTimeout(() => greetingsVideo.style.display = "none", fadeDuration);
             });
-        }, 1000);
+        }, fadeDuration);
     });
 
     // ==== SAGA BUTTON → BEGINNING → JOURNEY ====
@@ -101,27 +141,31 @@ document.addEventListener("DOMContentLoaded", () => {
             heyVideo.style.display = "none";
 
             beginningVideo.style.display = "block";
-            beginningVideo.volume = 1; // max volume
-            setTimeout(() => beginningVideo.style.opacity = 1, 100);
+            beginningVideo.style.opacity = 0;
             beginningVideo.play();
+            fadeVolume(beginningVideo, 0, 1, fadeDuration);
+            setTimeout(() => beginningVideo.style.opacity = 1, 100);
 
             // When beginning ends → journey
             beginningVideo.addEventListener("ended", () => {
                 beginningVideo.style.opacity = 0;
+                fadeVolume(beginningVideo, 1, 0, fadeDuration);
                 beginningVideo.style.display = "none";
 
                 journeyVideo.style.display = "block";
-                journeyVideo.volume = 1; // max volume
-                setTimeout(() => journeyVideo.style.opacity = 1, 100);
+                journeyVideo.style.opacity = 0;
                 journeyVideo.play();
+                fadeVolume(journeyVideo, 0, 1, fadeDuration);
+                setTimeout(() => journeyVideo.style.opacity = 1, 100);
 
                 // Click anywhere on journey to close
                 journeyVideo.addEventListener("click", () => {
                     journeyVideo.style.opacity = 0;
+                    fadeVolume(journeyVideo, 1, 0, fadeDuration);
                     journeyVideo.style.pointerEvents = "none";
-                    setTimeout(() => journeyVideo.style.display = "none", 1000);
+                    setTimeout(() => journeyVideo.style.display = "none", fadeDuration);
                 });
             });
-        }, 1000);
+        }, fadeDuration);
     });
 });
