@@ -1,102 +1,112 @@
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  overflow: hidden;
-}
+document.addEventListener("DOMContentLoaded", () => {
 
-/* Shared fade for images & videos */
-img, video {
-  position: absolute;
-  opacity: 0;
-  transition: opacity 1.5s ease;
-}
+  const sagaBtn = document.getElementById("sagaBtn");
+  const missionVideo = document.getElementById("missionVideo");
+  const blackieVideo = document.getElementById("blackieVideo");
+  const heyVideo = document.getElementById("heyVideo");
+  const enterBtn = document.getElementById("enterBtn");
 
-/* ======================
-BUTTONS
-====================== */
+  const beginningVideo = document.getElementById("beginningVideo");
+  const journeyVideo = document.getElementById("journeyVideo");
 
-/* SAGA BUTTON */
-#sagaBtn {
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  cursor: pointer;
-  z-index: 10;
-}
+  /* MAX VOLUME */
+  const allVideos = document.querySelectorAll("video");
+  allVideos.forEach(video => {
+      video.muted = false;
+      video.volume = 1.0;
+  });
 
-/* ENTER BUTTON */
-#enterBtn {
-  bottom: 2%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 130px; /* half size */
-  cursor: pointer;
-  z-index: 7;
-  display: none;
-}
+  /* SAGA FADE IN */
+  setTimeout(() => {
+      sagaBtn.style.opacity = 1;
+  }, 2000);
 
-/* ======================
-VIDEOS
-====================== */
+  /* CLICK SAGA → SHOW MISSION */
+  sagaBtn.addEventListener("click", () => {
+      sagaBtn.style.opacity = 0;
+      setTimeout(() => {
+          sagaBtn.style.display = "none";
 
-/* MISSION VIDEO - center popup */
-#missionVideo {
-  top: 50%;
-  left: 50%;
-  width: 80vw;
-  height: 80vh;
-  transform: translate(-50%, -50%);
-  object-fit: cover;
-  z-index: 20;
-  display: none;
-  cursor: pointer;
-}
+          missionVideo.style.display = "block";
+          missionVideo.style.opacity = 1;
+          missionVideo.currentTime = 0;
+          missionVideo.play();
+      }, 1000);
+  });
 
-/* BLACKIE VIDEO - top center, upper half */
-#blackieVideo {
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100vw;
-  height: 50vh;
-  object-fit: cover;
-  display: none;
-  z-index: 5;
-}
+  /* CLICK ANYWHERE ON MISSION → CLOSE AND CONTINUE */
+  missionVideo.addEventListener("click", () => {
+      missionVideo.style.opacity = 0;
+      setTimeout(() => {
+          missionVideo.pause();
+          missionVideo.style.display = "none";
 
-/* HEY VIDEO - bottom left */
-#heyVideo {
-  bottom: 5%;
-  left: 2%;
-  width: 170px; /* half size */
-  display: none;
-  z-index: 6;
-}
+          blackieVideo.style.display = "block";
+          blackieVideo.style.opacity = 1;
+          blackieVideo.play();
 
-/* BEGINNING VIDEO - FULL SCREEN */
-#beginningVideo {
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  transform: none;
-  object-fit: cover;
-  z-index: 15;
-  display: none;
-}
+          heyVideo.style.display = "block";
+          heyVideo.style.opacity = 1;
+          heyVideo.play();
 
-/* JOURNEY VIDEO - FULL SCREEN */
-#journeyVideo {
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  transform: none;
-  object-fit: cover;
-  z-index: 15;
-  display: none;
-}
+          enterBtn.style.display = "block";
+          enterBtn.style.opacity = 1;
+
+      }, 1000);
+  });
+
+  /* BLACKIE FADE AT 65.2s */
+  blackieVideo.addEventListener("timeupdate", () => {
+      if (blackieVideo.currentTime >= 65.2) {
+          blackieVideo.style.opacity = 0;
+          blackieVideo.pause();
+      }
+  });
+
+  /* ENTER BUTTON CLICK → STOP LOWER VIDEOS & START BEGINNING + JOURNEY */
+  enterBtn.addEventListener("click", () => {
+
+      /* fade out lower videos */
+      blackieVideo.style.opacity = 0;
+      blackieVideo.pause();
+      heyVideo.style.opacity = 0;
+      heyVideo.pause();
+
+      /* hide enter button */
+      enterBtn.style.opacity = 0;
+      setTimeout(() => enterBtn.style.display = "none", 1000);
+
+      /* PLAY BEGINNING VIDEO */
+      beginningVideo.style.display = "block";
+      beginningVideo.style.opacity = 1;
+      beginningVideo.currentTime = 0;
+      beginningVideo.play();
+
+      /* WHEN BEGINNING ENDS → PLAY JOURNEY */
+      beginningVideo.onended = () => {
+          beginningVideo.style.opacity = 0;
+          beginningVideo.style.display = "none";
+
+          journeyVideo.style.display = "block";
+          journeyVideo.style.opacity = 1;
+          journeyVideo.currentTime = 0;
+          journeyVideo.play();
+      };
+  });
+
+  /* FADE OUT JOURNEY AT 26.5s */
+  journeyVideo.addEventListener("timeupdate", () => {
+      if (journeyVideo.currentTime >= 26.5) {
+          journeyVideo.style.transition = "opacity 2s ease";
+          journeyVideo.style.opacity = 0;
+
+          /* stop video after fade */
+          setTimeout(() => {
+              journeyVideo.pause();
+              journeyVideo.style.display = "none";
+              /* screen remains black */
+          }, 2000); // matches fade duration
+      }
+  });
+
+});
