@@ -146,3 +146,41 @@ greetingsVideo.addEventListener("click", () => {
     document.body.style.background = "black";
   }, 1500);
 });
+
+const marketImg = document.getElementById("marketImg");
+const toursBtn = document.getElementById("toursBtn");
+const whatsappBtn = document.getElementById("whatsappBtn");
+
+// Trigger market display after greetings.mp4 ends or fades out
+greetingsVideo.addEventListener("timeupdate", () => {
+    // Check if greetings is fading or ending
+    if (greetingsVideo.currentTime >= greetingsVideo.duration - 0.5) { // last 0.5s
+        // Fade out greetings
+        greetingsVideo.style.opacity = 0;
+        setTimeout(() => {
+            greetingsVideo.pause();
+            greetingsVideo.style.display = "none";
+
+            // Show market.png
+            marketImg.style.display = "block";
+            setTimeout(() => { marketImg.style.opacity = 1; }, 50);
+
+            // Show buttons
+            toursBtn.style.display = "block";
+            whatsappBtn.style.display = "block";
+            setTimeout(() => {
+                toursBtn.style.opacity = 1;
+                whatsappBtn.style.opacity = 1;
+            }, 100);
+
+        }, 1000); // match fade timing
+    }
+});
+
+// Optional: Click buttons functionality
+toursBtn.addEventListener("click", () => {
+    window.open("tours.jpg", "_blank");
+});
+whatsappBtn.addEventListener("click", () => {
+    window.open("https://wa.me/50558365522", "_blank");
+});
