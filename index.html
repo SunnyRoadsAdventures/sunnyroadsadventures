@@ -2,16 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SRA Intro</title>
+    <title>SRA Interactive Story</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Container for initial video and buttons -->
     <div id="container">
-        <!-- SRA Video -->
         <video id="sraVideo" src="sra.mp4" muted autoplay playsinline></video>
 
-        <!-- Buttons -->
         <div id="buttonRow">
             <img src="go.png" id="goBtn" alt="Go">
             <img src="skip.png" id="skipBtn" alt="Skip">
@@ -25,15 +24,22 @@
     <video id="blackieVideo" src="blackie.mp4" playsinline></video>
     <video id="heyVideo" src="hey.mp4" playsinline></video>
 
-    <!-- Saga Button -->
+    <!-- Saga / Enter Button -->
     <img src="saga.png" id="sagaBtn" alt="Saga">
 
     <!-- Beginning & Journey (Full Screen) -->
     <video id="beginningVideo" src="beginning.mp4" playsinline></video>
     <video id="journeyVideo" src="journey.mp4" playsinline></video>
 
-    <!-- Greetings Video -->
+    <!-- Greetings Scroll -->
     <video id="greetingsVideo" src="greetings.mp4" playsinline></video>
+
+    <!-- Market Scene -->
+    <div id="marketScene">
+        <img src="market.jpg" id="marketBg" alt="Market Background">
+        <img src="shopBtn.png" id="shopBtn" alt="Shop">
+        <img src="innBtn.png" id="innBtn" alt="Inn">
+    </div>
 
     <script src="javascript.js"></script>
 </body>
