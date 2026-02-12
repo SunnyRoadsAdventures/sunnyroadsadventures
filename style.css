@@ -27,38 +27,31 @@ body {
 
 /* Button Row */
 #buttonRow {
-    margin-top: 100px;
+    margin-top: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 140px;
 }
 
-/* ⚔️ GO Button (Primary Hero) */
+/* GO Button */
 #goBtn {
-    width: 420px;
+    width: 500px;   /* BIG */
     opacity: 0;
     cursor: pointer;
-    transition:
-        opacity 1.5s ease,
-        transform 0.3s ease,
-        filter 0.3s ease;
+    transition: opacity 1.5s ease, transform 0.3s ease;
 }
 
-/* 🛡️ SKIP Button (Strong Secondary) */
+/* SKIP Button */
 #skipBtn {
-    width: 340px;
+    width: 420px;   /* Also big now */
     opacity: 0;
     cursor: pointer;
-    transition:
-        opacity 1.5s ease,
-        transform 0.3s ease,
-        filter 0.3s ease;
+    transition: opacity 1.5s ease, transform 0.3s ease;
 }
 
-/* Hover Effects */
+/* Hover */
 #goBtn:hover,
 #skipBtn:hover {
     transform: scale(1.12);
-    filter: brightness(1.15);
 }
