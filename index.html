@@ -1,25 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <title>Video Scene</title>
+    <title>SRA Intro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="video-container">
+    <div id="container">
+        <video id="sraVideo" src="sra.mp4" muted autoplay playsinline></video>
 
-    <!-- First video -->
-    <video id="missionVideo" src="mission.mp4"></video>
+        <div id="buttonRow">
+            <img src="go.png" id="goBtn" alt="Go">
+            <img src="skip.png" id="skipBtn" alt="Skip">
+        </div>
+    </div>
 
-    <!-- Appears after mission ends -->
-    <video id="blackieVideo" src="blackie.mp4" muted></video>
+    <!-- Mission Video (hidden at start) -->
+    <video id="missionVideo" src="mission.mp4" muted playsinline></video>
 
-    <!-- Appears after mission ends -->
-    <video id="heyVideo" src="hey.mp4" muted></video>
+    <!-- Blackie (hidden at start) -->
+    <video id="blackieVideo" src="blackie.mp4" muted playsinline></video>
 
-</div>
+    <!-- Hey (hidden at start) -->
+    <video id="heyVideo" src="hey.mp4" muted playsinline></video>
 
-<script src="script.js"></script>
+    <!-- Fade Overlay -->
+    <div id="fadeOverlay"></div>
+
+    <script src="javascript.js"></script>
+
 </body>
 </html>
