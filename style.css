@@ -58,7 +58,6 @@ img, video {
   z-index: 55;
 }
 
-/* ENTER BUTTON */
 #enterBtn {
   bottom: 2%;
   left: 50%;
@@ -66,7 +65,9 @@ img, video {
   width: 130px;
   display: none;
   cursor: pointer;
-  z-index: 60;
+  z-index: 9999;       /* VERY high so it’s on top */
+  pointer-events: auto; /* ensure it’s clickable even if opacity 0->1 transition */
+}
 }
 
 /* BEGINNING, JOURNEY, GREETINGS VIDEOS */
