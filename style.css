@@ -12,103 +12,61 @@ body {
 
 /* ===== CONTAINER ===== */
 #container {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    text-align: center;
 }
 
 /* ===== SRA VIDEO ===== */
 #sraVideo {
-    width: 100%;
-    height: 100%;
-    max-width: 1200px;
-    max-height: 90vh;   /* never exceed viewport height */
-    object-fit: contain; /* scale inside box without cropping */
-    display: block;
-    margin: 0 auto;
+    width: 1200px;       /* huge size */
+    max-width: 95vw;
     opacity: 0;
     transition: opacity 1.5s ease;
+    display: block;
+    margin: 0 auto;
 }
 
 /* ===== BUTTON ROW ===== */
 #buttonRow {
-    position: absolute;
-    bottom: 5%;
-    width: 100%;
+    margin-top: 60px;
     display: flex;
     justify-content: center;
-    gap: 60px; /* spacing between buttons */
+    align-items: center;
+    gap: 140px;
 }
 
 /* ===== GO BUTTON ===== */
 #goBtn {
-    width: 20vw;
-    max-width: 420px;
-    cursor: pointer;
+    width: 450px;
     opacity: 0;
+    cursor: pointer;
     transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
+    pointer-events: none;
 }
 
 /* ===== SKIP BUTTON ===== */
 #skipBtn {
-    width: 16vw;
-    max-width: 340px;
-    cursor: pointer;
+    width: 350px;
     opacity: 0;
+    cursor: pointer;
     transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
+    pointer-events: none;
 }
 
-/* ===== BUTTON HOVER ===== */
+/* ===== HOVER EFFECTS ===== */
 #goBtn:hover,
 #skipBtn:hover {
-    transform: scale(1.15);
+    transform: scale(1.12);
     filter: brightness(1.15);
 }
 
 /* ===== MISSION VIDEO ===== */
-#missionVideo {
+#missionVideo,
+#greetingsVideo {
     width: 85%;
     max-width: 1000px;
-    max-height: 90vh;      /* never exceed screen height */
     display: none;
-    margin: 0 auto;
+    margin: 60px auto;
     cursor: pointer;
-    object-fit: contain;
-}
-
-/* ===== BLACKIE VIDEO (TOP CENTER) ===== */
-#blackieVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50vh;
-    object-fit: cover;
-    display: none;
-    z-index: 5;
-}
-
-/* ===== HEY VIDEO (BOTTOM LEFT) ===== */
-#heyVideo {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 25vw;
-    max-width: 320px;
-    border-radius: 12px;
-    display: none;
-    z-index: 6;
-}
-
-/* ===== FADE OVERLAY ===== */
-#fadeOverlay {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: black;
-    top: 0;
-    left: 0;
     opacity: 0;
-    pointer-events: none;
     transition: opacity 1s ease;
 }
