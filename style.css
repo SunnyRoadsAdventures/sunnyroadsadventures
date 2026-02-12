@@ -1,92 +1,107 @@
-/* General Body */
-body {
+/* Reset & layout */
+html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #f0f8ff; /* light Varadero beach inspired color */
   font-family: Arial, sans-serif;
-  background: #f0f7f5; /* soft, light nature tone */
-  color: #333;
+  overflow-x: hidden;
 }
 
-/* Logo */
+/* SRA Logo */
 #sraLogo {
-  display: block;
-  width: 300px;
-  margin: 20px auto;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: auto;
+  z-index: 100;
+  border-radius: 10px;
+}
+
+/* Grok Character */
+#grok {
+  position: fixed;
+  bottom: 10%;
+  left: 0%;
+  width: 80px;
+  height: 100px;
+  background: #ffcc66; /* placeholder color */
+  border-radius: 20% 20% 40% 40%;
+  z-index: 50;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Grok animation */
+@keyframes sneak {
+  0% { left: 0%; bottom: 10%; transform: rotate(0deg);}
+  25% { left: 20%; bottom: 15%; transform: rotate(-10deg);}
+  50% { left: 40%; bottom: 10%; transform: rotate(5deg);}
+  75% { left: 60%; bottom: 20%; transform: rotate(-5deg);}
+  100% { left: 80%; bottom: 10%; transform: rotate(0deg);}
 }
 
 /* Tours Section */
-#tours {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-#tours h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 30px;
-  color: #2a5d6e; /* inspired by Varadero sea */
-}
-
-/* Tours Container */
-#toursContainer {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-/* Tour Cards */
-.tour-card {
-  background: white;
+#toursSection {
+  position: relative;
+  margin-top: 200px;
   padding: 20px;
+  z-index: 10;
+}
+
+#toursSection h1 {
+  text-align: center;
+  color: #004466;
+}
+
+#toursList {
+  max-width: 600px;
+  margin: 20px auto;
+  list-style: none;
+  padding: 0;
+}
+
+#toursList li {
+  padding: 10px;
+  margin: 5px 0;
+  background: #e0f7fa;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+  cursor: default;
+}
+
+#toursList li:hover {
+  transform: scale(1.05);
+  background: #b2ebf2;
+}
+
+/* Market Section */
+#marketSection {
+  position: relative;
+  margin-top: 50px;
+  text-align: center;
+}
+
+#marketImg {
+  width: 100vw;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  display: block;
+  margin: 0 auto;
+}
+
+#toursBtn, #whatsappBtn {
+  position: absolute;
   cursor: pointer;
+  z-index: 60;
 }
 
-.tour-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-/* Category Colors */
-.tour-card.adventure {
-  border-top: 5px solid #f28c28; /* orange-ish adventurous */
-}
-.tour-card.relax {
-  border-top: 5px solid #4da6ff; /* calm blue for relaxing tours */
-}
-.tour-card.drive {
-  border-top: 5px solid #6ec56e; /* greenish for drives & explorations */
-}
-.tour-card.nightlife {
-  border-top: 5px solid #a04da6; /* purple for nightlife/customized */
-}
-
-/* Tour Titles */
-.tour-card h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  color: #1d3c45;
-}
-
-/* Tour Descriptions */
-.tour-card p {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
-/* Responsive */
-@media screen and (max-width: 600px) {
-  #sraLogo {
-    width: 200px;
-  }
-  .tour-card {
-    padding: 15px;
-  }
-}
+#toursBtn { top: 10%; left: 10%; width: 100px; }
+#whatsappBtn { top: 10%; left: 25%; width: 80px; }
