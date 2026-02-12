@@ -7,11 +7,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const blackieVideo = document.getElementById("blackieVideo");
     const heyVideo = document.getElementById("heyVideo");
     const sagaBtn = document.getElementById("sagaBtn");
+    const beginningVideo = document.getElementById("beginningVideo");
+    const journeyVideo = document.getElementById("journeyVideo");
     const greetingsVideo = document.getElementById("greetingsVideo");
 
-    const fadeDuration = 1000; // 1 second fade
+    const fadeDuration = 1000;
 
-    // ===== INITIAL FADE-IN SEQUENCE =====
+    // ===== INITIAL FADE-IN =====
     sraVideo.style.opacity = 0;
     goBtn.style.opacity = 0;
     skipBtn.style.opacity = 0;
@@ -31,26 +33,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
             showVideo(missionVideo);
 
-            // Click anywhere to close mission
-            missionVideo.addEventListener("click", closeMissionOnce, { once: true });
+            missionVideo.addEventListener("click", () => {
+                fadeOutElements([missionVideo], () => {
+                    missionVideo.style.display = "none";
+
+                    // Show blackie + hey
+                    showVideo(blackieVideo);
+                    showVideo(heyVideo);
+
+                    // Saga button fades in after 4s
+                    setTimeout(() => {
+                        sagaBtn.style.display = "block";
+                        fadeInElement(sagaBtn);
+                    }, 4000);
+                });
+            }, { once: true });
         });
     });
-
-    function closeMissionOnce() {
-        fadeOutElements([missionVideo], () => {
-            missionVideo.style.display = "none";
-
-            // Next scene: blackie + hey
-            showVideo(blackieVideo);
-            showVideo(heyVideo);
-
-            // Saga button fades in after 4 seconds
-            setTimeout(() => {
-                sagaBtn.style.display = "block";
-                fadeInElement(sagaBtn);
-            }, 4000);
-        });
-    }
 
     // ===== SAGA BUTTON CLICK → beginning + journey =====
     sagaBtn.addEventListener("click", () => {
@@ -59,9 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
             heyVideo.style.display = "none";
             sagaBtn.style.display = "none";
 
-            // Full screen videos
-            showVideo(document.getElementById("beginningVideo"), true);
-            const journeyVideo = document.getElementById("journeyVideo");
+            showVideo(beginningVideo, true);
             showVideo(journeyVideo, true);
 
             // journey fades to black at 26.7s
@@ -83,15 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
             showVideo(greetingsVideo);
 
             // Click anywhere to close greetings
-            greetingsVideo.addEventListener("click", closeGreetingsOnce, { once: true });
+            greetingsVideo.addEventListener("click", () => {
+                fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
+            }, { once: true });
         });
     });
-
-    function closeGreetingsOnce() {
-        fadeOutElements([greetingsVideo], () => {
-            greetingsVideo.style.display = "none";
-        });
-    }
 
     // ===== HELPER FUNCTIONS =====
     function fadeOutElements(elements, callback) {
