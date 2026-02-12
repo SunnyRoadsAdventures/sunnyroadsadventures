@@ -1,41 +1,71 @@
-document.addEventListener("DOMContentLoaded", function () {
-
-    const container = document.getElementById("container");
+document.addEventListener("DOMContentLoaded", () => {
     const sraVideo = document.getElementById("sraVideo");
     const goBtn = document.getElementById("goBtn");
     const skipBtn = document.getElementById("skipBtn");
 
-    const mission = document.getElementById("missionVideo");
-    const blackie = document.getElementById("blackieVideo");
-    const hey = document.getElementById("heyVideo");
+    // Start hidden
+    sraVideo.style.opacity = 0;
+    goBtn.style.opacity = 0;
+    skipBtn.style.opacity = 0;
+    goBtn.style.pointerEvents = "none";
+    skipBtn.style.pointerEvents = "none";
 
-    // Hide mission & next videos at start
-    mission.style.display = "none";
-    blackie.style.display = "none";
-    hey.style.display = "none";
+    // Fade in sraVideo
+    setTimeout(() => {
+        sraVideo.style.opacity = 1;
+    }, 1500);
 
-    function startMission() {
-        container.style.display = "none";
-        mission.style.display = "block";
-        mission.play();
-    }
+    // Fade in goBtn
+    setTimeout(() => {
+        goBtn.style.opacity = 1;
+        goBtn.style.pointerEvents = "auto";
+    }, 2300);
 
-    // Go button
-    goBtn.addEventListener("click", startMission);
+    // Fade in skipBtn
+    setTimeout(() => {
+        skipBtn.style.opacity = 1;
+        skipBtn.style.pointerEvents = "auto";
+    }, 4000);
 
-    // Skip button
-    skipBtn.addEventListener("click", startMission);
+    // goBtn click → fade out and show mission.mp4
+    goBtn.addEventListener("click", () => {
+        sraVideo.style.opacity = 0;
+        goBtn.style.opacity = 0;
+        skipBtn.style.opacity = 0;
+        goBtn.style.pointerEvents = "none";
+        skipBtn.style.pointerEvents = "none";
 
-    // When mission ends
-    mission.addEventListener("ended", function () {
+        setTimeout(() => {
+            sraVideo.style.display = "none";
+            goBtn.style.display = "none";
+            skipBtn.style.display = "none";
 
-        mission.style.display = "none";
-
-        blackie.style.display = "block";
-        hey.style.display = "block";
-
-        blackie.play();
-        hey.play();
+            const mission = document.getElementById("missionVideo");
+            mission.style.display = "block";
+            mission.style.opacity = 0;
+            setTimeout(() => mission.style.opacity = 1, 100);
+            mission.play();
+        }, 1000); // fade out duration
     });
 
+    // skipBtn click → teleport straight to greetings.mp4
+    skipBtn.addEventListener("click", () => {
+        sraVideo.style.opacity = 0;
+        goBtn.style.opacity = 0;
+        skipBtn.style.opacity = 0;
+        goBtn.style.pointerEvents = "none";
+        skipBtn.style.pointerEvents = "none";
+
+        setTimeout(() => {
+            sraVideo.style.display = "none";
+            goBtn.style.display = "none";
+            skipBtn.style.display = "none";
+
+            const greetings = document.getElementById("greetingsVideo");
+            greetings.style.display = "block";
+            greetings.style.opacity = 0;
+            setTimeout(() => greetings.style.opacity = 1, 100);
+            greetings.play();
+        }, 1000); // fade out duration
+    });
 });
