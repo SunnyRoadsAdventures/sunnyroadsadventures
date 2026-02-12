@@ -106,4 +106,8 @@ img, video {
     display: none;
     opacity: 0;
     z-index: 150;
+/* GREETINGS VIDEO CLICKABLE */
+#greetingsVideo {
+  cursor: pointer;
+}
 }
