@@ -52,18 +52,17 @@ body {
     pointer-events: none;
 }
 
-/* ===== HOVER EFFECTS ===== */
+/* Hover Effects */
 #goBtn:hover,
 #skipBtn:hover {
     transform: scale(1.12);
     filter: brightness(1.15);
 }
 
-/* ===== MISSION + GREETINGS VIDEO ===== */
+/* ===== MISSION, GREETINGS, BEGINNING VIDEO ===== */
 #missionVideo,
 #greetingsVideo,
-#beginningVideo,
-#journeyVideo {
+#beginningVideo {
     width: 85%;
     max-width: 1000px;
     display: none;
@@ -73,7 +72,7 @@ body {
     transition: opacity 1s ease;
 }
 
-/* ===== BLACKIE VIDEO ===== */
+/* ===== BLACKIE VIDEO (TOP CENTER EDGE-TO-EDGE) ===== */
 #blackieVideo {
     position: fixed;
     top: 0;
@@ -82,12 +81,11 @@ body {
     height: 50vh;
     object-fit: cover;
     display: none;
-    opacity: 0;
-    transition: opacity 1s ease;
     z-index: 5;
+    transition: opacity 1s ease;
 }
 
-/* ===== HEY VIDEO ===== */
+/* ===== HEY VIDEO (BOTTOM LEFT SMALL) ===== */
 #heyVideo {
     position: fixed;
     bottom: 20px;
@@ -96,25 +94,19 @@ body {
     max-width: 40%;
     border-radius: 12px;
     display: none;
-    opacity: 0;
-    transition: opacity 1s ease;
     z-index: 6;
+    transition: opacity 1s ease;
 }
 
 /* ===== SAGA BUTTON ===== */
 #sagaBtn {
     position: fixed;
-    bottom: 20px;
+    bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
     width: 400px;
-    max-width: 50%;
-    cursor: pointer;
-    display: none;
     opacity: 0;
-    transition: opacity 1s ease, transform 0.3s ease;
+    transition: opacity 1s ease;
+    cursor: pointer;
     z-index: 10;
-}
-#sagaBtn:hover {
-    transform: translateX(-50%) scale(1.1);
 }
