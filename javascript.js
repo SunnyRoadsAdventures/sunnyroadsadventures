@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
           missionVideo.pause();
           missionVideo.style.display = "none";
 
-          /* SHOW BLACKIE + HEY */
           blackieVideo.style.display = "block";
           blackieVideo.style.opacity = 1;
           blackieVideo.play();
@@ -53,11 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
           heyVideo.style.opacity = 1;
           heyVideo.play();
 
-          /* SHOW ENTER BUTTON on top */
-          enterBtn.style.display = "block";  // must show before fade
-          setTimeout(() => {
-              enterBtn.style.opacity = 1;
-          }, 50); // allow display:block to register first
+          /* SHOW ENTER BUTTON ON TOP */
+          enterBtn.style.display = "block";
+          enterBtn.style.opacity = 1;
+          enterBtn.style.zIndex = 9999;
+          enterBtn.style.pointerEvents = "auto";
+
       }, 1000);
   });
 
@@ -72,23 +72,21 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ENTER CLICK → STOP LOWER VIDEOS & PLAY BEGINNING + JOURNEY */
   enterBtn.addEventListener("click", () => {
 
-      /* fade out lower videos */
       blackieVideo.style.opacity = 0;
       blackieVideo.pause();
       heyVideo.style.opacity = 0;
       heyVideo.pause();
 
-      /* hide enter button */
       enterBtn.style.opacity = 0;
       setTimeout(() => enterBtn.style.display = "none", 1000);
 
-      /* PLAY BEGINNING VIDEO FULL SCREEN */
+      /* PLAY BEGINNING VIDEO */
       beginningVideo.style.display = "block";
       beginningVideo.style.opacity = 1;
       beginningVideo.currentTime = 0;
       beginningVideo.play();
 
-      /* WHEN BEGINNING ENDS → PLAY JOURNEY FULL SCREEN */
+      /* WHEN BEGINNING ENDS → PLAY JOURNEY */
       beginningVideo.onended = () => {
           beginningVideo.style.opacity = 0;
           beginningVideo.style.display = "none";
