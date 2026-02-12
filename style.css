@@ -2,53 +2,29 @@ body {
     margin: 0;
     overflow: hidden;
     background: black;
-}
-
-/* Background */
-.background {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: url("background.jpg") center center / cover no-repeat;
-    z-index: -1;
-}
-
-/* Button container */
-.button-container {
-    position: absolute;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 40px; /* spacing between go and skip */
-    opacity: 0;
-    transition: opacity 2s ease;
-}
-
-/* Buttons */
-.main-btn {
-    width: 180px;
     cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Hover glow */
-.main-btn:hover {
-    transform: scale(1.08);
-    filter: drop-shadow(0 0 14px gold);
-}
-
-/* Click press effect */
-.main-btn:active {
-    transform: scale(0.95);
-}
-
-/* Greetings video */
-#greetingsVideo {
+/* Fullscreen videos */
+video {
     position: fixed;
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: none;
+    opacity: 0;
+    transition: opacity 2.5s ease;
+    z-index: 1;
+}
+
+/* Cinematic fade layer */
+#blackFade {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 1; /* Start fully black */
+    transition: opacity 2.5s ease;
     z-index: 5;
+    pointer-events: none;
 }
