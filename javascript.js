@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const skipBtn = document.getElementById("skipBtn");
     const missionVideo = document.getElementById("missionVideo");
     const blackieVideo = document.getElementById("blackieVideo");
+    const heyVideo = document.getElementById("heyVideo");
     const greetingsVideo = document.getElementById("greetingsVideo");
 
     // Fade in SRA + buttons
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => missionVideo.style.opacity = 1, 100);
             missionVideo.play();
 
-            // Click anywhere on mission → close and load blackie
+            // Click anywhere on mission → close and load blackie + hey
             missionVideo.addEventListener("click", () => {
                 missionVideo.style.opacity = 0;
                 missionVideo.style.pointerEvents = "none";
@@ -36,19 +37,46 @@ document.addEventListener("DOMContentLoaded", () => {
                 setTimeout(() => {
                     missionVideo.style.display = "none";
 
-                    // Show blackie
+                    // Show blackie + hey
                     blackieVideo.style.display = "block";
-                    setTimeout(() => blackieVideo.style.opacity = 1, 100);
-                    blackieVideo.play();
+                    heyVideo.style.display = "block";
 
-                    // Click anywhere to close blackie
+                    setTimeout(() => {
+                        blackieVideo.style.opacity = 1;
+                        heyVideo.style.opacity = 1;
+                    }, 100);
+
+                    blackieVideo.play();
+                    heyVideo.play();
+
+                    // Click anywhere on blackie → close both
                     blackieVideo.addEventListener("click", () => {
                         blackieVideo.style.opacity = 0;
+                        heyVideo.style.opacity = 0;
                         blackieVideo.style.pointerEvents = "none";
-                        setTimeout(() => blackieVideo.style.display = "none", 1000);
+                        heyVideo.style.pointerEvents = "none";
 
-                        console.log("Blackie closed → next scene");
+                        setTimeout(() => {
+                            blackieVideo.style.display = "none";
+                            heyVideo.style.display = "none";
+                            console.log("Blackie + Hey closed → next scene");
+                        }, 1000);
                     });
+
+                    // Click anywhere on hey → same effect
+                    heyVideo.addEventListener("click", () => {
+                        blackieVideo.style.opacity = 0;
+                        heyVideo.style.opacity = 0;
+                        blackieVideo.style.pointerEvents = "none";
+                        heyVideo.style.pointerEvents = "none";
+
+                        setTimeout(() => {
+                            blackieVideo.style.display = "none";
+                            heyVideo.style.display = "none";
+                            console.log("Blackie + Hey closed → next scene");
+                        }, 1000);
+                    });
+
                 }, 500);
             });
         }, 1000);
