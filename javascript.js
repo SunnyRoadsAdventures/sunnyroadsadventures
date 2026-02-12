@@ -1,112 +1,63 @@
-document.addEventListener("DOMContentLoaded", () => {
+/* ENTER BUTTON CLICK → STOP LOWER VIDEOS & START BEGINNING + JOURNEY */
+enterBtn.addEventListener("click", () => {
 
-  const sagaBtn = document.getElementById("sagaBtn");
-  const missionVideo = document.getElementById("missionVideo");
-  const blackieVideo = document.getElementById("blackieVideo");
-  const heyVideo = document.getElementById("heyVideo");
-  const enterBtn = document.getElementById("enterBtn");
+    /* fade out lower videos */
+    blackieVideo.style.opacity = 0;
+    blackieVideo.pause();
+    heyVideo.style.opacity = 0;
+    heyVideo.pause();
 
-  const beginningVideo = document.getElementById("beginningVideo");
-  const journeyVideo = document.getElementById("journeyVideo");
+    /* hide enter button */
+    enterBtn.style.opacity = 0;
+    setTimeout(() => enterBtn.style.display = "none", 1000);
 
-  /* MAX VOLUME */
-  const allVideos = document.querySelectorAll("video");
-  allVideos.forEach(video => {
-      video.muted = false;
-      video.volume = 1.0;
-  });
+    /* PLAY BEGINNING VIDEO */
+    beginningVideo.style.display = "block";
+    beginningVideo.style.opacity = 1;
+    beginningVideo.currentTime = 0;
+    beginningVideo.play();
 
-  /* SAGA FADE IN */
-  setTimeout(() => {
-      sagaBtn.style.opacity = 1;
-  }, 2000);
+    /* WHEN BEGINNING ENDS → PLAY JOURNEY */
+    beginningVideo.onended = () => {
+        beginningVideo.style.opacity = 0;
+        beginningVideo.style.display = "none";
 
-  /* CLICK SAGA → SHOW MISSION */
-  sagaBtn.addEventListener("click", () => {
-      sagaBtn.style.opacity = 0;
-      setTimeout(() => {
-          sagaBtn.style.display = "none";
+        /* SHOW JOURNEY FULLSCREEN */
+        journeyVideo.style.display = "block";
+        journeyVideo.style.opacity = 1;
+        journeyVideo.currentTime = 0;
+        journeyVideo.play();
 
-          missionVideo.style.display = "block";
-          missionVideo.style.opacity = 1;
-          missionVideo.currentTime = 0;
-          missionVideo.play();
-      }, 1000);
-  });
+        /* Ensure full screen via CSS */
+        journeyVideo.style.top = "50%";
+        journeyVideo.style.left = "50%";
+        journeyVideo.style.width = "100vw";
+        journeyVideo.style.height = "100vh";
+        journeyVideo.style.transform = "translate(-50%, -50%)";
+        journeyVideo.style.objectFit = "cover";
+        journeyVideo.style.zIndex = 50;
+    };
 
-  /* CLICK ANYWHERE ON MISSION → CLOSE AND CONTINUE */
-  missionVideo.addEventListener("click", () => {
-      missionVideo.style.opacity = 0;
-      setTimeout(() => {
-          missionVideo.pause();
-          missionVideo.style.display = "none";
+    /* FADE JOURNEY AT 26.5s */
+    journeyVideo.addEventListener("timeupdate", () => {
+        if (journeyVideo.currentTime >= 26.5) {
+            journeyVideo.style.transition = "opacity 2s ease";
+            journeyVideo.style.opacity = 0;
 
-          blackieVideo.style.display = "block";
-          blackieVideo.style.opacity = 1;
-          blackieVideo.play();
+            setTimeout(() => {
+                journeyVideo.pause();
+                journeyVideo.style.display = "none";
 
-          heyVideo.style.display = "block";
-          heyVideo.style.opacity = 1;
-          heyVideo.play();
+                /* ensure black background after fade */
+                document.body.style.background = "black";
+            }, 2000); // fade duration
+        }
+    });
 
-          enterBtn.style.display = "block";
-          enterBtn.style.opacity = 1;
-
-      }, 1000);
-  });
-
-  /* BLACKIE FADE AT 65.2s */
-  blackieVideo.addEventListener("timeupdate", () => {
-      if (blackieVideo.currentTime >= 65.2) {
-          blackieVideo.style.opacity = 0;
-          blackieVideo.pause();
-      }
-  });
-
-  /* ENTER BUTTON CLICK → STOP LOWER VIDEOS & START BEGINNING + JOURNEY */
-  enterBtn.addEventListener("click", () => {
-
-      /* fade out lower videos */
-      blackieVideo.style.opacity = 0;
-      blackieVideo.pause();
-      heyVideo.style.opacity = 0;
-      heyVideo.pause();
-
-      /* hide enter button */
-      enterBtn.style.opacity = 0;
-      setTimeout(() => enterBtn.style.display = "none", 1000);
-
-      /* PLAY BEGINNING VIDEO */
-      beginningVideo.style.display = "block";
-      beginningVideo.style.opacity = 1;
-      beginningVideo.currentTime = 0;
-      beginningVideo.play();
-
-      /* WHEN BEGINNING ENDS → PLAY JOURNEY */
-      beginningVideo.onended = () => {
-          beginningVideo.style.opacity = 0;
-          beginningVideo.style.display = "none";
-
-          journeyVideo.style.display = "block";
-          journeyVideo.style.opacity = 1;
-          journeyVideo.currentTime = 0;
-          journeyVideo.play();
-      };
-  });
-
-  /* FADE OUT JOURNEY AT 26.5s */
-  journeyVideo.addEventListener("timeupdate", () => {
-      if (journeyVideo.currentTime >= 26.5) {
-          journeyVideo.style.transition = "opacity 2s ease";
-          journeyVideo.style.opacity = 0;
-
-          /* stop video after fade */
-          setTimeout(() => {
-              journeyVideo.pause();
-              journeyVideo.style.display = "none";
-              /* screen remains black */
-          }, 2000); // matches fade duration
-      }
-  });
-
+    /* ALSO FADE TO BLACK AFTER VIDEO ENDS COMPLETELY */
+    journeyVideo.onended = () => {
+        journeyVideo.style.opacity = 0;
+        journeyVideo.style.display = "none";
+        document.body.style.background = "black";
+    };
 });
