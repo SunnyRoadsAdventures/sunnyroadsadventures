@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     const sraVideo = document.getElementById("sraVideo");
     const goBtn = document.getElementById("goBtn");
     const skipBtn = document.getElementById("skipBtn");
@@ -40,13 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     showVideo(blackieVideo);
                     showVideo(heyVideo);
 
-                    // Auto fade blackie at 65.5s
-                    blackieVideo.addEventListener("timeupdate", () => {
-                        if(blackieVideo.currentTime >= 65.5) {
-                            fadeOutElements([blackieVideo], () => blackieVideo.style.display = "none");
-                        }
-                    });
-
                     // Saga button fades in after 4s
                     setTimeout(() => {
                         sagaBtn.style.display = "block";
@@ -57,30 +51,40 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // ===== SAGA BUTTON CLICK → stop blackie + hey & beginning + journey =====
+    // ===== SAGA BUTTON CLICK → beginning + journey =====
     sagaBtn.addEventListener("click", () => {
+
         // Stop blackie + hey immediately
         [blackieVideo, heyVideo].forEach(v => {
             v.pause();
+            v.style.opacity = 0;
             v.style.display = "none";
         });
 
-        fadeOutElements([sagaBtn], () => sagaBtn.style.display = "none");
+        fadeOutElements([sagaBtn], () => {
+            sagaBtn.style.display = "none";
 
-        // Show beginning → journey
-        showVideo(beginningVideo, true, false, () => {
+            // Show beginning and journey
+            showVideo(beginningVideo, true);
             showVideo(journeyVideo, true);
 
-            // journey fades to black at 27s
+            // journey fades out at 26.7s
             journeyVideo.addEventListener("timeupdate", () => {
-                if(journeyVideo.currentTime >= 27) {
-                    fadeOutElements([journeyVideo], () => {
-                        journeyVideo.style.display = "none";
-                        showVideo(greetingsVideo);
-                        greetingsVideo.addEventListener("click", () => {
-                            fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
-                        }, { once: true });
-                    });
+                if (journeyVideo.currentTime >= 26.7) {
+                    fadeOutElements([journeyVideo], () => journeyVideo.style.display = "none");
+
+                    // STOP beginning video as well
+                    beginningVideo.pause();
+                    beginningVideo.style.display = "none";
+
+                    // Now fade in greetings
+                    [beginningVideo, journeyVideo, blackieVideo, heyVideo].forEach(v => v.style.display = "none");
+                    showVideo(greetingsVideo);
+
+                    // Click anywhere to close greetings
+                    greetingsVideo.addEventListener("click", () => {
+                        fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
+                    }, { once: true });
                 }
             });
         });
@@ -88,13 +92,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ===== SKIP BUTTON CLICK → greetings.mp4 =====
     skipBtn.addEventListener("click", () => {
-        fadeOutElements([sraVideo, goBtn, skipBtn], () => {
-            sraVideo.style.display = "none";
-            goBtn.style.display = "none";
-            skipBtn.style.display = "none";
 
+        // Hide everything behind the scroll
+        [sraVideo, goBtn, skipBtn, missionVideo, blackieVideo, heyVideo, beginningVideo, journeyVideo].forEach(v => {
+            v.pause();
+            v.style.display = "none";
+        });
+
+        fadeOutElements([sraVideo, goBtn, skipBtn], () => {
             showVideo(greetingsVideo);
 
+            // Click anywhere to close greetings
             greetingsVideo.addEventListener("click", () => {
                 fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
             }, { once: true });
@@ -111,10 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
         element.style.opacity = 1;
     }
 
-    function showVideo(videoEl, fullscreen = false, muted = false, onReady = null) {
+    function showVideo(videoEl, fullscreen = false) {
         videoEl.style.display = "block";
-        videoEl.muted = muted;
-        videoEl.volume = muted ? 0 : 1;
+        videoEl.muted = false;
+        videoEl.volume = 1;
         if (fullscreen) {
             videoEl.style.position = "fixed";
             videoEl.style.top = "0";
@@ -125,6 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         setTimeout(() => videoEl.style.opacity = 1, 100);
         videoEl.play();
-        if(onReady) onReady();
     }
+
 });
