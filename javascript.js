@@ -22,11 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   /* SAGA FADE IN */
-  setTimeout(() => { sagaBtn.style.opacity = 1; }, 2000);
+  setTimeout(() => {
+      sagaBtn.style.opacity = 1;
+      sagaBtn.style.pointerEvents = 'auto';
+  }, 2000);
 
   /* CLICK SAGA → SHOW MISSION */
   sagaBtn.addEventListener("click", () => {
       sagaBtn.style.opacity = 0;
+      sagaBtn.style.pointerEvents = 'none';
       setTimeout(() => {
           sagaBtn.style.display = "none";
 
@@ -52,12 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
           heyVideo.style.opacity = 1;
           heyVideo.play();
 
-          /* SHOW ENTER BUTTON ON TOP */
           enterBtn.style.display = "block";
           enterBtn.style.opacity = 1;
-          enterBtn.style.zIndex = 9999;
-          enterBtn.style.pointerEvents = "auto";
-
+          enterBtn.style.pointerEvents = 'auto';
       }, 1000);
   });
 
@@ -78,6 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       heyVideo.pause();
 
       enterBtn.style.opacity = 0;
+      enterBtn.style.pointerEvents = 'none';
       setTimeout(() => enterBtn.style.display = "none", 1000);
 
       /* PLAY BEGINNING VIDEO */
