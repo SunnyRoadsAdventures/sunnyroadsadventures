@@ -5,27 +5,27 @@ const missionVideo = document.getElementById("missionVideo");
 const blackieVideo = document.getElementById("blackieVideo");
 const heyVideo = document.getElementById("heyVideo");
 const enterBtn = document.getElementById("enterBtn");
-
-const beginningVideo = document.getElementById("beginningVideo");
+const beginsVideo = document.getElementById("beginsVideo");
 const journeyVideo = document.getElementById("journeyVideo");
 
 /* =========================
    MAX VOLUME AFTER USER CLICK
 ========================= */
-function enableSound(video) {
+const allVideos = document.querySelectorAll("video");
+allVideos.forEach(video => {
     video.muted = false;
     video.volume = 1.0;
-}
+});
 
 /* =========================
-   SAGA FADE IN
+   SAGA FADE IN (2s delay)
 ========================= */
 setTimeout(() => {
     sagaBtn.style.opacity = 1;
 }, 2000);
 
 /* =========================
-   SAGA CLICK → SHOW MISSION
+   CLICK SAGA → SHOW MISSION
 ========================= */
 sagaBtn.addEventListener("click", () => {
 
@@ -37,8 +37,6 @@ sagaBtn.addEventListener("click", () => {
         missionVideo.style.display = "block";
         missionVideo.style.opacity = 1;
         missionVideo.currentTime = 0;
-
-        enableSound(missionVideo);
         missionVideo.play();
 
     }, 1000);
@@ -46,7 +44,7 @@ sagaBtn.addEventListener("click", () => {
 });
 
 /* =========================
-   CLICK MISSION → CONTINUE
+   CLICK MISSION → CLOSE + SHOW MAIN
 ========================= */
 missionVideo.addEventListener("click", () => {
 
@@ -57,23 +55,16 @@ missionVideo.addEventListener("click", () => {
         missionVideo.pause();
         missionVideo.style.display = "none";
 
-        // Show Blackie
+        /* SHOW REST */
         blackieVideo.style.display = "block";
         blackieVideo.style.opacity = 1;
         blackieVideo.currentTime = 0;
-
-        enableSound(blackieVideo);
         blackieVideo.play();
 
-        // Show Hey
         heyVideo.style.display = "block";
         heyVideo.style.opacity = 1;
-        heyVideo.currentTime = 0;
-
-        enableSound(heyVideo);
         heyVideo.play();
 
-        // Show Enter
         enterBtn.style.display = "block";
         enterBtn.style.opacity = 1;
 
@@ -82,21 +73,32 @@ missionVideo.addEventListener("click", () => {
 });
 
 /* =========================
-   BLACKIE AUTO FADE AT 1:05.2
+   BLACKIE FADE AT 65s
 ========================= */
+let blackieFaded = false;
+
 blackieVideo.addEventListener("timeupdate", () => {
-    if (blackieVideo.currentTime >= 65.2) {
+
+    if (!blackieFaded && blackieVideo.currentTime >= 65) {
+
+        blackieFaded = true;
+
         blackieVideo.style.opacity = 0;
-        blackieVideo.pause();
+
+        setTimeout(() => {
+            blackieVideo.pause();
+        }, 1500);
+
     }
+
 });
 
 /* =========================
-   ENTER CLICK → CINEMATIC
+   ENTER CLICK → FADE TO BLACK
 ========================= */
 enterBtn.addEventListener("click", () => {
 
-    // Fade lower elements
+    // Stop lower content
     heyVideo.pause();
     blackieVideo.pause();
 
@@ -110,34 +112,34 @@ enterBtn.addEventListener("click", () => {
         blackieVideo.style.display = "none";
         enterBtn.style.display = "none";
 
-        // Play Beginning
-        beginningVideo.style.display = "block";
-        beginningVideo.style.opacity = 1;
-        beginningVideo.currentTime = 0;
+        /* PLAY BEGINNING FULLSCREEN */
+        beginsVideo.style.display = "block";
+        beginsVideo.style.opacity = 1;
+        beginsVideo.currentTime = 0;
+        beginsVideo.play();
 
-        enableSound(beginningVideo);
-        beginningVideo.play();
+    }, 1500);
 
-        // When Beginning Ends → Journey
-        beginningVideo.onended = () => {
+});
 
-            beginningVideo.style.opacity = 0;
+/* =========================
+   BEGINNING → JOURNEY
+========================= */
+beginsVideo.addEventListener("ended", () => {
 
-            setTimeout(() => {
+    beginsVideo.style.opacity = 0;
 
-                beginningVideo.style.display = "none";
+    setTimeout(() => {
 
-                journeyVideo.style.display = "block";
-                journeyVideo.style.opacity = 1;
-                journeyVideo.currentTime = 0;
+        beginsVideo.style.display = "none";
 
-                enableSound(journeyVideo);
-                journeyVideo.play();
-
-            }, 1500);
-        };
+        journeyVideo.style.display = "block";
+        journeyVideo.style.opacity = 1;
+        journeyVideo.currentTime = 0;
+        journeyVideo.play();
 
     }, 1000);
+
 });
 
 });
