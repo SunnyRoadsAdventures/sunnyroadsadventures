@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>SRA Intro</title>
@@ -7,29 +7,23 @@
 </head>
 <body>
 
-    <!-- INTRO CONTAINER -->
     <div id="container">
+        <!-- SRA Video -->
         <video id="sraVideo" src="sra.mp4" muted autoplay playsinline></video>
 
+        <!-- Buttons -->
         <div id="buttonRow">
             <img src="go.png" id="goBtn" alt="Go">
             <img src="skip.png" id="skipBtn" alt="Skip">
         </div>
     </div>
 
-    <!-- MISSION VIDEO -->
+    <!-- Mission Video (hidden at start) -->
     <video id="missionVideo" src="mission.mp4" muted playsinline></video>
 
-    <!-- BLACKIE -->
-    <video id="blackieVideo" src="blackie.mp4" muted playsinline></video>
-
-    <!-- HEY -->
-    <video id="heyVideo" src="hey.mp4" muted playsinline></video>
-
-    <!-- Fade Overlay -->
-    <div id="fadeOverlay"></div>
+    <!-- Greetings Video (hidden at start for skip button) -->
+    <video id="greetingsVideo" src="greetings.mp4" muted playsinline></video>
 
     <script src="javascript.js"></script>
-
 </body>
 </html>
