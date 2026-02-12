@@ -3,68 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Granada Tours</title>
+<title>Granada Adventures</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- HEADER -->
 <header>
-    <div class="logo">
-        <h1>Granada Adventures</h1>
-    </div>
-    <div class="grok">
-        <img src="grok.png" alt="Grok Character">
-    </div>
+  <div class="logo">
+    <h1>Granada Adventures</h1>
+  </div>
+  <div class="grok">
+    <video id="grokVideo" src="sra.mp4" autoplay loop muted></video>
+  </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="hero">
-    <div class="hero-text">
-        <h2>Explore Granada Like Never Before</h2>
-        <p>Join our tours and discover hidden gems, amazing views, and unforgettable experiences!</p>
-        <a href="#tours" class="btn">View Tours</a>
-    </div>
-    <div class="hero-img">
-        <img src="hero_placeholder.jpg" alt="Granada View">
-    </div>
-</section>
+<!-- MAIN TOURS SECTION -->
+<main>
+  <section class="tour" id="tour1">
+    <h2>City Tour</h2>
+    <button class="tourBtn" data-link="city-tour.html">Learn More</button>
+  </section>
+  <section class="tour" id="tour2">
+    <h2>Lake Nicaragua Adventure</h2>
+    <button class="tourBtn" data-link="lake-nicaragua.html">Learn More</button>
+  </section>
+  <section class="tour" id="tour3">
+    <h2>Volcano Hike</h2>
+    <button class="tourBtn" data-link="volcano.html">Learn More</button>
+  </section>
+</main>
 
-<!-- TOURS SECTION -->
-<section id="tours">
-    <h2>Our Tours</h2>
-    <div class="tour-cards">
-        <div class="tour-card">
-            <img src="tour1.jpg" alt="Tour 1">
-            <h3>Granada City Tour</h3>
-            <p>2 hours • $25 per person</p>
-            <button class="whatsapp-btn" data-phone="50558365522">Book on WhatsApp</button>
-        </div>
-        <div class="tour-card">
-            <img src="tour2.jpg" alt="Tour 2">
-            <h3>Lake Nicaragua Adventure</h3>
-            <p>4 hours • $50 per person</p>
-            <button class="whatsapp-btn" data-phone="50558365522">Book on WhatsApp</button>
-        </div>
-        <div class="tour-card">
-            <img src="tour3.jpg" alt="Tour 3">
-            <h3>Masaya Volcano Excursion</h3>
-            <p>3 hours • $40 per person</p>
-            <button class="whatsapp-btn" data-phone="50558365522">Book on WhatsApp</button>
-        </div>
-        <div class="tour-card">
-            <img src="tour4.jpg" alt="Tour 4">
-            <h3>Islets of Granada</h3>
-            <p>5 hours • $60 per person</p>
-            <button class="whatsapp-btn" data-phone="50558365522">Book on WhatsApp</button>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
+<!-- CONTACT -->
 <footer>
-    <p>Contact us: <a href="https://wa.me/50558365522" target="_blank">WhatsApp</a> | Email: info@granadatours.com</p>
-    <p>&copy; 2026 Granada Adventures</p>
+  <button id="whatsappBtn">WhatsApp Us</button>
+  <p>&copy; 2026 Granada Adventures</p>
 </footer>
 
 <script src="javascript.js"></script>
