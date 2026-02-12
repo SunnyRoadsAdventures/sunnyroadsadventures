@@ -7,7 +7,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Shared fade for all images & videos */
+/* Shared fade */
 img, video {
   position: absolute;
   opacity: 0;
@@ -86,25 +86,25 @@ img, video {
   pointer-events: auto;
 }
 
-/* GREETINGS */
+/* GREETINGS VIDEO */
 #greetingsVideo {
   background: black;
   transition: opacity 1.5s ease;
 }
 
-/* MARKET IMAGE FULLSCREEN FIX */
+/* MARKET IMAGE */
 #marketImg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;           /* full width */
-    height: 100vh;          /* full height */
-    object-fit: contain;     /* ensures entire image is visible */
-    display: none;
-    opacity: 0;
-    transition: opacity 2s ease;
-    z-index: 100;           /* above everything */
-    background: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: contain;  /* full image visible, no cropping */
+  display: none;
+  opacity: 0;
+  transition: opacity 2s ease;
+  z-index: 100;
+  background: black;   /* fallback behind image */
 }
 
 /* MARKET BUTTONS */
@@ -114,7 +114,7 @@ img, video {
   opacity: 0;
   display: none;
   transition: opacity 1.5s ease;
-  z-index: 101;
+  z-index: 110;
   pointer-events: auto;
 }
 
