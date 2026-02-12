@@ -1,19 +1,199 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Sunroad Adventures</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Story Experience</title>
+
+<style>
+body {
+  margin: 0;
+  background: black;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+/* Fade In Screen */
+#introScreen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+  z-index: 100;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+.buttonImg {
+  width: 140px;
+  margin: 15px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.buttonImg:hover {
+  transform: scale(1.1);
+}
+
+/* Videos */
+video {
+  position: absolute;
+  display: none;
+}
+
+/* Specific placements */
+
+#mission {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 50;
+}
+
+#blackie {
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#hey {
+  bottom: 0;
+  left: 0;
+  width: 300px;
+}
+
+#journey, #greetings {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#sagaBtn {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  display: none;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.fadeOut {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- Black cinematic layer -->
-    <div id="blackFade"></div>
+<!-- Intro Screen -->
+<div id="introScreen">
+  <img src="go.png" class="buttonImg" onclick="startMission()">
+  <img src="skip.png" class="buttonImg" onclick="skipStory()">
+</div>
 
-    <!-- Videos -->
-    <video id="missionVideo" src="mission.mp4"></video>
-    <video id="greetingsVideo" src="greetings.mp4"></video>
+<!-- Videos -->
 
-    <script src="javascript.js"></script>
+<video id="mission" src="mission.mp4"></video>
+
+<video id="blackie" src="blackie.mp4"></video>
+<video id="hey" src="hey.mp4"></video>
+
+<img id="sagaBtn" src="saga.png" onclick="startBeginning()">
+
+<video id="beginning" src="beginning.mp4"></video>
+<video id="journey" src="journey.mp4"></video>
+<video id="greetings" src="greetings.mp4"></video>
+
+<script>
+
+let mission = document.getElementById("mission");
+let blackie = document.getElementById("blackie");
+let hey = document.getElementById("hey");
+let beginning = document.getElementById("beginning");
+let journey = document.getElementById("journey");
+let greetings = document.getElementById("greetings");
+let introScreen = document.getElementById("introScreen");
+let sagaBtn = document.getElementById("sagaBtn");
+
+function startMission() {
+  introScreen.style.display = "none";
+
+  mission.style.display = "block";
+  mission.play();
+}
+
+/* Mission clickable anywhere */
+mission.onclick = function() {
+  mission.pause();
+  mission.style.display = "none";
+
+  startBlackieSection();
+};
+
+function startBlackieSection() {
+  blackie.style.display = "block";
+  hey.style.display = "block";
+
+  blackie.play();
+  hey.play();
+
+  sagaBtn.style.display = "block";
+}
+
+function startBeginning() {
+  blackie.style.display = "none";
+  hey.style.display = "none";
+  sagaBtn.style.display = "none";
+
+  beginning.style.display = "block";
+  beginning.play();
+}
+
+/* Beginning ends → Journey */
+beginning.onended = function() {
+  beginning.style.display = "none";
+
+  journey.style.display = "block";
+  journey.play();
+};
+
+/* Journey ends → Greetings */
+journey.onended = function() {
+  journey.style.display = "none";
+
+  greetings.style.display = "block";
+  greetings.play();
+};
+
+/* Greetings clickable anywhere to close */
+greetings.onclick = function() {
+  greetings.pause();
+  greetings.style.display = "none";
+};
+
+/* Skip Button */
+function skipStory() {
+  introScreen.style.display = "none";
+
+  greetings.style.display = "block";
+  greetings.play();
+}
+
+</script>
+
 </body>
 </html>
