@@ -3,18 +3,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const goBtn = document.getElementById("goBtn");
     const skipBtn = document.getElementById("skipBtn");
     const missionVideo = document.getElementById("missionVideo");
+    const greetingsVideo = document.getElementById("greetingsVideo");
     const blackieVideo = document.getElementById("blackieVideo");
     const heyVideo = document.getElementById("heyVideo");
     const sagaBtn = document.getElementById("sagaBtn");
-    const beginningVideo = document.getElementById("beginningVideo");
-    const journeyVideo = document.getElementById("journeyVideo");
-    const greetingsVideo = document.getElementById("greetingsVideo");
 
-    // Initial fade-in sequence
+    // Initial setup
     sraVideo.style.opacity = 0;
-    goBtn.style.opacity = 0; goBtn.style.pointerEvents = "none";
-    skipBtn.style.opacity = 0; skipBtn.style.pointerEvents = "none";
+    goBtn.style.opacity = 0;
+    skipBtn.style.opacity = 0;
+    goBtn.style.pointerEvents = "none";
+    skipBtn.style.pointerEvents = "none";
 
+    // Fade in sequence for intro
     setTimeout(() => { sraVideo.style.opacity = 1; }, 1500);
     setTimeout(() => { goBtn.style.opacity = 1; goBtn.style.pointerEvents = "auto"; }, 2300);
     setTimeout(() => { skipBtn.style.opacity = 1; skipBtn.style.pointerEvents = "auto"; }, 4000);
@@ -41,33 +42,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 missionVideo.style.opacity = 0;
                 missionVideo.style.pointerEvents = "none";
 
-                setTimeout(() => {
-                    missionVideo.style.display = "none";
+                setTimeout(() => missionVideo.style.display = "none", 1000);
 
-                    // === Show blackie + hey ===
-                    blackieVideo.style.display = "block";
-                    heyVideo.style.display = "block";
-                    setTimeout(() => {
-                        blackieVideo.style.opacity = 1;
-                        heyVideo.style.opacity = 1;
-                    }, 100);
+                // === Show blackie + hey ===
+                blackieVideo.style.display = "block";
+                heyVideo.style.display = "block";
+
+                setTimeout(() => {
+                    blackieVideo.style.opacity = 1;
+                    heyVideo.style.opacity = 1;
                     blackieVideo.play();
                     heyVideo.play();
+                }, 100);
 
-                    // Blackie fades out at 65s
-                    blackieVideo.addEventListener("timeupdate", () => {
-                        if (blackieVideo.currentTime >= 65) {
-                            blackieVideo.style.opacity = 0;
-                            blackieVideo.style.pointerEvents = "none";
-                            blackieVideo.pause();
+                // saga.png fades in after 4 seconds
+                setTimeout(() => {
+                    sagaBtn.style.display = "block";
+                    setTimeout(() => sagaBtn.style.opacity = 1, 100);
+                }, 4000);
 
-                            // Show saga.png after blackie fades
-                            sagaBtn.style.display = "block";
-                            setTimeout(() => sagaBtn.style.opacity = 1, 100);
-                        }
-                    });
-
-                }, 1000);
+                // blackie fades out at 65 seconds
+                blackieVideo.addEventListener("timeupdate", () => {
+                    if (blackieVideo.currentTime >= 65) {
+                        blackieVideo.style.opacity = 0;
+                        blackieVideo.style.pointerEvents = "none";
+                        blackieVideo.pause();
+                    }
+                });
             });
         }, 1000);
     });
@@ -89,43 +90,14 @@ document.addEventListener("DOMContentLoaded", () => {
             setTimeout(() => greetingsVideo.style.opacity = 1, 100);
             greetingsVideo.play();
 
+            // Click anywhere on greetings to close
             greetingsVideo.addEventListener("click", () => {
                 greetingsVideo.style.opacity = 0;
                 greetingsVideo.style.pointerEvents = "none";
                 setTimeout(() => greetingsVideo.style.display = "none", 1000);
+
+                // TODO: Load next scene if needed
             });
         }, 1000);
-    });
-
-    // saga.png click → beginning.mp4 → journey.mp4 → greetings.mp4
-    sagaBtn.addEventListener("click", () => {
-        sagaBtn.style.opacity = 0;
-        sagaBtn.style.pointerEvents = "none";
-        setTimeout(() => sagaBtn.style.display = "none", 500);
-
-        // Play beginning.mp4
-        beginningVideo.style.display = "block";
-        setTimeout(() => beginningVideo.style.opacity = 1, 100);
-        beginningVideo.play();
-
-        beginningVideo.addEventListener("ended", () => {
-            beginningVideo.style.opacity = 0;
-            beginningVideo.style.display = "none";
-
-            // Play journey.mp4 fullscreen
-            journeyVideo.style.display = "block";
-            setTimeout(() => journeyVideo.style.opacity = 1, 100);
-            journeyVideo.play();
-
-            journeyVideo.addEventListener("ended", () => {
-                journeyVideo.style.opacity = 0;
-                journeyVideo.style.display = "none";
-
-                // Show greetings.mp4
-                greetingsVideo.style.display = "block";
-                setTimeout(() => greetingsVideo.style.opacity = 1, 100);
-                greetingsVideo.play();
-            });
-        });
     });
 });
