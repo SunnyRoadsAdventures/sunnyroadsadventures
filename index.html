@@ -4,68 +4,297 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunny Roads Adventures</title>
-<link rel="stylesheet" href="style.css">
+<style>
+/* ===== BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #fdfdfd, #f0f8ff); /* soft white/blue */
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER & LOGO VIDEO ===== */
+header {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fffaf0;
+  border-bottom: 2px solid #eee;
+}
+
+#logoVideo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ===== NAVIGATION ===== */
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 20px;
+}
+
+nav button {
+  background: #ffb74d;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+nav button:hover {
+  transform: scale(1.1);
+  background: #ffa726;
+  color: #fff;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  transition: background 1s ease;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ===== TOUR CARDS ===== */
+.tour-card {
+  width: 280px;
+  height: 180px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.tour-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.tour-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.tour-card p {
+  font-size: 14px;
+  text-align: center;
+  color: #666;
+}
+
+/* ===== TOUR CONTAINER ===== */
+#toursContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* ===== GROK CHARACTER ===== */
+#grok {
+  width: 120px;
+  height: 120px;
+  background: #ffcc80;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  animation: float 3s ease-in-out infinite;
+  z-index: 100;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* ===== POPUP ===== */
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 200;
+  transition: transform 0.3s ease;
+}
+
+#popup.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#popup button {
+  margin-top: 20px;
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  background: #ffb74d;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#popup button:hover {
+  background: #ffa726;
+  color: #fff;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+  background: #fffaf0;
+  border-top: 2px solid #eee;
+  margin-top: 50px;
+}
+
+footer p {
+  color: #555;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  nav button { font-size: 14px; padding: 8px 16px; }
+  .tour-card { width: 90%; height: 150px; }
+  #grok { width: 90px; height: 90px; font-size: 40px; }
+}
+</style>
 </head>
 <body>
 
-<!-- HEADER -->
+<!-- HEADER WITH LOGO VIDEO -->
 <header>
-    <video id="logoVideo" src="sra.mp4" autoplay muted loop></video>
-    <h1>Sunny Roads Adventures</h1>
-    <nav>
-        <ul>
-            <li><a href="#tours">Tours</a></li>
-            <li><a href="#character">Our Character</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <video id="logoVideo" src="sra.mp4" autoplay loop muted playsinline></video>
 </header>
 
-<!-- TOURS SECTION -->
+<!-- NAVIGATION -->
+<nav>
+  <button data-section="home">Home</button>
+  <button data-section="tours">Tours</button>
+  <button data-section="about">About</button>
+  <button data-section="contact">Contact</button>
+</nav>
+
+<!-- SECTIONS -->
+<section id="home">
+  <h1>Welcome to Sunny Roads Adventures!</h1>
+  <p>Explore amazing tours, guided adventures, and fun experiences around the world.</p>
+</section>
+
 <section id="tours">
-    <h2>Our Tours</h2>
-    <div class="tour-card" id="tour1">
-        <h3>Volcano Exploration</h3>
-        <p>Climb majestic volcanoes and enjoy amazing views.</p>
-        <button class="bookBtn">Book Now</button>
-    </div>
-    <div class="tour-card" id="tour2">
-        <h3>Lakeside Relaxation</h3>
-        <p>Enjoy serene lake tours with kayaking and nature walks.</p>
-        <button class="bookBtn">Book Now</button>
-    </div>
-    <div class="tour-card" id="tour3">
-        <h3>Historical Granada</h3>
-        <p>Walk through colonial streets and discover the city's secrets.</p>
-        <button class="bookBtn">Book Now</button>
-    </div>
-    <div class="tour-card" id="tour4">
-        <h3>Jungle Adventure</h3>
-        <p>Zip-line, hike, and explore Nicaragua's lush jungles.</p>
-        <button class="bookBtn">Book Now</button>
-    </div>
+  <h2>Our Tours</h2>
+  <div id="toursContainer">
+    <div class="tour-card"><h3>Volcano Hike</h3><p>Experience the thrill of walking up a volcano.</p></div>
+    <div class="tour-card"><h3>Lake Kayak</h3><p>Paddle peacefully on crystal clear waters.</p></div>
+    <div class="tour-card"><h3>City Highlights</h3><p>Discover hidden gems in the city streets.</p></div>
+    <div class="tour-card"><h3>Jungle Safari</h3><p>Meet nature up close with a guided safari.</p></div>
+    <div class="tour-card"><h3>Historic Walk</h3><p>Travel back in time with our expert guides.</p></div>
+  </div>
 </section>
 
-<!-- FUN CHARACTER -->
-<section id="character">
-    <h2>Meet Grog!</h2>
-    <video id="grogVideo" src="grog.mp4" autoplay loop muted></video>
-    <p>Our clumsy hero who guides you through all adventures!</p>
+<section id="about">
+  <h2>About Us</h2>
+  <p>Sunny Roads Adventures brings you immersive travel experiences with comfort, safety, and fun. Our guides are experienced, friendly, and love to share local stories.</p>
 </section>
 
-<!-- CONTACT SECTION -->
 <section id="contact">
-    <h2>Contact Us</h2>
-    <p>Email: info@sunnyroadsadventures.com</p>
-    <p>WhatsApp: <a href="https://wa.me/50558365522" target="_blank">+505 5836 5522</a></p>
-    <button id="bookGeneralBtn">Book Any Tour</button>
+  <h2>Contact Us</h2>
+  <p>Email: info@sunnyroadsadventures.com</p>
+  <p>Phone: +505 555-5555</p>
 </section>
+
+<!-- GROK CHARACTER -->
+<div id="grok">🤪</div>
+
+<!-- POPUP FOR GROK -->
+<div id="popup">
+  <h3>Grok says hello!</h3>
+  <p>Click on a tour card to see more details or just enjoy the fun journey!</p>
+  <button id="closePopup">Close</button>
+</div>
 
 <!-- FOOTER -->
 <footer>
-    <p>&copy; 2026 Sunny Roads Adventures. All rights reserved.</p>
+  <p>© 2026 Sunny Roads Adventures</p>
 </footer>
 
-<script src="javascript.js"></script>
+<script>
+// ===== NAVIGATION =====
+document.querySelectorAll('nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sectionId = btn.getAttribute('data-section');
+    document.querySelectorAll('section').forEach(sec => {
+      sec.style.display = (sec.id === sectionId) ? 'flex' : 'none';
+    });
+  });
+});
+
+// ===== INITIAL VIEW =====
+document.querySelectorAll('section').forEach((sec, i) => {
+  sec.style.display = (i===0) ? 'flex' : 'none';
+});
+
+// ===== GROK INTERACTION =====
+const grok = document.getElementById('grok');
+const popup = document.getElementById('popup');
+const closePopup = document.getElementById('closePopup');
+
+grok.addEventListener('click', () => {
+  popup.classList.add('active');
+});
+
+closePopup.addEventListener('click', () => {
+  popup.classList.remove('active');
+});
+
+// ===== TOUR CARD CLICK =====
+document.querySelectorAll('.tour-card').forEach(card => {
+  card.addEventListener('click', () => {
+    alert("Tour selected: " + card.querySelector('h3').textContent);
+  });
+});
+</script>
 </body>
 </html>
