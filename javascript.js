@@ -13,11 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const whatsappBtn = document.getElementById("whatsappBtn");
   const blackFade = document.getElementById("blackFade");
 
+  /* MAX VOLUME */
   document.querySelectorAll("video").forEach(video => {
     video.muted = false;
     video.volume = 1.0;
   });
 
+  /* SAGA BUTTON */
   setTimeout(() => {
     sagaBtn.style.opacity = 1;
   }, 2000);
@@ -32,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     missionVideo.play();
   });
 
+  /* MISSION CLICK */
   missionVideo.addEventListener("click", () => {
     missionVideo.pause();
     missionVideo.style.display = "none";
@@ -48,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     enterBtn.style.opacity = 1;
   });
 
+  /* BLACKIE FADE */
   blackieVideo.addEventListener("timeupdate", () => {
     if (blackieVideo.currentTime >= 65.2) {
       blackieVideo.pause();
@@ -55,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  /* ENTER BUTTON */
   enterBtn.addEventListener("click", () => {
     blackieVideo.pause();
     heyVideo.pause();
@@ -84,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       journeyVideo.pause();
 
+      // Fade to black
       blackFade.style.opacity = 1;
 
       setTimeout(() => {
@@ -95,14 +101,16 @@ document.addEventListener("DOMContentLoaded", () => {
         greetingsVideo.currentTime = 0;
         greetingsVideo.play();
 
+        // Fade back from black
         setTimeout(() => {
           blackFade.style.opacity = 0;
         }, 500);
 
-      }, 2000);
+      }, 2000); // Matches CSS transition
     }
   });
 
+  /* GREETINGS → MARKET */
   greetingsVideo.addEventListener("click", () => {
     greetingsVideo.pause();
     greetingsVideo.style.display = "none";
@@ -117,12 +125,13 @@ document.addEventListener("DOMContentLoaded", () => {
     whatsappBtn.style.opacity = 1;
   });
 
+  /* MARKET BUTTONS (SECURE VERSION) */
   toursBtn.addEventListener("click", () => {
-    window.open("tours.jpg", "_blank");
+    window.open("tours.jpg", "_blank", "noopener,noreferrer");
   });
 
   whatsappBtn.addEventListener("click", () => {
-    window.open("https://wa.me/50558365522", "_blank");
+    window.open("https://wa.me/50558365522", "_blank", "noopener,noreferrer");
   });
 
 });
