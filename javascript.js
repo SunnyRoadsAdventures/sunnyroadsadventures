@@ -86,15 +86,17 @@ document.addEventListener("DOMContentLoaded", () => {
         heyVideo.style.display = "none";
         fadeOutElements([sagaBtn], () => sagaBtn.style.display = "none");
 
-        // Start full-screen videos
+        // Play beginning first
         showVideo(beginningVideo, true);
-        showVideo(journeyVideo, true);
 
-        // journey fades to black at 27s and triggers greetings
-        const journeyFadeHandler = () => {
-            if (journeyVideo.currentTime >= 27) {
-                fadeOutElements([journeyVideo], () => {
-                    journeyVideo.style.display = "none";
+        beginningVideo.addEventListener("ended", () => {
+            // Play journey after beginning ends
+            showVideo(journeyVideo, true);
+
+            // journey fades at 27s and triggers greetings
+            const journeyFadeHandler = () => {
+                if (journeyVideo.currentTime >= 27) {
+                    fadeOutElements([journeyVideo], () => journeyVideo.style.display = "none");
 
                     // Fade in greetings.mp4
                     greetingsVideo.style.display = "block";
@@ -107,11 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     greetingsVideo.addEventListener("click", () => {
                         fadeOutElements([greetingsVideo], () => greetingsVideo.style.display = "none");
                     }, { once: true });
-                });
-                journeyVideo.removeEventListener("timeupdate", journeyFadeHandler);
-            }
-        };
-        journeyVideo.addEventListener("timeupdate", journeyFadeHandler);
+
+                    journeyVideo.removeEventListener("timeupdate", journeyFadeHandler);
+                }
+            };
+            journeyVideo.addEventListener("timeupdate", journeyFadeHandler);
+        }, { once: true });
     });
 
     // ===== SKIP BUTTON CLICK → greetings.mp4 =====
