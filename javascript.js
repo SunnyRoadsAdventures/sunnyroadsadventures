@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const missionVideo = document.getElementById("missionVideo");
     const blackieVideo = document.getElementById("blackieVideo");
     const heyVideo = document.getElementById("heyVideo");
-    const sagaBtn = document.getElementById("sagaBtn"); // This is your enter.png
+    const sagaBtn = document.getElementById("sagaBtn");
     const beginningVideo = document.getElementById("beginningVideo");
     const journeyVideo = document.getElementById("journeyVideo");
     const greetingsVideo = document.getElementById("greetingsVideo");
@@ -50,7 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
             fadeVolume(missionVideo, 0, 1, fadeDuration);
             setTimeout(() => missionVideo.style.opacity = 1, 100);
 
-            // Click anywhere to close mission
             missionVideo.addEventListener("click", () => {
                 missionVideo.style.opacity = 0;
                 fadeVolume(missionVideo, 1, 0, fadeDuration);
@@ -139,14 +138,9 @@ document.addEventListener("DOMContentLoaded", () => {
         sagaBtn.style.pointerEvents = "none";
         sagaBtn.style.display = "none";
 
-        // Show beginning and journey full screen
+        // Show beginning full screen
         beginningVideo.style.display = "block";
-        beginningVideo.style.position = "fixed";
-        beginningVideo.style.top = 0;
-        beginningVideo.style.left = 0;
-        beginningVideo.style.width = "100%";
-        beginningVideo.style.height = "100%";
-        beginningVideo.muted = false;
+        beginningVideo.style.muted = false;
         beginningVideo.volume = 0;
         beginningVideo.play();
         fadeVolume(beginningVideo, 0, 1, fadeDuration);
@@ -157,25 +151,23 @@ document.addEventListener("DOMContentLoaded", () => {
             fadeVolume(beginningVideo, 1, 0, fadeDuration);
             beginningVideo.style.display = "none";
 
-            // Journey full screen
+            // Show journey full screen
             journeyVideo.style.display = "block";
-            journeyVideo.style.position = "fixed";
-            journeyVideo.style.top = 0;
-            journeyVideo.style.left = 0;
-            journeyVideo.style.width = "100%";
-            journeyVideo.style.height = "100%";
-            journeyVideo.muted = false;
+            journeyVideo.style.muted = false;
             journeyVideo.volume = 0;
             journeyVideo.play();
             fadeVolume(journeyVideo, 0, 1, fadeDuration);
             journeyVideo.style.opacity = 1;
 
-            // Fade journey to black at exactly 26 seconds
+            // Journey fades to black at 26s
             setTimeout(() => {
                 journeyVideo.style.opacity = 0;
                 fadeVolume(journeyVideo, 1, 0, fadeDuration);
             }, 26000);
+
+            journeyVideo.addEventListener("ended", () => {
+                journeyVideo.style.display = "none";
+            });
         });
     });
-
 });
