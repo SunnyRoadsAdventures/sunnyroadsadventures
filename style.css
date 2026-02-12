@@ -1,3 +1,4 @@
+
 html, body {
   margin: 0;
   padding: 0;
@@ -7,7 +8,7 @@ html, body {
   overflow: hidden;
 }
 
-/* Shared fade for all images and videos */
+/* Shared fade */
 img, video {
   position: absolute;
   opacity: 0;
@@ -74,7 +75,7 @@ img, video {
   pointer-events: auto;
 }
 
-/* BEGINNING, JOURNEY, GREETINGS VIDEOS FULLSCREEN */
+/* FULLSCREEN VIDEOS */
 #beginningVideo, #journeyVideo, #greetingsVideo {
   top: 0;
   left: 0;
@@ -88,29 +89,32 @@ img, video {
 
 /* MARKET IMAGE */
 #marketImg {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   object-fit: cover;
+  display: none;
   opacity: 0;
   transition: opacity 2s ease;
   z-index: 10;
 }
 
-/* TOURS AND WHATSAPP BUTTONS ON MARKET */
+/* MARKET BUTTONS */
 #toursBtn, #whatsappBtn {
   position: absolute;
   cursor: pointer;
   opacity: 0;
+  display: none;
   transition: opacity 1.5s ease;
-  z-index: 20;
+  z-index: 50;
+  pointer-events: auto;
 }
+
 #toursBtn { top: 70%; left: 5%; width: 150px; }
 #whatsappBtn { top: 70%; left: 20%; width: 100px; }
 
-/* REMOVE default video controls for immersion */
+/* Remove default controls */
 video::-internal-media-controls-overlay-cast-button,
 video::-webkit-media-controls,
 video::-webkit-media-controls-enclosure,
