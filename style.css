@@ -1,135 +1,128 @@
-/* ===== BODY ===== */
-body {
-    margin: 0;
-    padding: 0;
-    background: black;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  overflow: hidden;
 }
 
-/* ===== CONTAINER ===== */
-#container {
-    text-align: center;
+/* Shared fade */
+img, video {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1.5s ease;
 }
 
-/* ===== SRA VIDEO ===== */
-#sraVideo {
-    width: 1200px;
-    max-width: 95vw;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-    display: block;
-    margin: 0 auto;
-}
-
-/* ===== BUTTON ROW ===== */
-#buttonRow {
-    margin-top: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 140px;
-}
-
-/* ===== BUTTONS ===== */
-#goBtn {
-    width: 450px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
-    pointer-events: none;
-}
-
-#skipBtn {
-    width: 350px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
-    pointer-events: none;
-}
-
+/* SAGA BUTTON */
 #sagaBtn {
-    position: fixed;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 1s ease, transform 0.3s ease, filter 0.3s ease;
-    z-index: 15;
-    display: none;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  cursor: pointer;
+  z-index: 10;
+  pointer-events: auto;
 }
 
-/* Hover effects */
-#goBtn:hover,
-#skipBtn:hover,
-#sagaBtn:hover {
-    transform: scale(1.12);
-    filter: brightness(1.15);
-}
-
-/* ===== MISSION VIDEO ===== */
+/* MISSION VIDEO */
 #missionVideo {
-    width: 85%;
-    max-width: 1000px;
-    display: none;
-    margin: 60px auto;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 1s ease;
-    z-index: 10;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  height: 80vh;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 20;
+  display: none;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
-/* ===== BLACKIE & HEY ===== */
+/* BLACKIE VIDEO */
 #blackieVideo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 50vh;
-    object-fit: cover;
-    display: none;
-    z-index: 5;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 50vh;
+  object-fit: cover;
+  z-index: 5;
+  display: none;
+  pointer-events: none;
 }
 
+/* HEY VIDEO */
 #heyVideo {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    width: 320px;
-    max-width: 40%;
-    border-radius: 12px;
-    display: none;
-    z-index: 6;
+  bottom: 5%;
+  left: 2%;
+  width: 170px;
+  display: none;
+  z-index: 6;
+  pointer-events: none;
 }
 
-/* ===== GREETINGS VIDEO ===== */
+/* ENTER BUTTON */
+#enterBtn {
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  display: none;
+  cursor: pointer;
+  z-index: 7;
+  pointer-events: auto;
+}
+
+/* FULLSCREEN VIDEOS */
+#beginningVideo, #journeyVideo, #greetingsVideo {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 30;
+  display: none;
+  pointer-events: auto;
+}
+
+/* GREETINGS */
 #greetingsVideo {
-    width: 85%;
-    max-width: 1000px;
-    display: none;
-    margin: 60px auto;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-    z-index: 25;
-    background: black;
+  background: black;
+  transition: opacity 1.5s ease;
 }
 
-/* ===== MARKET IMAGE ===== */
+/* MARKET IMAGE */
 #marketImg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    display: none;
-    opacity: 0;
-    transition: opacity 1s ease;
-    z-index: 30;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  display: none;
+  opacity: 0;
+  transition: opacity 2s ease;
+  z-index: 10;
+}
+
+/* MARKET BUTTONS */
+#toursBtn, #whatsappBtn {
+  position: absolute;
+  cursor: pointer;
+  opacity: 0;
+  display: none;
+  transition: opacity 1.5s ease;
+  z-index: 50;
+  pointer-events: auto;
+}
+
+#toursBtn { top: 70%; left: 5%; width: 150px; }
+#whatsappBtn { top: 70%; left: 20%; width: 100px; }
+
+/* Remove default controls */
+video::-internal-media-controls-overlay-cast-button,
+video::-webkit-media-controls,
+video::-webkit-media-controls-enclosure,
+video::-webkit-media-controls-panel {
+  display: none !important;
 }
