@@ -10,39 +10,44 @@ body {
     height: 100vh;
 }
 
-/* Keep video + buttons grouped */
+/* Container */
 #container {
     text-align: center;
 }
 
-/* Video */
+/* 🎬 Massive Cinematic Video */
 #sraVideo {
-    width: 500px;
-    max-width: 90vw;
+    width: 850px;          /* dramatic scale */
+    max-width: 95vw;       /* keeps it responsive */
     opacity: 0;
     transition: opacity 1.5s ease;
     display: block;
     margin: 0 auto;
 }
 
-/* Buttons row */
+/* Button Row */
 #buttonRow {
-    margin-top: 40px;
+    margin-top: 80px;      /* more vertical drama */
     display: flex;
     justify-content: center;
-    gap: 80px;
+    gap: 160px;            /* strong horizontal spacing */
 }
 
-/* Buttons */
+/* ⚔️ Large Medieval Buttons */
 #goBtn,
 #skipBtn {
-    width: 160px;
+    width: 300px;          /* bold presence */
     opacity: 0;
     cursor: pointer;
-    transition: opacity 1.5s ease, transform 0.25s ease;
+    transition: 
+        opacity 1.5s ease, 
+        transform 0.3s ease,
+        filter 0.3s ease;
 }
 
+/* Hover Effect */
 #goBtn:hover,
 #skipBtn:hover {
-    transform: scale(1.08);
+    transform: scale(1.12);
+    filter: brightness(1.15);
 }
