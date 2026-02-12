@@ -17,7 +17,7 @@ body {
 
 /* ===== SRA VIDEO ===== */
 #sraVideo {
-    width: 1200px;       /* huge size */
+    width: 1200px;
     max-width: 95vw;
     opacity: 0;
     transition: opacity 1.5s ease;
@@ -59,7 +59,7 @@ body {
     filter: brightness(1.15);
 }
 
-/* ===== MISSION VIDEO ===== */
+/* ===== MISSION + GREETINGS VIDEO ===== */
 #missionVideo,
 #greetingsVideo {
     width: 85%;
