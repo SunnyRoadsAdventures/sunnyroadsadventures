@@ -1,3 +1,4 @@
+/* ===== BODY ===== */
 body {
     margin: 0;
     padding: 0;
@@ -9,60 +10,42 @@ body {
     height: 100vh;
 }
 
-#container { text-align: center; }
+/* ===== CONTAINER ===== */
+#container {
+    text-align: center;
+}
 
+/* ===== VIDEOS ===== */
+video {
+    position: relative;
+    display: none;
+    opacity: 0;
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    transition: opacity 1s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* SRA Video (muted, huge) */
 #sraVideo {
+    display: block;
+    opacity: 0;
     width: 1200px;
     max-width: 95vw;
-    opacity: 0;
-    transition: opacity 1.5s ease;
-    display: block;
-    margin: 0 auto;
+    z-index: 2;
 }
 
-#buttonRow {
-    margin-top: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 140px;
-}
-
-#goBtn {
-    width: 450px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
-    pointer-events: none;
-}
-
-#skipBtn {
-    width: 350px;
-    opacity: 0;
-    cursor: pointer;
-    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
-    pointer-events: none;
-}
-
-#goBtn:hover,
-#skipBtn:hover {
-    transform: scale(1.12);
-    filter: brightness(1.15);
-}
-
-#missionVideo,
-#greetingsVideo,
-#beginningVideo,
-#journeyVideo {
+/* Mission Video smaller */
+#missionVideo {
     width: 85%;
     max-width: 1000px;
-    display: none;
-    margin: 60px auto;
-    cursor: pointer;
-    opacity: 0;
-    transition: opacity 1s ease;
+    margin-top: 60px;
+    z-index: 3;
 }
 
+/* Blackie (top center, edge-to-edge) */
 #blackieVideo {
     position: fixed;
     top: 0;
@@ -71,10 +54,10 @@ body {
     height: 50vh;
     object-fit: cover;
     display: none;
-    z-index: 5;
-    transition: opacity 1s ease;
+    z-index: 4;
 }
 
+/* Hey (bottom-left) */
 #heyVideo {
     position: fixed;
     bottom: 20px;
@@ -83,18 +66,58 @@ body {
     max-width: 40%;
     border-radius: 12px;
     display: none;
-    z-index: 6;
-    transition: opacity 1s ease;
+    z-index: 5;
 }
 
+/* Buttons Row */
+#buttonRow {
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 140px;
+    z-index: 6;
+    position: relative;
+}
+
+/* Go Button */
+#goBtn {
+    width: 450px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
+    pointer-events: none;
+    z-index: 6;
+}
+
+/* Skip Button */
+#skipBtn {
+    width: 350px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 1.5s ease, transform 0.3s ease, filter 0.3s ease;
+    pointer-events: none;
+    z-index: 6;
+}
+
+/* Hover effect */
+#goBtn:hover,
+#skipBtn:hover,
+#sagaBtn:hover {
+    transform: scale(1.12);
+    filter: brightness(1.15);
+}
+
+/* Saga Button */
 #sagaBtn {
     position: fixed;
     bottom: 40px;
     left: 50%;
     transform: translateX(-50%);
-    width: 400px;
+    width: 380px;
+    display: none;
     opacity: 0;
-    transition: opacity 1s ease;
     cursor: pointer;
-    z-index: 10;
+    z-index: 7;
+    transition: opacity 1s ease, transform 0.3s ease;
 }
