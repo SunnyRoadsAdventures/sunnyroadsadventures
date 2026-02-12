@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const fadeDuration = 1000; // 1s fade
 
-    // Helper for fading volume
+    // ===== Helper for fading volume =====
     function fadeVolume(video, start, end, duration) {
         const steps = 20;
         const stepTime = duration / steps;
@@ -27,14 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
         }, stepTime);
     }
 
-    // Initial fade-in sequence
+    // ===== Initial Fade-In Sequence =====
     setTimeout(() => sraVideo.style.opacity = 1, 1500);
     setTimeout(() => { goBtn.style.opacity = 1; goBtn.style.pointerEvents = "auto"; }, 2300);
     setTimeout(() => { skipBtn.style.opacity = 1; skipBtn.style.pointerEvents = "auto"; }, 4000);
 
-    // ==== GO BUTTON → MISSION VIDEO ====
+    // ===== GO BUTTON → MISSION VIDEO =====
     goBtn.addEventListener("click", () => {
-        // Fade out sra & buttons
+        // Fade out SRA + buttons
         sraVideo.style.opacity = 0;
         goBtn.style.opacity = 0;
         skipBtn.style.opacity = 0;
@@ -46,25 +46,29 @@ document.addEventListener("DOMContentLoaded", () => {
             goBtn.style.display = "none";
             skipBtn.style.display = "none";
 
+            // Unmute mission video after user gesture
+            missionVideo.muted = false;
             missionVideo.style.display = "block";
             missionVideo.style.opacity = 0;
             missionVideo.play();
-            fadeVolume(missionVideo, 0, 1, fadeDuration); // fade in audio
+            fadeVolume(missionVideo, 0, 1, fadeDuration);
             setTimeout(() => missionVideo.style.opacity = 1, 100);
 
             // Click anywhere to close mission
             missionVideo.addEventListener("click", () => {
                 missionVideo.style.opacity = 0;
-                fadeVolume(missionVideo, 1, 0, fadeDuration); // fade out audio
+                fadeVolume(missionVideo, 1, 0, fadeDuration);
                 missionVideo.style.pointerEvents = "none";
                 setTimeout(() => missionVideo.style.display = "none", fadeDuration);
 
                 // Show blackie + hey
+                blackieVideo.muted = false;
                 blackieVideo.style.display = "block";
                 blackieVideo.style.opacity = 0;
                 blackieVideo.play();
                 fadeVolume(blackieVideo, 0, 1, fadeDuration);
 
+                heyVideo.muted = false;
                 heyVideo.style.display = "block";
                 heyVideo.style.opacity = 0;
                 heyVideo.play();
@@ -75,13 +79,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     heyVideo.style.opacity = 1;
                 }, 100);
 
-                // Fade out blackie at 65s
+                // Blackie fade out at 65s
                 setTimeout(() => {
                     blackieVideo.style.opacity = 0;
                     fadeVolume(blackieVideo, 1, 0, fadeDuration);
                 }, 65000);
 
-                // Fade out hey at 70s
+                // Hey fade out at 70s
                 setTimeout(() => {
                     heyVideo.style.opacity = 0;
                     fadeVolume(heyVideo, 1, 0, fadeDuration);
@@ -98,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, fadeDuration);
     });
 
-    // ==== SKIP BUTTON → GREETINGS VIDEO ====
+    // ===== SKIP BUTTON → GREETINGS VIDEO =====
     skipBtn.addEventListener("click", () => {
         sraVideo.style.opacity = 0;
         goBtn.style.opacity = 0;
@@ -111,6 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
             goBtn.style.display = "none";
             skipBtn.style.display = "none";
 
+            greetingsVideo.muted = false;
             greetingsVideo.style.display = "block";
             greetingsVideo.style.opacity = 0;
             greetingsVideo.play();
@@ -126,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, fadeDuration);
     });
 
-    // ==== SAGA BUTTON → BEGINNING → JOURNEY ====
+    // ===== SAGA BUTTON → BEGINNING → JOURNEY =====
     sagaBtn.addEventListener("click", () => {
         sagaBtn.style.opacity = 0;
         blackieVideo.style.opacity = 0;
@@ -140,18 +145,21 @@ document.addEventListener("DOMContentLoaded", () => {
             blackieVideo.style.display = "none";
             heyVideo.style.display = "none";
 
+            // BEGINNING VIDEO
+            beginningVideo.muted = false;
             beginningVideo.style.display = "block";
             beginningVideo.style.opacity = 0;
             beginningVideo.play();
             fadeVolume(beginningVideo, 0, 1, fadeDuration);
             setTimeout(() => beginningVideo.style.opacity = 1, 100);
 
-            // When beginning ends → journey
+            // When beginning ends → JOURNEY
             beginningVideo.addEventListener("ended", () => {
                 beginningVideo.style.opacity = 0;
                 fadeVolume(beginningVideo, 1, 0, fadeDuration);
                 beginningVideo.style.display = "none";
 
+                journeyVideo.muted = false;
                 journeyVideo.style.display = "block";
                 journeyVideo.style.opacity = 0;
                 journeyVideo.play();
