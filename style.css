@@ -21,19 +21,7 @@ img, video {
   transform: translateX(-50%);
   width: 600px;
   cursor: pointer;
-  z-index: 9999;           /* always on top initially */
-  pointer-events: auto;     /* ensure clickable */
-}
-
-/* ENTER BUTTON */
-#enterBtn {
-  bottom: 2%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 130px;
-  display: none;
-  cursor: pointer;
-  z-index: 9999;           /* always on top when shown */
+  z-index: 10;
   pointer-events: auto;
 }
 
@@ -48,6 +36,7 @@ img, video {
   z-index: 20;
   display: none;
   cursor: pointer;
+  pointer-events: auto;
 }
 
 /* BLACKIE VIDEO */
@@ -60,6 +49,7 @@ img, video {
   object-fit: cover;
   z-index: 5;
   display: none;
+  pointer-events: none;
 }
 
 /* HEY VIDEO */
@@ -69,9 +59,22 @@ img, video {
   width: 170px;
   display: none;
   z-index: 6;
+  pointer-events: none;
 }
 
-/* BEGINNING AND JOURNEY VIDEOS FULLSCREEN */
+/* ENTER BUTTON */
+#enterBtn {
+  bottom: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  display: none;
+  cursor: pointer;
+  z-index: 7;
+  pointer-events: auto;
+}
+
+/* BEGINNING, JOURNEY, GREETINGS VIDEOS FULLSCREEN */
 #beginningVideo, #journeyVideo, #greetingsVideo {
   top: 0;
   left: 0;
@@ -80,10 +83,12 @@ img, video {
   object-fit: cover;
   z-index: 30;
   display: none;
+  pointer-events: auto;
 }
 
 /* MARKET IMAGE */
 #marketImg {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
