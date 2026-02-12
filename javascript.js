@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const fadeDuration = 1000; // 1s fade
 
+    // ===== Volume fade helper =====
     function fadeVolume(video, start, end, duration) {
         const steps = 20;
         const stepTime = duration / steps;
@@ -25,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, stepTime);
     }
 
-    // ===== Initial Fade Sequence =====
+    // ===== Initial fade-in sequence =====
     setTimeout(() => sraVideo.style.opacity = 1, 1500);
     setTimeout(() => { goBtn.style.opacity = 1; goBtn.style.pointerEvents = "auto"; }, 2300);
     setTimeout(() => { skipBtn.style.opacity = 1; skipBtn.style.pointerEvents = "auto"; }, 4000);
@@ -123,7 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, fadeDuration);
     });
 
-    // ===== SAGA / ENTER BUTTON =====
+    // ===== SAGA BUTTON =====
     sagaBtn.addEventListener("click", () => {
         // Stop blackie + hey immediately
         blackieVideo.pause();
@@ -140,7 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Show beginning full screen
         beginningVideo.style.display = "block";
-        beginningVideo.style.muted = false;
+        beginningVideo.muted = false;
         beginningVideo.volume = 0;
         beginningVideo.play();
         fadeVolume(beginningVideo, 0, 1, fadeDuration);
@@ -153,17 +154,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // Show journey full screen
             journeyVideo.style.display = "block";
-            journeyVideo.style.muted = false;
+            journeyVideo.muted = false;
             journeyVideo.volume = 0;
             journeyVideo.play();
             fadeVolume(journeyVideo, 0, 1, fadeDuration);
             journeyVideo.style.opacity = 1;
 
-            // Journey fades to black at 26s
+            // Journey fades to black at 26.7s
             setTimeout(() => {
                 journeyVideo.style.opacity = 0;
                 fadeVolume(journeyVideo, 1, 0, fadeDuration);
-            }, 26000);
+            }, 26700);
 
             journeyVideo.addEventListener("ended", () => {
                 journeyVideo.style.display = "none";
