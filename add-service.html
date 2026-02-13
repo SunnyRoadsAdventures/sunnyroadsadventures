@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Your Service | Sunny Roads Hub</title>
+<style>
+/* ===== BASE STYLES ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #f0f8ff;
+  border-bottom: 2px solid #d0e6f0;
+  padding: 20px;
+  text-align: center;
+}
+
+h1, h2 {
+  color: #00796b;
+}
+
+form {
+  max-width: 600px;
+  margin: 30px auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 600;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #a0e1e0;
+  font-size: 14px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: #00bcd4;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #26c6da;
+}
+
+/* ===== SECTION HEADINGS ===== */
+.section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.note {
+  font-size: 13px;
+  color: #555;
+  margin-top: 10px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sunny Roads Hub</h1>
+  <p>Register your service or offer to join our trusted network</p>
+</header>
+
+<section class="section">
+  <h2>Add Your Service</h2>
+  <p>Please fill out the form below. Private individuals will be verified before approval.</p>
+
+  <form id="serviceForm">
+    <!-- Business or Private -->
+    <label for="providerType">I am a:</label>
+    <select id="providerType" required>
+      <option value="">-- Select --</option>
+      <option value="business">Business / Company</option>
+      <option value="individual">Private Provider / Freelancer</option>
+    </select>
+
+    <!-- Common Info -->
+    <label for="name">Name / Business Name:</label>
+    <input type="text" id="name" placeholder="Your full name or business name" required>
+
+    <label for="category">Category:</label>
+    <select id="category" required>
+      <option value="">-- Select --</option>
+      <option value="food">Food & Grocery</option>
+      <option value="pharmacy">Pharmacy & Health</option>
+      <option value="drinks">Drinks & Bars</option>
+      <option value="transport">Transport</option>
+      <option value="accommodation">Accommodation</option>
+      <option value="home_services">Home Services</option>
+      <option value="personal_assistant">Personal Assistance</option>
+      <option value="leisure">Leisure & Activities</option>
+      <option value="education">Education / Classes</option>
+      <option value="pet_services">Pet Services</option>
+    </select>
+
+    <label for="contact">WhatsApp / Phone:</label>
+    <input type="text" id="contact" placeholder="+505XXXXXXXX" required>
+
+    <label for="location">Location / Address:</label>
+    <input type="text" id="location" placeholder="City, street, or landmark" required>
+
+    <label for="description">Description / Services Offered:</label>
+    <textarea id="description" rows="5" placeholder="Briefly describe your service" required></textarea>
+
+    <!-- Private Individual Only -->
+    <div id="privateFields" style="display:none;">
+      <label for="experience">Experience / Skills:</label>
+      <textarea id="experience" rows="3" placeholder="Your relevant experience"></textarea>
+
+      <label for="idUpload">Upload ID / Verification Document:</label>
+      <input type="file" id="idUpload" accept=".jpg,.jpeg,.png,.pdf">
+      
+      <p class="note">Private providers will undergo manual verification before approval.</p>
+    </div>
+
+    <button type="submit">Submit Registration</button>
+  </form>
+</section>
+
+<script>
+// Show private fields only if "Private Provider" is selected
+const providerType = document.getElementById('providerType');
+const privateFields = document.getElementById('privateFields');
+
+providerType.addEventListener('change', () => {
+  if (providerType.value === 'individual') {
+    privateFields.style.display = 'block';
+  } else {
+    privateFields.style.display = 'none';
+  }
+});
+
+// Form submission (currently demo only)
+document.getElementById('serviceForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert('Thank you! Your submission has been received. You will be contacted for approval.');
+  // Here you can integrate email, Google Forms, or database submission
+  e.target.reset();
+  privateFields.style.display = 'none';
+});
+</script>
+
+</body>
+</html>
