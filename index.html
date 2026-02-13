@@ -119,12 +119,15 @@ nav {
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  gap: 20px;
+  gap: 12px; 
+  overflow-x: auto;
+  padding: 0 10px;
   z-index: 10;
-  position: relative;
 }
 
 nav button {
+  flex: 0 0 auto;
+  min-width: 100px;
   background: #00bcd4;
   border: none;
   padding: 10px 22px;
@@ -134,6 +137,10 @@ nav button {
   color: #fff;
   font-weight: 600;
   transition: all 0.3s ease;
+}
+
+nav button:hover {
+  background: #26c6da;
 }
 
 /* ===== SECTIONS ===== */
@@ -172,6 +179,12 @@ h1, h2 {
   border: 2px solid #a0e1e0;
 }
 
+.tour-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  background: #b2ebf2;
+}
+
 .tour-card h3 {
   margin-bottom: 10px;
   font-size: 18px;
@@ -193,77 +206,61 @@ h1, h2 {
   margin-top: 30px;
 }
 
-/* ===== GROK CHARACTER ===== */
-#grok {
-  width: 120px;
-  height: 120px;
-  background: #ffd54f;
-  border-radius: 50%;
+/* ===== MAP IMAGE ===== */
+#mapImage {
+  max-width: 90%;
+  height: auto;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== CLASSES VIDEO ===== */
+#classesVideo {
+  max-width: 90%;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* ===== JOIN THE HUB ===== */
+#joinHub {
+  max-width: 800px;
+  width: 100%;
+  margin-top: 30px;
+}
+
+#joinHub form {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 50px;
-  cursor: pointer;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  animation: float 3s ease-in-out infinite, rotate 8s linear infinite;
-  z-index: 100;
+  flex-direction: column;
+  gap: 12px;
+  background: #e0f7fa;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* GROK REACT TO TOUR */
-#grok.jump {
-  animation: jumpSpin 0.8s ease forwards;
-}
-
-@keyframes jumpSpin {
-  0% { transform: translateY(0) rotate(0deg); }
-  25% { transform: translateY(-60px) rotate(90deg); }
-  50% { transform: translateY(-80px) rotate(180deg); }
-  75% { transform: translateY(-60px) rotate(270deg); }
-  100% { transform: translateY(0) rotate(360deg); }
-}
-
-/* ===== POPUP ===== */
-#popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 30px;
-  width: 320px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  z-index: 200;
-  transition: transform 0.3s ease;
-}
-
-#popup.active {
-  transform: translate(-50%, -50%) scale(1);
-}
-
-#popup button {
-  margin-top: 20px;
-  padding: 10px 22px;
-  border: none;
+#joinHub input, #joinHub textarea, #joinHub select {
+  padding: 10px;
   border-radius: 8px;
+  border: 1px solid #a0e1e0;
+  font-size: 14px;
+  width: 100%;
+}
+
+#joinHub button {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
   background: #00bcd4;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+#joinHub button:hover {
+  background: #26c6da;
 }
 
 /* ===== FOOTER ===== */
@@ -287,7 +284,6 @@ footer p {
 @media (max-width: 768px) {
   nav button { font-size: 14px; padding: 8px 16px; }
   .tour-card { width: 90%; height: 150px; }
-  #grok { width: 90px; height: 90px; font-size: 40px; }
 }
 </style>
 </head>
@@ -310,73 +306,63 @@ footer p {
   <button data-section="home">Home</button>
   <button data-section="tours">Tours</button>
   <button data-section="allRoutes">All Routes</button>
+  <button data-section="classes">Classes</button>
   <button data-section="joinHub">Join the Hub</button>
-  <button data-section="contact">Contact</button>
 </nav>
 
 <!-- SECTIONS -->
 <section id="home">
   <h1>Welcome to Sunny Roads Adventures!</h1>
   <p>Explore immersive tours, adventures, and experiences designed to delight and inspire.</p>
-  <img src="map.png" alt="Map" style="width:80%; max-width:800px; margin:30px 0;">
-  <video controls style="width:80%; max-width:600px;">
-    <source src="classes.mp4" type="video/mp4">
-  </video>
+  <img id="mapImage" src="map.png" alt="Route Map">
 </section>
 
 <section id="tours">
   <h2>Our Tours</h2>
   <div id="toursContainer">
-    <div class="tour-card"><h3>Masaya & Catarina</h3><p>Enjoy colorful towns and culture.</p><p>Price: $24</p></div>
-    <div class="tour-card"><h3>Managua</h3><p>Explore the capital city.</p><p>Price: $48</p></div>
-    <div class="tour-card"><h3>Rivas</h3><p>Coastal vibes and lakes.</p><p>Price: $62</p></div>
-    <div class="tour-card"><h3>San Juan del Sur</h3><p>Beach & surf adventure.</p><p>Price: $74</p></div>
-    <div class="tour-card"><h3>Popoyo</h3><p>Surf paradise.</p><p>Price: $74</p></div>
+    <div class="tour-card"><h3>Masaya & Catarina</h3><p>Price: $24</p></div>
+    <div class="tour-card"><h3>Managua</h3><p>Price: $48</p></div>
+    <div class="tour-card"><h3>Rivas</h3><p>Price: $62</p></div>
+    <div class="tour-card"><h3>San Juan del Sur</h3><p>Price: $74</p></div>
+    <div class="tour-card"><h3>Popoyo</h3><p>Price: $74</p></div>
   </div>
 </section>
 
 <section id="allRoutes">
-  <h2>All Routes & Suggested Prices</h2>
-  <p>Estimated distance × ~$1/km (rounded). Prices are one-way and approximate.</p>
-  <ul>
-    <li>Granada → Masatepe (~30 km) → $30</li>
-    <li>Granada → Diriamba (~32 km) → $32</li>
-    <li>Granada → Jinotepe (~40–45 km) → $40–$45</li>
-    <li>Granada → Apoyo Lagoon (~20 km) → $18–$22</li>
-    <li>Granada → Montelimar Beach (~60–62 km) → $60–$65</li>
-    <li>Granada → Matagalpa (~110 km) → $100–$110</li>
-    <li>Granada → León (~115 km) → $110–$120</li>
-    <li>Granada → Estelí (~135–140 km) → $130–$140</li>
-    <li>Granada → Tola (~55–57 km) → $55–$60</li>
-  </ul>
+  <h2>All Routes & Prices</h2>
+  <p>See detailed prices and estimated distances for each route from Granada.</p>
+  <p>Visit: <a href="all-routes.html">All Routes Page</a></p>
+</section>
+
+<section id="classes">
+  <h2>Language Classes with Blackie</h2>
+  <video id="classesVideo" controls>
+    <source src="classes.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </section>
 
 <section id="joinHub">
-  <h2>Join the Hub</h2>
-  <p>Are you a company or individual offering services? Get listed in our hub and connect with clients directly.</p>
-  <p>Services can include food delivery, pharmacy, personal assistant, pet services, transportation, and more.</p>
-  <p>Membership options: weekly or monthly. Private interviews required for listing.</p>
+  <h2>Join the Sunny Roads Service Hub</h2>
+  <p>If you offer a service and want to be visible in our hub, fill out this application form:</p>
+  <form action="https://formspree.io/f/sunnyroadsadcentures@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="text" name="service" placeholder="Type of Service" required>
+    <select name="contract">
+      <option value="">Select Contract Type</option>
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+      <option value="custom">Custom</option>
+    </select>
+    <textarea name="description" placeholder="Description of Service" required></textarea>
+    <button type="submit">Submit Application</button>
+  </form>
 </section>
-
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>WhatsApp: +50558365522</p>
-  <p>Email: info@sunnyroadsadventures.com</p>
-  <p>Phone: +505 555-5555</p>
-</section>
-
-<!-- GROK CHARACTER -->
-<div id="grok">🤪</div>
-
-<!-- POPUP FOR GROK -->
-<div id="popup">
-  <h3>Grok says hello!</h3>
-  <p>Click on a tour card to see more details or just enjoy the fun journey!</p>
-  <button id="closePopup">Close</button>
-</div>
 
 <!-- FOOTER -->
 <footer>
+  <p>Contact & WhatsApp: +50558365522</p>
   <p>© 2026 Sunny Roads Adventures</p>
 </footer>
 
@@ -392,35 +378,8 @@ document.querySelectorAll('nav button').forEach(btn => {
 });
 
 // ===== INITIAL VIEW =====
-document.querySelectorAll('section').forEach(sec => {
-  sec.style.display = 'flex';
-});
-
-// ===== GROK INTERACTION =====
-const grok = document.getElementById('grok');
-const popup = document.getElementById('popup');
-const closePopup = document.getElementById('closePopup');
-
-grok.addEventListener('click', () => {
-  popup.classList.add('active');
-});
-
-closePopup.addEventListener('click', () => {
-  popup.classList.remove('active');
-});
-
-// ===== TOUR CARD CLICK =====
-document.querySelectorAll('.tour-card').forEach(card => {
-  card.addEventListener('click', () => {
-    // Grok jumps and spins
-    grok.classList.add('jump');
-    setTimeout(() => { grok.classList.remove('jump'); }, 800);
-
-    // Show popup with tour info
-    popup.querySelector('h3').textContent = "Tour: " + card.querySelector('h3').textContent;
-    popup.querySelector('p').textContent = card.querySelector('p').textContent;
-    popup.classList.add('active');
-  });
+document.querySelectorAll('section').forEach((sec, i) => {
+  sec.style.display = (i===0) ? 'flex' : 'none';
 });
 </script>
 </body>
