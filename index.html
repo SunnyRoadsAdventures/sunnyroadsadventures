@@ -136,6 +136,27 @@ nav button {
   transition: all 0.3s ease;
 }
 
+nav button:hover {
+  background: #26c6da;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.nav-link {
+  background: #00bcd4;
+  padding: 10px 22px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background: #26c6da;
+}
+
 /* ===== SECTIONS ===== */
 section {
   min-height: 100vh;
@@ -172,6 +193,12 @@ h1, h2 {
   border: 2px solid #a0e1e0;
 }
 
+.tour-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  background: #b2ebf2;
+}
+
 .tour-card h3 {
   margin-bottom: 10px;
   font-size: 18px;
@@ -191,6 +218,47 @@ h1, h2 {
   justify-content: center;
   gap: 20px;
   margin-top: 30px;
+}
+
+/* ===== GROK CHARACTER ===== */
+#grok {
+  width: 120px;
+  height: 120px;
+  background: #ffd54f;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  cursor: pointer;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  animation: float 3s ease-in-out infinite, rotate 8s linear infinite;
+  z-index: 100;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* GROK REACT TO TOUR */
+#grok.jump {
+  animation: jumpSpin 0.8s ease forwards;
+}
+
+@keyframes jumpSpin {
+  0% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-60px) rotate(90deg); }
+  50% { transform: translateY(-80px) rotate(180deg); }
+  75% { transform: translateY(-60px) rotate(270deg); }
+  100% { transform: translateY(0) rotate(360deg); }
 }
 
 /* ===== POPUP ===== */
@@ -225,6 +293,48 @@ h1, h2 {
   transition: all 0.3s ease;
 }
 
+#popup button:hover {
+  background: #26c6da;
+}
+
+/* ===== JOIN THE HUB SECTION ===== */
+#joinHub {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  text-align: center;
+  background: #f0f8ff;
+  border-top: 2px solid #d0e6f0;
+  border-bottom: 2px solid #d0e6f0;
+}
+#joinHub h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #00796b;
+}
+#joinHub p {
+  font-size: 16px;
+  margin-bottom: 25px;
+  color: #555;
+  max-width: 600px;
+}
+.hub-button {
+  padding: 12px 28px;
+  border-radius: 12px;
+  background: #00bcd4;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+.hub-button:hover {
+  background: #26c6da;
+}
+
 /* ===== FOOTER ===== */
 footer {
   width: 100%;
@@ -244,8 +354,9 @@ footer p {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  nav button { font-size: 14px; padding: 8px 16px; }
+  nav button, .nav-link { font-size: 14px; padding: 8px 16px; }
   .tour-card { width: 90%; height: 150px; }
+  #grok { width: 90px; height: 90px; font-size: 40px; }
 }
 </style>
 </head>
@@ -268,64 +379,57 @@ footer p {
   <button data-section="home">Home</button>
   <button data-section="tours">Tours</button>
   <button data-section="contact">Contact</button>
+  <a href="all-routes.html" class="nav-link">All Routes</a>
 </nav>
 
 <!-- SECTIONS -->
 <section id="home">
   <h1>Welcome to Sunny Roads Adventures!</h1>
   <p>Explore immersive tours, adventures, and experiences designed to delight and inspire.</p>
-
-  <!-- MAP IMAGE -->
-  <img src="map.png" alt="Tour Map of Granada Area" style="max-width:90%; margin:30px 0; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1);">
-
-  <!-- CLASSES VIDEO -->
-  <video controls style="max-width:90%; margin:30px 0; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
-    <source src="classes.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- JOIN HUB SECTION -->
-  <section id="joinHub" style="text-align:center; margin:40px 20px;">
-    <h2>Want to Join Sunny Roads Hub?</h2>
-    <p>If you offer a service in Granada and want to be part of our trusted network, click below to register.</p>
-    <a href="add-service.html" style="
-      display:inline-block;
-      background:#00bcd4;
-      color:#fff;
-      font-weight:600;
-      padding:12px 25px;
-      border-radius:12px;
-      text-decoration:none;
-      font-size:16px;
-      transition:all 0.3s ease;">
-      Join the Hub
-    </a>
-  </section>
-
 </section>
 
 <section id="tours">
-  <h2>Our Tours</h2>
+  <h2>Our Tours & Prices</h2>
   <div id="toursContainer">
-    <div class="tour-card"><h3>Catalina Drive</h3><p>Experience a scenic drive with expert guidance.</p></div>
-    <div class="tour-card"><h3>Customized Tours</h3><p>Create a tour perfectly suited to your desires.</p></div>
-    <div class="tour-card"><h3>Fishing Tour</h3><p>Catch local fish with our experienced guides.</p></div>
-    <div class="tour-card"><h3>Managua Drive</h3><p>Explore the capital city with ease and comfort.</p></div>
-    <div class="tour-card"><h3>Ometepe Ferry Pick-up/Drop-off</h3><p>Travel to Ometepe Island hassle-free.</p></div>
-    <div class="tour-card"><h3>Popoyo Sunset Dropoff/Drive Back</h3><p>Enjoy beautiful sunsets on the Pacific coast.</p></div>
-    <div class="tour-card"><h3>Rivas Drive</h3><p>Visit the charming town of Rivas.</p></div>
-    <div class="tour-card"><h3>Masaya & Catarina</h3><p>Discover colorful markets and natural beauty.</p></div>
-    <div class="tour-card"><h3>Coffee Farm Visit/Drive</h3><p>Learn about local coffee production and taste fresh brews.</p></div>
+    <div class="tour-card"><h3>Masaya & Catarina</h3><p>Price: $24</p></div>
+    <div class="tour-card"><h3>Managua</h3><p>Price: $48</p></div>
+    <div class="tour-card"><h3>Rivas</h3><p>Price: $62</p></div>
+    <div class="tour-card"><h3>San Juan Del Sur</h3><p>Price: $74</p></div>
+    <div class="tour-card"><h3>Popoyo</h3><p>Price: $74</p></div>
   </div>
+</section>
+
+<!-- MAP IMAGE -->
+<section id="mapSection">
+  <img src="map.png" alt="Route Map" style="width:90%; max-width:900px; margin:30px 0;">
+</section>
+
+<!-- CLASSES VIDEO -->
+<section id="classesVideo">
+  <video controls width="90%" style="max-width:700px; margin-bottom:30px;">
+    <source src="classes.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</section>
+
+<!-- JOIN THE HUB SECTION -->
+<section id="joinHub">
+  <h2>Join the Sunny Roads Service Hub</h2>
+  <p>Are you a service provider in Granada? Food, deliveries, pet care, or personal assistance — become part of our hub and reach more customers easily.</p>
+  <p>Choose your subscription, verify your profile, and your services will be listed for everyone to see!</p>
+  <a href="add-service.html" class="hub-button">Register Your Service</a>
 </section>
 
 <section id="contact">
   <h2>Contact Us</h2>
-  <p>Email: info@sunnyroadsadventures.com</p>
   <p>WhatsApp: +50558365522</p>
+  <p>Email: info@sunnyroadsadventures.com</p>
 </section>
 
-<!-- POPUP -->
+<!-- GROK CHARACTER -->
+<div id="grok">🤪</div>
+
+<!-- POPUP FOR GROK -->
 <div id="popup">
   <h3>Grok says hello!</h3>
   <p>Click on a tour card to see more details or just enjoy the fun journey!</p>
@@ -353,19 +457,31 @@ document.querySelectorAll('section').forEach((sec, i) => {
   sec.style.display = (i===0) ? 'flex' : 'none';
 });
 
-// ===== TOUR CARD CLICK =====
+// ===== GROK INTERACTION =====
+const grok = document.getElementById('grok');
 const popup = document.getElementById('popup');
+const closePopup = document.getElementById('closePopup');
+
+grok.addEventListener('click', () => {
+  popup.classList.add('active');
+});
+
+closePopup.addEventListener('click', () => {
+  popup.classList.remove('active');
+});
+
+// ===== TOUR CARD CLICK =====
 document.querySelectorAll('.tour-card').forEach(card => {
   card.addEventListener('click', () => {
+    // Grok jumps and spins
+    grok.classList.add('jump');
+    setTimeout(() => { grok.classList.remove('jump'); }, 800);
+
     // Show popup with tour info
     popup.querySelector('h3').textContent = "Tour: " + card.querySelector('h3').textContent;
     popup.querySelector('p').textContent = card.querySelector('p').textContent;
     popup.classList.add('active');
   });
-});
-
-document.getElementById('closePopup').addEventListener('click', () => {
-  popup.classList.remove('active');
 });
 </script>
 </body>
