@@ -177,14 +177,14 @@ h1,h2 { margin-bottom:20px; font-weight:700; }
   margin-top:30px;
 }
 
-/* ===== CLASSES VIDEO ===== */
+/* ===== CLASSES VIDEO VISIBLE ===== */
 #classesVideo {
   width:360px;
   max-width:90%;
   border:3px solid #00bcd4;
   border-radius:12px;
   box-shadow:0 4px 12px rgba(0,0,0,0.3);
-  margin-top:30px;
+  margin:50px 0;
   cursor:pointer;
 }
 
@@ -287,7 +287,6 @@ footer p { color:#555; font-weight:500; }
   <button data-section="home">Home</button>
   <button data-section="tours">Tours</button>
   <button data-section="contact">Contact</button>
-  <button data-section="classes">Classes</button>
 </nav>
 
 <!-- SECTIONS -->
@@ -311,16 +310,17 @@ footer p { color:#555; font-weight:500; }
   </div>
 </section>
 
+<!-- ALWAYS VISIBLE CLASSES VIDEO -->
+<section id="classesVisible">
+  <h2>Learn Spanish & English</h2>
+  <video id="classesVideo" src="classes/classes.mp4" controls playsinline></video>
+  <p>Tap to play a short 6-second class with Blackie!</p>
+</section>
+
 <section id="contact">
   <h2>Contact Us</h2>
   <p>Email: info@sunnyroadsadventures.com</p>
   <p>WhatsApp: +505 5836 5522</p>
-</section>
-
-<section id="classes">
-  <h2>Learn Spanish & English</h2>
-  <video id="classesVideo" src="classes/classes.mp4" controls playsinline></video>
-  <p>Tap to play a short 6-second class with Blackie!</p>
 </section>
 
 <!-- GROK CHARACTER -->
