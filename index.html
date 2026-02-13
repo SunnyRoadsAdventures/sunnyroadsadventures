@@ -3,73 +3,47 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures</title>
+<title>Sunny Roads Adventures – Phase 2 Upgrade</title>
 <style>
-  /* --- Basic Reset --- */
-  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+  /* Basic Reset & Layout */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
   body { background:#f4f4f4; color:#333; line-height:1.6; }
   a { text-decoration:none; color:#fff; }
   img { max-width:100%; height:auto; }
 
-  /* --- Header / Logo --- */
-  header { background:#1e90ff; color:#fff; padding:15px 10px; display:flex; align-items:center; justify-content:space-between; }
+  /* Header / Tabs */
+  header { background:#1e90ff; color:#fff; padding:15px; display:flex; justify-content:space-between; align-items:center; }
   header img { height:50px; }
-
-  /* --- Tabs Navigation --- */
   nav { display:flex; justify-content:center; background:#4682b4; }
-  nav a { color:#fff; padding:12px 20px; text-align:center; display:inline-block; font-weight:bold; transition:0.2s; }
+  nav a { color:#fff; padding:12px 20px; font-weight:bold; display:inline-block; }
   nav a:hover { background:#5a9bd3; }
 
-  /* --- Home Section --- */
-  #home { padding:20px; text-align:center; background:#e6f2ff; }
-  #home h1 { margin-bottom:15px; }
-  #home img#map { max-width:600px; margin:20px auto; display:block; border:2px solid #ccc; }
+  /* Sections */
+  section { padding:20px; max-width:900px; margin:0 auto; }
+  h2 { margin-bottom:15px; }
 
-  /* --- Classes Video --- */
-  #classes { margin:20px auto; max-width:600px; }
-  #classes video { width:100%; border:2px solid #ccc; }
+  /* Interactive Map */
+  #interactive-map { position:relative; max-width:600px; margin:20px auto; border:2px solid #ccc; }
+  .map-point { position:absolute; width:20px; height:20px; background:red; border-radius:50%; cursor:pointer; }
+  .map-tooltip { position:absolute; background:#fff; padding:8px; border:1px solid #ccc; border-radius:5px; display:none; z-index:10; }
 
-  /* --- Tours Section --- */
-  #tours { padding:20px; max-width:900px; margin:0 auto; }
-  #tours h2 { margin-bottom:15px; }
-  .tour { background:#fff; padding:15px; margin-bottom:10px; border-radius:5px; display:flex; flex-direction:column; }
-  .tour img { height:40px; margin-bottom:10px; }
-  .tour-details { flex:1; }
-  .tour-details h3 { margin-bottom:5px; }
-  .tour-details p { font-size:0.9rem; margin-bottom:8px; }
-  .tour-details a.button { background:#1e90ff; padding:6px 12px; border-radius:4px; color:#fff; font-weight:bold; }
+  /* Tours Section */
+  .tour { background:#fff; padding:15px; margin-bottom:10px; border-radius:5px; }
   .availability { font-weight:bold; margin-bottom:8px; }
 
-  /* Booking form inside each tour */
-  .tour-booking { display:flex; flex-direction:column; max-width:300px; margin-top:8px; }
-  .tour-booking label { margin-bottom:4px; font-weight:bold; }
-  .tour-booking input { padding:6px; margin-bottom:6px; border-radius:4px; border:1px solid #ccc; }
-  .tour-booking button { background:#1e90ff; color:#fff; border:none; padding:8px; border-radius:4px; cursor:pointer; }
-  .tour-booking button:hover { background:#5a9bd3; }
+  /* Dashboard */
+  #dashboard { display:none; padding:20px; background:#e6f2ff; border-radius:5px; margin-bottom:20px; }
+  #dashboard h3 { margin-bottom:10px; }
 
-  /* --- All Routes Section --- */
-  #all-routes { padding:20px; max-width:900px; margin:0 auto; }
-  #all-routes h2 { margin-bottom:15px; }
-  table { width:100%; border-collapse:collapse; }
-  th, td { border:1px solid #ccc; padding:10px; text-align:left; }
-  tr:nth-child(even) { background:#f9f9f9; }
+  /* Hub Section */
+  #hub { background:#fff; border-radius:5px; padding:20px; margin-bottom:20px; }
 
-  /* --- Hub Section --- */
-  #hub { padding:20px; max-width:900px; margin:0 auto; background:#fff; border-radius:5px; margin-bottom:20px; }
-  #hub h2 { margin-bottom:15px; }
-  .hub-service { display:flex; align-items:center; margin-bottom:12px; }
-  .hub-service img { height:30px; margin-right:10px; }
-
-  /* --- Newsletter / Contact Form --- */
-  #newsletter { padding:20px; max-width:600px; margin:0 auto 40px auto; background:#e6f2ff; border-radius:5px; }
-  #newsletter h3 { margin-bottom:10px; text-align:center; }
-  #newsletter form { display:flex; flex-direction:column; }
-  #newsletter input, #newsletter textarea { padding:10px; margin-bottom:10px; border-radius:4px; border:1px solid #ccc; }
-  #newsletter button { background:#1e90ff; color:#fff; padding:10px; font-weight:bold; border:none; border-radius:4px; cursor:pointer; }
-  #newsletter button:hover { background:#5a9bd3; }
-
-  /* --- Footer --- */
+  /* Footer */
   footer { background:#4682b4; color:#fff; text-align:center; padding:15px; }
+
+  /* Classes Video */
+  #classes { margin-top:20px; text-align:center; }
+  video { max-width:100%; border-radius:5px; }
 </style>
 </head>
 <body>
@@ -85,161 +59,85 @@
   <a href="#tours">Tours</a>
   <a href="#all-routes">All Routes</a>
   <a href="#hub">Join the Hub</a>
-  <a href="#newsletter">Contact / Newsletter</a>
+  <a href="#dashboard">Dashboard</a>
 </nav>
 
-<!-- Home Section -->
+<!-- Home -->
 <section id="home">
   <h1>Welcome to Sunny Roads Adventures</h1>
-  <p>Your adventure in Granada starts here!</p>
   <img src="map.png" alt="Map of Granada Tours" id="map">
-  
+
+  <!-- Classes Video -->
   <div id="classes">
     <video controls>
       <source src="classes.mp4" type="video/mp4">
       Your browser does not support HTML5 video.
     </video>
   </div>
+
+  <!-- Interactive Map -->
+  <div id="interactive-map">
+    <div class="map-point" data-tour="Masaya & Catarina" style="top:50px; left:100px;"></div>
+    <div class="map-point" data-tour="Managua Tour" style="top:150px; left:300px;"></div>
+    <div class="map-point" data-tour="Rivas Tour" style="top:200px; left:200px;"></div>
+    <div class="map-point" data-tour="San Juan del Sur" style="top:250px; left:400px;"></div>
+    <div class="map-point" data-tour="Popoyo" style="top:300px; left:350px;"></div>
+    <div class="map-tooltip" id="map-tooltip"></div>
+  </div>
 </section>
 
 <!-- Tours Section -->
 <section id="tours">
   <h2>Our Tours</h2>
-  
   <div class="tour">
-    <img src="icons/volcano.png" alt="Volcano Icon">
-    <div class="tour-details">
-      <h3>Masaya & Catarina</h3>
-      <p>Explore the volcanic crater of Masaya and the colorful artisan town of Catarina. Duration: 6 hours.</p>
-      <p>Price: $24 per person <span style="color:red;">(Promo: $20 today!)</span></p>
-      <p class="availability" style="color:green;">Available</p>
-      <a href="https://wa.me/50558365522?text=I%20want%20to%20book%20Masaya%20%26%20Catarina%20tour" class="button">Book via WhatsApp</a>
-      
-      <form onsubmit="bookTour(event, 'Masaya & Catarina')" class="tour-booking">
-        <label>Select Date:</label>
-        <input type="date" required>
-        <label>Number of People:</label>
-        <input type="number" min="1" value="1" required>
-        <button type="submit">Book</button>
-      </form>
-    </div>
+    <h3>Masaya & Catarina</h3>
+    <p>Price: $24</p>
+    <p class="availability" id="Masaya & Catarina-availability"></p>
   </div>
-
   <div class="tour">
-    <img src="icons/city.png" alt="City Icon">
-    <div class="tour-details">
-      <h3>Managua Tour</h3>
-      <p>Discover the highlights of Nicaragua's capital, including historical sites and cultural centers. Duration: 8 hours.</p>
-      <p>Price: $48 per person</p>
-      <p class="availability" style="color:green;">Available</p>
-      <a href="https://wa.me/50558365522?text=I%20want%20to%20book%20Managua%20tour" class="button">Book via WhatsApp</a>
-      
-      <form onsubmit="bookTour(event, 'Managua Tour')" class="tour-booking">
-        <label>Select Date:</label>
-        <input type="date" required>
-        <label>Number of People:</label>
-        <input type="number" min="1" value="1" required>
-        <button type="submit">Book</button>
-      </form>
-    </div>
+    <h3>Managua</h3>
+    <p>Price: $48</p>
+    <p class="availability" id="Managua Tour-availability"></p>
   </div>
-
-  <!-- More tours can be added in same format -->
+  <div class="tour">
+    <h3>Rivas</h3>
+    <p>Price: $62</p>
+    <p class="availability" id="Rivas Tour-availability"></p>
+  </div>
+  <div class="tour">
+    <h3>San Juan del Sur</h3>
+    <p>Price: $74</p>
+    <p class="availability" id="San Juan del Sur-availability"></p>
+  </div>
+  <div class="tour">
+    <h3>Popoyo</h3>
+    <p>Price: $74</p>
+    <p class="availability" id="Popoyo-availability"></p>
+  </div>
 </section>
 
-<!-- All Routes Section -->
+<!-- All Routes -->
 <section id="all-routes">
   <h2>All Routes & Suggested Prices</h2>
-  <table>
-    <tr>
-      <th>Route</th>
-      <th>Distance (km)</th>
-      <th>Suggested Price</th>
-    </tr>
-    <tr>
-      <td>Granada → Masatepe</td>
-      <td>30</td>
-      <td>$30</td>
-    </tr>
-    <tr>
-      <td>Granada → Diriamba</td>
-      <td>32</td>
-      <td>$32</td>
-    </tr>
-    <tr>
-      <td>Granada → Jinotepe</td>
-      <td>40–45</td>
-      <td>$40–$45</td>
-    </tr>
-    <tr>
-      <td>Granada → Apoyo Lagoon</td>
-      <td>15–20</td>
-      <td>$18–$22</td>
-    </tr>
-    <tr>
-      <td>Granada → Montelimar Beach</td>
-      <td>60–62</td>
-      <td>$60–$65</td>
-    </tr>
-    <tr>
-      <td>Granada → Matagalpa</td>
-      <td>110</td>
-      <td>$100–$110</td>
-    </tr>
-    <tr>
-      <td>Granada → León</td>
-      <td>115</td>
-      <td>$110–$120</td>
-    </tr>
-    <tr>
-      <td>Granada → Estelí</td>
-      <td>135–140</td>
-      <td>$130–$140</td>
-    </tr>
-    <tr>
-      <td>Granada → Tola / San Juan del Sur</td>
-      <td>55–57</td>
-      <td>$55–$60</td>
-    </tr>
-  </table>
+  <!-- Can reuse table from Phase 1 -->
 </section>
 
-<!-- Hub Section -->
+<!-- Hub -->
 <section id="hub">
   <h2>Sunny Roads Service Hub</h2>
-  
-  <div class="hub-service">
-    <img src="icons/food.png" alt="Food Delivery Icon">
-    <p>Food Delivery Services</p>
-  </div>
-  <div class="hub-service">
-    <img src="icons/pharmacy.png" alt="Pharmacy Icon">
-    <p>Pharmacy Delivery</p>
-  </div>
-  <div class="hub-service">
-    <img src="icons/paw.png" alt="Pet Services Icon">
-    <p>Pet Services</p>
-  </div>
-  <div class="hub-service">
-    <img src="icons/assistant.png" alt="Personal Assistant Icon">
-    <p>Personal Assistant Services</p>
-  </div>
-  <div class="hub-service">
-    <img src="icons/construction.png" alt="Construction Icon">
-    <p>Construction & Plumbing Services</p>
-  </div>
+  <p>Add your service to the hub. Approved services are visible to all users. Applications will be sent to <a href="mailto:sunnyroadsadcentures@gmail.com">sunnyroadsadcentures@gmail.com</a></p>
 </section>
 
-<!-- Newsletter / Contact Form -->
-<section id="newsletter">
-  <h3>Contact / Newsletter</h3>
-  <form action="mailto:sunnyroadsadcentures@gmail.com" method="post" enctype="text/plain">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <textarea name="message" placeholder="Your Message" rows="4"></textarea>
-    <button type="submit">Send / Subscribe</button>
-  </form>
-  <p style="text-align:center; margin-top:10px;">Or WhatsApp us directly: <a href="https://wa.me/50558365522" style="color:#1e90ff;">+505 5836 5522</a></p>
+<!-- Dashboard -->
+<section id="dashboard">
+  <h3>Service Partner / Admin Dashboard</h3>
+  <p>Login feature coming soon. You will see:</p>
+  <ul>
+    <li>Bookings per tour</li>
+    <li>Availability status</li>
+    <li>Revenue tracking</li>
+    <li>Low spots warning (orange indicator)</li>
+  </ul>
 </section>
 
 <!-- Footer -->
@@ -248,45 +146,82 @@
 </footer>
 
 <script>
-// Automatic availability tracking
-const tourAvailability = {
-  "Masaya & Catarina": { booked: 0, maxCapacity: 10 },
-  "Managua Tour": { booked: 0, maxCapacity: 8 }
+// -------------------- Phase 2 Upgrade JS --------------------
+
+// Tour Data
+let tours = {
+  "Masaya & Catarina": { price: 24, spots: 5 },
+  "Managua Tour": { price: 48, spots: 5 },
+  "Rivas Tour": { price: 62, spots: 5 },
+  "San Juan del Sur": { price: 74, spots: 5 },
+  "Popoyo": { price: 74, spots: 5 }
 };
 
-function bookTour(event, tourName) {
-  event.preventDefault();
-  const form = event.target;
-  const date = form.querySelector('input[type="date"]').value;
-  const people = parseInt(form.querySelector('input[type="number"]').value);
-
-  const tour = tourAvailability[tourName];
-
-  if(tour.booked + people > tour.maxCapacity) {
-    alert(`Sorry! The ${tourName} tour is now Full or exceeds available spots.`);
-    form.querySelector('input[type="number"]').value = 1;
-    return;
-  }
-
-  // Update bookings
-  tour.booked += people;
-
-  // Update availability indicator
-  const availabilityElement = form.closest('.tour-details').querySelector('.availability');
-  if(tour.booked >= tour.maxCapacity){
-    availabilityElement.textContent = "Full";
-    availabilityElement.style.color = "red";
-  } else {
-    availabilityElement.textContent = "Available";
-    availabilityElement.style.color = "green";
-  }
-
-  // Send email to you
-  window.location.href = `mailto:sunnyroadsadcentures@gmail.com?subject=New Booking: ${tourName}&body=Date: ${date}%0D%0APeople: ${people}`;
-
-  // Show confirmation to user
-  alert(`Thank you! Your booking for ${tourName} on ${date} for ${people} people has been submitted. Total booked for this tour: ${tour.booked}`);
+// Initialize localStorage for bookings
+if (!localStorage.getItem('tourBookings')) {
+  localStorage.setItem('tourBookings', JSON.stringify({}));
 }
+
+// Function: Update map point colors based on availability
+function updateMapColors() {
+  const bookings = JSON.parse(localStorage.getItem('tourBookings'));
+  document.querySelectorAll('.map-point').forEach(point => {
+    const tour = point.dataset.tour;
+    const spotsLeft = tours[tour].spots - (bookings[tour] || 0);
+    if (spotsLeft <= 0) point.style.background = 'red';
+    else if (spotsLeft <= 2) point.style.background = 'orange';
+    else point.style.background = 'green';
+
+    // Update availability text in tour section
+    const availText = document.getElementById(tour + '-availability');
+    if (availText) availText.textContent = `Spots left: ${spotsLeft}`;
+  });
+}
+
+// Initial update
+updateMapColors();
+
+// Tooltip & Booking click for map points
+const tooltip = document.getElementById('map-tooltip');
+document.querySelectorAll('.map-point').forEach(point => {
+  point.addEventListener('mouseenter', () => {
+    tooltip.textContent = point.dataset.tour;
+    tooltip.style.display = 'block';
+    tooltip.style.top = (point.offsetTop - 30) + 'px';
+    tooltip.style.left = (point.offsetLeft + 10) + 'px';
+  });
+  point.addEventListener('mouseleave', () => {
+    tooltip.style.display = 'none';
+  });
+  point.addEventListener('click', () => {
+    const tour = point.dataset.tour;
+    const bookings = JSON.parse(localStorage.getItem('tourBookings'));
+    bookings[tour] = (bookings[tour] || 0) + 1;
+    localStorage.setItem('tourBookings', JSON.stringify(bookings));
+    alert(`Booked ${tour}! Contact via WhatsApp: +50558365522`);
+    updateMapColors();
+  });
+});
+
+// Social Share Links
+function createShareLinks(tourName) {
+  const whatsapp = `https://wa.me/50558365522?text=Check%20out%20${encodeURIComponent(tourName)}%20Tour%20from%20Sunny%20Roads!%20Price%20approx.$${tours[tourName].price}`;
+  const facebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=Check%20out%20${encodeURIComponent(tourName)}%20Tour!`;
+  return { whatsapp, facebook };
+}
+
+// Add social share links to map points dynamically
+document.querySelectorAll('.map-point').forEach(point => {
+  const tour = point.dataset.tour;
+  const links = createShareLinks(tour);
+  const btnContainer = document.createElement('div');
+  btnContainer.style.marginTop = '5px';
+  btnContainer.innerHTML = `
+    <a href="${links.whatsapp}" target="_blank" style="color:black; margin-right:5px;">WhatsApp</a>
+    <a href="${links.facebook}" target="_blank" style="color:black;">Facebook</a>
+  `;
+  point.appendChild(btnContainer);
+});
 </script>
 
 </body>
