@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures</title>
+<title>Sunny Roads Adventures | Private Transport Granada</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -56,36 +56,28 @@ cursor:pointer;
 }
 
 section{
-padding:60px 20px;
+padding:70px 20px;
 text-align:center;
 }
 
-.hero{
-max-width:900px;
-margin:auto;
-}
-
 .hero h1{
-font-size:32px;
+font-size:34px;
 margin-bottom:15px;
 }
 
 .hero p{
 font-size:18px;
 margin-bottom:30px;
-}
-
-.video-container{
 max-width:800px;
-margin:30px auto;
-border-radius:20px;
-overflow:hidden;
-box-shadow:0 15px 40px rgba(0,0,0,0.15);
+margin-left:auto;
+margin-right:auto;
 }
 
-.video-container video{
+.map-section img{
+max-width:1000px;
 width:100%;
-display:block;
+border-radius:20px;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
 }
 
 .tours-grid{
@@ -102,10 +94,6 @@ border-radius:18px;
 padding:25px;
 box-shadow:0 8px 25px rgba(0,0,0,0.08);
 text-align:left;
-}
-
-.tour-card h3{
-margin-bottom:10px;
 }
 
 .price{
@@ -126,8 +114,20 @@ border-radius:8px;
 text-decoration:none;
 }
 
-.testimonials{
+.pricing-info{
 background:#f5fbff;
+padding:60px 20px;
+}
+
+.routes-list{
+max-width:800px;
+margin:30px auto;
+text-align:left;
+line-height:1.8;
+}
+
+.testimonials{
+background:#eef9ff;
 padding:60px 20px;
 }
 
@@ -171,85 +171,89 @@ margin-top:40px;
 
 <nav>
 <button onclick="scrollToSection('home')">Home</button>
-<button onclick="scrollToSection('tours')">Tours</button>
+<button onclick="scrollToSection('prices')">Prices</button>
 <button onclick="scrollToSection('contact')">Contact</button>
 </nav>
 
 <section id="home" class="hero">
-<h1>Explore Nicaragua with Sunny Roads Adventures</h1>
-<p>Private drives, sunset escapes, beach adventures and cultural experiences — safe, local and unforgettable.</p>
-
-<div class="video-container">
-<video controls preload="metadata">
-<source src="classes.mp4" type="video/mp4">
-</video>
-</div>
+<h1>Private Transport from Granada</h1>
+<p>Comfortable, safe and reliable private rides across Nicaragua. All prices are per vehicle (up to 4 passengers).</p>
 </section>
 
-<section id="tours">
-<h2>Our Tours</h2>
+<section id="prices" class="map-section">
+<h2>Popular Routes & Prices</h2>
+<br>
+<img src="map.png" alt="Private Transport Routes from Granada">
+</section>
+
+<section>
+<h2>Most Requested Routes</h2>
 
 <div class="tours-grid">
 
 <div class="tour-card">
 <h3>Masaya & Catarina</h3>
-<p>Volcano views, market culture and stunning crater lake scenery.</p>
 <div class="price">$24</div>
-<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Book on WhatsApp</a>
+<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Book via WhatsApp</a>
 </div>
 
 <div class="tour-card">
-<h3>Managua City Drive</h3>
-<p>Capital landmarks, history spots and panoramic city views.</p>
+<h3>Managua</h3>
 <div class="price">$48</div>
-<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Book on WhatsApp</a>
+<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Book via WhatsApp</a>
 </div>
 
 <div class="tour-card">
-<h3>Rivas Drive</h3>
-<p>Comfortable long-distance transfer with local insights.</p>
+<h3>Rivas</h3>
 <div class="price">$62</div>
-<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Book on WhatsApp</a>
+<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Book via WhatsApp</a>
 </div>
 
 <div class="tour-card">
-<h3>San Juan Del Sur</h3>
-<p>Beach town vibes, ocean views and relaxed coastal atmosphere.</p>
+<h3>San Juan del Sur / Popoyo</h3>
 <div class="price">$74</div>
-<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Book on WhatsApp</a>
+<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Book via WhatsApp</a>
 </div>
 
-<div class="tour-card">
-<h3>Popoyo Sunset</h3>
-<p>Golden hour beach drop-off with scenic coastal drive.</p>
-<div class="price">$74</div>
-<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Book on WhatsApp</a>
 </div>
+</section>
 
-<div class="tour-card">
-<h3>Customized Tours</h3>
-<p>Tell us your dream trip and we make it happen.</p>
-<div class="price">Price coming soon</div>
-<a class="book-btn" href="https://wa.me/50558365522" target="_blank">Contact Us</a>
-</div>
+<section class="pricing-info">
+<h2>How Our Pricing Works</h2>
+<p>Our prices are based on distance, fuel costs, road conditions and travel time.</p>
+<p>For custom destinations, send us a message for an instant quote.</p>
+<p><strong>WhatsApp: +505 5836 5522</strong></p>
 
+<div class="routes-list">
+<h3>All Routes (Approximate)</h3>
+<ul>
+<li>Granada → Masatepe – $30</li>
+<li>Granada → Diriamba – $32</li>
+<li>Granada → Jinotepe – $40–$45</li>
+<li>Granada → Apoyo Lagoon – $18–$22</li>
+<li>Granada → Montelimar Beach – $60–$65</li>
+<li>Granada → Matagalpa – $100–$110</li>
+<li>Granada → León – $110–$120</li>
+<li>Granada → Estelí – $130–$140</li>
+<li>Granada → Tola – $55–$60</li>
+</ul>
 </div>
 </section>
 
 <section class="testimonials">
 <h2>What Our Guests Say</h2>
 <div class="testimonial-box">
-“Professional, friendly and very knowledgeable. The Popoyo sunset was unforgettable.”
+“Professional, friendly and punctual. Highly recommended.”
 </div>
 <div class="testimonial-box">
-“Best way to explore Nicaragua safely and comfortably.”
+“Best private ride service from Granada!”
 </div>
 </section>
 
 <section id="contact" class="contact">
 <h2>Contact Us</h2>
 <p>WhatsApp: +505 5836 5522</p>
-<p>Available daily for bookings and questions.</p>
+<p>Available daily for bookings and custom routes.</p>
 </section>
 
 <a class="whatsapp-float" href="https://wa.me/50558365522" target="_blank">WhatsApp</a>
