@@ -5,279 +5,221 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunny Roads Adventures</title>
 <style>
-/* ===== BASE STYLES ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-  color: #333;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-}
+  /* --- Basic Reset --- */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial, sans-serif; }
+  body { background:#f4f4f4; color:#333; line-height:1.6; }
+  a { text-decoration:none; color:#fff; }
+  img { max-width:100%; height:auto; }
 
-/* ===== HEADER ===== */
-header {
-  position: relative;
-  width: 100%;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f0f8ff;
-  border-bottom: 2px solid #d0e6f0;
-  flex: 0 0 180px; /* lock height */
-  z-index: 10;
-}
+  /* --- Header / Logo --- */
+  header { background:#1e90ff; color:#fff; padding:15px 10px; display:flex; align-items:center; justify-content:space-between; }
+  header img { height:50px; }
 
-#logoVideo {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-  border: 3px solid #a0e1e0;
-}
+  /* --- Tabs Navigation --- */
+  nav { display:flex; justify-content:center; background:#4682b4; }
+  nav a { color:#fff; padding:12px 20px; text-align:center; display:inline-block; font-weight:bold; transition:0.2s; }
+  nav a:hover { background:#5a9bd3; }
 
-/* ===== NAVIGATION ===== */
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-  gap: 20px;
-  z-index: 10;
-  position: relative;
-}
+  /* --- Home Section --- */
+  #home { padding:20px; text-align:center; background:#e6f2ff; }
+  #home h1 { margin-bottom:15px; }
+  #home img#map { max-width:600px; margin:20px auto; display:block; border:2px solid #ccc; }
 
-nav button {
-  background: #00bcd4;
-  border: none;
-  padding: 10px 22px;
-  border-radius: 12px;
-  font-size: 16px;
-  cursor: pointer;
-  color: #fff;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
+  /* --- Classes Video --- */
+  #classes { margin:20px auto; max-width:600px; }
+  #classes video { width:100%; border:2px solid #ccc; }
 
-/* ===== SECTIONS ===== */
-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start; /* top aligned for content */
-  padding: 30px 20px;
-  transition: background 1s ease;
-  text-align: center;
-  flex: 0 0 auto; /* lock section */
-}
+  /* --- Tours Section --- */
+  #tours { padding:20px; max-width:900px; margin:0 auto; }
+  #tours h2 { margin-bottom:15px; }
+  .tour { background:#fff; padding:15px; margin-bottom:10px; border-radius:5px; display:flex; align-items:center; }
+  .tour img { height:40px; margin-right:15px; }
+  .tour-details { flex:1; }
+  .tour-details h3 { margin-bottom:5px; }
+  .tour-details p { font-size:0.9rem; margin-bottom:8px; }
+  .tour-details a.button { background:#1e90ff; padding:6px 12px; border-radius:4px; color:#fff; font-weight:bold; }
 
-h1, h2 {
-  margin-bottom: 20px;
-  font-weight: 700;
-}
+  /* --- All Routes Section --- */
+  #all-routes { padding:20px; max-width:900px; margin:0 auto; }
+  #all-routes h2 { margin-bottom:15px; }
+  table { width:100%; border-collapse:collapse; }
+  th, td { border:1px solid #ccc; padding:10px; text-align:left; }
+  tr:nth-child(even) { background:#f9f9f9; }
 
-/* ===== MAP IMAGE ===== */
-#home img#map {
-  width: 90%;
-  max-width: 800px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+  /* --- Hub Section --- */
+  #hub { padding:20px; max-width:900px; margin:0 auto; background:#fff; border-radius:5px; margin-bottom:20px; }
+  #hub h2 { margin-bottom:15px; }
+  .hub-service { display:flex; align-items:center; margin-bottom:12px; }
+  .hub-service img { height:30px; margin-right:10px; }
 
-/* ===== CLASSES VIDEO ===== */
-#home video#classesVideo {
-  width: 90%;
-  max-width: 720px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+  /* --- Newsletter / Contact Form --- */
+  #newsletter { padding:20px; max-width:600px; margin:0 auto 40px auto; background:#e6f2ff; border-radius:5px; }
+  #newsletter h3 { margin-bottom:10px; text-align:center; }
+  #newsletter form { display:flex; flex-direction:column; }
+  #newsletter input, #newsletter textarea { padding:10px; margin-bottom:10px; border-radius:4px; border:1px solid #ccc; }
+  #newsletter button { background:#1e90ff; color:#fff; padding:10px; font-weight:bold; border:none; border-radius:4px; cursor:pointer; }
+  #newsletter button:hover { background:#5a9bd3; }
 
-/* ===== HUB SECTION ===== */
-#hub form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 90%;
-  max-width: 500px;
-}
-
-#hub input, #hub textarea, #hub select {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-}
-
-#hub button {
-  background: #00bcd4;
-  color: #fff;
-  font-weight: 600;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-#hub button:hover {
-  background: #26c6da;
-}
-
-/* ===== ALL ROUTES ===== */
-#routes table {
-  width: 90%;
-  max-width: 800px;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-#routes th, #routes td {
-  border: 1px solid #aaa;
-  padding: 8px 12px;
-  text-align: center;
-}
-
-#routes th {
-  background-color: #00bcd4;
-  color: #fff;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  width: 100%;
-  padding: 30px;
-  text-align: center;
-  background: #f0f8ff;
-  border-top: 2px solid #d0e6f0;
-  margin-top: 50px;
-  flex-shrink: 0; /* always at bottom */
-}
-
-footer p {
-  color: #555;
-  font-weight: 500;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  nav button { font-size: 14px; padding: 8px 16px; }
-  #home img#map, #home video#classesVideo { width: 100%; }
-  #hub input, #hub textarea, #hub select { width: 100%; }
-}
+  /* --- Footer --- */
+  footer { background:#4682b4; color:#fff; text-align:center; padding:15px; }
 </style>
 </head>
 <body>
 
-<!-- HEADER WITH LOGO VIDEO -->
+<!-- Header -->
 <header>
-  <video id="logoVideo" src="sra.mp4" autoplay loop muted playsinline></video>
+  <img src="logo.png" alt="Sunny Roads Adventures Logo">
 </header>
 
-<!-- NAVIGATION -->
+<!-- Navigation Tabs -->
 <nav>
-  <button data-section="home">Home</button>
-  <button data-section="tours">Tours</button>
-  <button data-section="routes">All Routes</button>
-  <button data-section="hub">Join the Hub</button>
-  <button data-section="contact">Contact</button>
+  <a href="#home">Home</a>
+  <a href="#tours">Tours</a>
+  <a href="#all-routes">All Routes</a>
+  <a href="#hub">Join the Hub</a>
+  <a href="#newsletter">Contact / Newsletter</a>
 </nav>
 
-<!-- HOME SECTION -->
+<!-- Home Section -->
 <section id="home">
-  <h1>Welcome to Sunny Roads Adventures!</h1>
-  <img id="map" src="map.png" alt="Map of routes">
-  <video id="classesVideo" controls>
-    <source src="classes.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</section>
-
-<!-- TOURS SECTION -->
-<section id="tours">
-  <h2>Our Tours</h2>
-  <div id="toursContainer">
-    <div class="tour-card"><h3>Masaya</h3><p>Price: $24</p></div>
-    <div class="tour-card"><h3>Catarina</h3><p>Price: $24</p></div>
-    <div class="tour-card"><h3>Managua</h3><p>Price: $48</p></div>
-    <div class="tour-card"><h3>Rivas</h3><p>Price: $62</p></div>
-    <div class="tour-card"><h3>San Juan del Sur</h3><p>Price: $74</p></div>
-    <div class="tour-card"><h3>Popoyo</h3><p>Price: $74</p></div>
+  <h1>Welcome to Sunny Roads Adventures</h1>
+  <p>Your adventure in Granada starts here!</p>
+  <img src="map.png" alt="Map of Granada Tours" id="map">
+  
+  <div id="classes">
+    <video controls>
+      <source src="classes.mp4" type="video/mp4">
+      Your browser does not support HTML5 video.
+    </video>
   </div>
 </section>
 
-<!-- ALL ROUTES SECTION -->
-<section id="routes">
-  <h2>All Routes</h2>
+<!-- Tours Section -->
+<section id="tours">
+  <h2>Our Tours</h2>
+  
+  <div class="tour">
+    <img src="icons/volcano.png" alt="Volcano Icon">
+    <div class="tour-details">
+      <h3>Masaya & Catarina</h3>
+      <p>Explore the volcanic crater of Masaya and the colorful artisan town of Catarina. Duration: 6 hours.</p>
+      <p>Price: $24 per person</p>
+      <a href="https://wa.me/50558365522?text=I%20want%20to%20book%20Masaya%20%26%20Catarina%20tour" class="button">Book via WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="tour">
+    <img src="icons/city.png" alt="City Icon">
+    <div class="tour-details">
+      <h3>Managua Tour</h3>
+      <p>Discover the highlights of Nicaragua's capital, including historical sites and cultural centers. Duration: 8 hours.</p>
+      <p>Price: $48 per person</p>
+      <a href="https://wa.me/50558365522?text=I%20want%20to%20book%20Managua%20tour" class="button">Book via WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- Add more tours as needed with same structure -->
+</section>
+
+<!-- All Routes Section -->
+<section id="all-routes">
+  <h2>All Routes & Suggested Prices</h2>
   <table>
     <tr>
-      <th>Route</th><th>Distance</th><th>Price</th>
+      <th>Route</th>
+      <th>Distance (km)</th>
+      <th>Suggested Price</th>
     </tr>
-    <tr><td>Granada → Masatepe</td><td>~30 km</td><td>$30</td></tr>
-    <tr><td>Granada → Diriamba</td><td>~32 km</td><td>$32</td></tr>
-    <tr><td>Granada → Jinotepe</td><td>~40–45 km</td><td>$40–$45</td></tr>
-    <tr><td>Granada → Apoyo Lagoon</td><td>~20 km</td><td>$18–$22</td></tr>
-    <tr><td>Granada → Montelimar Beach</td><td>~60–62 km</td><td>$60–$65</td></tr>
-    <tr><td>Granada → Matagalpa</td><td>~110 km</td><td>$100–$110</td></tr>
-    <tr><td>Granada → León</td><td>~115 km</td><td>$110–$120</td></tr>
-    <tr><td>Granada → Estelí</td><td>~135–140 km</td><td>$130–$140</td></tr>
-    <tr><td>Granada → Tola / SJDS</td><td>~55–90 km</td><td>$55–$74</td></tr>
+    <tr>
+      <td>Granada → Masatepe</td>
+      <td>30</td>
+      <td>$30</td>
+    </tr>
+    <tr>
+      <td>Granada → Diriamba</td>
+      <td>32</td>
+      <td>$32</td>
+    </tr>
+    <tr>
+      <td>Granada → Jinotepe</td>
+      <td>40–45</td>
+      <td>$40–$45</td>
+    </tr>
+    <tr>
+      <td>Granada → Apoyo Lagoon</td>
+      <td>15–20</td>
+      <td>$18–$22</td>
+    </tr>
+    <tr>
+      <td>Granada → Montelimar Beach</td>
+      <td>60–62</td>
+      <td>$60–$65</td>
+    </tr>
+    <tr>
+      <td>Granada → Matagalpa</td>
+      <td>110</td>
+      <td>$100–$110</td>
+    </tr>
+    <tr>
+      <td>Granada → León</td>
+      <td>115</td>
+      <td>$110–$120</td>
+    </tr>
+    <tr>
+      <td>Granada → Estelí</td>
+      <td>135–140</td>
+      <td>$130–$140</td>
+    </tr>
+    <tr>
+      <td>Granada → Tola / San Juan del Sur</td>
+      <td>55–57</td>
+      <td>$55–$60</td>
+    </tr>
   </table>
 </section>
 
-<!-- HUB SECTION -->
+<!-- Hub Section -->
 <section id="hub">
-  <h2>Join the Sunny Roads Service Hub</h2>
-  <p>Fill in the form to add your service to our hub. Services are reviewed before being published.</p>
+  <h2>Sunny Roads Service Hub</h2>
+  
+  <div class="hub-service">
+    <img src="icons/food.png" alt="Food Delivery Icon">
+    <p>Food Delivery Services</p>
+  </div>
+  <div class="hub-service">
+    <img src="icons/pharmacy.png" alt="Pharmacy Icon">
+    <p>Pharmacy Delivery</p>
+  </div>
+  <div class="hub-service">
+    <img src="icons/paw.png" alt="Pet Services Icon">
+    <p>Pet Services</p>
+  </div>
+  <div class="hub-service">
+    <img src="icons/assistant.png" alt="Personal Assistant Icon">
+    <p>Personal Assistant Services</p>
+  </div>
+  <div class="hub-service">
+    <img src="icons/construction.png" alt="Construction Icon">
+    <p>Construction & Plumbing Services</p>
+  </div>
+</section>
+
+<!-- Newsletter / Contact Form -->
+<section id="newsletter">
+  <h3>Contact / Newsletter</h3>
   <form action="mailto:sunnyroadsadcentures@gmail.com" method="post" enctype="text/plain">
-    <input type="text" name="name" placeholder="Your Name / Company Name" required>
-    <input type="text" name="service" placeholder="Service Description" required>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="phone" placeholder="Phone Number / WhatsApp" required>
-    <select name="contract">
-      <option value="weekly">Weekly</option>
-      <option value="monthly">Monthly</option>
-      <option value="other">Other</option>
-    </select>
-    <textarea name="notes" placeholder="Additional Notes"></textarea>
-    <button type="submit">Submit Application</button>
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message" rows="4"></textarea>
+    <button type="submit">Send / Subscribe</button>
   </form>
+  <p style="text-align:center; margin-top:10px;">Or WhatsApp us directly: <a href="https://wa.me/50558365522" style="color:#1e90ff;">+505 5836 5522</a></p>
 </section>
 
-<!-- CONTACT SECTION -->
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Email: info@sunnyroadsadventures.com</p>
-  <p>Phone / WhatsApp: +50558365522</p>
-</section>
-
-<!-- FOOTER -->
+<!-- Footer -->
 <footer>
-  <p>© 2026 Sunny Roads Adventures</p>
+  &copy; 2026 Sunny Roads Adventures | Contact: <a href="https://wa.me/50558365522" style="color:#fff;">+505 5836 5522</a>
 </footer>
 
-<script>
-// ===== NAVIGATION =====
-document.querySelectorAll('nav button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const sectionId = btn.getAttribute('data-section');
-    document.querySelectorAll('section').forEach(sec => {
-      sec.style.display = (sec.id === sectionId) ? 'flex' : 'none';
-    });
-  });
-});
-
-// ===== INITIAL VIEW =====
-document.querySelectorAll('section').forEach((sec, i) => {
-  sec.style.display = (i===0) ? 'flex' : 'none';
-});
-</script>
 </body>
 </html>
