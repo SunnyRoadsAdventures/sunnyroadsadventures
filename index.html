@@ -144,7 +144,7 @@
     </div>
   </div>
 
-  <!-- Add more tours in the same format as needed -->
+  <!-- More tours can be added in same format -->
 </section>
 
 <!-- All Routes Section -->
@@ -248,16 +248,44 @@
 </footer>
 
 <script>
+// Automatic availability tracking
+const tourAvailability = {
+  "Masaya & Catarina": { booked: 0, maxCapacity: 10 },
+  "Managua Tour": { booked: 0, maxCapacity: 8 }
+};
+
 function bookTour(event, tourName) {
   event.preventDefault();
   const form = event.target;
   const date = form.querySelector('input[type="date"]').value;
-  const people = form.querySelector('input[type="number"]').value;
-  
-  // Send email via mailto link (simple notification)
+  const people = parseInt(form.querySelector('input[type="number"]').value);
+
+  const tour = tourAvailability[tourName];
+
+  if(tour.booked + people > tour.maxCapacity) {
+    alert(`Sorry! The ${tourName} tour is now Full or exceeds available spots.`);
+    form.querySelector('input[type="number"]').value = 1;
+    return;
+  }
+
+  // Update bookings
+  tour.booked += people;
+
+  // Update availability indicator
+  const availabilityElement = form.closest('.tour-details').querySelector('.availability');
+  if(tour.booked >= tour.maxCapacity){
+    availabilityElement.textContent = "Full";
+    availabilityElement.style.color = "red";
+  } else {
+    availabilityElement.textContent = "Available";
+    availabilityElement.style.color = "green";
+  }
+
+  // Send email to you
   window.location.href = `mailto:sunnyroadsadcentures@gmail.com?subject=New Booking: ${tourName}&body=Date: ${date}%0D%0APeople: ${people}`;
-  
-  alert(`Thank you! Your booking for ${tourName} on ${date} for ${people} people has been submitted.`);
+
+  // Show confirmation to user
+  alert(`Thank you! Your booking for ${tourName} on ${date} for ${people} people has been submitted. Total booked for this tour: ${tour.booked}`);
 }
 </script>
 
