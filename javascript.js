@@ -1,7 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
+
     const toursBtn = document.getElementById("toursBtn");
     const whatsappBtn = document.getElementById("whatsappBtn");
+    const tourCards = document.querySelectorAll(".tourCard");
+    const grok = document.getElementById("grok");
 
+    /* CONTACT BUTTONS */
     toursBtn.addEventListener("click", () => {
         window.open("tours.jpg", "_blank");
     });
@@ -10,13 +14,18 @@ document.addEventListener("DOMContentLoaded", () => {
         window.open("https://wa.me/50558365522", "_blank");
     });
 
-    // Optional: Grok random small movement every few seconds
-    const grok = document.getElementById("grok");
+    /* GROK RANDOM BOUNCE ANIMATION */
     setInterval(() => {
-        const maxX = window.innerWidth - 100;
-        const maxY = window.innerHeight - 200;
-        const x = Math.random() * maxX;
-        const y = Math.random() * maxY;
+        let x = Math.random() * 20 - 10; // -10 to +10 px horizontal
+        let y = Math.random() * 10 - 5;  // -5 to +5 px vertical
         grok.style.transform = `translate(${x}px, ${y}px)`;
-    }, 5000);
+    }, 2000);
+
+    /* TOUR CARDS CLICK */
+    tourCards.forEach(card => {
+        card.addEventListener("click", () => {
+            alert(`More info about: ${card.textContent}`);
+        });
+    });
+
 });
