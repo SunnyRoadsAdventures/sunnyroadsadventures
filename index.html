@@ -32,12 +32,20 @@
   /* --- Tours Section --- */
   #tours { padding:20px; max-width:900px; margin:0 auto; }
   #tours h2 { margin-bottom:15px; }
-  .tour { background:#fff; padding:15px; margin-bottom:10px; border-radius:5px; display:flex; align-items:center; }
-  .tour img { height:40px; margin-right:15px; }
+  .tour { background:#fff; padding:15px; margin-bottom:10px; border-radius:5px; display:flex; flex-direction:column; }
+  .tour img { height:40px; margin-bottom:10px; }
   .tour-details { flex:1; }
   .tour-details h3 { margin-bottom:5px; }
   .tour-details p { font-size:0.9rem; margin-bottom:8px; }
   .tour-details a.button { background:#1e90ff; padding:6px 12px; border-radius:4px; color:#fff; font-weight:bold; }
+  .availability { font-weight:bold; margin-bottom:8px; }
+
+  /* Booking form inside each tour */
+  .tour-booking { display:flex; flex-direction:column; max-width:300px; margin-top:8px; }
+  .tour-booking label { margin-bottom:4px; font-weight:bold; }
+  .tour-booking input { padding:6px; margin-bottom:6px; border-radius:4px; border:1px solid #ccc; }
+  .tour-booking button { background:#1e90ff; color:#fff; border:none; padding:8px; border-radius:4px; cursor:pointer; }
+  .tour-booking button:hover { background:#5a9bd3; }
 
   /* --- All Routes Section --- */
   #all-routes { padding:20px; max-width:900px; margin:0 auto; }
@@ -103,8 +111,17 @@
     <div class="tour-details">
       <h3>Masaya & Catarina</h3>
       <p>Explore the volcanic crater of Masaya and the colorful artisan town of Catarina. Duration: 6 hours.</p>
-      <p>Price: $24 per person</p>
+      <p>Price: $24 per person <span style="color:red;">(Promo: $20 today!)</span></p>
+      <p class="availability" style="color:green;">Available</p>
       <a href="https://wa.me/50558365522?text=I%20want%20to%20book%20Masaya%20%26%20Catarina%20tour" class="button">Book via WhatsApp</a>
+      
+      <form onsubmit="bookTour(event, 'Masaya & Catarina')" class="tour-booking">
+        <label>Select Date:</label>
+        <input type="date" required>
+        <label>Number of People:</label>
+        <input type="number" min="1" value="1" required>
+        <button type="submit">Book</button>
+      </form>
     </div>
   </div>
 
@@ -114,11 +131,20 @@
       <h3>Managua Tour</h3>
       <p>Discover the highlights of Nicaragua's capital, including historical sites and cultural centers. Duration: 8 hours.</p>
       <p>Price: $48 per person</p>
+      <p class="availability" style="color:green;">Available</p>
       <a href="https://wa.me/50558365522?text=I%20want%20to%20book%20Managua%20tour" class="button">Book via WhatsApp</a>
+      
+      <form onsubmit="bookTour(event, 'Managua Tour')" class="tour-booking">
+        <label>Select Date:</label>
+        <input type="date" required>
+        <label>Number of People:</label>
+        <input type="number" min="1" value="1" required>
+        <button type="submit">Book</button>
+      </form>
     </div>
   </div>
 
-  <!-- Add more tours as needed with same structure -->
+  <!-- Add more tours in the same format as needed -->
 </section>
 
 <!-- All Routes Section -->
@@ -220,6 +246,20 @@
 <footer>
   &copy; 2026 Sunny Roads Adventures | Contact: <a href="https://wa.me/50558365522" style="color:#fff;">+505 5836 5522</a>
 </footer>
+
+<script>
+function bookTour(event, tourName) {
+  event.preventDefault();
+  const form = event.target;
+  const date = form.querySelector('input[type="date"]').value;
+  const people = form.querySelector('input[type="number"]').value;
+  
+  // Send email via mailto link (simple notification)
+  window.location.href = `mailto:sunnyroadsadcentures@gmail.com?subject=New Booking: ${tourName}&body=Date: ${date}%0D%0APeople: ${people}`;
+  
+  alert(`Thank you! Your booking for ${tourName} on ${date} for ${people} people has been submitted.`);
+}
+</script>
 
 </body>
 </html>
