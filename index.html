@@ -6,55 +6,247 @@
 <title>Sunny Roads Adventures</title>
 <style>
 /* ===== BASE STYLES ===== */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(to bottom,#e0f7fa,#ffffff); color:#333; overflow-x:hidden; position:relative; }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* ===== BACKGROUND ===== */
-.wave { position:fixed; bottom:0; width:200%; height:200px; background: rgba(0,188,212,0.2); border-radius:43%; animation: waveMove 6s infinite linear; z-index:1; }
-.wave:nth-child(2) { background: rgba(0,188,212,0.15); animation-duration:8s; bottom:20px; }
-@keyframes waveMove { 0%{transform:translateX(0) translateY(0);}50%{transform:translateX(-25%) translateY(10px);}100%{transform:translateX(0) translateY(0);} }
-.sun { position:fixed; top:50px; left:20%; width:120px; height:120px; background: radial-gradient(circle,#ffeb3b,#ff9800); border-radius:50%; animation:sunMove 15s infinite alternate ease-in-out; z-index:0; }
-@keyframes sunMove { 0%{transform:translateY(0);}50%{transform:translateY(15px);}100%{transform:translateY(0);} }
-.cloud { position:fixed; top:100px; width:150px; height:60px; background: rgba(255,255,255,0.8); border-radius:50%; animation:cloudMove 20s infinite linear; z-index:0; }
-.cloud::before,.cloud::after { content:''; position:absolute; background: rgba(255,255,255,0.8); width:80px; height:80px; border-radius:50%; top:-10px; }
-.cloud::before{left:10px;} .cloud::after{right:10px;}
-@keyframes cloudMove {0%{transform:translateX(-200px);}100%{transform:translateX(100vw);}}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+  color: #333;
+  overflow-x: hidden;
+  position: relative;
+}
 
-/* ===== HEADER & LOGO ===== */
-header { position:relative; width:100%; height:180px; display:flex; justify-content:center; align-items:center; background:#f0f8ff; border-bottom:2px solid #d0e6f0; z-index:10; }
-#logoVideo { width:180px; height:180px; object-fit:cover; border-radius:50%; box-shadow:0 5px 20px rgba(0,0,0,0.2); border:3px solid #a0e1e0; }
+/* ===== BACKGROUND ANIMATIONS ===== */
+.wave {
+  position: fixed;
+  bottom: 0;
+  width: 200%;
+  height: 200px;
+  background: rgba(0, 188, 212, 0.2);
+  border-radius: 43%;
+  animation: waveMove 6s infinite linear;
+  z-index: 1;
+}
+
+.wave:nth-child(2) {
+  background: rgba(0, 188, 212, 0.15);
+  animation-duration: 8s;
+  bottom: 20px;
+}
+
+@keyframes waveMove {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-25%) translateY(10px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+.sun {
+  position: fixed;
+  top: 50px;
+  left: 20%;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #ffeb3b, #ff9800);
+  border-radius: 50%;
+  animation: sunMove 15s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+@keyframes sunMove {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(15px); }
+  100% { transform: translateY(0); }
+}
+
+.cloud {
+  position: fixed;
+  top: 100px;
+  width: 150px;
+  height: 60px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 50%;
+  animation: cloudMove 20s infinite linear;
+  z-index: 0;
+}
+
+.cloud::before, .cloud::after {
+  content: '';
+  position: absolute;
+  background: rgba(255,255,255,0.8);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  top: -10px;
+}
+
+.cloud::before { left: 10px; }
+.cloud::after { right: 10px; }
+
+@keyframes cloudMove {
+  0% { transform: translateX(-200px); }
+  100% { transform: translateX(100vw); }
+}
+
+/* ===== HEADER & LOGO VIDEO ===== */
+header {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f0f8ff;
+  border-bottom: 2px solid #d0e6f0;
+  z-index: 10;
+}
+
+#logoVideo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  border: 3px solid #a0e1e0;
+}
 
 /* ===== NAVIGATION ===== */
-nav { width:100%; display:flex; justify-content:center; margin-top:15px; gap:20px; z-index:10; position:relative; }
-nav button { background:#00bcd4; border:none; padding:10px 22px; border-radius:12px; font-size:16px; cursor:pointer; color:#fff; font-weight:600; transition:all 0.3s ease; }
-nav button:hover { background:#26c6da; transform:scale(1.1); box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  gap: 20px;
+  z-index: 10;
+  position: relative;
+}
+
+nav button {
+  background: #00bcd4;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
 
 /* ===== SECTIONS ===== */
-section { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:50px 20px; transition:background 1s ease; text-align:center; position:relative; z-index:10; }
-h1,h2 { margin-bottom:20px; font-weight:700; }
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 20px;
+  transition: background 1s ease;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
 
 /* ===== TOUR CARDS ===== */
-.tour-card { width:280px; height:200px; background: linear-gradient(to top,#ffffff,#e0f7fa); border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); display:flex; flex-direction:column; justify-content:center; align-items:center; margin:15px; transition:transform 0.3s ease,box-shadow 0.3s ease,background 0.3s ease; cursor:pointer; border:2px solid #a0e1e0; }
-.tour-card h3{margin-bottom:5px;font-size:18px;color:#00796b;}
-.tour-card p{font-size:14px;text-align:center;color:#555;margin-bottom:5px;}
-.tour-card .price { font-size:16px; font-weight:700; color:#ff5722; }
+.tour-card {
+  width: 280px;
+  height: 180px;
+  background: linear-gradient(to top, #ffffff, #e0f7fa);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+  border: 2px solid #a0e1e0;
+}
 
-/* ===== CONTAINER ===== */
-#toursContainer{display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-top:30px;}
+.tour-card h3 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #00796b;
+}
 
-/* ===== MAP SECTION ===== */
-#mapSection { margin:50px 0; text-align:center; }
-#mapSection img { max-width:90%; height:auto; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); cursor:pointer; margin-bottom:30px; }
+.tour-card p {
+  font-size: 14px;
+  text-align: center;
+  color: #555;
+}
 
-/* ===== CLASSES VIDEO ===== */
-#classesVideo { max-width:90%; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1); margin-top:20px; }
+/* ===== TOUR CONTAINER ===== */
+#toursContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
 
-/* ===== CONTACT ===== */
-footer { width:100%; padding:30px; text-align:center; background:#f0f8ff; border-top:2px solid #d0e6f0; margin-top:50px; position:relative; z-index:10; }
-footer p { color:#555; font-weight:500; }
+/* ===== POPUP ===== */
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 200;
+  transition: transform 0.3s ease;
+}
+
+#popup.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#popup button {
+  margin-top: 20px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  background: #00bcd4;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+  background: #f0f8ff;
+  border-top: 2px solid #d0e6f0;
+  margin-top: 50px;
+  position: relative;
+  z-index: 10;
+}
+
+footer p {
+  color: #555;
+  font-weight: 500;
+}
 
 /* ===== RESPONSIVE ===== */
-@media(max-width:768px){ nav button{font-size:14px;padding:8px 16px;} .tour-card{width:90%;height:180px;} }
+@media (max-width: 768px) {
+  nav button { font-size: 14px; padding: 8px 16px; }
+  .tour-card { width: 90%; height: 150px; }
+}
 </style>
 </head>
 <body>
@@ -66,7 +258,7 @@ footer p { color:#555; font-weight:500; }
 <div class="cloud" style="top:50px; left:5%; width:120px; height:50px;"></div>
 <div class="cloud" style="top:120px; left:60%; width:180px; height:60px;"></div>
 
-<!-- HEADER -->
+<!-- HEADER WITH LOGO VIDEO -->
 <header>
   <video id="logoVideo" src="sra.mp4" autoplay loop muted playsinline></video>
 </header>
@@ -83,31 +275,47 @@ footer p { color:#555; font-weight:500; }
   <h1>Welcome to Sunny Roads Adventures!</h1>
   <p>Explore immersive tours, adventures, and experiences designed to delight and inspire.</p>
 
-  <!-- Map Section -->
-  <div id="mapSection">
-    <h2>Explore All Routes from Granada</h2>
-    <a href="all-routes.html"><img src="map.png" alt="Map of all routes"></a>
-    <p>Click map to see full details and prices of each route.</p>
+  <!-- MAP IMAGE -->
+  <img src="map.png" alt="Tour Map of Granada Area" style="max-width:90%; margin:30px 0; border-radius:16px; box-shadow:0 6px 20px rgba(0,0,0,0.1);">
 
-    <!-- Blackie / Language Class Video -->
-    <video id="classesVideo" controls>
-      <source src="classes.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
+  <!-- CLASSES VIDEO -->
+  <video controls style="max-width:90%; margin:30px 0; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.2);">
+    <source src="classes.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- JOIN HUB SECTION -->
+  <section id="joinHub" style="text-align:center; margin:40px 20px;">
+    <h2>Want to Join Sunny Roads Hub?</h2>
+    <p>If you offer a service in Granada and want to be part of our trusted network, click below to register.</p>
+    <a href="add-service.html" style="
+      display:inline-block;
+      background:#00bcd4;
+      color:#fff;
+      font-weight:600;
+      padding:12px 25px;
+      border-radius:12px;
+      text-decoration:none;
+      font-size:16px;
+      transition:all 0.3s ease;">
+      Join the Hub
+    </a>
+  </section>
+
 </section>
 
 <section id="tours">
-  <h2>Our Tours & Prices</h2>
+  <h2>Our Tours</h2>
   <div id="toursContainer">
-    <div class="tour-card"><h3>Coffee Farm Visit/Drive</h3><p>Explore lush coffee plantations around Granada.</p><div class="price">$24</div></div>
-    <div class="tour-card"><h3>Customized Tours</h3><p>Create your own adventure with our team.</p><div class="price">$24</div></div>
-    <div class="tour-card"><h3>Managua Drive</h3><p>Discover the capital city with ease.</p><div class="price">$48</div></div>
-    <div class="tour-card"><h3>Ometepe Ferry dropoff/pick-up</h3><p>Enjoy the scenic ferry ride to Ometepe Island.</p><div class="price">$74</div></div>
-    <div class="tour-card"><h3>Popoyo Sunset dropoff/Drive back</h3><p>Relax on the beach and enjoy stunning sunsets.</p><div class="price">$74</div></div>
-    <div class="tour-card"><h3>Rivas Drive</h3><p>Visit the vibrant city of Rivas and nearby attractions.</p><div class="price">$62</div></div>
-    <div class="tour-card"><h3>Bar hang/visits with guide wingman</h3><p>Local bars and hidden gems with a knowledgeable guide.</p><div class="price">$24</div></div>
-    <div class="tour-card"><h3>Catalina Drive</h3><p>Travel to the beautiful Catalina region with ease.</p><div class="price">$24</div></div>
+    <div class="tour-card"><h3>Catalina Drive</h3><p>Experience a scenic drive with expert guidance.</p></div>
+    <div class="tour-card"><h3>Customized Tours</h3><p>Create a tour perfectly suited to your desires.</p></div>
+    <div class="tour-card"><h3>Fishing Tour</h3><p>Catch local fish with our experienced guides.</p></div>
+    <div class="tour-card"><h3>Managua Drive</h3><p>Explore the capital city with ease and comfort.</p></div>
+    <div class="tour-card"><h3>Ometepe Ferry Pick-up/Drop-off</h3><p>Travel to Ometepe Island hassle-free.</p></div>
+    <div class="tour-card"><h3>Popoyo Sunset Dropoff/Drive Back</h3><p>Enjoy beautiful sunsets on the Pacific coast.</p></div>
+    <div class="tour-card"><h3>Rivas Drive</h3><p>Visit the charming town of Rivas.</p></div>
+    <div class="tour-card"><h3>Masaya & Catarina</h3><p>Discover colorful markets and natural beauty.</p></div>
+    <div class="tour-card"><h3>Coffee Farm Visit/Drive</h3><p>Learn about local coffee production and taste fresh brews.</p></div>
   </div>
 </section>
 
@@ -117,6 +325,13 @@ footer p { color:#555; font-weight:500; }
   <p>WhatsApp: +50558365522</p>
 </section>
 
+<!-- POPUP -->
+<div id="popup">
+  <h3>Grok says hello!</h3>
+  <p>Click on a tour card to see more details or just enjoy the fun journey!</p>
+  <button id="closePopup">Close</button>
+</div>
+
 <!-- FOOTER -->
 <footer>
   <p>© 2026 Sunny Roads Adventures</p>
@@ -124,15 +339,34 @@ footer p { color:#555; font-weight:500; }
 
 <script>
 // ===== NAVIGATION =====
-document.querySelectorAll('nav button').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const sectionId=btn.getAttribute('data-section');
-    document.querySelectorAll('section').forEach(sec=>{ sec.style.display=(sec.id===sectionId)?'flex':'none'; });
+document.querySelectorAll('nav button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const sectionId = btn.getAttribute('data-section');
+    document.querySelectorAll('section').forEach(sec => {
+      sec.style.display = (sec.id === sectionId) ? 'flex' : 'none';
+    });
   });
 });
 
 // ===== INITIAL VIEW =====
-document.querySelectorAll('section').forEach((sec,i)=>{ sec.style.display=(i===0)?'flex':'none'; });
+document.querySelectorAll('section').forEach((sec, i) => {
+  sec.style.display = (i===0) ? 'flex' : 'none';
+});
+
+// ===== TOUR CARD CLICK =====
+const popup = document.getElementById('popup');
+document.querySelectorAll('.tour-card').forEach(card => {
+  card.addEventListener('click', () => {
+    // Show popup with tour info
+    popup.querySelector('h3').textContent = "Tour: " + card.querySelector('h3').textContent;
+    popup.querySelector('p').textContent = card.querySelector('p').textContent;
+    popup.classList.add('active');
+  });
+});
+
+document.getElementById('closePopup').addEventListener('click', () => {
+  popup.classList.remove('active');
+});
 </script>
 </body>
 </html>
