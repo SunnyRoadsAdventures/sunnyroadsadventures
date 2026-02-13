@@ -136,27 +136,6 @@ nav button {
   transition: all 0.3s ease;
 }
 
-nav button:hover {
-  background: #26c6da;
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-}
-
-.nav-link {
-  background: #00bcd4;
-  padding: 10px 22px;
-  border-radius: 12px;
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
-
-.nav-link:hover {
-  background: #26c6da;
-}
-
 /* ===== SECTIONS ===== */
 section {
   min-height: 100vh;
@@ -191,12 +170,6 @@ h1, h2 {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   cursor: pointer;
   border: 2px solid #a0e1e0;
-}
-
-.tour-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-  background: #b2ebf2;
 }
 
 .tour-card h3 {
@@ -293,48 +266,6 @@ h1, h2 {
   transition: all 0.3s ease;
 }
 
-#popup button:hover {
-  background: #26c6da;
-}
-
-/* ===== JOIN THE HUB SECTION ===== */
-#joinHub {
-  min-height: 60vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 50px 20px;
-  text-align: center;
-  background: #f0f8ff;
-  border-top: 2px solid #d0e6f0;
-  border-bottom: 2px solid #d0e6f0;
-}
-#joinHub h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-  color: #00796b;
-}
-#joinHub p {
-  font-size: 16px;
-  margin-bottom: 25px;
-  color: #555;
-  max-width: 600px;
-}
-.hub-button {
-  padding: 12px 28px;
-  border-radius: 12px;
-  background: #00bcd4;
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  font-size: 16px;
-  transition: all 0.3s ease;
-}
-.hub-button:hover {
-  background: #26c6da;
-}
-
 /* ===== FOOTER ===== */
 footer {
   width: 100%;
@@ -354,7 +285,7 @@ footer p {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  nav button, .nav-link { font-size: 14px; padding: 8px 16px; }
+  nav button { font-size: 14px; padding: 8px 16px; }
   .tour-card { width: 90%; height: 150px; }
   #grok { width: 90px; height: 90px; font-size: 40px; }
 }
@@ -378,52 +309,60 @@ footer p {
 <nav>
   <button data-section="home">Home</button>
   <button data-section="tours">Tours</button>
+  <button data-section="allRoutes">All Routes</button>
+  <button data-section="joinHub">Join the Hub</button>
   <button data-section="contact">Contact</button>
-  <a href="all-routes.html" class="nav-link">All Routes</a>
 </nav>
 
 <!-- SECTIONS -->
 <section id="home">
   <h1>Welcome to Sunny Roads Adventures!</h1>
   <p>Explore immersive tours, adventures, and experiences designed to delight and inspire.</p>
-</section>
-
-<section id="tours">
-  <h2>Our Tours & Prices</h2>
-  <div id="toursContainer">
-    <div class="tour-card"><h3>Masaya & Catarina</h3><p>Price: $24</p></div>
-    <div class="tour-card"><h3>Managua</h3><p>Price: $48</p></div>
-    <div class="tour-card"><h3>Rivas</h3><p>Price: $62</p></div>
-    <div class="tour-card"><h3>San Juan Del Sur</h3><p>Price: $74</p></div>
-    <div class="tour-card"><h3>Popoyo</h3><p>Price: $74</p></div>
-  </div>
-</section>
-
-<!-- MAP IMAGE -->
-<section id="mapSection">
-  <img src="map.png" alt="Route Map" style="width:90%; max-width:900px; margin:30px 0;">
-</section>
-
-<!-- CLASSES VIDEO -->
-<section id="classesVideo">
-  <video controls width="90%" style="max-width:700px; margin-bottom:30px;">
+  <img src="map.png" alt="Map" style="width:80%; max-width:800px; margin:30px 0;">
+  <video controls style="width:80%; max-width:600px;">
     <source src="classes.mp4" type="video/mp4">
-    Your browser does not support the video tag.
   </video>
 </section>
 
-<!-- JOIN THE HUB SECTION -->
+<section id="tours">
+  <h2>Our Tours</h2>
+  <div id="toursContainer">
+    <div class="tour-card"><h3>Masaya & Catarina</h3><p>Enjoy colorful towns and culture.</p><p>Price: $24</p></div>
+    <div class="tour-card"><h3>Managua</h3><p>Explore the capital city.</p><p>Price: $48</p></div>
+    <div class="tour-card"><h3>Rivas</h3><p>Coastal vibes and lakes.</p><p>Price: $62</p></div>
+    <div class="tour-card"><h3>San Juan del Sur</h3><p>Beach & surf adventure.</p><p>Price: $74</p></div>
+    <div class="tour-card"><h3>Popoyo</h3><p>Surf paradise.</p><p>Price: $74</p></div>
+  </div>
+</section>
+
+<section id="allRoutes">
+  <h2>All Routes & Suggested Prices</h2>
+  <p>Estimated distance × ~$1/km (rounded). Prices are one-way and approximate.</p>
+  <ul>
+    <li>Granada → Masatepe (~30 km) → $30</li>
+    <li>Granada → Diriamba (~32 km) → $32</li>
+    <li>Granada → Jinotepe (~40–45 km) → $40–$45</li>
+    <li>Granada → Apoyo Lagoon (~20 km) → $18–$22</li>
+    <li>Granada → Montelimar Beach (~60–62 km) → $60–$65</li>
+    <li>Granada → Matagalpa (~110 km) → $100–$110</li>
+    <li>Granada → León (~115 km) → $110–$120</li>
+    <li>Granada → Estelí (~135–140 km) → $130–$140</li>
+    <li>Granada → Tola (~55–57 km) → $55–$60</li>
+  </ul>
+</section>
+
 <section id="joinHub">
-  <h2>Join the Sunny Roads Service Hub</h2>
-  <p>Are you a service provider in Granada? Food, deliveries, pet care, or personal assistance — become part of our hub and reach more customers easily.</p>
-  <p>Choose your subscription, verify your profile, and your services will be listed for everyone to see!</p>
-  <a href="add-service.html" class="hub-button">Register Your Service</a>
+  <h2>Join the Hub</h2>
+  <p>Are you a company or individual offering services? Get listed in our hub and connect with clients directly.</p>
+  <p>Services can include food delivery, pharmacy, personal assistant, pet services, transportation, and more.</p>
+  <p>Membership options: weekly or monthly. Private interviews required for listing.</p>
 </section>
 
 <section id="contact">
   <h2>Contact Us</h2>
   <p>WhatsApp: +50558365522</p>
   <p>Email: info@sunnyroadsadventures.com</p>
+  <p>Phone: +505 555-5555</p>
 </section>
 
 <!-- GROK CHARACTER -->
@@ -453,8 +392,8 @@ document.querySelectorAll('nav button').forEach(btn => {
 });
 
 // ===== INITIAL VIEW =====
-document.querySelectorAll('section').forEach((sec, i) => {
-  sec.style.display = (i===0) ? 'flex' : 'none';
+document.querySelectorAll('section').forEach(sec => {
+  sec.style.display = 'flex';
 });
 
 // ===== GROK INTERACTION =====
