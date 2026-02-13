@@ -20,77 +20,6 @@ body {
   position: relative;
 }
 
-/* ===== BACKGROUND ANIMATIONS ===== */
-.wave {
-  position: fixed;
-  bottom: 0;
-  width: 200%;
-  height: 200px;
-  background: rgba(0, 188, 212, 0.2);
-  border-radius: 43%;
-  animation: waveMove 6s infinite linear;
-  z-index: 1;
-}
-
-.wave:nth-child(2) {
-  background: rgba(0, 188, 212, 0.15);
-  animation-duration: 8s;
-  bottom: 20px;
-}
-
-@keyframes waveMove {
-  0% { transform: translateX(0) translateY(0); }
-  50% { transform: translateX(-25%) translateY(10px); }
-  100% { transform: translateX(0) translateY(0); }
-}
-
-.sun {
-  position: fixed;
-  top: 50px;
-  left: 20%;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(circle, #ffeb3b, #ff9800);
-  border-radius: 50%;
-  animation: sunMove 15s infinite alternate ease-in-out;
-  z-index: 0;
-}
-
-@keyframes sunMove {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(15px); }
-  100% { transform: translateY(0); }
-}
-
-.cloud {
-  position: fixed;
-  top: 100px;
-  width: 150px;
-  height: 60px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 50%;
-  animation: cloudMove 20s infinite linear;
-  z-index: 0;
-}
-
-.cloud::before, .cloud::after {
-  content: '';
-  position: absolute;
-  background: rgba(255,255,255,0.8);
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  top: -10px;
-}
-
-.cloud::before { left: 10px; }
-.cloud::after { right: 10px; }
-
-@keyframes cloudMove {
-  0% { transform: translateX(-200px); }
-  100% { transform: translateX(100vw); }
-}
-
 /* ===== HEADER & LOGO VIDEO ===== */
 header {
   position: relative;
@@ -119,15 +48,12 @@ nav {
   display: flex;
   justify-content: center;
   margin-top: 15px;
-  gap: 12px; 
-  overflow-x: auto;
-  padding: 0 10px;
+  gap: 20px;
   z-index: 10;
+  position: relative;
 }
 
 nav button {
-  flex: 0 0 auto;
-  min-width: 100px;
   background: #00bcd4;
   border: none;
   padding: 10px 22px;
@@ -141,6 +67,8 @@ nav button {
 
 nav button:hover {
   background: #26c6da;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 /* ===== SECTIONS ===== */
@@ -149,7 +77,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 50px 20px;
   transition: background 1s ease;
   text-align: center;
@@ -160,6 +88,20 @@ section {
 h1, h2 {
   margin-bottom: 20px;
   font-weight: 700;
+}
+
+/* ===== HOME ===== */
+#home img {
+  max-width: 90%;
+  margin-bottom: 30px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+#home video {
+  max-width: 90%;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 
 /* ===== TOUR CARDS ===== */
@@ -177,12 +119,6 @@ h1, h2 {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
   cursor: pointer;
   border: 2px solid #a0e1e0;
-}
-
-.tour-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
-  background: #b2ebf2;
 }
 
 .tour-card h3 {
@@ -206,41 +142,40 @@ h1, h2 {
   margin-top: 30px;
 }
 
-/* ===== MAP IMAGE ===== */
-#mapImage {
-  max-width: 90%;
-  height: auto;
-  margin-top: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-/* ===== CLASSES VIDEO ===== */
-#classesVideo {
-  max-width: 90%;
-  margin-top: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}
-
-/* ===== JOIN THE HUB ===== */
-#joinHub {
-  max-width: 800px;
+/* ===== ALL ROUTES ===== */
+#allRoutes table {
   width: 100%;
-  margin-top: 30px;
+  max-width: 800px;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
+#allRoutes th, #allRoutes td {
+  border: 1px solid #a0e1e0;
+  padding: 10px;
+  text-align: left;
+}
+
+#allRoutes th {
+  background-color: #00bcd4;
+  color: white;
+}
+
+#allRoutes td {
+  background-color: #e0f7fa;
+}
+
+/* ===== JOIN HUB ===== */
 #joinHub form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  background: #e0f7fa;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  gap: 15px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 20px;
 }
 
-#joinHub input, #joinHub textarea, #joinHub select {
+#joinHub input, #joinHub textarea {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #a0e1e0;
@@ -250,17 +185,16 @@ h1, h2 {
 
 #joinHub button {
   padding: 12px;
-  border-radius: 10px;
+  border-radius: 8px;
   border: none;
-  background: #00bcd4;
+  background-color: #00bcd4;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
 #joinHub button:hover {
-  background: #26c6da;
+  background-color: #26c6da;
 }
 
 /* ===== FOOTER ===== */
@@ -289,13 +223,6 @@ footer p {
 </head>
 <body>
 
-<!-- BACKGROUND ANIMATIONS -->
-<div class="wave"></div>
-<div class="wave"></div>
-<div class="sun"></div>
-<div class="cloud" style="top:50px; left:5%; width:120px; height:50px;"></div>
-<div class="cloud" style="top:120px; left:60%; width:180px; height:60px;"></div>
-
 <!-- HEADER WITH LOGO VIDEO -->
 <header>
   <video id="logoVideo" src="sra.mp4" autoplay loop muted playsinline></video>
@@ -306,21 +233,25 @@ footer p {
   <button data-section="home">Home</button>
   <button data-section="tours">Tours</button>
   <button data-section="allRoutes">All Routes</button>
-  <button data-section="classes">Classes</button>
   <button data-section="joinHub">Join the Hub</button>
 </nav>
 
 <!-- SECTIONS -->
+
 <section id="home">
   <h1>Welcome to Sunny Roads Adventures!</h1>
-  <p>Explore immersive tours, adventures, and experiences designed to delight and inspire.</p>
-  <img id="mapImage" src="map.png" alt="Route Map">
+  <img src="map.png" alt="Map of Tours">
+  <video controls>
+    <source src="classes.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </section>
 
 <section id="tours">
   <h2>Our Tours</h2>
   <div id="toursContainer">
-    <div class="tour-card"><h3>Masaya & Catarina</h3><p>Price: $24</p></div>
+    <div class="tour-card"><h3>Masaya</h3><p>Price: $24</p></div>
+    <div class="tour-card"><h3>Catarina</h3><p>Price: $24</p></div>
     <div class="tour-card"><h3>Managua</h3><p>Price: $48</p></div>
     <div class="tour-card"><h3>Rivas</h3><p>Price: $62</p></div>
     <div class="tour-card"><h3>San Juan del Sur</h3><p>Price: $74</p></div>
@@ -329,41 +260,40 @@ footer p {
 </section>
 
 <section id="allRoutes">
-  <h2>All Routes & Prices</h2>
-  <p>See detailed prices and estimated distances for each route from Granada.</p>
-  <p>Visit: <a href="all-routes.html">All Routes Page</a></p>
-</section>
-
-<section id="classes">
-  <h2>Language Classes with Blackie</h2>
-  <video id="classesVideo" controls>
-    <source src="classes.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <h2>All Routes from Granada</h2>
+  <table>
+    <tr>
+      <th>Route</th>
+      <th>Distance</th>
+      <th>Suggested Price</th>
+    </tr>
+    <tr><td>Granada → Masatepe</td><td>~30 km</td><td>$30</td></tr>
+    <tr><td>Granada → Diriamba</td><td>~32 km</td><td>$32</td></tr>
+    <tr><td>Granada → Jinotepe</td><td>~40–45 km</td><td>$40–$45</td></tr>
+    <tr><td>Granada → Apoyo Lagoon</td><td>~20 km</td><td>$18–$22</td></tr>
+    <tr><td>Granada → Montelimar Beach</td><td>~60 km</td><td>$60–$65</td></tr>
+    <tr><td>Granada → Matagalpa</td><td>~110 km</td><td>$100–$110</td></tr>
+    <tr><td>Granada → León</td><td>~115 km</td><td>$110–$120</td></tr>
+    <tr><td>Granada → Estelí</td><td>~135–140 km</td><td>$130–$140</td></tr>
+    <tr><td>Granada → Tola / San Juan del Sur</td><td>~55–90 km</td><td>$55–$90</td></tr>
+  </table>
 </section>
 
 <section id="joinHub">
   <h2>Join the Sunny Roads Service Hub</h2>
-  <p>If you offer a service and want to be visible in our hub, fill out this application form:</p>
-  <form action="https://formspree.io/f/sunnyroadsadcentures@gmail.com" method="POST">
-    <input type="text" name="name" placeholder="Full Name" required>
+  <p>If you are a company or individual offering services, apply here. Once approved, your service will be visible to customers.</p>
+  <form action="mailto:sunnyroadsadventures@gmail.com" method="post" enctype="text/plain">
+    <input type="text" name="name" placeholder="Full Name / Company Name" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="text" name="service" placeholder="Type of Service" required>
-    <select name="contract">
-      <option value="">Select Contract Type</option>
-      <option value="weekly">Weekly</option>
-      <option value="monthly">Monthly</option>
-      <option value="custom">Custom</option>
-    </select>
-    <textarea name="description" placeholder="Description of Service" required></textarea>
+    <textarea name="details" placeholder="Description of Service" rows="4"></textarea>
     <button type="submit">Submit Application</button>
   </form>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <p>Contact & WhatsApp: +50558365522</p>
-  <p>© 2026 Sunny Roads Adventures</p>
+  <p>© 2026 Sunny Roads Adventures | WhatsApp: +50558365522</p>
 </footer>
 
 <script>
@@ -382,5 +312,6 @@ document.querySelectorAll('section').forEach((sec, i) => {
   sec.style.display = (i===0) ? 'flex' : 'none';
 });
 </script>
+
 </body>
 </html>
