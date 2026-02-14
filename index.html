@@ -3,47 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures – Phase 2 Upgrade</title>
+<title>Sunny Roads Adventures – Mobile Optimized</title>
 <style>
-  /* Basic Reset & Layout */
+  /* Base Styles */
   * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
   body { background:#f4f4f4; color:#333; line-height:1.6; }
   a { text-decoration:none; color:#fff; }
-  img { max-width:100%; height:auto; }
+  img { max-width:100%; height:auto; display:block; }
 
-  /* Header / Tabs */
+  /* Header */
   header { background:#1e90ff; color:#fff; padding:15px; display:flex; justify-content:space-between; align-items:center; }
   header img { height:50px; }
-  nav { display:flex; justify-content:center; background:#4682b4; }
-  nav a { color:#fff; padding:12px 20px; font-weight:bold; display:inline-block; }
+
+  /* Navigation */
+  nav { display:flex; justify-content:center; background:#4682b4; overflow-x:auto; }
+  nav a { color:#fff; padding:12px 20px; font-weight:bold; display:inline-block; white-space:nowrap; }
   nav a:hover { background:#5a9bd3; }
 
   /* Sections */
   section { padding:20px; max-width:900px; margin:0 auto; }
   h2 { margin-bottom:15px; }
 
-  /* Interactive Map */
-  #interactive-map { position:relative; max-width:600px; margin:20px auto; border:2px solid #ccc; }
+  /* Map */
+  #interactive-map { position:relative; max-width:600px; margin:20px auto; border:2px solid #ccc; height:400px; }
   .map-point { position:absolute; width:20px; height:20px; background:red; border-radius:50%; cursor:pointer; }
-  .map-tooltip { position:absolute; background:#fff; padding:8px; border:1px solid #ccc; border-radius:5px; display:none; z-index:10; }
+  .map-tooltip { position:absolute; background:#fff; padding:8px; border:1px solid #ccc; border-radius:5px; display:none; z-index:10; font-size:14px; }
 
-  /* Tours Section */
+  /* Tours */
   .tour { background:#fff; padding:15px; margin-bottom:10px; border-radius:5px; }
   .availability { font-weight:bold; margin-bottom:8px; }
+  .social-links { margin-top:5px; }
+
+  /* Hub */
+  #hub { background:#fff; border-radius:5px; padding:20px; margin-bottom:20px; }
 
   /* Dashboard */
   #dashboard { display:none; padding:20px; background:#e6f2ff; border-radius:5px; margin-bottom:20px; }
-  #dashboard h3 { margin-bottom:10px; }
-
-  /* Hub Section */
-  #hub { background:#fff; border-radius:5px; padding:20px; margin-bottom:20px; }
-
-  /* Footer */
-  footer { background:#4682b4; color:#fff; text-align:center; padding:15px; }
 
   /* Classes Video */
   #classes { margin-top:20px; text-align:center; }
   video { max-width:100%; border-radius:5px; }
+
+  /* Footer */
+  footer { background:#4682b4; color:#fff; text-align:center; padding:15px; font-size:14px; }
+
+  /* Mobile Optimization */
+  @media (max-width:768px) {
+    nav { flex-wrap: wrap; }
+    nav a { padding:10px; font-size:14px; text-align:center; }
+    #interactive-map { width:100%; height:auto; }
+    .map-point { width:15px; height:15px; }
+    .map-tooltip { font-size:12px; padding:5px; }
+    #classes video { width:100%; height:auto; }
+    .tour { font-size:14px; padding:10px; }
+    footer { font-size:14px; padding:10px; }
+  }
 </style>
 </head>
 <body>
@@ -53,7 +67,7 @@
   <img src="logo.png" alt="Sunny Roads Adventures Logo">
 </header>
 
-<!-- Navigation Tabs -->
+<!-- Navigation -->
 <nav>
   <a href="#home">Home</a>
   <a href="#tours">Tours</a>
@@ -62,7 +76,7 @@
   <a href="#dashboard">Dashboard</a>
 </nav>
 
-<!-- Home -->
+<!-- Home Section -->
 <section id="home">
   <h1>Welcome to Sunny Roads Adventures</h1>
   <img src="map.png" alt="Map of Granada Tours" id="map">
@@ -119,16 +133,16 @@
 <!-- All Routes -->
 <section id="all-routes">
   <h2>All Routes & Suggested Prices</h2>
-  <!-- Can reuse table from Phase 1 -->
+  <!-- Can reuse table or route info here -->
 </section>
 
-<!-- Hub -->
+<!-- Hub Section -->
 <section id="hub">
   <h2>Sunny Roads Service Hub</h2>
   <p>Add your service to the hub. Approved services are visible to all users. Applications will be sent to <a href="mailto:sunnyroadsadcentures@gmail.com">sunnyroadsadcentures@gmail.com</a></p>
 </section>
 
-<!-- Dashboard -->
+<!-- Dashboard Section -->
 <section id="dashboard">
   <h3>Service Partner / Admin Dashboard</h3>
   <p>Login feature coming soon. You will see:</p>
@@ -162,7 +176,7 @@ if (!localStorage.getItem('tourBookings')) {
   localStorage.setItem('tourBookings', JSON.stringify({}));
 }
 
-// Function: Update map point colors based on availability
+// Update map point colors and availability text
 function updateMapColors() {
   const bookings = JSON.parse(localStorage.getItem('tourBookings'));
   document.querySelectorAll('.map-point').forEach(point => {
@@ -172,7 +186,7 @@ function updateMapColors() {
     else if (spotsLeft <= 2) point.style.background = 'orange';
     else point.style.background = 'green';
 
-    // Update availability text in tour section
+    // Update availability text in tours section
     const availText = document.getElementById(tour + '-availability');
     if (availText) availText.textContent = `Spots left: ${spotsLeft}`;
   });
@@ -210,18 +224,33 @@ function createShareLinks(tourName) {
   return { whatsapp, facebook };
 }
 
-// Add social share links to map points dynamically
+// Add social share links to map points
 document.querySelectorAll('.map-point').forEach(point => {
   const tour = point.dataset.tour;
   const links = createShareLinks(tour);
   const btnContainer = document.createElement('div');
-  btnContainer.style.marginTop = '5px';
+  btnContainer.className = 'social-links';
   btnContainer.innerHTML = `
     <a href="${links.whatsapp}" target="_blank" style="color:black; margin-right:5px;">WhatsApp</a>
     <a href="${links.facebook}" target="_blank" style="color:black;">Facebook</a>
   `;
   point.appendChild(btnContainer);
 });
+
+// Mobile scaling for map points
+function updateMapPointsMobile() {
+  const map = document.getElementById('interactive-map');
+  const mapWidth = map.offsetWidth;
+  const scaleFactor = mapWidth / 600; // original map width
+  document.querySelectorAll('.map-point').forEach(point => {
+    const top = parseInt(point.style.top);
+    const left = parseInt(point.style.left);
+    point.style.top = (top * scaleFactor) + 'px';
+    point.style.left = (left * scaleFactor) + 'px';
+  });
+}
+window.addEventListener('resize', updateMapPointsMobile);
+updateMapPointsMobile(); // initial call
 </script>
 
 </body>
