@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures | High-End Boutique Private Experiences</title>
+<title>Sunny Roads Adventures | Ultra Premium Coastal Experiences</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -16,16 +16,12 @@
   --line:rgba(0,0,0,0.06);
 }
 
-/* =============================
-BASE
-============================= */
+/* BASE */
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-snap-type:y mandatory;scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:var(--cream);color:#2c2c2c;overflow-x:hidden;position:relative;}
 
-/* =============================
-LOADER
-============================= */
+/* LOADER */
 .loader{position:fixed; inset:0; background:var(--cream); display:flex; align-items:center; justify-content:center; z-index:9999; transition:opacity 1s ease;}
 .loader h1{font-family:'Playfair Display',serif;font-size:28px; letter-spacing:4px;color:var(--deep); animation:fadeIn 2s ease forwards;opacity:0;}
 @keyframes fadeIn{ to{opacity:1} }
@@ -42,19 +38,23 @@ nav a:hover{opacity:1}
 .panel{ min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; padding:0 10%; position:relative;}
 .center{align-items:center; text-align:center;}
 
-/* HERO WITH TEXTURE AND PARTICLES */
+/* HERO WITH TEXTURE, PARTICLES & WAVES */
 .hero{position:relative; overflow:hidden;}
 .hero::before{
   content:"";
   position:absolute; inset:0;
   background:linear-gradient(135deg, #f3e9dc 0%, #1c5c60 70%);
-  z-index:-3;
+  z-index:-4;
 }
-.hero .texture{position:absolute; inset:0; background:url('https://i.imgur.com/hP5v1z0.png') repeat; opacity:0.05; z-index:-2;}
-.hero .particles{position:absolute; inset:0; z-index:-1; pointer-events:none;}
+.hero .texture{position:absolute; inset:0; background:url('https://i.imgur.com/hP5v1z0.png') repeat; opacity:0.05; z-index:-3;}
+.hero .particles{position:absolute; inset:0; z-index:-2; pointer-events:none;}
+.hero .wave{position:absolute; left:0; width:200%; height:200%; background:rgba(255,255,255,0.05); border-radius:43%; animation:waveDrift 60s linear infinite;}
+.hero .wave:nth-child(2){animation-duration:80s; opacity:0.03; transform:scale(1.1);}
+.hero .wave:nth-child(3){animation-duration:100s; opacity:0.02; transform:scale(1.2);}
+@keyframes waveDrift{ 0%{transform:translateX(0) translateY(0)} 50%{transform:translateX(-20px) translateY(10px)} 100%{transform:translateX(0) translateY(0)} }
 
 /* HERO TEXT */
-.hero h1{font-family:'Playfair Display',serif; font-size:64px; max-width:950px; margin-bottom:40px; line-height:1.15; color:var(--deep); overflow:hidden; position:relative; z-index:1;}
+.hero h1{font-family:'Playfair Display',serif; font-size:64px; max-width:950px; margin-bottom:40px; line-height:1.15; color:var(--deep); overflow:hidden; position:relative; z-index:1; transition:transform 0.3s ease;}
 .hero h1 span{display:block; transform:translateY(120%) translateX(-5px); opacity:0;}
 .hero p{max-width:600px; font-size:19px; color:#555; margin-bottom:50px; opacity:0; transform:translateY(30px); transition:1s ease; position:relative; z-index:1;}
 .hero.visible p{opacity:1; transform:translateY(0);}
@@ -78,6 +78,10 @@ nav a:hover{opacity:1}
 .meta{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:20px;}
 .experience p{ color:#555; margin-bottom:20px;}
 
+/* SHIMMER SEPARATOR */
+.separator{ width:80%; height:2px; margin:80px auto; background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%); background-size:200% 100%; animation:shimmer 3s linear infinite;}
+@keyframes shimmer{ 0%{background-position:-200% 0} 100%{background-position:200% 0} }
+
 /* FOOTER */
 .footer{text-align:center; font-size:13px; color:#777; padding-bottom:40px;}
 
@@ -87,7 +91,6 @@ nav a:hover{opacity:1}
   .section-title{font-size:30px}
   .panel{padding:0 8%}
 }
-
 </style>
 </head>
 <body>
@@ -106,6 +109,9 @@ nav a:hover{opacity:1}
 <section class="panel hero center">
   <div class="texture"></div>
   <canvas class="particles"></canvas>
+  <div class="wave"></div>
+  <div class="wave"></div>
+  <div class="wave"></div>
   <h1>
     <span>Discover Nicaragua</span>
     <span>The Way Most Travelers</span>
@@ -115,6 +121,8 @@ nav a:hover{opacity:1}
   <a class="btn" href="https://wa.me/50558365522" target="_blank">Begin Your Private Journey</a>
   <p style="margin-top:20px; font-size:13px; color:#777;">Limited private experiences hosted weekly for meaningful travel.</p>
 </section>
+
+<div class="separator"></div>
 
 <!-- FOUNDER NOTE -->
 <section class="panel center">
@@ -126,6 +134,8 @@ nav a:hover{opacity:1}
   </p>
   <p style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#888;">— Private. Intentional. Human.</p>
 </section>
+
+<div class="separator"></div>
 
 <!-- HOW IT WORKS -->
 <section class="panel center">
@@ -140,6 +150,8 @@ nav a:hover{opacity:1}
   </div>
   <p style="margin-top:20px; font-size:13px; color:#777;">Limited private experiences hosted weekly.</p>
 </section>
+
+<div class="separator"></div>
 
 <!-- EXPERIENCES -->
 <section id="experiences" class="panel center">
@@ -158,6 +170,8 @@ nav a:hover{opacity:1}
   </div>
 </section>
 
+<div class="separator"></div>
+
 <!-- CONTACT -->
 <section id="contact" class="panel footer center">
   <div class="section-title">Begin Your Journey</div>
@@ -170,13 +184,13 @@ nav a:hover{opacity:1}
 </section>
 
 <script>
-/* Loader */
+/* LOADER */
 window.addEventListener("load",()=>{ setTimeout(()=>document.querySelector(".loader").classList.add("hide"),1500); });
 
-/* Nav shrink */
+/* NAV shrink */
 window.addEventListener("scroll",()=>{ if(window.scrollY>40) document.querySelector("nav").classList.add("scrolled"); else document.querySelector("nav").classList.remove("scrolled"); });
 
-/* Hero split reveal */
+/* HERO TEXT REVEAL */
 const hero = document.querySelector(".hero");
 const spans = document.querySelectorAll(".hero h1 span");
 window.addEventListener("load",()=>{
@@ -190,7 +204,7 @@ window.addEventListener("load",()=>{
   setTimeout(()=>hero.classList.add("visible"),1200);
 });
 
-/* Scroll reveal sections */
+/* SCROLL REVEAL */
 const sections = document.querySelectorAll(".section-text, .experience");
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
@@ -199,19 +213,26 @@ const observer = new IntersectionObserver(entries=>{
 },{threshold:.3});
 sections.forEach(sec=>observer.observe(sec));
 
-/* Particles */
+/* HERO TEXT DRIFT + SCALE ON SCROLL */
+window.addEventListener("scroll",()=>{
+  const heroText = document.querySelector(".hero h1");
+  let scrollY = window.scrollY;
+  heroText.style.transform = `translateY(${scrollY*0.05}px) scale(${1 + scrollY*0.0005})`;
+});
+
+/* PARTICLES */
 const canvas = document.querySelector(".particles");
 canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 const ctx = canvas.getContext("2d");
 let particlesArray=[];
 class Particle{
   constructor(){
-    this.x = Math.random()*canvas.width;
-    this.y = Math.random()*canvas.height;
-    this.size = Math.random()*3+1;
-    this.speedX = (Math.random()-0.5)*0.3;
-    this.speedY = (Math.random()-0.5)*0.3;
-    this.opacity = Math.random()*0.2+0.05;
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.size=Math.random()*3+1;
+    this.speedX=(Math.random()-0.5)*0.3;
+    this.speedY=(Math.random()-0.5)*0.3;
+    this.opacity=Math.random()*0.2+0.05;
   }
   update(){ this.x+=this.speedX; this.y+=this.speedY; if(this.x>canvas.width)this.x=0;if(this.x<0)this.x=canvas.width;if(this.y>canvas.height)this.y=0;if(this.y<0)this.y=canvas.height; }
   draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${this.opacity})`; ctx.fill(); }
