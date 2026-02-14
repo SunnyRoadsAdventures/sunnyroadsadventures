@@ -9,16 +9,16 @@
 
 <style>
 
-/* =========================
-   ROOT
-========================= */
+/* =============================
+   ROOT + BASE
+============================= */
 
 :root{
   --cream:#fbf7f2;
-  --sand:#f3e8db;
+  --sand:#f2e7da;
   --ocean:#1f5f63;
   --deep-ocean:#0f3437;
-  --charcoal:#2b2b2b;
+  --charcoal:#2c2c2c;
   --line:rgba(0,0,0,0.06);
 }
 
@@ -28,17 +28,20 @@
   box-sizing:border-box;
 }
 
-body{
-  font-family:'Inter', sans-serif;
-  color:var(--charcoal);
-  background:var(--cream);
-  overflow-x:hidden;
-  line-height:1.8;
+html{
+  scroll-behavior:smooth;
 }
 
-/* =========================
-   CINEMATIC BACKGROUND
-========================= */
+body{
+  font-family:'Inter', sans-serif;
+  background:var(--cream);
+  color:var(--charcoal);
+  overflow-x:hidden;
+}
+
+/* =============================
+   CINEMATIC ATMOSPHERE
+============================= */
 
 body::before{
   content:"";
@@ -48,33 +51,31 @@ body::before{
     140deg,
     #f6efe6,
     #e8f2f1,
-    #f3e8db,
+    #f2e7da,
     #f6efe6
   );
   background-size:500% 500%;
-  animation:oceanFlow 35s ease infinite;
-  z-index:-2;
+  animation:oceanDrift 40s ease infinite;
+  z-index:-3;
 }
 
-@keyframes oceanFlow{
+@keyframes oceanDrift{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
 }
 
-/* Soft Light Overlay */
-
 body::after{
   content:"";
   position:fixed;
   inset:0;
-  background:radial-gradient(circle at 50% 30%, rgba(255,255,255,0.6), transparent 60%);
-  z-index:-1;
+  background:radial-gradient(circle at 50% 20%, rgba(255,255,255,0.7), transparent 60%);
+  z-index:-2;
 }
 
-/* =========================
-   NAV
-========================= */
+/* =============================
+   NAVIGATION
+============================= */
 
 nav{
   position:fixed;
@@ -83,7 +84,7 @@ nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  backdrop-filter:blur(16px);
+  backdrop-filter:blur(18px);
   background:rgba(255,255,255,0.55);
   border-bottom:1px solid var(--line);
   z-index:1000;
@@ -108,45 +109,52 @@ nav a{
 
 nav a:hover{opacity:.6}
 
-/* =========================
-   HERO
-========================= */
+/* =============================
+   FULL SCREEN SECTIONS
+============================= */
 
-.hero{
+.panel{
   min-height:100vh;
+  padding:0 10%;
   display:flex;
   flex-direction:column;
   justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:0 10%;
-  transform:translateZ(0);
+  border-top:1px solid var(--line);
+  position:relative;
 }
+
+.center{
+  text-align:center;
+  align-items:center;
+}
+
+/* =============================
+   HERO PANEL
+============================= */
 
 .hero h1{
   font-family:'Playfair Display', serif;
-  font-size:60px;
+  font-size:64px;
   font-weight:400;
   max-width:950px;
   margin-bottom:30px;
   color:var(--deep-ocean);
-  transition:transform 1.2s ease;
 }
 
 .hero p{
   max-width:600px;
   font-size:19px;
-  color:#555;
   margin-bottom:50px;
+  color:#555;
 }
 
-/* =========================
+/* =============================
    BUTTON
-========================= */
+============================= */
 
 .btn{
   position:relative;
-  padding:15px 40px;
+  padding:16px 42px;
   border:1px solid var(--ocean);
   text-decoration:none;
   color:var(--ocean);
@@ -172,41 +180,26 @@ nav a:hover{opacity:.6}
 .btn:hover::before{left:0}
 .btn:hover{color:white}
 
-/* =========================
-   SECTIONS
-========================= */
-
-section{
-  padding:160px 10%;
-  border-top:1px solid var(--line);
-}
+/* =============================
+   EXPERIENCE PANELS
+============================= */
 
 .section-title{
   font-family:'Playfair Display', serif;
-  font-size:38px;
+  font-size:42px;
   margin-bottom:80px;
   color:var(--deep-ocean);
 }
 
-/* =========================
-   EXPERIENCES
-========================= */
-
 .experience{
-  margin-bottom:140px;
   max-width:750px;
-  transform:scale(.97);
-  transition:all 1s ease;
-}
-
-.experience.visible{
-  transform:scale(1);
+  margin-bottom:60px;
 }
 
 .experience h3{
   font-size:26px;
-  margin-bottom:18px;
   color:var(--ocean);
+  margin-bottom:16px;
 }
 
 .meta{
@@ -214,12 +207,12 @@ section{
   letter-spacing:2px;
   text-transform:uppercase;
   color:#888;
-  margin-bottom:22px;
+  margin-bottom:20px;
 }
 
 .experience p{
-  margin-bottom:20px;
   color:#555;
+  margin-bottom:20px;
 }
 
 .reserve{
@@ -232,67 +225,47 @@ section{
   padding-bottom:3px;
 }
 
-/* =========================
-   PHILOSOPHY
-========================= */
-
-.philosophy p{
-  max-width:700px;
-  font-size:19px;
-  color:#444;
-}
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-  padding:80px 10%;
-  border-top:1px solid var(--line);
-  text-align:center;
-  font-size:13px;
-  color:#777;
-}
-
-/* =========================
-   FADE SYSTEM
-========================= */
+/* =============================
+   FADE + DEPTH ANIMATION
+============================= */
 
 .fade{
   opacity:0;
-  transform:translateY(60px);
+  transform:translateY(60px) scale(.97);
   transition:all 1.2s ease;
 }
 
 .fade.visible{
   opacity:1;
-  transform:translateY(0);
+  transform:translateY(0) scale(1);
 }
 
-/* =========================
+/* =============================
+   FOOTER PANEL
+============================= */
+
+.footer{
+  text-align:center;
+  font-size:13px;
+  color:#777;
+}
+
+/* =============================
    MOBILE
-========================= */
+============================= */
 
 @media(max-width:768px){
-
-  nav{
-    padding:20px 6%;
-  }
 
   .hero h1{
     font-size:38px;
   }
 
-  section{
-    padding:110px 8%;
-  }
-
   .section-title{
-    font-size:28px;
+    font-size:30px;
   }
 
-  .experience{
-    margin-bottom:90px;
+  .panel{
+    padding:0 8%;
   }
 
 }
@@ -310,58 +283,54 @@ footer{
   </div>
 </nav>
 
-<div class="hero fade">
+<!-- HERO PANEL -->
+<section class="panel hero center fade">
   <h1>Discover Nicaragua’s Coastline Through a More Personal Lens</h1>
   <p>Private, intentional journeys designed for travelers who value authenticity over crowds.</p>
   <a class="btn" href="https://wa.me/50558365522" target="_blank">
     Reserve Your Experience
   </a>
-</div>
+</section>
 
-<section id="experiences">
+<!-- EXPERIENCES PANEL -->
+<section id="experiences" class="panel fade">
+  <div class="section-title">Curated Experiences</div>
 
-  <div class="section-title fade">Curated Experiences</div>
-
-  <div class="experience fade">
+  <div class="experience">
     <h3>Coastal Granada Walk</h3>
     <div class="meta">Half Day • Private • Cultural</div>
-    <p>Explore the quiet rhythm of Granada’s historic streets with a guide who reveals the stories beneath its façades.</p>
+    <p>Explore the quiet rhythm of Granada’s streets with a guide who reveals the stories beneath its façades.</p>
     <a class="reserve" href="https://wa.me/50558365522" target="_blank">Inquire Privately</a>
   </div>
 
-  <div class="experience fade">
+  <div class="experience">
     <h3>Volcano & Water Horizon</h3>
     <div class="meta">Full Day • Scenic • Immersive</div>
     <p>Witness vast landscapes where volcanic silhouettes meet endless water and sky.</p>
     <a class="reserve" href="https://wa.me/50558365522" target="_blank">Inquire Privately</a>
   </div>
 
-  <div class="experience fade">
-    <h3>Sunset Coastal Session</h3>
-    <div class="meta">Golden Hour • Intimate • Reflective</div>
-    <p>An evening experience designed around stillness, color, and the quiet elegance of Nicaragua’s coast.</p>
-    <a class="reserve" href="https://wa.me/50558365522" target="_blank">Inquire Privately</a>
-  </div>
-
 </section>
 
-<section id="philosophy" class="philosophy fade">
+<!-- PHILOSOPHY PANEL -->
+<section id="philosophy" class="panel center fade">
   <div class="section-title">Our Philosophy</div>
-  <p>
+  <p style="max-width:700px;">
     Meaningful travel is not loud. It is intentional, human, and deeply personal.
     Each journey is curated with care — never mass produced.
   </p>
 </section>
 
-<footer id="contact">
+<!-- FOOTER PANEL -->
+<section id="contact" class="panel footer center fade">
   Sunny Roads Adventures • Nicaragua<br><br>
   WhatsApp: +505 5836 5522<br><br>
   © 2026 All Rights Reserved
-</footer>
+</section>
 
 <script>
 
-const faders = document.querySelectorAll('.fade, .experience');
+const elements = document.querySelectorAll('.fade');
 
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
@@ -371,7 +340,7 @@ const observer = new IntersectionObserver(entries=>{
   });
 },{threshold:0.15});
 
-faders.forEach(el=>observer.observe(el));
+elements.forEach(el=>observer.observe(el));
 
 </script>
 
