@@ -16,126 +16,72 @@
   --line:rgba(0,0,0,0.06);
 }
 
+/* =============================
+BASE
+============================= */
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-snap-type:y mandatory;scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:#2c2c2c;overflow-x:hidden;position:relative;}
 
-html{
-  scroll-snap-type:y mandatory;
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--cream);
-  color:#2c2c2c;
-  overflow-x:hidden;
-}
-
-/* Loader */
-.loader{
-  position:fixed; inset:0;
-  background:var(--cream);
-  display:flex; align-items:center; justify-content:center;
-  z-index:9999;
-  transition:opacity 1s ease;
-}
-.loader h1{
-  font-family:'Playfair Display',serif;
-  font-size:28px; letter-spacing:4px;
-  color:var(--deep);
-  animation:fadeIn 2s ease forwards;
-  opacity:0;
-}
+/* =============================
+LOADER
+============================= */
+.loader{position:fixed; inset:0; background:var(--cream); display:flex; align-items:center; justify-content:center; z-index:9999; transition:opacity 1s ease;}
+.loader h1{font-family:'Playfair Display',serif;font-size:28px; letter-spacing:4px;color:var(--deep); animation:fadeIn 2s ease forwards;opacity:0;}
 @keyframes fadeIn{ to{opacity:1} }
 .loader.hide{ opacity:0; pointer-events:none; }
 
-/* Nav */
-nav{
-  position:fixed; width:100%; padding:28px 8%;
-  display:flex; justify-content:space-between; align-items:center;
-  transition:all .6s ease; z-index:1000;
-}
-nav.scrolled{
-  backdrop-filter:blur(18px);
-  background:rgba(255,255,255,0.6);
-  padding:18px 8%; border-bottom:1px solid var(--line);
-}
-.logo{ font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--deep); }
-nav a{
-  text-decoration:none; margin-left:36px; font-size:12px; letter-spacing:2px;
-  text-transform:uppercase; color:var(--deep); opacity:.8; transition:.3s;
-}
+/* NAV */
+nav{position:fixed; width:100%; padding:28px 8%; display:flex; justify-content:space-between; align-items:center; transition:all .6s ease; z-index:1000;}
+nav.scrolled{backdrop-filter:blur(18px);background:rgba(255,255,255,0.6);padding:18px 8%;border-bottom:1px solid var(--line);}
+.logo{ font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--deep);}
+nav a{text-decoration:none; margin-left:36px; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--deep); opacity:.8; transition:.3s;}
 nav a:hover{opacity:1}
 
-/* Panels */
-.panel{ min-height:100vh; scroll-snap-align:start;
-  display:flex; flex-direction:column; justify-content:center; padding:0 10%; position:relative;
-}
+/* PANELS */
+.panel{ min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; padding:0 10%; position:relative;}
 .center{align-items:center; text-align:center;}
 
-/* Hero */
-.hero{
-  position:relative;
-  overflow:hidden;
-}
+/* HERO WITH TEXTURE AND PARTICLES */
+.hero{position:relative; overflow:hidden;}
 .hero::before{
   content:"";
   position:absolute; inset:0;
   background:linear-gradient(135deg, #f3e9dc 0%, #1c5c60 70%);
-  z-index:-1;
-  transform:translateY(0);
-  animation:drift 30s linear infinite;
+  z-index:-3;
 }
-@keyframes drift{ 0%{transform:translateY(0)} 50%{transform:translateY(10px)} 100%{transform:translateY(0)} }
+.hero .texture{position:absolute; inset:0; background:url('https://i.imgur.com/hP5v1z0.png') repeat; opacity:0.05; z-index:-2;}
+.hero .particles{position:absolute; inset:0; z-index:-1; pointer-events:none;}
 
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:64px; max-width:950px; margin-bottom:40px; line-height:1.15;
-  color:var(--deep); overflow:hidden;
-}
-.hero h1 span{
-  display:block;
-  transform:translateY(120%) translateX(-5px);
-  opacity:0;
-}
-.hero p{
-  max-width:600px; font-size:19px; color:#555; margin-bottom:50px;
-  opacity:0; transform:translateY(30px);
-  transition:1s ease;
-}
+/* HERO TEXT */
+.hero h1{font-family:'Playfair Display',serif; font-size:64px; max-width:950px; margin-bottom:40px; line-height:1.15; color:var(--deep); overflow:hidden; position:relative; z-index:1;}
+.hero h1 span{display:block; transform:translateY(120%) translateX(-5px); opacity:0;}
+.hero p{max-width:600px; font-size:19px; color:#555; margin-bottom:50px; opacity:0; transform:translateY(30px); transition:1s ease; position:relative; z-index:1;}
 .hero.visible p{opacity:1; transform:translateY(0);}
 
-/* Buttons */
-.btn{
-  position:relative; padding:16px 42px;
-  border:1px solid var(--ocean); text-decoration:none; color:var(--ocean);
-  font-size:12px; letter-spacing:2px; text-transform:uppercase;
-  overflow:hidden; transition:all .5s ease; display:inline-block;
-}
-.btn::before{
-  content:""; position:absolute; left:-100%; top:0;
-  width:100%; height:100%;
-  background:var(--ocean); transition:left .5s ease; z-index:-1;
-}
+/* BUTTONS */
+.btn{position:relative; padding:16px 42px; border:1px solid var(--ocean); text-decoration:none; color:var(--ocean); font-size:12px; letter-spacing:2px; text-transform:uppercase; overflow:hidden; transition:all .5s ease; display:inline-block;}
+.btn::before{content:""; position:absolute; left:-100%; top:0; width:100%; height:100%; background:var(--ocean); transition:left .5s ease; z-index:-1;}
 .btn:hover::before{left:0}
 .btn:hover{color:white; transform:scale(1.05); box-shadow:0 4px 15px rgba(0,0,0,0.2);}
 
-/* Sections */
+/* SECTIONS */
 .section-title{ font-family:'Playfair Display',serif; font-size:42px; margin-bottom:50px; color:var(--deep); animation:floatTitle 6s ease-in-out infinite alternate;}
 @keyframes floatTitle{ 0%{transform:translateY(0)} 100%{transform:translateY(6px)} }
-.section-text{ max-width:700px; font-size:18px; line-height:1.8; color:#555; margin:0 auto 30px auto; opacity:0; transform:translateY(30px); transition:1s ease; }
+.section-text{ max-width:700px; font-size:18px; line-height:1.8; color:#555; margin:0 auto 30px auto; opacity:0; transform:translateY(30px); transition:1s ease;}
 .section-text.visible{opacity:1; transform:translateY(0);}
 
-/* Experiences */
-.experience{ max-width:750px; margin-bottom:60px; opacity:0; transform:translateY(50px); transition:1.2s ease; }
+/* EXPERIENCES */
+.experience{ max-width:750px; margin-bottom:60px; opacity:0; transform:translateY(50px); transition:1.2s ease;}
 .experience.visible{opacity:1; transform:translateY(0);}
 .experience h3{ font-size:26px; margin-bottom:16px; color:var(--ocean);}
 .meta{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:20px;}
 .experience p{ color:#555; margin-bottom:20px;}
 
-/* Footer */
+/* FOOTER */
 .footer{text-align:center; font-size:13px; color:#777; padding-bottom:40px;}
 
-/* Mobile */
+/* MOBILE */
 @media(max-width:768px){
   .hero h1{font-size:38px}
   .section-title{font-size:30px}
@@ -158,6 +104,8 @@ nav a:hover{opacity:1}
 
 <!-- HERO -->
 <section class="panel hero center">
+  <div class="texture"></div>
+  <canvas class="particles"></canvas>
   <h1>
     <span>Discover Nicaragua</span>
     <span>The Way Most Travelers</span>
@@ -250,7 +198,29 @@ const observer = new IntersectionObserver(entries=>{
   });
 },{threshold:.3});
 sections.forEach(sec=>observer.observe(sec));
-</script>
 
+/* Particles */
+const canvas = document.querySelector(".particles");
+canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+const ctx = canvas.getContext("2d");
+let particlesArray=[];
+class Particle{
+  constructor(){
+    this.x = Math.random()*canvas.width;
+    this.y = Math.random()*canvas.height;
+    this.size = Math.random()*3+1;
+    this.speedX = (Math.random()-0.5)*0.3;
+    this.speedY = (Math.random()-0.5)*0.3;
+    this.opacity = Math.random()*0.2+0.05;
+  }
+  update(){ this.x+=this.speedX; this.y+=this.speedY; if(this.x>canvas.width)this.x=0;if(this.x<0)this.x=canvas.width;if(this.y>canvas.height)this.y=0;if(this.y<0)this.y=canvas.height; }
+  draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${this.opacity})`; ctx.fill(); }
+}
+function initParticles(){particlesArray=[];for(let i=0;i<80;i++)particlesArray.push(new Particle());}
+function animateParticles(){ ctx.clearRect(0,0,canvas.width,canvas.height); particlesArray.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(animateParticles); }
+initParticles(); animateParticles();
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight; initParticles(); });
+
+</script>
 </body>
 </html>
