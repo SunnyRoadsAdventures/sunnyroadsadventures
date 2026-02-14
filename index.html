@@ -3,16 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures | Private Coastal Journeys</title>
+<title>Sunny Roads Adventures | High-End Boutique Private Experiences</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 /* =============================
-   ROOT
+   ROOT + BASE
 ============================= */
-
 :root{
   --cream:#fdfaf6;
   --sand:#f3e9dc;
@@ -38,7 +37,6 @@ body{
 /* =============================
    LOADING INTRO
 ============================= */
-
 .loader{
   position:fixed;
   inset:0;
@@ -71,7 +69,6 @@ body{
 /* =============================
    NAVIGATION
 ============================= */
-
 nav{
   position:fixed;
   width:100%;
@@ -113,7 +110,6 @@ nav a:hover{opacity:1}
 /* =============================
    PANELS
 ============================= */
-
 .panel{
   min-height:100vh;
   scroll-snap-align:start;
@@ -132,7 +128,6 @@ nav a:hover{opacity:1}
 /* =============================
    HERO
 ============================= */
-
 .hero h1{
   font-family:'Playfair Display',serif;
   font-size:64px;
@@ -167,7 +162,6 @@ nav a:hover{opacity:1}
 /* =============================
    BUTTON
 ============================= */
-
 .btn{
   position:relative;
   padding:16px 42px;
@@ -197,14 +191,21 @@ nav a:hover{opacity:1}
 .btn:hover{color:white}
 
 /* =============================
-   EXPERIENCE
+   SECTIONS
 ============================= */
-
 .section-title{
   font-family:'Playfair Display',serif;
   font-size:42px;
-  margin-bottom:80px;
+  margin-bottom:50px;
   color:var(--deep);
+}
+
+.section-text{
+  max-width:700px;
+  font-size:18px;
+  line-height:1.8;
+  color:#555;
+  margin:0 auto 30px auto;
 }
 
 .experience{
@@ -242,23 +243,20 @@ nav a:hover{opacity:1}
 /* =============================
    FOOTER
 ============================= */
-
 .footer{
   text-align:center;
   font-size:13px;
   color:#777;
+  padding-bottom:40px;
 }
 
 /* =============================
    MOBILE
 ============================= */
-
 @media(max-width:768px){
-
   .hero h1{font-size:38px}
   .section-title{font-size:30px}
   .panel{padding:0 8%}
-
 }
 
 </style>
@@ -277,59 +275,87 @@ nav a:hover{opacity:1}
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="panel hero center">
   <h1>
-    <span>Private Coastal</span>
-    <span>Journeys Through</span>
-    <span>Nicaragua</span>
+    <span>Discover Nicaragua</span>
+    <span>The Way Most Travelers</span>
+    <span>Never Do</span>
   </h1>
-  <p>Curated, intentional experiences for travelers who value presence over crowds.</p>
-  <a class="btn" href="https://wa.me/50558365522" target="_blank">Reserve Privately</a>
+  <p>Private journeys crafted to reveal hidden rhythms, coastal horizons, and the stories beneath every corner. Every experience is intentionally designed around you.</p>
+  <a class="btn" href="https://wa.me/50558365522" target="_blank">Begin Your Private Journey</a>
+  <p style="margin-top:20px; font-size:13px; color:#777;">Limited private experiences hosted weekly for meaningful travel.</p>
 </section>
 
-<section id="experiences" class="panel">
-  <div class="section-title">Curated Experiences</div>
+<!-- FOUNDER NOTE -->
+<section class="panel center">
+  <div class="section-title">A Personal Note</div>
+  <p class="section-text">
+    Sunny Roads Adventures exists for travelers who seek presence, not packages.  
+    Each journey is curated with care, ensuring depth, calm, and real connection.  
+    We host a limited number of private experiences weekly — so each moment is intentional, uninterrupted, and uniquely yours.
+  </p>
+  <p style="font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#888;">— Private. Intentional. Human.</p>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="panel center">
+  <div class="section-title">How It Works</div>
+  <div class="section-text">
+    <p><strong>1.</strong> Reach Out — Send a message on WhatsApp and tell us what experience you seek.</p>
+    <p><strong>2.</strong> We Curate — We design a private journey tailored to your interests, pace, and rhythm.</p>
+    <p><strong>3.</strong> You Experience — Arrive and immerse yourself in a seamless, meaningful adventure.</p>
+  </div>
+  <div style="margin-top:50px;">
+    <a class="btn" href="https://wa.me/50558365522" target="_blank">Begin Your Private Journey</a>
+  </div>
+  <p style="margin-top:20px; font-size:13px; color:#777;">Limited private experiences hosted weekly.</p>
+</section>
+
+<!-- EXPERIENCES -->
+<section id="experiences" class="panel center">
+  <div class="section-title">Curated Coastal Experiences</div>
 
   <div class="experience">
     <h3>Granada Coastal Walk</h3>
     <div class="meta">Half Day • Private • Cultural</div>
-    <p>An intimate exploration of colonial rhythm, quiet streets, and layered history.</p>
+    <p>An intimate exploration of colonial rhythm, quiet streets, and layered history. See the city as few travelers ever do.</p>
   </div>
 
   <div class="experience">
-    <h3>Volcano & Ocean Horizon</h3>
+    <h3>Volcano & Horizon Journey</h3>
     <div class="meta">Full Day • Scenic • Immersive</div>
-    <p>Witness volcanic silhouettes meeting endless sky and water in cinematic stillness.</p>
+    <p>Witness Nicaragua’s volcanic silhouettes meet endless sky and water. A private, cinematic escape for the senses.</p>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact" class="panel footer center">
-  WhatsApp: +505 5836 5522<br><br>
-  © 2026 Sunny Roads Adventures
+  <div class="section-title">Begin Your Journey</div>
+  <p class="section-text">
+    Reach out via WhatsApp to start your private, intentional adventure.  
+    We respond personally and ensure your experience is uniquely yours.
+  </p>
+  <a class="btn" href="https://wa.me/50558365522" target="_blank">Begin Your Private Journey</a>
+  <p style="margin-top:20px; font-size:13px; color:#777;">WhatsApp: +505 5836 5522 | © 2026 Sunny Roads Adventures</p>
 </section>
 
 <script>
 
 /* Loader */
 window.addEventListener("load",()=>{
-  setTimeout(()=>{
-    document.querySelector(".loader").classList.add("hide");
-  },1800);
+  setTimeout(()=>document.querySelector(".loader").classList.add("hide"),1500);
 });
 
 /* Nav shrink */
 window.addEventListener("scroll",()=>{
-  if(window.scrollY>40){
-    document.querySelector("nav").classList.add("scrolled");
-  }else{
-    document.querySelector("nav").classList.remove("scrolled");
-  }
+  if(window.scrollY>40) document.querySelector("nav").classList.add("scrolled");
+  else document.querySelector("nav").classList.remove("scrolled");
 });
 
 /* Hero split reveal */
 const hero = document.querySelector(".hero");
 const spans = document.querySelectorAll(".hero h1 span");
-
 window.addEventListener("load",()=>{
   spans.forEach((span,i)=>{
     setTimeout(()=>{
@@ -343,15 +369,11 @@ window.addEventListener("load",()=>{
 
 /* Scroll reveal experiences */
 const experiences = document.querySelectorAll(".experience");
-
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-    }
+    if(entry.isIntersecting) entry.target.classList.add("visible");
   });
 },{threshold:.3});
-
 experiences.forEach(exp=>observer.observe(exp));
 
 </script>
