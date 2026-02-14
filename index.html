@@ -3,10 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures | Coastal Experiences</title>
-<meta name="description" content="Private coastal experiences in Nicaragua. Curated, intentional, refined.">
+<title>Sunny Roads Adventures | Private Coastal Journeys</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
@@ -17,11 +15,11 @@
 
 :root{
   --cream:#fbf7f2;
-  --sand:#f2e7da;
+  --sand:#f3e8db;
   --ocean:#1f5f63;
-  --deep-ocean:#123a3d;
-  --charcoal:#2d2d2d;
-  --line:rgba(0,0,0,0.07);
+  --deep-ocean:#0f3437;
+  --charcoal:#2b2b2b;
+  --line:rgba(0,0,0,0.06);
 }
 
 *{
@@ -32,14 +30,14 @@
 
 body{
   font-family:'Inter', sans-serif;
-  background:var(--cream);
   color:var(--charcoal);
-  line-height:1.8;
+  background:var(--cream);
   overflow-x:hidden;
+  line-height:1.8;
 }
 
 /* =========================
-   OCEAN BACKGROUND
+   CINEMATIC BACKGROUND
 ========================= */
 
 body::before{
@@ -47,21 +45,31 @@ body::before{
   position:fixed;
   inset:0;
   background:linear-gradient(
-    120deg,
+    140deg,
     #f6efe6,
-    #f2e7da,
-    #e9f4f3,
+    #e8f2f1,
+    #f3e8db,
     #f6efe6
   );
-  background-size:400% 400%;
-  animation:drift 30s ease infinite;
-  z-index:-1;
+  background-size:500% 500%;
+  animation:oceanFlow 35s ease infinite;
+  z-index:-2;
 }
 
-@keyframes drift{
+@keyframes oceanFlow{
   0%{background-position:0% 50%;}
   50%{background-position:100% 50%;}
   100%{background-position:0% 50%;}
+}
+
+/* Soft Light Overlay */
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 50% 30%, rgba(255,255,255,0.6), transparent 60%);
+  z-index:-1;
 }
 
 /* =========================
@@ -71,12 +79,12 @@ body::before{
 nav{
   position:fixed;
   width:100%;
-  padding:24px 8%;
+  padding:26px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  backdrop-filter:blur(12px);
-  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(16px);
+  background:rgba(255,255,255,0.55);
   border-bottom:1px solid var(--line);
   z-index:1000;
 }
@@ -88,15 +96,11 @@ nav{
   color:var(--deep-ocean);
 }
 
-.nav-links{
-  display:flex;
-  gap:32px;
-}
-
 nav a{
   text-decoration:none;
+  margin-left:36px;
   font-size:13px;
-  letter-spacing:1px;
+  letter-spacing:2px;
   text-transform:uppercase;
   color:var(--deep-ocean);
   transition:opacity .3s ease;
@@ -116,22 +120,24 @@ nav a:hover{opacity:.6}
   align-items:center;
   text-align:center;
   padding:0 10%;
+  transform:translateZ(0);
 }
 
 .hero h1{
   font-family:'Playfair Display', serif;
+  font-size:60px;
   font-weight:400;
-  font-size:56px;
-  max-width:900px;
+  max-width:950px;
+  margin-bottom:30px;
   color:var(--deep-ocean);
-  margin-bottom:32px;
+  transition:transform 1.2s ease;
 }
 
 .hero p{
   max-width:600px;
-  font-size:18px;
+  font-size:19px;
   color:#555;
-  margin-bottom:48px;
+  margin-bottom:50px;
 }
 
 /* =========================
@@ -140,7 +146,7 @@ nav a:hover{opacity:.6}
 
 .btn{
   position:relative;
-  padding:14px 36px;
+  padding:15px 40px;
   border:1px solid var(--ocean);
   text-decoration:none;
   color:var(--ocean);
@@ -148,37 +154,37 @@ nav a:hover{opacity:.6}
   letter-spacing:2px;
   text-transform:uppercase;
   overflow:hidden;
-  transition:color .4s ease;
+  transition:color .5s ease;
 }
 
 .btn::before{
   content:"";
   position:absolute;
-  left:0;
+  left:-100%;
   top:0;
-  width:0%;
+  width:100%;
   height:100%;
   background:var(--ocean);
+  transition:left .5s ease;
   z-index:-1;
-  transition:width .4s ease;
 }
 
-.btn:hover::before{width:100%}
+.btn:hover::before{left:0}
 .btn:hover{color:white}
 
 /* =========================
-   SECTION
+   SECTIONS
 ========================= */
 
 section{
-  padding:140px 10%;
+  padding:160px 10%;
   border-top:1px solid var(--line);
 }
 
 .section-title{
   font-family:'Playfair Display', serif;
-  font-size:34px;
-  margin-bottom:70px;
+  font-size:38px;
+  margin-bottom:80px;
   color:var(--deep-ocean);
 }
 
@@ -187,15 +193,20 @@ section{
 ========================= */
 
 .experience{
-  margin-bottom:120px;
+  margin-bottom:140px;
   max-width:750px;
+  transform:scale(.97);
+  transition:all 1s ease;
+}
+
+.experience.visible{
+  transform:scale(1);
 }
 
 .experience h3{
-  font-size:24px;
-  font-weight:400;
+  font-size:26px;
+  margin-bottom:18px;
   color:var(--ocean);
-  margin-bottom:16px;
 }
 
 .meta{
@@ -203,7 +214,7 @@ section{
   letter-spacing:2px;
   text-transform:uppercase;
   color:#888;
-  margin-bottom:20px;
+  margin-bottom:22px;
 }
 
 .experience p{
@@ -227,7 +238,7 @@ section{
 
 .philosophy p{
   max-width:700px;
-  font-size:18px;
+  font-size:19px;
   color:#444;
 }
 
@@ -236,7 +247,7 @@ section{
 ========================= */
 
 footer{
-  padding:60px 10%;
+  padding:80px 10%;
   border-top:1px solid var(--line);
   text-align:center;
   font-size:13px;
@@ -244,13 +255,13 @@ footer{
 }
 
 /* =========================
-   FADE
+   FADE SYSTEM
 ========================= */
 
 .fade{
   opacity:0;
-  transform:translateY(50px);
-  transition:all .9s ease;
+  transform:translateY(60px);
+  transition:all 1.2s ease;
 }
 
 .fade.visible{
@@ -265,15 +276,15 @@ footer{
 @media(max-width:768px){
 
   nav{
-    padding:18px 6%;
+    padding:20px 6%;
   }
 
   .hero h1{
-    font-size:36px;
+    font-size:38px;
   }
 
   section{
-    padding:100px 8%;
+    padding:110px 8%;
   }
 
   .section-title{
@@ -281,7 +292,7 @@ footer{
   }
 
   .experience{
-    margin-bottom:80px;
+    margin-bottom:90px;
   }
 
 }
@@ -292,7 +303,7 @@ footer{
 
 <nav>
   <div class="logo">Sunny Roads Adventures</div>
-  <div class="nav-links">
+  <div>
     <a href="#experiences">Experiences</a>
     <a href="#philosophy">Philosophy</a>
     <a href="#contact">Contact</a>
@@ -314,7 +325,7 @@ footer{
   <div class="experience fade">
     <h3>Coastal Granada Walk</h3>
     <div class="meta">Half Day • Private • Cultural</div>
-    <p>Explore the quiet rhythm of Granada’s streets with a guide who reveals the stories beneath its historic façades.</p>
+    <p>Explore the quiet rhythm of Granada’s historic streets with a guide who reveals the stories beneath its façades.</p>
     <a class="reserve" href="https://wa.me/50558365522" target="_blank">Inquire Privately</a>
   </div>
 
@@ -350,7 +361,7 @@ footer{
 
 <script>
 
-const elements = document.querySelectorAll('.fade');
+const faders = document.querySelectorAll('.fade, .experience');
 
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
@@ -360,7 +371,7 @@ const observer = new IntersectionObserver(entries=>{
   });
 },{threshold:0.15});
 
-elements.forEach(el=>observer.observe(el));
+faders.forEach(el=>observer.observe(el));
 
 </script>
 
