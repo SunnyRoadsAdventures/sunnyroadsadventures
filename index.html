@@ -3,221 +3,253 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures | Explore Nicaragua</title>
-<meta name="description" content="Authentic guided tours in Nicaragua. Small groups, local expertise, unforgettable adventures. Book directly via WhatsApp.">
+<title>Sunny Roads Adventures | Coastal Experiences</title>
+<meta name="description" content="Curated coastal experiences in Nicaragua. Private, intentional, and deeply personal journeys.">
 
 <style>
 
-/* ====== ROOT COLORS ====== */
-:root {
-  --sand: #f5e6d3;
-  --deep-sand: #e9d2b5;
-  --turquoise: #1fa7a6;
-  --dark-ocean: #0e4d4d;
-  --white: #ffffff;
-  --text-dark: #2e2e2e;
-  --shadow: 0 10px 30px rgba(0,0,0,0.08);
+/* ======================
+   COASTAL EDITORIAL THEME
+====================== */
+
+:root{
+  --sand:#f6efe6;
+  --cream:#fbf7f2;
+  --ocean:#1f5f63;
+  --deep-ocean:#143c3f;
+  --charcoal:#2c2c2c;
+  --soft-line:rgba(0,0,0,0.08);
 }
 
-/* ====== GLOBAL ====== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  scroll-behavior:smooth;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: var(--sand);
-  color: var(--text-dark);
-  line-height: 1.6;
+body{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background:var(--cream);
+  color:var(--charcoal);
+  line-height:1.7;
+  letter-spacing:0.3px;
 }
 
-/* ====== NAVIGATION ====== */
-nav {
-  position: fixed;
-  width: 100%;
-  background: rgba(255,255,255,0.7);
-  backdrop-filter: blur(10px);
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
+/* ======================
+   NAVIGATION
+====================== */
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:24px 8%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(251,247,242,0.85);
+  backdrop-filter:blur(10px);
+  z-index:1000;
+  border-bottom:1px solid var(--soft-line);
 }
 
-nav h2 {
-  color: var(--dark-ocean);
+nav .logo{
+  font-weight:500;
+  letter-spacing:2px;
+  font-size:14px;
+  text-transform:uppercase;
+  color:var(--deep-ocean);
 }
 
-nav a {
-  text-decoration: none;
-  color: var(--dark-ocean);
-  margin-left: 20px;
-  font-weight: 500;
+nav a{
+  text-decoration:none;
+  color:var(--deep-ocean);
+  margin-left:32px;
+  font-size:14px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  transition:opacity 0.3s ease;
 }
 
-nav a:hover {
-  color: var(--turquoise);
+nav a:hover{
+  opacity:0.6;
 }
 
-/* ====== HERO ====== */
-.hero {
-  height: 100vh;
-  background: linear-gradient(135deg, var(--sand), var(--deep-sand));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 20px;
+/* ======================
+   HERO
+====================== */
+
+.hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:0 10%;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  color: var(--dark-ocean);
-  margin-bottom: 20px;
+.hero h1{
+  font-size:48px;
+  font-weight:300;
+  max-width:900px;
+  color:var(--deep-ocean);
+  margin-bottom:32px;
 }
 
-.hero p {
-  max-width: 600px;
-  margin-bottom: 30px;
-  font-size: 1.1rem;
+.hero p{
+  max-width:600px;
+  font-size:18px;
+  margin-bottom:48px;
+  color:#555;
 }
 
-.cta-buttons a {
-  text-decoration: none;
-  padding: 14px 28px;
-  margin: 10px;
-  border-radius: 30px;
-  font-weight: bold;
-  transition: 0.3s;
+.btn{
+  text-decoration:none;
+  padding:14px 32px;
+  border:1px solid var(--ocean);
+  color:var(--ocean);
+  font-size:14px;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  transition:all 0.4s ease;
 }
 
-.primary-btn {
-  background: var(--turquoise);
-  color: white;
+.btn:hover{
+  background:var(--ocean);
+  color:white;
 }
 
-.primary-btn:hover {
-  background: var(--dark-ocean);
+/* ======================
+   SECTION BASE
+====================== */
+
+section{
+  padding:140px 10%;
 }
 
-.secondary-btn {
-  border: 2px solid var(--turquoise);
-  color: var(--turquoise);
+.section-title{
+  font-size:32px;
+  font-weight:300;
+  margin-bottom:60px;
+  color:var(--deep-ocean);
 }
 
-.secondary-btn:hover {
-  background: var(--turquoise);
-  color: white;
+/* ======================
+   EXPERIENCES
+====================== */
+
+.experience{
+  margin-bottom:100px;
+  max-width:800px;
 }
 
-/* ====== SECTION ====== */
-section {
-  padding: 80px 40px;
-  text-align: center;
+.experience h3{
+  font-weight:400;
+  font-size:24px;
+  margin-bottom:16px;
+  color:var(--ocean);
 }
 
-section h2 {
-  color: var(--dark-ocean);
-  margin-bottom: 40px;
+.experience p{
+  margin-bottom:16px;
+  color:#555;
 }
 
-/* ====== TOURS ====== */
-.tour-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
+.meta{
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  color:#888;
+  margin-bottom:20px;
 }
 
-.tour-card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: var(--shadow);
-  transition: 0.3s ease;
+.reserve-link{
+  font-size:13px;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--ocean);
+  border-bottom:1px solid var(--ocean);
+  padding-bottom:4px;
+  transition:opacity 0.3s ease;
 }
 
-.tour-card:hover {
-  transform: translateY(-8px);
+.reserve-link:hover{
+  opacity:0.6;
 }
 
-.tour-card h3 {
-  color: var(--turquoise);
-  margin-bottom: 15px;
+/* ======================
+   PHILOSOPHY
+====================== */
+
+.philosophy{
+  background:var(--sand);
 }
 
-.tour-card p {
-  margin-bottom: 20px;
+.philosophy p{
+  max-width:700px;
+  font-size:18px;
+  color:#444;
 }
 
-.tour-card a {
-  text-decoration: none;
-  background: var(--turquoise);
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  display: inline-block;
+/* ======================
+   INVITATION
+====================== */
+
+.invitation{
+  text-align:center;
 }
 
-/* ====== TESTIMONIALS ====== */
-.testimonials {
-  background: var(--deep-sand);
+.invitation p{
+  max-width:650px;
+  margin:0 auto 40px auto;
+  font-size:18px;
+  color:#444;
 }
 
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+/* ======================
+   FOOTER
+====================== */
+
+footer{
+  padding:60px 10%;
+  border-top:1px solid var(--soft-line);
+  text-align:center;
+  font-size:14px;
+  color:#777;
 }
 
-.testimonial {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: var(--shadow);
+/* ======================
+   FADE ANIMATION
+====================== */
+
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 0.8s ease;
 }
 
-/* ====== FOUNDER ====== */
-.founder {
-  max-width: 700px;
-  margin: auto;
+.fade.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* ====== FOOTER ====== */
-footer {
-  background: var(--dark-ocean);
-  color: white;
-  padding: 40px;
-  text-align: center;
-}
+/* ======================
+   MOBILE
+====================== */
 
-/* ====== WHATSAPP FLOAT ====== */
-.whatsapp {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #25D366;
-  color: white;
-  padding: 15px 20px;
-  border-radius: 50px;
-  font-weight: bold;
-  text-decoration: none;
-  box-shadow: var(--shadow);
-}
+@media(max-width:768px){
 
-/* ====== FADE IN ANIMATION ====== */
-.fade {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: 0.8s ease;
-}
+  .hero h1{
+    font-size:34px;
+  }
 
-.fade.visible {
-  opacity: 1;
-  transform: translateY(0);
+  section{
+    padding:100px 8%;
+  }
+
 }
 
 </style>
@@ -225,93 +257,98 @@ footer {
 <body>
 
 <nav>
-  <h2>Sunny Roads Adventures</h2>
+  <div class="logo">Sunny Roads Adventures</div>
   <div>
-    <a href="#tours">Tours</a>
-    <a href="#testimonials">Reviews</a>
+    <a href="#experiences">Experiences</a>
+    <a href="#philosophy">Philosophy</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<div class="hero">
-  <h1>Discover Nicaragua Like a Local</h1>
-  <p>Authentic experiences. Small groups. Warm hospitality. Let us guide you through unforgettable adventures.</p>
-  <div class="cta-buttons">
-    <a class="primary-btn" href="https://wa.me/50558365522" target="_blank">Book via WhatsApp</a>
-    <a class="secondary-btn" href="#tours">Explore Tours</a>
-  </div>
+<div class="hero fade">
+  <h1>Discover Nicaragua’s Coastline Through a More Personal Lens</h1>
+  <p>Private, intentional journeys designed for travelers who value authenticity over crowds.</p>
+  <a class="btn" href="https://wa.me/50558365522" target="_blank">
+    Reserve Your Experience
+  </a>
 </div>
 
-<section id="tours" class="fade">
-  <h2>Our Tours</h2>
-  <div class="tour-container">
-    <div class="tour-card">
-      <h3>Colonial Granada Walk</h3>
-      <p>Explore colorful streets, historic landmarks, and local culture with an expert guide.</p>
-      <a href="https://wa.me/50558365522" target="_blank">Book Now</a>
-    </div>
-    <div class="tour-card">
-      <h3>Volcano & Lake Adventure</h3>
-      <p>Hike breathtaking volcano views and relax by Nicaragua’s stunning lakes.</p>
-      <a href="https://wa.me/50558365522" target="_blank">Book Now</a>
-    </div>
-    <div class="tour-card">
-      <h3>Sunset Photography Tour</h3>
-      <p>Capture golden hour magic with unforgettable landscapes and expert tips.</p>
-      <a href="https://wa.me/50558365522" target="_blank">Book Now</a>
-    </div>
+<section id="experiences">
+
+  <div class="section-title fade">Curated Experiences</div>
+
+  <div class="experience fade">
+    <h3>Coastal Granada Walk</h3>
+    <div class="meta">Half Day • Private • Cultural</div>
+    <p>Explore the historic rhythm of Granada with a guide who reveals the quiet stories beneath its colonial facades.</p>
+    <a class="reserve-link" href="https://wa.me/50558365522" target="_blank">
+      Inquire Privately
+    </a>
   </div>
+
+  <div class="experience fade">
+    <h3>Volcano & Water Horizon</h3>
+    <div class="meta">Full Day • Scenic • Immersive</div>
+    <p>Witness vast landscapes where volcanic silhouettes meet endless water and sky.</p>
+    <a class="reserve-link" href="https://wa.me/50558365522" target="_blank">
+      Inquire Privately
+    </a>
+  </div>
+
+  <div class="experience fade">
+    <h3>Sunset Coastal Session</h3>
+    <div class="meta">Golden Hour • Intimate • Reflective</div>
+    <p>An evening experience designed around stillness, color, and the quiet elegance of Nicaragua’s coast.</p>
+    <a class="reserve-link" href="https://wa.me/50558365522" target="_blank">
+      Inquire Privately
+    </a>
+  </div>
+
 </section>
 
-<section id="testimonials" class="testimonials fade">
-  <h2>What Our Guests Say</h2>
-  <div class="testimonial-grid">
-    <div class="testimonial">
-      <p>"An unforgettable experience! Professional, friendly, and authentic."</p>
-      <strong>- Sarah, USA</strong>
-    </div>
-    <div class="testimonial">
-      <p>"Best tour we’ve ever done. Highly recommend Sunny Roads Adventures."</p>
-      <strong>- Carlos, Spain</strong>
-    </div>
-    <div class="testimonial">
-      <p>"Felt like exploring with a friend who truly loves their country."</p>
-      <strong>- Emma, UK</strong>
-    </div>
-  </div>
+<section id="philosophy" class="philosophy fade">
+  <div class="section-title">Our Philosophy</div>
+  <p>
+    We believe meaningful travel is quiet, intentional, and deeply human.
+    Each experience is personally curated — not mass produced.
+    Our role is simple: to guide you with care, clarity, and authenticity.
+  </p>
 </section>
 
-<section class="founder fade">
-  <h2>Why We Started</h2>
-  <p>Sunny Roads Adventures was created to share the real Nicaragua — its warmth, culture, and hidden beauty. We believe travel should feel personal, safe, and unforgettable.</p>
+<section class="invitation fade">
+  <div class="section-title">A Private Invitation</div>
+  <p>
+    We are currently offering a limited number of personalized coastal journeys.
+    If you value depth over volume and authenticity over spectacle —
+    we would be honored to design your experience.
+  </p>
+  <a class="btn" href="https://wa.me/50558365522" target="_blank">
+    Begin Your Coastal Journey
+  </a>
 </section>
 
 <footer id="contact">
-  <p>Sunny Roads Adventures</p>
-  <p>WhatsApp: +505 5836 5522</p>
-  <p>&copy; 2026 All Rights Reserved</p>
+  Sunny Roads Adventures • Nicaragua  
+  <br><br>
+  WhatsApp: +505 5836 5522  
+  <br><br>
+  © 2026 All Rights Reserved
 </footer>
 
-<a class="whatsapp" href="https://wa.me/50558365522" target="_blank">Chat Now</a>
-
 <script>
+
 const faders = document.querySelectorAll('.fade');
 
-const appearOptions = {
-  threshold: 0.2
-};
-
-const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('visible');
-    appearOnScroll.unobserve(entry.target);
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
   });
-}, appearOptions);
+},{threshold:0.15});
 
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
-});
+faders.forEach(el=>observer.observe(el));
+
 </script>
 
 </body>
