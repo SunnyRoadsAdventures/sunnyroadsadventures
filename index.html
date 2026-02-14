@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures – Mobile Optimized</title> <!-- Google Site Verification -->
-  <meta name="google-site-verification" content= "google25eae494d8c061c0" />
-<style>
-  /* Base Styles */
-  * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
-  body { background:#f4f4f4; color:#333; line-height:1.6; }
-  a { text-decoration:none; color:#fff; }
-  img { max-width:100%; height:auto; display:block; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunny Roads Adventures – Mobile Optimized</title>
 
-  /* Header */
-  header { background:#1e90ff; color:#fff; padding:10px 15px; display:flex; justify-content:space-between; align-items:center; }
-  header img { height:50px; }
+  <!-- Google Site Verification -->
+  <meta name="google-site-verification" content="google25eae494d8c061c0" />
 
-  /* Navigation */
-  nav { display:flex; justify-content:center; background:#4682b4; overflow-x:auto; }
-  nav a { color:#fff; padding:12px 15px; font-weight:bold; display:inline-block; white-space:nowrap; }
-  nav a:hover { background:#5a9bd3; }
+  <style>
+    /* Base Styles */
+    * { margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; }
+    body { background:#f4f4f4; color:#333; line-height:1.6; }
+    a { text-decoration:none; color:#fff; }
+    img { max-width:100%; height:auto; display:block; }
 
-  /* Sections */
-  section { padding:20px; max-width:900px; margin:0 auto; }
-  h2 { margin-bottom:15px; }
+    /* Header */
+    header { background:#1e90ff; color:#fff; padding:15px; display:flex; justify-content:space-between; align-items:center; }
+    header img { height:50px; }
 
-  /* Map */
-  #interactive-map { position:relative; max-width:600px; margin:20px auto; border:2px solid #ccc; height:400px; }
-  .map-point { position:absolute; width:20px; height:20px; background:red; border-radius:50%; cursor:pointer; }
-  .map-tooltip { position:absolute; background:#fff; padding:8px; border:1px solid #ccc; border-radius:5px; display:none; z-index:10; font-size:14px; }
+    /* Navigation */
+    nav { display:flex; justify-content:center; background:#4682b4; overflow-x:auto; }
+    nav a { color:#fff; padding:12px 20px; font-weight:bold; display:inline-block; white-space:nowrap; }
+    nav a:hover { background:#5a9bd3; }
 
-  /* Social Links Below Map */
-  #map-social-links { text-align:center; margin-top:10px; }
-  #map-social-links a { margin:0 5px; color:black; font-weight:bold; }
+    /* Sections */
+    section { padding:20px; max-width:900px; margin:0 auto; }
+    h2 { margin-bottom:15px; }
 
-  /* Tours */
-  .tour { background:#fff; padding:15px; margin-bottom:10px; border-radius:5px; }
-  .availability { font-weight:bold; margin-bottom:8px; }
+    /* Map */
+    #interactive-map { position:relative; max-width:600px; margin:20px auto; border:2px solid #ccc; height:400px; }
+    .map-point { position:absolute; width:20px; height:20px; background:red; border-radius:50%; cursor:pointer; }
+    .map-tooltip { position:absolute; background:#fff; padding:8px; border:1px solid #ccc; border-radius:5px; display:none; z-index:10; font-size:14px; }
 
-  /* Hub */
-  #hub { background:#fff; border-radius:5px; padding:20px; margin-bottom:20px; }
-  #hub form { display:flex; flex-direction:column; }
-  #hub input, #hub textarea, #hub select, #hub button { margin-bottom:10px; padding:10px; font-size:14px; border-radius:5px; border:1px solid #ccc; }
-  #hub button { background:#1e90ff; color:#fff; border:none; cursor:pointer; }
-  #hub button:hover { background:#4682b4; }
+    /* Tours */
+    .tour { background:#fff; padding:15px; margin-bottom:10px; border-radius:5px; }
+    .availability { font-weight:bold; margin-bottom:8px; }
+    .social-links { margin-top:5px; }
 
-  /* Dashboard */
-  #dashboard { display:none; padding:20px; background:#e6f2ff; border-radius:5px; margin-bottom:20px; }
+    /* Hub */
+    #hub { background:#fff; border-radius:5px; padding:20px; margin-bottom:20px; }
 
-  /* Classes Video */
-  #classes { margin-top:20px; text-align:center; }
-  video { max-width:100%; border-radius:5px; }
+    /* Leave Application Form in Hub */
+    #hub form { margin-top:15px; display:flex; flex-direction:column; }
+    #hub input, #hub textarea, #hub select, #hub button { margin-bottom:10px; padding:10px; font-size:14px; border-radius:5px; border:1px solid #ccc; }
+    #hub button { background:#1e90ff; color:#fff; border:none; cursor:pointer; }
+    #hub button:hover { background:#4682b4; }
 
-  /* Footer */
-  footer { background:#4682b4; color:#fff; text-align:center; padding:15px; font-size:14px; }
+    /* Dashboard */
+    #dashboard { display:none; padding:20px; background:#e6f2ff; border-radius:5px; margin-bottom:20px; }
 
-  /* Mobile Optimization */
-  @media (max-width:768px) {
-    nav { flex-wrap: wrap; }
-    nav a { padding:10px; font-size:14px; text-align:center; }
-    #interactive-map { width:100%; height:auto; }
-    .map-point { width:15px; height:15px; }
-    .map-tooltip { font-size:12px; padding:5px; }
-    #classes video { width:100%; height:auto; }
-    .tour { font-size:14px; padding:10px; }
-    footer { font-size:14px; padding:10px; }
-  }
-</style>
+    /* Classes Video */
+    #classes { margin-top:20px; text-align:center; }
+    video { max-width:100%; border-radius:5px; }
+
+    /* Footer */
+    footer { background:#4682b4; color:#fff; text-align:center; padding:15px; font-size:14px; }
+
+    /* Mobile Optimization */
+    @media (max-width:768px) {
+      nav { flex-wrap: wrap; }
+      nav a { padding:10px; font-size:14px; text-align:center; }
+      #interactive-map { width:100%; height:auto; }
+      .map-point { width:15px; height:15px; }
+      .map-tooltip { font-size:12px; padding:5px; }
+      #classes video { width:100%; height:auto; }
+      .tour { font-size:14px; padding:10px; }
+      footer { font-size:14px; padding:10px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -99,18 +101,12 @@
 
   <!-- Interactive Map -->
   <div id="interactive-map">
-    <div class="map-point" data-tour="masaya-catarina" style="top:8%; left:16%;"></div>
-    <div class="map-point" data-tour="managua" style="top:25%; left:50%;"></div>
-    <div class="map-point" data-tour="rivas" style="top:40%; left:33%;"></div>
-    <div class="map-point" data-tour="san-juan-del-sur" style="top:55%; left:66%;"></div>
-    <div class="map-point" data-tour="popoyo" style="top:70%; left:58%;"></div>
+    <div class="map-point" data-tour="Masaya & Catarina" style="top:50px; left:100px;"></div>
+    <div class="map-point" data-tour="Managua Tour" style="top:150px; left:300px;"></div>
+    <div class="map-point" data-tour="Rivas Tour" style="top:200px; left:200px;"></div>
+    <div class="map-point" data-tour="San Juan del Sur" style="top:250px; left:400px;"></div>
+    <div class="map-point" data-tour="Popoyo" style="top:300px; left:350px;"></div>
     <div class="map-tooltip" id="map-tooltip"></div>
-  </div>
-
-  <!-- Social Links Below Map -->
-  <div id="map-social-links">
-    <a href="https://wa.me/50558365522" target="_blank">WhatsApp</a>
-    <a href="https://www.facebook.com" target="_blank">Facebook</a>
   </div>
 </section>
 
@@ -120,45 +116,48 @@
   <div class="tour">
     <h3>Masaya & Catarina</h3>
     <p>Price: $24</p>
-    <p class="availability" id="masaya-catarina-availability"></p>
+    <p class="availability" id="Masaya & Catarina-availability"></p>
   </div>
   <div class="tour">
     <h3>Managua</h3>
     <p>Price: $48</p>
-    <p class="availability" id="managua-availability"></p>
+    <p class="availability" id="Managua Tour-availability"></p>
   </div>
   <div class="tour">
     <h3>Rivas</h3>
     <p>Price: $62</p>
-    <p class="availability" id="rivas-availability"></p>
+    <p class="availability" id="Rivas Tour-availability"></p>
   </div>
   <div class="tour">
     <h3>San Juan del Sur</h3>
     <p>Price: $74</p>
-    <p class="availability" id="san-juan-del-sur-availability"></p>
+    <p class="availability" id="San Juan del Sur-availability"></p>
   </div>
   <div class="tour">
     <h3>Popoyo</h3>
     <p>Price: $74</p>
-    <p class="availability" id="popoyo-availability"></p>
+    <p class="availability" id="Popoyo-availability"></p>
   </div>
 </section>
 
 <!-- All Routes -->
 <section id="all-routes">
   <h2>All Routes & Suggested Prices</h2>
-  <!-- You can later fill in table or route info here -->
+  <!-- Route info table or list can go here -->
 </section>
 
 <!-- Hub Section -->
 <section id="hub">
   <h2>Sunny Roads Service Hub</h2>
   <p>Add your service to the hub. Approved services are visible to all users. Applications will be sent to <a href="mailto:sunnyroadsadcentures@gmail.com">sunnyroadsadcentures@gmail.com</a></p>
+  
+  <!-- Leave Application / Service Form -->
   <form action="mailto:sunnyroadsadcentures@gmail.com" method="post" enctype="text/plain">
     <input type="text" name="name" placeholder="Your Name" required>
-    <input type="text" name="service" placeholder="Service Type (e.g., Delivery, Tour, Pet Care)" required>
-    <textarea name="description" placeholder="Brief Description of Service" rows="4" required></textarea>
-    <button type="submit">Submit Application</button>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <input type="text" name="service" placeholder="Service Type / Job Title" required>
+    <textarea name="message" placeholder="Description / Message" rows="4"></textarea>
+    <button type="submit">Send Application</button>
   </form>
 </section>
 
@@ -180,77 +179,86 @@
 </footer>
 
 <script>
-// -------------------- Phase 2 Refined JS --------------------
+  // -------------------- Phase 2 Upgrade JS --------------------
+  let tours = {
+    "Masaya & Catarina": { price: 24, spots: 5 },
+    "Managua Tour": { price: 48, spots: 5 },
+    "Rivas Tour": { price: 62, spots: 5 },
+    "San Juan del Sur": { price: 74, spots: 5 },
+    "Popoyo": { price: 74, spots: 5 }
+  };
 
-// Tour Data
-let tours = {
-  "masaya-catarina": { price: 24, spots: 5 },
-  "managua": { price: 48, spots: 5 },
-  "rivas": { price: 62, spots: 5 },
-  "san-juan-del-sur": { price: 74, spots: 5 },
-  "popoyo": { price: 74, spots: 5 }
-};
+  if (!localStorage.getItem('tourBookings')) {
+    localStorage.setItem('tourBookings', JSON.stringify({}));
+  }
 
-// Initialize localStorage for bookings
-if (!localStorage.getItem('tourBookings')) {
-  localStorage.setItem('tourBookings', JSON.stringify({}));
-}
-
-// Update map point colors and availability text
-function updateMapColors() {
-  const bookings = JSON.parse(localStorage.getItem('tourBookings'));
-  document.querySelectorAll('.map-point').forEach(point => {
-    const tour = point.dataset.tour;
-    const spotsLeft = tours[tour].spots - (bookings[tour] || 0);
-    if (spotsLeft <= 0) point.style.background = 'red';
-    else if (spotsLeft <= 2) point.style.background = 'orange';
-    else point.style.background = 'green';
-
-    // Update availability text in tours section
-    const availText = document.getElementById(tour + '-availability');
-    if (availText) availText.textContent = `Spots left: ${spotsLeft}`;
-  });
-}
-
-// Initial update
-updateMapColors();
-
-// Tooltip & Booking click for map points
-const tooltip = document.getElementById('map-tooltip');
-document.querySelectorAll('.map-point').forEach(point => {
-  point.addEventListener('mouseenter', () => {
-    tooltip.textContent = point.dataset.tour.replace(/-/g,' ');
-    tooltip.style.display = 'block';
-    tooltip.style.top = (point.offsetTop - 30) + 'px';
-    tooltip.style.left = (point.offsetLeft + 10) + 'px';
-  });
-  point.addEventListener('mouseleave', () => {
-    tooltip.style.display = 'none';
-  });
-  point.addEventListener('click', () => {
-    const tour = point.dataset.tour;
+  function updateMapColors() {
     const bookings = JSON.parse(localStorage.getItem('tourBookings'));
-    bookings[tour] = (bookings[tour] || 0) + 1;
-    localStorage.setItem('tourBookings', JSON.stringify(bookings));
-    alert(`Booked ${tour.replace(/-/g,' ')}! Contact via WhatsApp: +50558365522`);
-    updateMapColors();
-  });
-});
+    document.querySelectorAll('.map-point').forEach(point => {
+      const tour = point.dataset.tour;
+      const spotsLeft = tours[tour].spots - (bookings[tour] || 0);
+      if (spotsLeft <= 0) point.style.background = 'red';
+      else if (spotsLeft <= 2) point.style.background = 'orange';
+      else point.style.background = 'green';
+      const availText = document.getElementById(tour + '-availability');
+      if (availText) availText.textContent = `Spots left: ${spotsLeft}`;
+    });
+  }
 
-// Mobile scaling for map points
-function updateMapPointsMobile() {
-  const map = document.getElementById('interactive-map');
-  const mapWidth = map.offsetWidth;
-  const scaleFactor = mapWidth / 600; // original map width
+  updateMapColors();
+
+  const tooltip = document.getElementById('map-tooltip');
   document.querySelectorAll('.map-point').forEach(point => {
-    const topPercent = parseFloat(point.style.top) / 100;
-    const leftPercent = parseFloat(point.style.left) / 100;
-    point.style.top = (topPercent * map.offsetHeight) + 'px';
-    point.style.left = (leftPercent * map.offsetWidth) + 'px';
+    point.addEventListener('mouseenter', () => {
+      tooltip.textContent = point.dataset.tour;
+      tooltip.style.display = 'block';
+      tooltip.style.top = (point.offsetTop - 30) + 'px';
+      tooltip.style.left = (point.offsetLeft + 10) + 'px';
+    });
+    point.addEventListener('mouseleave', () => {
+      tooltip.style.display = 'none';
+    });
+    point.addEventListener('click', () => {
+      const tour = point.dataset.tour;
+      const bookings = JSON.parse(localStorage.getItem('tourBookings'));
+      bookings[tour] = (bookings[tour] || 0) + 1;
+      localStorage.setItem('tourBookings', JSON.stringify(bookings));
+      alert(`Booked ${tour}! Contact via WhatsApp: +50558365522`);
+      updateMapColors();
+    });
   });
-}
-window.addEventListener('resize', updateMapPointsMobile);
-updateMapPointsMobile(); // initial call
+
+  function createShareLinks(tourName) {
+    const whatsapp = `https://wa.me/50558365522?text=Check%20out%20${encodeURIComponent(tourName)}%20Tour%20from%20Sunny%20Roads!%20Price%20approx.$${tours[tourName].price}`;
+    const facebook = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=Check%20out%20${encodeURIComponent(tourName)}%20Tour!`;
+    return { whatsapp, facebook };
+  }
+
+  document.querySelectorAll('.map-point').forEach(point => {
+    const tour = point.dataset.tour;
+    const links = createShareLinks(tour);
+    const btnContainer = document.createElement('div');
+    btnContainer.className = 'social-links';
+    btnContainer.innerHTML = `
+      <a href="${links.whatsapp}" target="_blank" style="color:black; margin-right:5px;">WhatsApp</a>
+      <a href="${links.facebook}" target="_blank" style="color:black;">Facebook</a>
+    `;
+    point.appendChild(btnContainer);
+  });
+
+  function updateMapPointsMobile() {
+    const map = document.getElementById('interactive-map');
+    const mapWidth = map.offsetWidth;
+    const scaleFactor = mapWidth / 600;
+    document.querySelectorAll('.map-point').forEach(point => {
+      const top = parseInt(point.style.top);
+      const left = parseInt(point.style.left);
+      point.style.top = (top * scaleFactor) + 'px';
+      point.style.left = (left * scaleFactor) + 'px';
+    });
+  }
+  window.addEventListener('resize', updateMapPointsMobile);
+  updateMapPointsMobile();
 </script>
 
 </body>
