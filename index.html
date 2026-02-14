@@ -8,10 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-/* =============================
-   ROOT + BASE
-============================= */
 :root{
   --cream:#fdfaf6;
   --sand:#f3e9dc;
@@ -34,225 +30,112 @@ body{
   overflow-x:hidden;
 }
 
-/* =============================
-   LOADING INTRO
-============================= */
+/* Loader */
 .loader{
-  position:fixed;
-  inset:0;
+  position:fixed; inset:0;
   background:var(--cream);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex; align-items:center; justify-content:center;
   z-index:9999;
   transition:opacity 1s ease;
 }
-
 .loader h1{
   font-family:'Playfair Display',serif;
-  font-size:28px;
-  letter-spacing:4px;
+  font-size:28px; letter-spacing:4px;
   color:var(--deep);
   animation:fadeIn 2s ease forwards;
   opacity:0;
 }
+@keyframes fadeIn{ to{opacity:1} }
+.loader.hide{ opacity:0; pointer-events:none; }
 
-@keyframes fadeIn{
-  to{opacity:1}
-}
-
-.loader.hide{
-  opacity:0;
-  pointer-events:none;
-}
-
-/* =============================
-   NAVIGATION
-============================= */
+/* Nav */
 nav{
-  position:fixed;
-  width:100%;
-  padding:28px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  transition:all .6s ease;
-  z-index:1000;
+  position:fixed; width:100%; padding:28px 8%;
+  display:flex; justify-content:space-between; align-items:center;
+  transition:all .6s ease; z-index:1000;
 }
-
 nav.scrolled{
   backdrop-filter:blur(18px);
   background:rgba(255,255,255,0.6);
-  padding:18px 8%;
-  border-bottom:1px solid var(--line);
+  padding:18px 8%; border-bottom:1px solid var(--line);
 }
-
-.logo{
-  font-size:13px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--deep);
-}
-
+.logo{ font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--deep); }
 nav a{
-  text-decoration:none;
-  margin-left:36px;
-  font-size:12px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:var(--deep);
-  opacity:.8;
-  transition:.3s;
+  text-decoration:none; margin-left:36px; font-size:12px; letter-spacing:2px;
+  text-transform:uppercase; color:var(--deep); opacity:.8; transition:.3s;
 }
-
 nav a:hover{opacity:1}
 
-/* =============================
-   PANELS
-============================= */
-.panel{
-  min-height:100vh;
-  scroll-snap-align:start;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:0 10%;
+/* Panels */
+.panel{ min-height:100vh; scroll-snap-align:start;
+  display:flex; flex-direction:column; justify-content:center; padding:0 10%; position:relative;
+}
+.center{align-items:center; text-align:center;}
+
+/* Hero */
+.hero{
   position:relative;
+  overflow:hidden;
 }
-
-.center{
-  align-items:center;
-  text-align:center;
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, #f3e9dc 0%, #1c5c60 70%);
+  z-index:-1;
+  transform:translateY(0);
+  animation:drift 30s linear infinite;
 }
+@keyframes drift{ 0%{transform:translateY(0)} 50%{transform:translateY(10px)} 100%{transform:translateY(0)} }
 
-/* =============================
-   HERO
-============================= */
 .hero h1{
   font-family:'Playfair Display',serif;
-  font-size:64px;
-  max-width:950px;
-  margin-bottom:40px;
-  line-height:1.15;
-  color:var(--deep);
-  overflow:hidden;
+  font-size:64px; max-width:950px; margin-bottom:40px; line-height:1.15;
+  color:var(--deep); overflow:hidden;
 }
-
 .hero h1 span{
   display:block;
-  transform:translateY(120%);
+  transform:translateY(120%) translateX(-5px);
   opacity:0;
 }
-
 .hero p{
-  max-width:600px;
-  font-size:19px;
-  color:#555;
-  margin-bottom:50px;
-  opacity:0;
-  transform:translateY(30px);
+  max-width:600px; font-size:19px; color:#555; margin-bottom:50px;
+  opacity:0; transform:translateY(30px);
   transition:1s ease;
 }
+.hero.visible p{opacity:1; transform:translateY(0);}
 
-.hero.visible p{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* =============================
-   BUTTON
-============================= */
+/* Buttons */
 .btn{
-  position:relative;
-  padding:16px 42px;
-  border:1px solid var(--ocean);
-  text-decoration:none;
-  color:var(--ocean);
-  font-size:12px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  overflow:hidden;
-  transition:color .5s ease;
+  position:relative; padding:16px 42px;
+  border:1px solid var(--ocean); text-decoration:none; color:var(--ocean);
+  font-size:12px; letter-spacing:2px; text-transform:uppercase;
+  overflow:hidden; transition:all .5s ease; display:inline-block;
 }
-
 .btn::before{
-  content:"";
-  position:absolute;
-  left:-100%;
-  top:0;
-  width:100%;
-  height:100%;
-  background:var(--ocean);
-  transition:left .5s ease;
-  z-index:-1;
+  content:""; position:absolute; left:-100%; top:0;
+  width:100%; height:100%;
+  background:var(--ocean); transition:left .5s ease; z-index:-1;
 }
-
 .btn:hover::before{left:0}
-.btn:hover{color:white}
+.btn:hover{color:white; transform:scale(1.05); box-shadow:0 4px 15px rgba(0,0,0,0.2);}
 
-/* =============================
-   SECTIONS
-============================= */
-.section-title{
-  font-family:'Playfair Display',serif;
-  font-size:42px;
-  margin-bottom:50px;
-  color:var(--deep);
-}
+/* Sections */
+.section-title{ font-family:'Playfair Display',serif; font-size:42px; margin-bottom:50px; color:var(--deep); animation:floatTitle 6s ease-in-out infinite alternate;}
+@keyframes floatTitle{ 0%{transform:translateY(0)} 100%{transform:translateY(6px)} }
+.section-text{ max-width:700px; font-size:18px; line-height:1.8; color:#555; margin:0 auto 30px auto; opacity:0; transform:translateY(30px); transition:1s ease; }
+.section-text.visible{opacity:1; transform:translateY(0);}
 
-.section-text{
-  max-width:700px;
-  font-size:18px;
-  line-height:1.8;
-  color:#555;
-  margin:0 auto 30px auto;
-}
+/* Experiences */
+.experience{ max-width:750px; margin-bottom:60px; opacity:0; transform:translateY(50px); transition:1.2s ease; }
+.experience.visible{opacity:1; transform:translateY(0);}
+.experience h3{ font-size:26px; margin-bottom:16px; color:var(--ocean);}
+.meta{ font-size:12px; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:20px;}
+.experience p{ color:#555; margin-bottom:20px;}
 
-.experience{
-  max-width:750px;
-  margin-bottom:60px;
-  opacity:0;
-  transform:translateY(50px);
-  transition:1.2s ease;
-}
+/* Footer */
+.footer{text-align:center; font-size:13px; color:#777; padding-bottom:40px;}
 
-.experience.visible{
-  opacity:1;
-  transform:translateY(0);
-}
-
-.experience h3{
-  font-size:26px;
-  margin-bottom:16px;
-  color:var(--ocean);
-}
-
-.meta{
-  font-size:12px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  color:#888;
-  margin-bottom:20px;
-}
-
-.experience p{
-  color:#555;
-  margin-bottom:20px;
-}
-
-/* =============================
-   FOOTER
-============================= */
-.footer{
-  text-align:center;
-  font-size:13px;
-  color:#777;
-  padding-bottom:40px;
-}
-
-/* =============================
-   MOBILE
-============================= */
+/* Mobile */
 @media(max-width:768px){
   .hero h1{font-size:38px}
   .section-title{font-size:30px}
@@ -263,9 +146,7 @@ nav a:hover{opacity:1}
 </head>
 <body>
 
-<div class="loader">
-  <h1>Sunny Roads Adventures</h1>
-</div>
+<div class="loader"><h1>Sunny Roads Adventures</h1></div>
 
 <nav>
   <div class="logo">Sunny Roads Adventures</div>
@@ -341,17 +222,11 @@ nav a:hover{opacity:1}
 </section>
 
 <script>
-
 /* Loader */
-window.addEventListener("load",()=>{
-  setTimeout(()=>document.querySelector(".loader").classList.add("hide"),1500);
-});
+window.addEventListener("load",()=>{ setTimeout(()=>document.querySelector(".loader").classList.add("hide"),1500); });
 
 /* Nav shrink */
-window.addEventListener("scroll",()=>{
-  if(window.scrollY>40) document.querySelector("nav").classList.add("scrolled");
-  else document.querySelector("nav").classList.remove("scrolled");
-});
+window.addEventListener("scroll",()=>{ if(window.scrollY>40) document.querySelector("nav").classList.add("scrolled"); else document.querySelector("nav").classList.remove("scrolled"); });
 
 /* Hero split reveal */
 const hero = document.querySelector(".hero");
@@ -361,21 +236,20 @@ window.addEventListener("load",()=>{
     setTimeout(()=>{
       span.style.transform="translateY(0)";
       span.style.opacity="1";
-      span.style.transition="1.2s ease";
+      span.style.transition="1.2s ease, transform 1.2s ease";
     }, i*400);
   });
   setTimeout(()=>hero.classList.add("visible"),1200);
 });
 
-/* Scroll reveal experiences */
-const experiences = document.querySelectorAll(".experience");
+/* Scroll reveal sections */
+const sections = document.querySelectorAll(".section-text, .experience");
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting) entry.target.classList.add("visible");
   });
 },{threshold:.3});
-experiences.forEach(exp=>observer.observe(exp));
-
+sections.forEach(sec=>observer.observe(sec));
 </script>
 
 </body>
