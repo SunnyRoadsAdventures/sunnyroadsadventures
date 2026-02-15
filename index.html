@@ -10,8 +10,8 @@
     :root {
       --light-bg: #fdf9f2;
       --dark-bg: #0a0a0a;
-      --text-light: #111;
-      --text-muted: #555;
+      --text-light: #fff; /* overlay text now pure white */
+      --text-muted: #eee; /* subtle for descriptions */
       --accent-color: #00bfa5;
       --accent-color-dark: #00997a;
     }
@@ -30,7 +30,7 @@
     body {
       font-family: 'Roboto', sans-serif;
       background-color: var(--light-bg);
-      color: var(--text-light);
+      color: #111;
       line-height: 1.6;
       transition: background-color 0.5s, color 0.5s;
     }
@@ -70,7 +70,7 @@
     header nav a {
       margin-left: 24px;
       font-weight: 500;
-      color: var(--text-light);
+      color: #111;
       transition: color 0.3s;
     }
 
@@ -125,6 +125,18 @@
       color: var(--text-muted);
     }
 
+    /* ANIMATION */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     /* ADVENTURES */
     .teaser-container {
       display: flex;
@@ -141,7 +153,7 @@
       overflow: hidden;
       display: flex;
       align-items: flex-end;
-      color: white;
+      color: var(--text-light);
       transition: transform 0.6s ease, box-shadow 0.6s ease;
       background-size: cover;
       background-position: center;
@@ -175,6 +187,7 @@
       width: 100%;
       max-width: 800px;
       background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+      color: var(--text-light);
     }
 
     .teaser-overlay h3 {
@@ -205,7 +218,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: flex-start;
-      color: white;
+      color: var(--text-light);
       transition: transform 0.5s ease, box-shadow 0.5s ease;
       background-size: cover;
       background-position: center;
@@ -222,17 +235,30 @@
       width: 100%;
       max-width: 700px;
       background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+      color: var(--text-light);
+      position: relative;
+      overflow: hidden;
     }
 
-    .discovery-overlay h3 {
-      font-size: 28px;
-      margin-bottom: 12px;
+    /* SHIMMER EFFECT */
+    .discovery-overlay::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -75%;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
+      transform: skewX(-25deg);
+      transition: none;
     }
 
-    .discovery-overlay p {
-      font-size: 16px;
-      line-height: 1.5;
-      margin-bottom: 16px;
+    .discovery:hover .discovery-overlay::before {
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { left: -75%; }
+      100% { left: 125%; }
     }
 
     /* RESPONSIVE */
@@ -263,7 +289,7 @@
     <div class="teaser-container">
 
       <!-- Adventure 1 -->
-      <div class="teaser featured" style="background-image: url('popoyo.jpg');">
+      <div class="teaser featured fade-in" style="background-image: url('popoyo.jpg');">
         <div class="teaser-overlay">
           <h3>Popoyo Sunset Retreat</h3>
           <p>Ride the waves or relax on golden sands as the sun dips below the horizon. This private sunset retreat immerses you in Popoyo’s serene beauty, with the perfect blend of adventure and tranquility. Tailored entirely for you, every moment is unforgettable.</p>
@@ -272,7 +298,7 @@
       </div>
 
       <!-- Adventure 2 -->
-      <div class="teaser" style="background-image: url('ometepe.jpg');">
+      <div class="teaser fade-in" style="background-image: url('ometepe.jpg');">
         <div class="teaser-overlay">
           <h3>Ometepe Island Discovery</h3>
           <p>Explore the lush landscapes of Ometepe, where twin volcanoes meet crystal-clear lakes. Hike hidden trails, witness breathtaking views, and uncover the island’s secrets in an intimate, private adventure curated just for you.</p>
@@ -281,7 +307,7 @@
       </div>
 
       <!-- Adventure 3 -->
-      <div class="teaser" style="background-image: url('esteli.png');">
+      <div class="teaser fade-in" style="background-image: url('esteli.png');">
         <div class="teaser-overlay">
           <h3>Estelí Jungle & Culture Escape</h3>
           <p>Immerse yourself in Estelí’s rich culture and verdant jungles. Discover hidden waterfalls, vibrant local life, and tranquil nature paths. Every step is carefully crafted to make your adventure unique and unforgettable.</p>
@@ -298,7 +324,7 @@
     <div class="discovery-container">
 
       <!-- Discovery 1 -->
-      <div class="discovery" style="background-image: url('ojo.png');">
+      <div class="discovery fade-in" style="background-image: url('ojo.png');">
         <div class="discovery-overlay">
           <h3>Ojo de Agua – Hidden Springs Escape</h3>
           <p>Step into a world of crystalline freshwater springs tucked away from the crowds. Relax, swim, and let the serene beauty of Ojo de Agua refresh your body and mind — a hidden paradise where nature whispers calm.</p>
@@ -307,7 +333,7 @@
       </div>
 
       <!-- Discovery 2 -->
-      <div class="discovery" style="background-image: url('cloud.png');">
+      <div class="discovery fade-in" style="background-image: url('cloud.png');">
         <div class="discovery-overlay">
           <h3>Estelí Cloud Forest – Misty Mountain Trails</h3>
           <p>Wander through mist-laden trails and verdant hills in Estelí’s cloud forests. Discover waterfalls, hidden wildlife, and quiet rural landscapes, where every path feels like a secret waiting to be uncovered.</p>
@@ -316,7 +342,7 @@
       </div>
 
       <!-- Discovery 3 -->
-      <div class="discovery" style="background-image: url('somoto.jpg');">
+      <div class="discovery fade-in" style="background-image: url('somoto.jpg');">
         <div class="discovery-overlay">
           <h3>Somoto Canyon – Sculpted by Time</h3>
           <p>Explore the dramatic walls of Somoto Canyon, carved over millennia by flowing waters. Swim, hike, or simply stand in awe of the natural grandeur — an intimate adventure into Nicaragua’s hidden geological wonders.</p>
@@ -327,8 +353,9 @@
     </div>
   </section>
 
-  <!-- JS FOR AUTO DARK MODE -->
+  <!-- JS -->
   <script>
+    // AUTO DARK MODE
     function applyAutoDarkMode() {
       const hour = new Date().getHours();
       if (hour >= 18 || hour < 6) {
@@ -340,7 +367,25 @@
       }
     }
     applyAutoDarkMode();
-  </script>
 
+    // SCROLL FADE-IN ANIMATION
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -50px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+      entries.forEach(entry => {
+        if(!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        appearOnScroll.unobserve(entry.target);
+      });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  </script>
 </body>
 </html>
