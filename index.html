@@ -1,152 +1,57 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sunny Roads Adventures</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-<body>
+  /* ============================= */
+  /* SCROLL REVEAL SYSTEM */
+  /* ============================= */
 
-  <!-- CINEMATIC INTRO -->
-  <div id="cinematicIntro">
-    <div class="intro-content">
-      <h1>Sunny Roads Adventures</h1>
-      <p id="introTagline"></p>
-    </div>
-    <audio id="introSound" src="intro.mp3"></audio>
-  </div>
+  const faders = document.querySelectorAll('.fade-up, .fade-soft');
 
-  <!-- NAVIGATION -->
-  <header class="floating-nav">
-    <div class="nav-inner">
-      <div class="logo">Sunny Roads</div>
-      <nav>
-        <a href="#adventures">Adventures</a>
-        <a href="#discoveries">Discoveries</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+  if ("IntersectionObserver" in window) {
+    const appearOptions = {
+      threshold: 0.2
+    };
 
-  <!-- HERO -->
-  <section class="hero" style="background-image: url('hero.jpg');">
-    <div class="hero-content">
-      <h1 class="hero-title">
-        Explore Nicaragua
-        <span>Your private adventure awaits</span>
-      </h1>
-    </div>
-  </section>
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
 
-  <!-- ADVENTURES -->
-  <section id="adventures">
+    faders.forEach(fader => {
+      appearOnScroll.observe(fader);
+    });
+  }
 
-    <h2 class="section-title">Adventures</h2>
+  /* ============================= */
+  /* PARALLAX SYSTEM (SMOOTH) */
+  /* ============================= */
 
-    <div class="adventure-block" style="background-image: url('popoyo.jpg');">
-      <div class="adventure-overlay">
-        <div class="adventure-content">
-          <h2>Popoyo Sunset Retreat</h2>
-          <p>
-            Relax on secluded beaches, surf perfect waves, and experience
-            private sunsets in one of Nicaragua’s most breathtaking coastal escapes.
-          </p>
-        </div>
-      </div>
-    </div>
+  let scrollY = 0;
+  let ticking = false;
 
-    <div class="adventure-block" style="background-image: url('ometepe.jpg');">
-      <div class="adventure-overlay">
-        <div class="adventure-content">
-          <h2>Ometepe Island Escape</h2>
-          <p>
-            Discover volcanic landscapes, hidden lagoons, and authentic island life
-            between twin majestic volcanoes rising from Lake Nicaragua.
-          </p>
-        </div>
-      </div>
-    </div>
+  function updateParallax() {
+    document.querySelectorAll('.parallax-bg').forEach(bg => {
+      bg.style.transform = `translateY(${scrollY * 0.3}px)`;
+    });
 
-    <div class="adventure-block" style="background-image: url('esteli.jpg');">
-      <div class="adventure-overlay">
-        <div class="adventure-content">
-          <h2>Estelí Cloud Forest</h2>
-          <p>
-            Hike through misty mountains and lush forests with expert guides,
-            uncovering panoramic views and rare wildlife.
-          </p>
-        </div>
-      </div>
-    </div>
+    document.querySelectorAll('.float-slow').forEach(el => {
+      el.style.transform = `translateY(${scrollY * 0.05}px)`;
+    });
 
-  </section>
+    ticking = false;
+  }
 
-  <!-- DISCOVERIES -->
-  <section id="discoveries">
+  window.addEventListener('scroll', function () {
+    scrollY = window.pageYOffset;
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
+  });
 
-    <div class="discovery">
-      <div class="discovery-inner">
-        <div class="discovery-image">
-          <img src="ojo.png" alt="Ojo de Agua Natural Spring">
-        </div>
-        <div class="discovery-text">
-          <h3>Ojo de Agua</h3>
-          <p>
-            A quiet volcanic spring hidden among palms and stone.
-            The water is impossibly clear and cool beneath the afternoon sun.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="discovery">
-      <div class="discovery-inner">
-        <div class="discovery-image">
-          <img src="cloudforest.jpg" alt="Cloud Forest Estelí">
-        </div>
-        <div class="discovery-text">
-          <h3>Cloud Forest Estelí</h3>
-          <p>
-            Walk through lush highland forests on guided trails revealing unique flora,
-            mountain air, and sweeping natural panoramas.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="discovery">
-      <div class="discovery-inner">
-        <div class="discovery-image">
-          <img src="somoto.jpg" alt="Somoto Canyon Adventure">
-        </div>
-        <div class="discovery-text">
-          <h3>Somoto Canyon</h3>
-          <p>
-            Experience dramatic geological formations, canyon hikes,
-            and river journeys through one of Nicaragua’s greatest natural wonders.
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <p>
-      Plan your private journey.
-      Reach us directly on WhatsApp:
-      <a href="https://wa.me/50558365522" target="_blank">
-        +505 5836 5522
-      </a>
-    </p>
-  </section>
-
-  <!-- JAVASCRIPT -->
-  <script src="javascript.js"></script>
-
-</body>
-</html>
+});
+</script>
