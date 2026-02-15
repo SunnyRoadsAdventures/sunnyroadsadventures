@@ -16,7 +16,6 @@
   --line:rgba(0,0,0,0.06);
   --text-color:#2c2c2c;
   --btn-hover:#1c5c60;
-  --glow-accent:rgba(0,255,255,0.08);
 }
 body.dark{
   --cream:#0c1115;
@@ -26,13 +25,21 @@ body.dark{
   --line:rgba(255,255,255,0.06);
   --text-color:#eaeaea;
   --btn-hover:#66c4c6;
-  --glow-accent:rgba(0,255,255,0.15);
 }
 
 /* BASE */
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-snap-type:y proximity;scroll-behavior:smooth;}
-body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text-color);overflow-x:hidden;position:relative;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{
+  scroll-snap-type:y proximity;
+  scroll-behavior:smooth;
+}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--cream);
+  color:var(--text-color);
+  overflow-x:hidden;
+  position:relative;
+}
 
 /* LOADER */
 .loader{position:fixed; inset:0; background:var(--cream); display:flex; align-items:center; justify-content:center; z-index:9999; transition:opacity 1s ease;}
@@ -46,8 +53,6 @@ nav.scrolled{backdrop-filter:blur(18px);background:rgba(255,255,255,0.6);padding
 .logo{ font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--deep);}
 nav a{text-decoration:none; margin-left:36px; font-size:12px; letter-spacing:2px; text-transform:uppercase; color:var(--deep); opacity:.8; transition:.3s;}
 nav a:hover{opacity:1}
-.toggle-dark-tab{cursor:pointer;margin-left:20px;padding:6px 10px;border:1px solid var(--deep);border-radius:6px;font-size:11px;letter-spacing:1px;color:var(--deep);transition:0.3s;position:fixed;bottom:15px;right:15px;z-index:2000;}
-.toggle-dark-tab:hover{background:var(--deep);color:var(--cream);}
 
 /* PANELS */
 .panel{ min-height:100vh; scroll-snap-align:start; display:flex; flex-direction:column; justify-content:center; padding:0 10%; position:relative;}
@@ -55,33 +60,42 @@ nav a:hover{opacity:1}
 
 /* HERO */
 .hero{position:relative; overflow:hidden;}
-.hero::before{content:""; position:absolute; inset:0; background:linear-gradient(135deg, var(--sand) 0%, var(--ocean) 70%); z-index:-4;}
+.hero::before{
+  content:"";
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, var(--sand) 0%, var(--ocean) 70%);
+  z-index:-4;
+}
 .hero .texture{position:absolute; inset:0; background:url('https://i.imgur.com/hP5v1z0.png') repeat; opacity:0.05; z-index:-3;}
 .hero .particles{position:absolute; inset:0; z-index:-2; pointer-events:none;}
-.hero .wave{position:absolute; left:0; width:200%; height:200%; background:var(--glow-accent); border-radius:43%; animation:waveDrift 60s linear infinite;}
+.hero .wave{position:absolute; left:0; width:200%; height:200%; background:rgba(255,255,255,0.05); border-radius:43%; animation:waveDrift 60s linear infinite;}
 .hero .wave:nth-child(2){animation-duration:80s; opacity:0.03; transform:scale(1.1);}
 .hero .wave:nth-child(3){animation-duration:100s; opacity:0.02; transform:scale(1.2);}
 @keyframes waveDrift{ 0%{transform:translateX(0) translateY(0)} 50%{transform:translateX(-20px) translateY(10px)} 100%{transform:translateX(0) translateY(0)} }
 
 /* HERO TEXT */
-.hero h1{font-family:'Playfair Display',serif;font-size:64px; max-width:950px; margin-top:120px; line-height:1.15; color:var(--deep); overflow:hidden; position:relative; z-index:1; transition:transform 0.3s ease;}
+.hero h1{
+  font-family:'Playfair Display',serif; font-size:64px; max-width:950px; 
+  margin-top:140px;
+  line-height:1.15; color:var(--deep); overflow:hidden; position:relative; z-index:1; transition:transform 0.3s ease;
+}
 .hero h1 span{display:block; transform:translateY(120%) translateX(-5px); opacity:0; transition:1.2s ease;}
 .hero p{max-width:600px; font-size:19px; color:#555; margin-bottom:50px; opacity:0; transform:translateY(30px); transition:1s ease; position:relative; z-index:1;}
 .hero.visible p{opacity:1; transform:translateY(0);}
 
 /* BUTTONS */
-.btn{position:relative; padding:14px 36px; border:1px solid var(--ocean); text-decoration:none; color:var(--ocean); font-size:12px; letter-spacing:2px; text-transform:uppercase; overflow:hidden; transition:all .5s ease; display:inline-block;}
+.btn{position:relative; padding:16px 42px; border:1px solid var(--ocean); text-decoration:none; color:var(--ocean); font-size:12px; letter-spacing:2px; text-transform:uppercase; overflow:hidden; transition:all .5s ease; display:inline-block;}
 .btn::before{content:""; position:absolute; left:-100%; top:0; width:100%; height:100%; background:var(--ocean); transition:left .5s ease; z-index:-1;}
 .btn:hover::before{left:0}
 .btn:hover{color:white; transform:scale(1.05); box-shadow:0 4px 15px rgba(0,0,0,0.2);}
 
 /* ADVENTURE CARDS */
-.experience{ max-width:750px; margin:60px auto; padding:20px; opacity:0; transform:translateY(50px); transition:1.2s ease; text-align:left; background:var(--cream); border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,0.08); position:relative; cursor:pointer; transition: transform .4s ease, box-shadow .4s ease;}
+.experience{ max-width:750px; margin:60px auto; padding:20px; opacity:0; transform:translateY(50px); transition:1.2s ease; text-align:left; border-radius:10px; box-shadow:0 8px 25px rgba(0,0,0,0.08); position:relative; cursor:pointer; overflow:hidden; background-size:cover; background-position:center;}
 .experience:hover{transform:translateY(-6px); box-shadow:0 12px 30px rgba(0,0,0,0.15);}
 .experience h3{ font-size:28px; margin-bottom:10px; color:var(--ocean);}
-.meta{ font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#888; margin-bottom:14px;}
-.experience p{ color:#555; font-size:17px; line-height:1.7;}
-.experience span.extra-info{display:none; font-size:14px; color:#777; margin-top:8px;}
+.meta{ font-size:13px; letter-spacing:2px; text-transform:uppercase; color:#fff; margin-bottom:14px;}
+.experience p{ color:#fff; font-size:17px; line-height:1.7;}
+.experience span.extra-info{display:none; font-size:14px; color:#fff; margin-top:8px;}
 .experience:hover span.extra-info{display:block;}
 
 /* ASPIRATIONAL STATEMENTS */
@@ -98,37 +112,15 @@ nav a:hover{opacity:1}
 /* FOOTER */
 .footer{text-align:center; font-size:13px; color:#777; padding-bottom:40px;}
 
-/* MOBILE & RESPONSIVE FIXES */
-@media(max-width:1024px){
-  nav a{margin-left:24px; font-size:11px;}
-  .hero h1{font-size:50px; margin-top:100px;}
-  .hero p{font-size:18px;}
-  .btn{padding:12px 30px;}
-  .experience h3{font-size:24px;}
-  .experience p{font-size:16px;}
-}
+/* MOBILE */
 @media(max-width:768px){
-  nav{padding:18px 6%;}
-  nav a{margin-left:16px; font-size:10px;}
-  .hero h1{font-size:38px; margin-top:80px;}
-  .hero p{font-size:16px;}
-  .btn{padding:10px 24px; font-size:11px;}
-  .experience h3{font-size:20px;}
-  .experience p{font-size:15px;}
-  .statement p:first-child{font-size:16px;}
-  .statement p:last-child{font-size:13px;}
-  .panel{padding:0 6%;}
+  .hero h1{font-size:38px; margin-top:100px;}
+  .section-title{font-size:30px}
+  .panel{padding:0 8%}
+  .experience h3{ font-size:22px }
+  .experience p, .statement p:first-child{ font-size:16px; }
+  .statement p:last-child{ font-size:13px; }
 }
-@media(max-width:480px){
-  .hero h1{font-size:32px; margin-top:60px;}
-  .hero p{font-size:14px;}
-  .btn{padding:8px 20px; font-size:10px;}
-  .experience h3{font-size:18px;}
-  .experience p{font-size:14px;}
-}
-
-/* prevent horizontal scroll due to waves */
-.hero .wave{min-width:100%; min-height:100%;}
 </style>
 </head>
 <body>
@@ -143,8 +135,6 @@ nav a:hover{opacity:1}
     <a href="#contact">Contact</a>
   </div>
 </nav>
-
-<span class="toggle-dark-tab">Dark Mode</span>
 
 <!-- HERO -->
 <section class="panel hero center">
@@ -179,33 +169,34 @@ nav a:hover{opacity:1}
 <section id="experiences" class="panel center">
   <div class="section-title">Curated Coastal & Volcano Experiences</div>
 
-  <div class="experience">
+  <div class="experience" style="background-image:url('https://i.imgur.com/CoastSample.jpg');">
     <h3>Granada Coastal Walk</h3>
     <div class="meta">Half-Day • Private • Cultural</div>
     <p>An intimate exploration of quiet colonial streets, hidden plazas, and coastal rhythms.</p>
     <span class="extra-info">Includes local snacks, private photography & guides with extensive history knowledge.</span>
   </div>
 
-  <div class="experience">
+  <div class="experience" style="background-image:url('https://i.imgur.com/VolcanoSample.jpg');">
     <h3>Volcano & Horizon Journey</h3>
     <div class="meta">Full-Day • Scenic • Immersive</div>
     <p>Witness Nicaragua’s volcanoes meet endless skies. A private cinematic escape.</p>
     <span class="extra-info">Custom meals available, personalized transport, sunrise and sunset options.</span>
   </div>
 
-  <div class="experience">
+  <div class="experience" style="background-image:url('https://i.imgur.com/LagoonSample.jpg');">
     <h3>Hidden Lagoon Kayak</h3>
     <div class="meta">Half-Day • Private • Adventure</div>
     <p>Paddle through crystal-clear waters surrounded by untouched landscapes.</p>
     <span class="extra-info">Guided safety, photography, and light snack included.</span>
   </div>
 
-  <div class="experience">
+  <div class="experience" style="background-image:url('https://i.imgur.com/CoffeeSample.jpg');">
     <h3>Sunrise Coffee Plantation Tour</h3>
     <div class="meta">Half-Day • Private • Cultural</div>
     <p>Experience sunrise over rolling hills, meet local farmers, and taste artisanal coffee.</p>
     <span class="extra-info">Exclusive coffee tasting and local cultural insights provided.</span>
   </div>
+
 </section>
 
 <div class="separator"></div>
@@ -244,6 +235,11 @@ nav a:hover{opacity:1}
 </section>
 
 <script>
+/* AUTO DARK MODE */
+if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
+  document.body.classList.add('dark');
+}
+
 /* LOADER */
 window.addEventListener("load",()=>{ setTimeout(()=>document.querySelector(".loader").classList.add("hide"),1500); });
 
@@ -255,7 +251,10 @@ const hero = document.querySelector(".hero");
 const spans = document.querySelectorAll(".hero h1 span");
 window.addEventListener("load",()=>{
   spans.forEach((span,i)=>{
-    setTimeout(()=>{ span.style.transform="translateY(0)"; span.style.opacity="1"; }, i*400);
+    setTimeout(()=>{
+      span.style.transform="translateY(0)";
+      span.style.opacity="1";
+    }, i*400);
   });
   setTimeout(()=>hero.classList.add("visible"),1200);
 });
@@ -263,15 +262,19 @@ window.addEventListener("load",()=>{
 /* SCROLL REVEAL */
 const sections = document.querySelectorAll(".section-text, .experience, .statement");
 const observer = new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add("visible"); });
+  entries.forEach(entry=>{
+    if(entry.isIntersecting) entry.target.classList.add("visible");
+  });
 },{threshold:.3});
 sections.forEach(sec=>observer.observe(sec));
 
-/* HERO PARALLAX */
+/* HERO PARALLAX ON SCROLL */
 window.addEventListener("scroll",()=>{
   const heroText = document.querySelectorAll(".hero h1 span");
   let scrollY = window.scrollY;
-  heroText.forEach((line, i)=>{ line.style.transform = `translateY(${scrollY*0.03*(i+1)}px) translateX(-5px)`; });
+  heroText.forEach((line, i)=>{
+    line.style.transform = `translateY(${scrollY*0.03*(i+1)}px) translateX(-5px)`;
+  });
 });
 
 /* PARTICLES */
@@ -280,7 +283,14 @@ canvas.width = window.innerWidth; canvas.height = window.innerHeight;
 const ctx = canvas.getContext("2d");
 let particlesArray=[];
 class Particle{
-  constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*3+1;this.speedX=(Math.random()-0.5)*0.3;this.speedY=(Math.random()-0.5)*0.3;this.opacity=Math.random()*0.2+0.05;}
+  constructor(){
+    this.x=Math.random()*canvas.width;
+    this.y=Math.random()*canvas.height;
+    this.size=Math.random()*3+1;
+    this.speedX=(Math.random()-0.5)*0.3;
+    this.speedY=(Math.random()-0.5)*0.3;
+    this.opacity=Math.random()*0.2+0.05;
+  }
   update(){ this.x+=this.speedX; this.y+=this.speedY; if(this.x>canvas.width)this.x=0;if(this.x<0)this.x=canvas.width;if(this.y>canvas.height)this.y=0;if(this.y<0)this.y=canvas.height; }
   draw(){ ctx.beginPath(); ctx.arc(this.x,this.y,this.size,0,Math.PI*2); ctx.fillStyle=`rgba(255,255,255,${this.opacity})`; ctx.fill(); }
 }
@@ -295,7 +305,18 @@ window.addEventListener('wheel', e => {
   e.preventDefault();
   if(isScrolling) return;
   isScrolling = true;
+
   const direction = e.deltaY > 0 ? 1 : -1;
   const panels = document.querySelectorAll('.panel');
   let currentIndex = 0;
-  panels.forEach((sec,i)=>{ if(sec.getBoundingClientRect().top >= -10)
+  panels.forEach((sec,i)=>{ if(sec.getBoundingClientRect().top >= -10) currentIndex=i; });
+  let nextIndex = currentIndex + direction;
+  if(nextIndex < 0) nextIndex = 0;
+  if(nextIndex >= panels.length) nextIndex = panels.length-1;
+
+  panels[nextIndex].scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{isScrolling=false;},700);
+},{passive:false});
+</script>
+</body>
+</html>
