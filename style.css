@@ -244,3 +244,35 @@ section {
   }
 
 }
+
+
+/* ========================= */
+/* LUXURY COLOR REFINEMENT */
+/* ========================= */
+
+body {
+  background: #081f2e;
+}
+
+.floating-nav.scrolled {
+  background: rgba(8,31,46,0.75);
+  backdrop-filter: blur(14px);
+}
+
+#adventures .section-title {
+  color: #8bbac9;
+}
+
+.adventure-content p,
+.discovery-text p {
+  color: #d7e4ea;
+}
+
+#contact a {
+  color: #8fdcff;
+  transition: opacity 0.3s ease;
+}
+
+#contact a:hover {
+  opacity: 0.7;
+}
