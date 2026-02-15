@@ -1,4 +1,3 @@
-
 /* ========================= */
 /* RESET */
 /* ========================= */
@@ -15,7 +14,7 @@ html {
 
 body {
   font-family: "Georgia", serif;
-  background: #071a26;
+  background: #081f2e;
   color: #f5f5f5;
   line-height: 1.7;
   overflow-x: hidden;
@@ -38,8 +37,8 @@ body {
 }
 
 .floating-nav.scrolled {
-  backdrop-filter: blur(12px);
-  background: rgba(7,26,38,0.6);
+  backdrop-filter: blur(14px);
+  background: rgba(8,31,46,0.75);
 }
 
 .nav-inner {
@@ -104,17 +103,19 @@ nav a:hover {
 
 .hero-title {
   font-size: clamp(3rem, 7vw, 5rem);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.05;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .hero-title span {
   display: block;
   margin-top: 1.2rem;
   font-size: clamp(1.1rem, 2vw, 1.5rem);
-  letter-spacing: 3px;
+  letter-spacing: 4px;
   opacity: 0.85;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 /* ========================= */
@@ -138,6 +139,7 @@ section {
   text-transform: uppercase;
   opacity: 0.6;
   margin-bottom: 80px;
+  color: #8bbac9;
 }
 
 .adventure-block {
@@ -150,6 +152,15 @@ section {
   background-position: center;
   display: flex;
   align-items: flex-end;
+
+  /* Elite elevation */
+  box-shadow: 0 40px 100px rgba(0,0,0,0.35);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.adventure-block:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 60px 120px rgba(0,0,0,0.45);
 }
 
 .adventure-overlay {
@@ -165,12 +176,15 @@ section {
 .adventure-content h2 {
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
 .adventure-content p {
   font-size: 1.1rem;
   max-width: 600px;
   opacity: 0.9;
+  color: #d7e4ea;
 }
 
 /* ========================= */
@@ -194,17 +208,25 @@ section {
 .discovery-image img {
   border-radius: 20px;
   box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+  transition: transform 0.6s ease;
+}
+
+.discovery-image img:hover {
+  transform: scale(1.03);
 }
 
 .discovery-text h3 {
   font-size: 2.2rem;
   margin-bottom: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
 .discovery-text p {
   font-size: 1.15rem;
   opacity: 0.85;
   max-width: 520px;
+  color: #d7e4ea;
 }
 
 /* ========================= */
@@ -217,9 +239,29 @@ section {
 }
 
 #contact a {
-  color: #00c3ff;
+  color: #8fdcff;
   text-decoration: none;
   font-weight: 500;
+  transition: opacity 0.3s ease;
+}
+
+#contact a:hover {
+  opacity: 0.7;
+}
+
+/* ========================= */
+/* SOFT FADE SYSTEM */
+/* ========================= */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* ========================= */
@@ -243,36 +285,4 @@ section {
     font-size: 0.8rem;
   }
 
-}
-
-
-/* ========================= */
-/* LUXURY COLOR REFINEMENT */
-/* ========================= */
-
-body {
-  background: #081f2e;
-}
-
-.floating-nav.scrolled {
-  background: rgba(8,31,46,0.75);
-  backdrop-filter: blur(14px);
-}
-
-#adventures .section-title {
-  color: #8bbac9;
-}
-
-.adventure-content p,
-.discovery-text p {
-  color: #d7e4ea;
-}
-
-#contact a {
-  color: #8fdcff;
-  transition: opacity 0.3s ease;
-}
-
-#contact a:hover {
-  opacity: 0.7;
 }
