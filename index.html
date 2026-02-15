@@ -1,10 +1,71 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Enter The Saga</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HERO SECTION -->
+<section class="hero parallax">
+  <div class="parallax-bg" style="background-image: url('hero.jpg');"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content fade-up">
+    <h1>Enter The Saga</h1>
+    <p class="fade-soft">A realm forged in fire and shadow.</p>
+    <br>
+    <a href="#" class="lux-btn">Begin</a>
+  </div>
+</section>
+
+<!-- SECTION 1 -->
+<section class="glass-section fade-up">
+  <h2>The Realm</h2>
+  <p>
+    Ancient walls stand against the storm. Steel rings in the forge.
+    Darkness whispers through stone corridors.
+  </p>
+</section>
+
+<!-- SECTION 2 -->
+<section class="glass-section fade-up">
+  <h2>The Order</h2>
+  <div class="grid-3">
+
+    <div class="card fade-soft">
+      <h3>Guardians</h3>
+      <p>Protectors of the gate.</p>
+    </div>
+
+    <div class="card fade-soft">
+      <h3>Blacksmith</h3>
+      <p>Steel shaped by flame.</p>
+    </div>
+
+    <div class="card fade-soft">
+      <h3>The Tavern</h3>
+      <p>Stories told in shadow.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  © 2026 Enter The Saga — All Rights Reserved
+</footer>
+
+<!-- JAVASCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-
-  /* ============================= */
-  /* SCROLL REVEAL SYSTEM */
-  /* ============================= */
 
   const faders = document.querySelectorAll('.fade-up, .fade-soft');
 
@@ -25,10 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
       appearOnScroll.observe(fader);
     });
   }
-
-  /* ============================= */
-  /* PARALLAX SYSTEM (SMOOTH) */
-  /* ============================= */
 
   let scrollY = 0;
   let ticking = false;
@@ -55,3 +112,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 </script>
+
+</body>
+</html>
