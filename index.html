@@ -8,82 +8,121 @@
 </head>
 <body>
 
-  <!-- ===== CINEMATIC INTRO ===== -->
-  <section id="cinematicIntro" class="cinematic-intro">
-    <h1 id="introTagline">Welcome to Sunny Roads Adventures</h1>
-    <audio id="introSound" src="intro-music.mp3"></audio>
+  <!-- CINEMATIC INTRO -->
+  <div id="cinematicIntro">
+    <div class="intro-content">
+      <h1>Sunny Roads Adventures</h1>
+      <p id="introTagline"></p>
+    </div>
+    <!-- Optional sound -->
+    <audio id="introSound" src="intro.mp3"></audio>
+  </div>
+
+  <!-- FLOATING NAV -->
+  <header class="floating-nav">
+    <div class="nav-inner">
+      <div class="logo">Sunny Roads</div>
+      <nav>
+        <a href="#adventures">Adventures</a>
+        <a href="#discoveries">Discoveries</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" style="background-image: url('hero.jpg');">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        Explore Nicaragua<br>
+        <span>Your private adventure awaits</span>
+      </h1>
+    </div>
+    <div class="scroll-indicator"></div>
   </section>
 
-  <!-- ===== FLOATING NAVIGATION ===== -->
-  <nav class="floating-nav">
-    <ul>
-      <li><a href="#adventures">Adventures</a></li>
-      <li><a href="#discoveries">Discoveries</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+  <!-- ADVENTURES SECTION -->
+  <section id="adventures">
+    <h2 class="section-title">Adventures</h2>
 
-  <!-- ===== HERO SECTION ===== -->
-  <section class="hero">
-    <h2>Explore the world with us</h2>
-    <p>From hidden beaches to thrilling adventures</p>
-  </section>
-
-  <!-- ===== ADVENTURE BLOCKS ===== -->
-  <section id="adventures" class="adventures">
-    <div class="adventure-block">
-      <div class="adventure-content">
-        <h3>Jungle Trek</h3>
-        <p>Discover the secrets of untouched forests.</p>
+    <div class="adventure-block" style="background-image: url('popoyo.jpg');">
+      <div class="adventure-overlay">
+        <div class="adventure-content">
+          <h2>Popoyo Sunset Retreat</h2>
+          <p>Relax on secluded beaches, surf the perfect waves, and enjoy private sunsets.</p>
+        </div>
       </div>
     </div>
-    <div class="adventure-block">
-      <div class="adventure-content">
-        <h3>Ocean Escape</h3>
-        <p>Feel the calm of the deep blue sea.</p>
+
+    <div class="adventure-block" style="background-image: url('ometepe.jpg');">
+      <div class="adventure-overlay">
+        <div class="adventure-content">
+          <h2>Ometepe Island Adventure</h2>
+          <p>Discover volcanic landscapes, hidden lagoons, and authentic island life.</p>
+        </div>
       </div>
     </div>
-    <div class="adventure-block">
-      <div class="adventure-content">
-        <h3>Mountain Climb</h3>
-        <p>Reach new heights with breathtaking views.</p>
+
+    <div class="adventure-block" style="background-image: url('esteli.jpg');">
+      <div class="adventure-overlay">
+        <div class="adventure-content">
+          <h2>Estelí Cloud Forest</h2>
+          <p>Hike through misty mountains and lush forests on unforgettable guided trails.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== DISCOVERIES ===== -->
-  <section id="discoveries" class="discoveries">
-    <div class="discovery">
-      <h3>Local Culture</h3>
-      <p>Immerse yourself in traditions and cuisine.</p>
-    </div>
-    <div class="discovery">
-      <h3>Wildlife Wonders</h3>
-      <p>Meet exotic animals in their natural habitats.</p>
-    </div>
-    <div class="discovery">
-      <h3>Hidden Gems</h3>
-      <p>Find secret spots off the beaten path.</p>
+  <!-- DISCOVERIES SECTION -->
+  <section id="discoveries">
+    <div class="discoveries-wrapper">
+      <h3 class="discoveries-title">Discoveries</h3>
+
+      <section class="discovery">
+        <div class="discovery-inner">
+          <div class="discovery-image">
+            <img src="ojo.png" alt="Ojo de Agua">
+          </div>
+          <div class="discovery-text">
+            <h3>Ojo de Agua</h3>
+            <p>A quiet volcanic spring hidden among palms and volcanic stone. The water is impossibly clear and cool beneath the afternoon sun.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="discovery">
+        <div class="discovery-inner">
+          <div class="discovery-image">
+            <img src="cloudforest.jpg" alt="Cloud Forest Estelí">
+          </div>
+          <div class="discovery-text">
+            <h3>Cloud Forest Estelí</h3>
+            <p>Walk through lush forests with guided trails revealing unique flora, fauna, and panoramic mountain views.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="discovery">
+        <div class="discovery-inner">
+          <div class="discovery-image">
+            <img src="somoto.jpg" alt="Somoto Canyon">
+          </div>
+          <div class="discovery-text">
+            <h3>Somoto Canyon</h3>
+            <p>Experience thrilling hikes and boat trips in Nicaragua’s magnificent geological wonder.</p>
+          </div>
+        </div>
+      </section>
+
     </div>
   </section>
 
-  <!-- ===== FINAL BACKGROUND SECTION ===== -->
-  <section class="final-section">
-    <div class="final-bg">
-      <h2>The Journey Awaits</h2>
-      <p>Let the adventure begin!</p>
-    </div>
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <p>Reach us directly on WhatsApp: <a href="https://wa.me/50558365522">+505 5836 5522</a></p>
   </section>
 
-  <!-- ===== CONTACT ===== -->
-  <section id="contact" class="contact">
-    <h3>Contact Us</h3>
-    <p>Email: info@sunnyroads.com</p>
-    <p>Phone: +123 456 789</p>
-  </section>
-
-  <!-- ===== LINK TO SEPARATE JS ===== -->
+  <!-- JAVASCRIPT -->
   <script src="javascript.js"></script>
-
 </body>
 </html>
