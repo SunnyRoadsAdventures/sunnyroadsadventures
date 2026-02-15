@@ -3,112 +3,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Enter The Saga</title>
+  <title>Private Jungle Experiences</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- HERO SECTION -->
-<section class="hero parallax">
-  <div class="parallax-bg" style="background-image: url('hero.jpg');"></div>
-  <div class="hero-overlay"></div>
-
+<!-- HERO -->
+<section class="hero">
   <div class="hero-content fade-up">
-    <h1>Enter The Saga</h1>
-    <p class="fade-soft">A realm forged in fire and shadow.</p>
-    <br>
-    <a href="#" class="lux-btn">Begin</a>
+    <h1>Tropical Jungle & Waterfall Escape</h1>
+    <p>Private luxury immersion into untouched nature.</p>
+    <a href="#" class="lux-btn">Discover the Experience</a>
   </div>
 </section>
 
-<!-- SECTION 1 -->
-<section class="glass-section fade-up">
-  <h2>The Realm</h2>
-  <p>
-    Ancient walls stand against the storm. Steel rings in the forge.
-    Darkness whispers through stone corridors.
-  </p>
+<!-- EXPERIENCE -->
+<section class="section">
+  <div class="section-inner fade-up">
+    <h2>The Experience</h2>
+    <p>
+      Private 4x4 access or guided jungle trek.
+      Hidden waterfalls and crystal natural pools.
+      Optional cliff jump or gentle swim — always guided and secure.
+    </p>
+  </div>
 </section>
 
-<!-- SECTION 2 -->
-<section class="glass-section fade-up">
-  <h2>The Order</h2>
-  <div class="grid-3">
+<!-- FEATURES -->
+<section class="section">
+  <div class="section-inner fade-up">
+    <h2>What Makes It Exceptional</h2>
 
-    <div class="card fade-soft">
-      <h3>Guardians</h3>
-      <p>Protectors of the gate.</p>
-    </div>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Private Access</h3>
+        <p>Exclusive locations far from tourist routes.</p>
+      </div>
 
-    <div class="card fade-soft">
-      <h3>Blacksmith</h3>
-      <p>Steel shaped by flame.</p>
-    </div>
+      <div class="card">
+        <h3>Gourmet Picnic</h3>
+        <p>Chef-prepared meal served at waterfall site.</p>
+      </div>
 
-    <div class="card fade-soft">
-      <h3>The Tavern</h3>
-      <p>Stories told in shadow.</p>
+      <div class="card">
+        <h3>Eco Conscious</h3>
+        <p>Low impact, high respect nature immersion.</p>
+      </div>
     </div>
 
   </div>
 </section>
 
 <footer>
-  © 2026 Enter The Saga — All Rights Reserved
+  © 2026 Private Jungle Experiences — All Rights Reserved
 </footer>
 
-<!-- JAVASCRIPT -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  const faders = document.querySelectorAll('.fade-up, .fade-soft');
+  const faders = document.querySelectorAll('.fade-up');
 
-  if ("IntersectionObserver" in window) {
-    const appearOptions = {
-      threshold: 0.2
-    };
-
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     });
-  }
+  }, { threshold: 0.2 });
 
-  let scrollY = 0;
-  let ticking = false;
-
-  function updateParallax() {
-    document.querySelectorAll('.parallax-bg').forEach(bg => {
-      bg.style.transform = `translateY(${scrollY * 0.3}px)`;
-    });
-
-    document.querySelectorAll('.float-slow').forEach(el => {
-      el.style.transform = `translateY(${scrollY * 0.05}px)`;
-    });
-
-    ticking = false;
-  }
-
-  window.addEventListener('scroll', function () {
-    scrollY = window.pageYOffset;
-    if (!ticking) {
-      window.requestAnimationFrame(updateParallax);
-      ticking = true;
-    }
-  });
+  faders.forEach(el => observer.observe(el));
 
 });
 </script>
