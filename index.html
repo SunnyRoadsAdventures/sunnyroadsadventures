@@ -6,171 +6,84 @@
   <title>Sunny Roads Adventures</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- CINEMATIC INTRO -->
-<div id="cinematicIntro">
-  <div class="intro-content">
-    <h1>Sunny Roads Adventures</h1>
-    <p id="introTagline"></p>
-  </div>
-</div>
+  <!-- ===== CINEMATIC INTRO ===== -->
+  <section id="cinematicIntro" class="cinematic-intro">
+    <h1 id="introTagline">Welcome to Sunny Roads Adventures</h1>
+    <audio id="introSound" src="intro-music.mp3"></audio>
+  </section>
 
-<!-- FLOATING NAV -->
-<header class="floating-nav">
-  <div class="nav-inner">
-    <div class="logo">Sunny Roads</div>
-    <nav>
-      <a href="#adventures">Adventures</a>
-      <a href="#discoveries">Discoveries</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
-</header>
+  <!-- ===== FLOATING NAVIGATION ===== -->
+  <nav class="floating-nav">
+    <ul>
+      <li><a href="#adventures">Adventures</a></li>
+      <li><a href="#discoveries">Discoveries</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="hero-title">
-      Nicaragua
-      <span>unfolds before you</span>
-    </h1>
-    <p>Adventures. Discoveries. Crafted for you.</p>
-  </div>
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero">
+    <h2>Explore the world with us</h2>
+    <p>From hidden beaches to thrilling adventures</p>
+  </section>
 
-  <div class="scroll-indicator"></div>
-</section>
-
-<!-- ADVENTURES -->
-<section id="adventures">
-
-  <section class="adventure-block" style="background-image: url('popoyo.jpg');">
-    <div class="adventure-overlay">
+  <!-- ===== ADVENTURE BLOCKS ===== -->
+  <section id="adventures" class="adventures">
+    <div class="adventure-block">
       <div class="adventure-content">
-        <h2>Popoyo</h2>
-        <p>Sunset retreat along Nicaragua’s untouched Pacific coast. Private beach walks, golden skies and quiet moments crafted around you.</p>
-        <p class="adventure-signature">crafted with sunny roads</p>
+        <h3>Jungle Trek</h3>
+        <p>Discover the secrets of untouched forests.</p>
       </div>
     </div>
-  </section>
-
-  <section class="adventure-block" style="background-image: url('ometepe.jpg');">
-    <div class="adventure-overlay">
+    <div class="adventure-block">
       <div class="adventure-content">
-        <h2>Ometepe</h2>
-        <p>Volcanic landscapes rising from Lake Nicaragua. Hidden trails, local culture and immersive island experiences.</p>
-        <p class="adventure-signature">crafted with sunny roads</p>
+        <h3>Ocean Escape</h3>
+        <p>Feel the calm of the deep blue sea.</p>
       </div>
     </div>
-  </section>
-
-  <section class="adventure-block" style="background-image: url('esteli.png');">
-    <div class="adventure-overlay">
+    <div class="adventure-block">
       <div class="adventure-content">
-        <h2>Estelí Cloud Forest</h2>
-        <p>Misty mountain air, secret viewpoints and untouched wilderness guided by local insight.</p>
-        <p class="adventure-signature">crafted with sunny roads</p>
+        <h3>Mountain Climb</h3>
+        <p>Reach new heights with breathtaking views.</p>
       </div>
     </div>
   </section>
 
-</section>
-
-<!-- DISCOVERIES WRAPPER -->
-<section id="discoveries" class="discoveries-wrapper">
-
-  <div class="discoveries-title">
-    discoveries
-  </div>
-
-  <!-- DISCOVERY 1 -->
-  <section class="discovery">
-    <div class="discovery-inner">
-      <div class="discovery-image">
-        <img src="ojo.png" alt="Ojo de Agua">
-      </div>
-      <div class="discovery-text">
-        <h3>Ojo de Agua</h3>
-        <p>Crystal-clear volcanic spring tucked quietly in Ometepe. A peaceful retreat surrounded by tropical calm.</p>
-        <p class="discovery-signature">guided by sunny roads</p>
-      </div>
+  <!-- ===== DISCOVERIES ===== -->
+  <section id="discoveries" class="discoveries">
+    <div class="discovery">
+      <h3>Local Culture</h3>
+      <p>Immerse yourself in traditions and cuisine.</p>
+    </div>
+    <div class="discovery">
+      <h3>Wildlife Wonders</h3>
+      <p>Meet exotic animals in their natural habitats.</p>
+    </div>
+    <div class="discovery">
+      <h3>Hidden Gems</h3>
+      <p>Find secret spots off the beaten path.</p>
     </div>
   </section>
 
-  <!-- DISCOVERY 2 -->
-  <section class="discovery">
-    <div class="discovery-inner">
-      <div class="discovery-image">
-        <img src="cloud.png" alt="Cloud Forest Estelí">
-      </div>
-      <div class="discovery-text">
-        <h3>Cloud Forest Estelí</h3>
-        <p>Misty peaks, rare flora and hidden trails rarely seen by travelers.</p>
-        <p class="discovery-signature">guided by sunny roads</p>
-      </div>
+  <!-- ===== FINAL BACKGROUND SECTION ===== -->
+  <section class="final-section">
+    <div class="final-bg">
+      <h2>The Journey Awaits</h2>
+      <p>Let the adventure begin!</p>
     </div>
   </section>
 
-  <!-- DISCOVERY 3 -->
-  <section class="discovery">
-    <div class="discovery-inner">
-      <div class="discovery-image">
-        <img src="somoto.jpg" alt="Somoto Canyon">
-      </div>
-      <div class="discovery-text">
-        <h3>Somoto Canyon</h3>
-        <p>Carved over millennia. Swim, hike and explore one of Nicaragua’s geological masterpieces.</p>
-        <p class="discovery-signature">guided by sunny roads</p>
-      </div>
-    </div>
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact">
+    <h3>Contact Us</h3>
+    <p>Email: info@sunnyroads.com</p>
+    <p>Phone: +123 456 789</p>
   </section>
 
-</section>
-
-<!-- FINAL INVITE -->
-<section class="final-invite">
-  <div class="final-bg"></div>
-
-  <div class="invite-content">
-    <h2>Your journey begins when you are ready.</h2>
-    <p>
-      Tell us how you want Nicaragua to unfold — and we’ll craft it together.
-    </p>
-    <a href="#contact" class="invite-button">Begin your journey</a>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: hello@sunnyroadsadventures.com</p>
-  <p>WhatsApp: +505 5836 5522</p>
-</section>
-
-<!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-inner">
-
-    <div class="footer-brand">
-      <h3>Sunny Roads</h3>
-      <p>Curated journeys across Nicaragua</p>
-    </div>
-
-    <div class="footer-contact">
-      <p>Email: hello@sunnyroadsadventures.com</p>
-      <p>WhatsApp: +505 5836 5522</p>
-      <p>Instagram: @sunnyroads</p>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 Sunny Roads — All rights reserved
-  </div>
-</footer>
-
-<script src="javascript.js"></script>
+  <!-- ===== LINK TO SEPARATE JS ===== -->
+  <script src="javascript.js"></script>
 
 </body>
 </html>
