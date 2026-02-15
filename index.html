@@ -1,81 +1,297 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Private Jungle Experiences</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Tour Brand</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+
+/* ========================= */
+/* ROOT THEME SYSTEM */
+/* ========================= */
+
+:root {
+  --bg: #f6f6f4;
+  --text: #1a1a1a;
+  --soft-text: #6e6e6e;
+  --card-bg: #ffffff;
+  --nav-bg: rgba(255,255,255,0.6);
+  --border-soft: rgba(0,0,0,0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1113;
+    --text: #f1f1f1;
+    --soft-text: #b0b0b0;
+    --card-bg: #17191c;
+    --nav-bg: rgba(15,17,19,0.6);
+    --border-soft: rgba(255,255,255,0.06);
+  }
+}
+
+/* ========================= */
+/* GLOBAL */
+/* ========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+section {
+  padding: 100px 8%;
+}
+
+/* ========================= */
+/* NAVIGATION */
+/* ========================= */
+
+.floating-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 18px 8%;
+  background: var(--nav-bg);
+  backdrop-filter: blur(0px);
+  transition: backdrop-filter 0.4s ease, background 0.4s ease;
+  z-index: 1000;
+}
+
+.floating-nav.scrolled {
+  backdrop-filter: blur(12px);
+}
+
+/* ========================= */
+/* HERO */
+/* ========================= */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+}
+
+.hero-title span {
+  display: block;
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--soft-text);
+}
+
+.hero-sub {
+  margin-top: 24px;
+  font-size: 1.1rem;
+  color: var(--soft-text);
+  max-width: 520px;
+}
+
+/* ========================= */
+/* ADVENTURE BLOCKS */
+/* ========================= */
+
+.adventure-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.adventure-block {
+  background: var(--card-bg);
+  padding: 50px;
+  border-radius: 24px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.35);
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+}
+
+.adventure-block:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 60px 120px rgba(0,0,0,0.45);
+}
+
+.adventure-content h2 {
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.adventure-content p {
+  color: var(--soft-text);
+}
+
+/* ========================= */
+/* DISCOVERY SECTION */
+/* ========================= */
+
+.discovery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.discovery-text h3 {
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.discovery-text p {
+  color: var(--soft-text);
+}
+
+.discovery-image img {
+  width: 100%;
+  border-radius: 24px;
+  transition: transform 0.6s ease;
+}
+
+.discovery-image img:hover {
+  transform: scale(1.03);
+}
+
+/* ========================= */
+/* SOFT FADE SYSTEM */
+/* ========================= */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================= */
+/* RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 900px) {
+  .discovery {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+}
+
+</style>
 </head>
-
 <body>
+
+<!-- NAV -->
+<div class="floating-nav">
+  Luxury Escape Co.
+</div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content fade-up">
-    <h1>Tropical Jungle & Waterfall Escape</h1>
-    <p>Private luxury immersion into untouched nature.</p>
-    <a href="#" class="lux-btn">Discover the Experience</a>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section">
-  <div class="section-inner fade-up">
-    <h2>The Experience</h2>
-    <p>
-      Private 4x4 access or guided jungle trek.
-      Hidden waterfalls and crystal natural pools.
-      Optional cliff jump or gentle swim — always guided and secure.
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Tropical Jungle Escape
+      <span>Adventure. Luxury. Nature.</span>
+    </h1>
+    <p class="hero-sub">
+      Private guided journeys into hidden waterfalls and untouched landscapes,
+      crafted for refined explorers.
     </p>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="section">
-  <div class="section-inner fade-up">
-    <h2>What Makes It Exceptional</h2>
-
-    <div class="grid-3">
-      <div class="card">
-        <h3>Private Access</h3>
-        <p>Exclusive locations far from tourist routes.</p>
-      </div>
-
-      <div class="card">
-        <h3>Gourmet Picnic</h3>
-        <p>Chef-prepared meal served at waterfall site.</p>
-      </div>
-
-      <div class="card">
-        <h3>Eco Conscious</h3>
-        <p>Low impact, high respect nature immersion.</p>
-      </div>
+<!-- ADVENTURE -->
+<section class="adventure-section">
+  <div class="adventure-block">
+    <div class="adventure-content">
+      <h2>Private 4x4 Access</h2>
+      <p>Discreet transport into protected jungle terrain with experienced local guides.</p>
     </div>
+  </div>
 
+  <div class="adventure-block">
+    <div class="adventure-content">
+      <h2>Hidden Waterfalls</h2>
+      <p>Exclusive access to natural pools and serene waterfall sanctuaries.</p>
+    </div>
+  </div>
+
+  <div class="adventure-block">
+    <div class="adventure-content">
+      <h2>Chef Picnic Experience</h2>
+      <p>Gourmet meals prepared on-site with local ingredients and elegant presentation.</p>
+    </div>
   </div>
 </section>
 
-<footer>
-  © 2026 Private Jungle Experiences — All Rights Reserved
-</footer>
+<!-- DISCOVERY -->
+<section class="discovery">
+  <div class="discovery-text">
+    <h3>Curated Immersion</h3>
+    <p>
+      Every journey balances refined comfort with authentic adventure,
+      delivering a cinematic yet understated experience.
+    </p>
+  </div>
+  <div class="discovery-image">
+    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" alt="Waterfall">
+  </div>
+</section>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  const faders = document.querySelectorAll('.fade-up');
+  const elements = document.querySelectorAll('.hero-content, .adventure-block, .discovery');
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
+      entry.target.classList.add('fade-up', 'visible');
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.15 });
 
-  faders.forEach(el => observer.observe(el));
+  elements.forEach(el => observer.observe(el));
+
+  const nav = document.querySelector('.floating-nav');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
 
 });
 </script>
