@@ -1,20 +1,7 @@
-/* ================================= */
-/* ROOT VARIABLES */
-/* ================================= */
 
-:root {
-  --section-bg: #f7f3ec;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --section-bg: #071a26;
-  }
-}
-
-/* ================================= */
-/* GLOBAL RESET */
-/* ================================= */
+/* ========================= */
+/* RESET */
+/* ========================= */
 
 * {
   margin: 0;
@@ -27,168 +14,54 @@ html {
 }
 
 body {
-  font-family: Georgia, serif;
-  background: var(--section-bg);
-  color: #111;
-  overflow-x: hidden;
+  font-family: "Georgia", serif;
+  background: #071a26;
+  color: #f5f5f5;
   line-height: 1.7;
+  overflow-x: hidden;
 }
 
-img {
-  width: 100%;
-  display: block;
-}
-
-/* ================================= */
-/* CINEMATIC INTRO */
-/* ================================= */
-
-#cinematicIntro {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: opacity 1.2s ease, transform 1.2s ease, visibility 1.2s ease;
-}
-
-#cinematicIntro.hide {
-  opacity: 0;
-  transform: translateY(-20px);
-  visibility: hidden;
-}
-
-/* DARK MODE INTRO */
-@media (prefers-color-scheme: dark) {
-  #cinematicIntro {
-    background: linear-gradient(
-      135deg,
-      rgba(7,26,38,0.92) 0%,
-      rgba(15,46,61,0.92) 40%,
-      rgba(7,26,38,0.92) 100%
-    );
-    animation: oceanGlow 8s ease-in-out infinite alternate;
-  }
-
-  .intro-content h1,
-  .intro-content p {
-    color: white;
-  }
-}
-
-/* LIGHT MODE INTRO */
-@media (prefers-color-scheme: light) {
-  #cinematicIntro {
-    background: linear-gradient(
-      135deg,
-      rgba(249,246,241,0.92) 0%,
-      rgba(243,232,216,0.92) 40%,
-      rgba(191,244,249,0.92) 100%
-    );
-    animation: sandGlow 8s ease-in-out infinite alternate;
-  }
-
-  .intro-content h1,
-  .intro-content p {
-    color: #1e1e1e;
-  }
-}
-
-.intro-content {
-  text-align: center;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: introFade 2s ease forwards;
-  animation-delay: 1s;
-}
-
-@keyframes introFade {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes oceanGlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-@keyframes sandGlow {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 100% 50%; }
-}
-
-/* ================================= */
-/* FLOATING NAV */
-/* ================================= */
+/* ========================= */
+/* NAVIGATION */
+/* ========================= */
 
 .floating-nav {
   position: fixed;
   top: 0;
   width: 100%;
   padding: 1.2rem 3rem;
+  display: flex;
+  justify-content: center;
   z-index: 1000;
-
-  opacity: 0;
-  transform: translateY(-15px);
-
-  transition:
-    opacity 1.2s ease,
-    transform 1.2s ease,
-    background 0.6s ease,
-    backdrop-filter 0.6s ease;
-
-  background: transparent;
   backdrop-filter: blur(0px);
-}
-
-.floating-nav.visible {
-  opacity: 1;
-  transform: translateY(0);
+  transition: 0.5s ease;
 }
 
 .floating-nav.scrolled {
-  backdrop-filter: blur(10px);
-}
-
-@media (prefers-color-scheme: dark) {
-  .floating-nav.scrolled {
-    background: rgba(7, 26, 38, 0.55);
-  }
-  .logo, nav a {
-    color: white;
-  }
-}
-
-@media (prefers-color-scheme: light) {
-  .floating-nav.scrolled {
-    background: rgba(255,255,255,0.6);
-  }
-  .logo, nav a {
-    color: #111;
-  }
+  backdrop-filter: blur(12px);
+  background: rgba(7,26,38,0.6);
 }
 
 .nav-inner {
+  width: 100%;
+  max-width: 1400px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .logo {
-  font-size: 1.05rem;
   letter-spacing: 4px;
-  font-weight: 500;
+  font-size: 0.95rem;
   text-transform: uppercase;
 }
 
 nav a {
   margin-left: 2rem;
-  font-size: 0.95rem;
-  letter-spacing: 1.5px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: #ffffff;
   transition: opacity 0.3s ease;
 }
 
@@ -196,28 +69,20 @@ nav a:hover {
   opacity: 0.6;
 }
 
-/* ================================= */
+/* ========================= */
 /* HERO */
-/* ================================= */
+/* ========================= */
 
 .hero {
-  position: relative;
-  height: 100vh;
+  min-height: 100svh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  padding-bottom: 18vh;
   text-align: center;
-  overflow: hidden;
-
+  padding: 0 2rem;
   background-size: cover;
   background-position: center;
-  animation: heroDrift 14s ease-out forwards;
-}
-
-@keyframes heroDrift {
-  from { transform: scale(1.06) translateY(0); }
-  to { transform: scale(1) translateY(-12px); }
+  position: relative;
 }
 
 .hero::after {
@@ -226,213 +91,156 @@ nav a:hover {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.1) 0%,
-    rgba(0,0,0,0.2) 50%,
-    rgba(0,0,0,0.5) 100%
+    rgba(0,0,0,0.2),
+    rgba(0,0,0,0.65)
   );
-  pointer-events: none;
-  z-index: 1;
 }
 
 .hero-content {
+  position: relative;
   z-index: 2;
   max-width: 900px;
 }
 
 .hero-title {
-  font-size: clamp(3.2rem, 7vw, 5.4rem);
+  font-size: clamp(3rem, 7vw, 5rem);
   font-weight: 500;
-  letter-spacing: 1.5px;
   line-height: 1.05;
-
-  opacity: 0;
-  transform: translateY(20px);
-  animation: heroTextRise 1.6s ease forwards;
-  animation-delay: 0.6s;
-}
-
-@keyframes heroTextRise {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  letter-spacing: 1px;
 }
 
 .hero-title span {
   display: block;
-  font-size: clamp(1.1rem, 2vw, 1.6rem);
-  letter-spacing: 2px;
-  margin-top: 1rem;
-  opacity: 0.88;
+  margin-top: 1.2rem;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  letter-spacing: 3px;
+  opacity: 0.85;
 }
 
-@media (prefers-color-scheme: dark) {
-  .hero-title {
-    text-shadow: 0 0 30px rgba(0,180,200,0.15);
-  }
+/* ========================= */
+/* SECTION BASE */
+/* ========================= */
+
+section {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 140px 6%;
 }
 
-/* Scroll Indicator */
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1px;
-  height: 50px;
-  background: rgba(255,255,255,0.7);
-  animation: scrollPulse 2.5s infinite;
-  z-index: 2;
-}
-
-@keyframes scrollPulse {
-  0% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
-  50% { opacity: 1; transform: translateX(-50%) translateY(6px); }
-  100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
-}
-
-/* ================================= */
+/* ========================= */
 /* ADVENTURES */
-/* ================================= */
+/* ========================= */
 
-#adventures {
-  position: relative;
-  padding-top: 120px;
+#adventures .section-title {
+  font-size: 1rem;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-bottom: 80px;
 }
 
 .adventure-block {
-  position: relative;
-  min-height: 100vh;
-  background-size: cover;
-  background-position: center center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 120px;
+  border-radius: 22px;
   overflow: hidden;
+  position: relative;
+  min-height: 70vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
 }
 
 .adventure-overlay {
-  position: absolute;
-  inset: 0;
+  width: 100%;
+  padding: 60px;
   background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.2),
-    rgba(0,0,0,0.55)
+    to top,
+    rgba(0,0,0,0.7),
+    rgba(0,0,0,0.1)
   );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (prefers-color-scheme: light) {
-  .adventure-overlay {
-    background: linear-gradient(
-      to bottom,
-      rgba(255,255,255,0.2),
-      rgba(0,0,0,0.4)
-    );
-  }
-}
-
-.adventure-content {
-  max-width: 800px;
-  text-align: center;
-  padding: 0 2rem;
-  transform: translateY(40px);
-  opacity: 0;
-  transition:
-    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 1.4s ease;
-}
-
-.adventure-content.visible {
-  transform: translateY(0);
-  opacity: 1;
 }
 
 .adventure-content h2 {
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  letter-spacing: 2px;
+  font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: 1rem;
 }
 
 .adventure-content p {
-  font-size: 1.2rem;
-  line-height: 1.7;
-  opacity: 0.95;
+  font-size: 1.1rem;
+  max-width: 600px;
+  opacity: 0.9;
 }
 
-/* ================================= */
+/* ========================= */
 /* DISCOVERIES */
-/* ================================= */
+/* ========================= */
 
-.discoveries-wrapper {
-  position: relative;
-  padding-top: 160px;
-}
-
-.discoveries-title {
-  position: absolute;
-  left: 8%;
-  top: 60px;
-  font-size: 1.4rem;
-  letter-spacing: 4px;
-  text-transform: lowercase;
-  opacity: 0.5;
+#discoveries {
+  padding-top: 80px;
 }
 
 .discovery {
-  padding: 140px 8%;
+  margin-bottom: 160px;
 }
 
 .discovery-inner {
   display: flex;
   align-items: center;
-  gap: 6rem;
-  max-width: 1200px;
-  margin: 0 auto;
+  gap: 5rem;
 }
 
 .discovery-image img {
-  max-width: 520px;
-  border-radius: 18px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.15);
-  transition: transform 1.2s ease;
-}
-
-.discovery-image img:hover {
-  transform: scale(1.02);
+  border-radius: 20px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
 }
 
 .discovery-text h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.2rem;
 }
 
 .discovery-text p {
   font-size: 1.15rem;
-  line-height: 1.8;
+  opacity: 0.85;
   max-width: 520px;
-  opacity: 0.9;
 }
 
-/* Discovery Animation */
+/* ========================= */
+/* CONTACT */
+/* ========================= */
 
-.discovery-image,
-.discovery-text {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+#contact {
+  text-align: center;
+  padding-bottom: 120px;
 }
 
-.discovery.visible .discovery-image {
-  opacity: 1;
-  transform: translateY(0);
+#contact a {
+  color: #00c3ff;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-.discovery.visible .discovery-text {
-  opacity: 1;
-  transform: translateY(0);
-  transition-delay: 0.3s;
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 900px) {
+
+  .discovery-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+  }
+
+  .adventure-overlay {
+    padding: 40px 30px;
+  }
+
+  nav a {
+    margin-left: 1rem;
+    font-size: 0.8rem;
+  }
+
 }
