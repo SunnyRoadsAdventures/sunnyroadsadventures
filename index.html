@@ -1,391 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sunny Roads Adventures</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    /* VARIABLES */
-    :root {
-      --light-bg: #fdf9f2;
-      --dark-bg: #0a0a0a;
-      --text-light: #fff; /* overlay text now pure white */
-      --text-muted: #eee; /* subtle for descriptions */
-      --accent-color: #00bfa5;
-      --accent-color-dark: #00997a;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunny Roads Adventures</title>
+<style>
+  /* Global styles */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* GLOBAL STYLES */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  body {
+    font-family: 'Georgia', serif;
+    background: #fff;
+    color: #111;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-    html {
-      scroll-behavior: smooth;
-    }
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: var(--light-bg);
-      color: #111;
-      line-height: 1.6;
-      transition: background-color 0.5s, color 0.5s;
-    }
+  h1, h2, h3 {
+    font-family: 'Georgia', serif;
+  }
 
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
-      margin-bottom: 16px;
-    }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-    a {
-      text-decoration: none;
-    }
+  /* Header */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
 
-    /* HEADER */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.9);
-      z-index: 999;
-      transition: background 0.5s;
-    }
+  header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
 
-    header.dark-mode {
-      background: rgba(10,10,10,0.95);
-    }
+  header nav a {
+    margin-left: 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
 
-    header .logo {
-      font-size: 28px;
-      font-weight: bold;
-      color: var(--accent-color);
-    }
+  header nav a:hover {
+    color: #0099cc;
+  }
 
-    header nav a {
-      margin-left: 24px;
-      font-weight: 500;
-      color: #111;
-      transition: color 0.3s;
-    }
+  /* Hero Section */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: url('popoyo.jpg') center/cover no-repeat;
+    color: #fff;
+    padding: 0 1rem;
+    position: relative;
+  }
 
-    header nav a:hover {
-      color: var(--accent-color);
-    }
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+  }
 
-    /* DARK MODE */
-    body.dark-mode {
-      background-color: var(--dark-bg);
-      color: #eee;
-    }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
 
-    body.dark-mode a {
-      color: #eee;
-    }
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
 
-    body.dark-mode .btn {
-      background-color: var(--accent-color);
-    }
+  .hero p {
+    font-size: 1.25rem;
+    max-width: 700px;
+  }
 
-    /* BUTTON */
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      background-color: var(--accent-color);
-      color: white;
-      border-radius: 8px;
-      transition: background 0.3s ease;
-      font-weight: 500;
-    }
+  /* Adventures & Discoveries Sections */
+  section {
+    padding: 6rem 2rem 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-    .btn:hover {
-      background-color: var(--accent-color-dark);
-    }
+  section h2 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
 
-    /* SECTION STYLES */
-    section {
-      padding: 60px 20px;
-    }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
 
-    section h2 {
-      font-size: 36px;
-      text-align: center;
-      margin-bottom: 12px;
-    }
+  .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+  }
 
-    section p {
-      font-size: 16px;
-      text-align: center;
-      margin-bottom: 40px;
-      color: var(--text-muted);
-    }
+  .card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
 
-    /* ANIMATION */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 1s ease-out;
-    }
+  .card:hover img {
+    transform: scale(1.05);
+  }
 
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  /* Overlay text for fade-in */
+  .card-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    color: #fff;
+    padding: 1.5rem;
+    font-size: 1rem;
+    opacity: 0;
+  }
 
-    /* ADVENTURES */
-    .teaser-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-    }
+  .card-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
 
-    .teaser {
-      flex: 1 1 300px;
-      min-height: 300px;
-      border-radius: 16px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      color: var(--text-light);
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
-      background-size: cover;
-      background-position: center;
-    }
+  .card-text p {
+    font-size: 1rem;
+  }
 
-    .teaser:hover {
-      transform: scale(1.03);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2.2rem;
     }
-
-    .teaser.featured {
-      flex: 1 1 100%;
-      min-height: 450px;
-      border-radius: 20px;
+    .hero p {
+      font-size: 1rem;
     }
-
-    .teaser.featured::before {
-      content:"";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(255,150,80,0.15), rgba(255,100,0,0.15), rgba(255,150,80,0.15));
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      z-index:1;
-    }
-    .teaser.featured:hover::before { opacity: 1; }
-
-    .teaser-overlay {
-      z-index: 2;
-      padding: 24px;
-      width: 100%;
-      max-width: 800px;
-      background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
-      color: var(--text-light);
-    }
-
-    .teaser-overlay h3 {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .teaser-overlay p {
-      font-size: 16px;
-      line-height: 1.5;
-      margin-bottom: 16px;
-    }
-
-    /* DISCOVERIES */
-    .discovery-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-    }
-
-    .discovery {
-      flex: 1 1 300px;
-      min-height: 300px;
-      border-radius: 16px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      color: var(--text-light);
-      transition: transform 0.5s ease, box-shadow 0.5s ease;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .discovery:hover {
-      transform: scale(1.03);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-    }
-
-    .discovery-overlay {
-      z-index: 2;
-      padding: 24px;
-      width: 100%;
-      max-width: 700px;
-      background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
-      color: var(--text-light);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* SHIMMER EFFECT */
-    .discovery-overlay::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -75%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0) 100%);
-      transform: skewX(-25deg);
-      transition: none;
-    }
-
-    .discovery:hover .discovery-overlay::before {
-      animation: shimmer 2s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { left: -75%; }
-      100% { left: 125%; }
-    }
-
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .teaser-container, .discovery-container {
-        flex-direction: column;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header id="header">
-    <div class="logo">Sunny Roads Adventures</div>
-    <nav>
-      <a href="#experiences">Experiences</a>
-      <a href="#discoveries">Discoveries</a>
-      <a href="https://wa.me/50558365522" target="_blank">Contact</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">Sunny Roads Adventures</div>
+  <nav>
+    <a href="#adventures">Experiences</a>
+    <a href="#discoveries">Discoveries</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-  <!-- EXPERIENCES SECTION -->
-  <section id="experiences">
-    <h2>Adventures</h2>
-    <p>Hand-picked journeys across Nicaragua’s hidden gems — tailored, private, and unforgettable.</p>
+<section class="hero">
+  <div class="hero-content">
+    <h1>Discover Nicaragua’s Hidden Treasures</h1>
+    <p>Exclusive private adventures crafted just for you. Explore hidden gems, secret beaches, and natural wonders with Sunny Roads Adventures.</p>
+  </div>
+</section>
 
-    <div class="teaser-container">
-
-      <!-- Adventure 1 -->
-      <div class="teaser featured fade-in" style="background-image: url('popoyo.jpg');">
-        <div class="teaser-overlay">
-          <h3>Popoyo Sunset Retreat</h3>
-          <p>Ride the waves or relax on golden sands as the sun dips below the horizon. This private sunset retreat immerses you in Popoyo’s serene beauty, with the perfect blend of adventure and tranquility. Tailored entirely for you, every moment is unforgettable.</p>
-          <a href="https://wa.me/50558365522" class="btn">Craft Your Adventure</a>
-        </div>
+<section id="adventures">
+  <h2>Adventures</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="popoyo.jpg" alt="Popoyo Sunset Retreat">
+      <div class="card-text" data-text="Experience the golden glow of Popoyo’s sunset, tailored just for you. Walk along the serene beach while our guide shares local secrets. Enjoy a moment of tranquility, surf lessons or a private beach picnic.">
+        <h3>Popoyo Sunset Retreat</h3>
+        <p></p>
       </div>
-
-      <!-- Adventure 2 -->
-      <div class="teaser fade-in" style="background-image: url('ometepe.jpg');">
-        <div class="teaser-overlay">
-          <h3>Ometepe Island Discovery</h3>
-          <p>Explore the lush landscapes of Ometepe, where twin volcanoes meet crystal-clear lakes. Hike hidden trails, witness breathtaking views, and uncover the island’s secrets in an intimate, private adventure curated just for you.</p>
-          <a href="https://wa.me/50558365522" class="btn">Craft Your Adventure</a>
-        </div>
-      </div>
-
-      <!-- Adventure 3 -->
-      <div class="teaser fade-in" style="background-image: url('esteli.png');">
-        <div class="teaser-overlay">
-          <h3>Estelí Jungle & Culture Escape</h3>
-          <p>Immerse yourself in Estelí’s rich culture and verdant jungles. Discover hidden waterfalls, vibrant local life, and tranquil nature paths. Every step is carefully crafted to make your adventure unique and unforgettable.</p>
-          <a href="https://wa.me/50558365522" class="btn">Craft Your Adventure</a>
-        </div>
-      </div>
-
     </div>
 
-    <!-- DISCOVERIES -->
-    <h2 id="discoveries">Discoveries</h2>
-    <p>Hidden gems of Nicaragua — secret spots only few know, waiting to be explored by you.</p>
-
-    <div class="discovery-container">
-
-      <!-- Discovery 1 -->
-      <div class="discovery fade-in" style="background-image: url('ojo.png');">
-        <div class="discovery-overlay">
-          <h3>Ojo de Agua – Hidden Springs Escape</h3>
-          <p>Step into a world of crystalline freshwater springs tucked away from the crowds. Relax, swim, and let the serene beauty of Ojo de Agua refresh your body and mind — a hidden paradise where nature whispers calm.</p>
-          <a href="https://wa.me/50558365522" class="btn">Inquire Now</a>
-        </div>
+    <div class="card">
+      <img src="ometepe.jpg" alt="Ometepe Island Adventure">
+      <div class="card-text" data-text="Explore Ometepe Island’s lush landscapes and volcanoes. Hike hidden trails, visit local villages and enjoy unique cultural experiences crafted to your wishes.">
+        <h3>Ometepe Island Adventure</h3>
+        <p></p>
       </div>
-
-      <!-- Discovery 2 -->
-      <div class="discovery fade-in" style="background-image: url('cloud.png');">
-        <div class="discovery-overlay">
-          <h3>Estelí Cloud Forest – Misty Mountain Trails</h3>
-          <p>Wander through mist-laden trails and verdant hills in Estelí’s cloud forests. Discover waterfalls, hidden wildlife, and quiet rural landscapes, where every path feels like a secret waiting to be uncovered.</p>
-          <a href="https://wa.me/50558365522" class="btn">Inquire Now</a>
-        </div>
-      </div>
-
-      <!-- Discovery 3 -->
-      <div class="discovery fade-in" style="background-image: url('somoto.jpg');">
-        <div class="discovery-overlay">
-          <h3>Somoto Canyon – Sculpted by Time</h3>
-          <p>Explore the dramatic walls of Somoto Canyon, carved over millennia by flowing waters. Swim, hike, or simply stand in awe of the natural grandeur — an intimate adventure into Nicaragua’s hidden geological wonders.</p>
-          <a href="https://wa.me/50558365522" class="btn">Inquire Now</a>
-        </div>
-      </div>
-
     </div>
-  </section>
 
-  <!-- JS -->
-  <script>
-    // AUTO DARK MODE
-    function applyAutoDarkMode() {
-      const hour = new Date().getHours();
-      if (hour >= 18 || hour < 6) {
-        document.body.classList.add('dark-mode');
-        document.getElementById('header').classList.add('dark-mode');
-      } else {
-        document.body.classList.remove('dark-mode');
-        document.getElementById('header').classList.remove('dark-mode');
+    <div class="card">
+      <img src="esteli.png" alt="Estelí Cloud Forest">
+      <div class="card-text" data-text="Discover the cloud forest of Estelí. Trek through misty mountains, visit secret viewpoints, and experience untouched nature guided by local experts.">
+        <h3>Estelí Cloud Forest</h3>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="discoveries">
+  <h2>Discoveries</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="ojo.png" alt="Ojo de Agua">
+      <div class="card-text" data-text="Relax and rejuvenate at Ojo de Agua’s natural springs. Hidden in lush surroundings, it’s perfect for a serene retreat and a taste of local tranquility.">
+        <h3>Ojo de Agua</h3>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="cloud.png" alt="Cloud Forest Estelí">
+      <div class="card-text" data-text="Experience the magic of Estelí’s cloud forests. Walk among misty peaks, rare flora and fauna, and uncover hidden trails rarely seen by travelers.">
+        <h3>Cloud Forest Estelí</h3>
+        <p></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="somoto.jpg" alt="Somoto Canyon">
+      <div class="card-text" data-text="Adventure through Somoto Canyon, carved over millennia. Swim, hike and explore the geological wonders of this secret natural masterpiece.">
+        <h3>Somoto Canyon</h3>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Reach us directly on WhatsApp: +505 5836 5522</p>
+</section>
+
+<script>
+  // Typewriter scroll effect
+  const cards = document.querySelectorAll('.card-text');
+
+  const options = {
+    threshold: 0.5
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const textContainer = entry.target;
+        if(!textContainer.classList.contains('written')){
+          const text = textContainer.getAttribute('data-text');
+          const words = text.split(' ');
+          textContainer.querySelector('p').textContent = '';
+          let index = 0;
+          const typeWord = () => {
+            if(index < words.length){
+              textContainer.querySelector('p').textContent += (index===0?'':' ') + words[index];
+              index++;
+              setTimeout(typeWord, 200); // adjust speed here
+            } else {
+              textContainer.classList.add('written');
+            }
+          }
+          typeWord();
+        }
       }
-    }
-    applyAutoDarkMode();
-
-    // SCROLL FADE-IN ANIMATION
-    const faders = document.querySelectorAll('.fade-in');
-    const appearOptions = {
-      threshold: 0.2,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
-    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
-      entries.forEach(entry => {
-        if(!entry.isIntersecting) return;
-        entry.target.classList.add('visible');
-        appearOnScroll.unobserve(entry.target);
-      });
-    }, appearOptions);
-
-    faders.forEach(fader => {
-      appearOnScroll.observe(fader);
     });
-  </script>
+  }, options);
+
+  cards.forEach(card => observer.observe(card));
+</script>
+
 </body>
 </html>
