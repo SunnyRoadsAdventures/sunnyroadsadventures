@@ -1,7 +1,7 @@
 
-/* ========================= */
-/* RESET */
-/* ========================= */
+/* ================================================= */
+/* GLOBAL RESET */
+/* ================================================= */
 
 * {
   margin: 0;
@@ -14,242 +14,162 @@ html {
 }
 
 body {
-  font-family: "Inter", sans-serif;
-  background: #071a26;
-  color: #f5f5f5;
-  line-height: 1.7;
+  font-family: 'Playfair Display', serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
 }
 
-/* Headings */
+/* ================================================= */
+/* COLOR SYSTEM */
+/* ================================================= */
+
+:root {
+  /* Light Luxury (Default) */
+  --bg: #f6f2ea;
+  --section-bg: #ffffff;
+  --text: #2b2b2b;
+  --muted-text: #6b6b6b;
+  --accent: #b89b5e;
+  --border: rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Refined Jungle Dusk Mode */
+    --bg: #1b1e1b;
+    --section-bg: #242824;
+    --text: #e8e6e3;
+    --muted-text: #a8a6a2;
+    --accent: #c6a85a;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow-soft: 0 20px 60px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* ================================================= */
+/* TYPOGRAPHY */
+/* ================================================= */
+
 h1, h2, h3 {
-  font-family: "Playfair Display", serif;
   font-weight: 500;
+  letter-spacing: 1px;
 }
 
-/* ========================= */
-/* NAVIGATION */
-/* ========================= */
-
-.floating-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 1.2rem 3rem;
-  display: flex;
-  justify-content: center;
-  z-index: 1000;
-  backdrop-filter: blur(0px);
-  transition: 0.5s ease;
+h1 {
+  font-size: 64px;
+  margin-bottom: 20px;
 }
 
-.floating-nav.scrolled {
-  backdrop-filter: blur(12px);
-  background: rgba(7,26,38,0.6);
+h2 {
+  font-size: 38px;
+  margin-bottom: 20px;
 }
 
-.nav-inner {
-  width: 100%;
-  max-width: 1400px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
 }
 
-.logo {
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  letter-spacing: 4px;
-  font-size: 0.85rem;
-  text-transform: uppercase;
+p {
+  line-height: 1.8;
+  color: var(--muted-text);
+  font-size: 18px;
 }
 
-nav a {
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
-  letter-spacing: 2px;
-  font-size: 0.85rem;
-  text-decoration: none;
-  color: #ffffff;
-  transition: opacity 0.3s ease;
-}
-
-nav a:hover {
-  opacity: 0.6;
-}
-
-/* ========================= */
+/* ================================================= */
 /* HERO */
-/* ========================= */
+/* ================================================= */
 
 .hero {
-  min-height: 100svh;
+  height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 2rem;
-  background-size: cover;
-  background-position: center;
+  padding: 0 20px;
   position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(0,0,0,0.3) 0%,
-      rgba(0,0,0,0.6) 70%,
-      rgba(0,0,0,0.8) 100%
-    );
+  background: var(--bg);
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
+  max-width: 850px;
 }
 
-.hero-title {
-  font-family: "Playfair Display", serif;
-  font-size: clamp(3.2rem, 7vw, 5.2rem);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: 0.5px;
+.hero p {
+  margin-bottom: 35px;
 }
 
-.hero-title span {
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  font-size: clamp(0.9rem, 1.8vw, 1.2rem);
-  margin-top: 1.5rem;
-  display: block;
-  opacity: 0.85;
-}
+/* ================================================= */
+/* BUTTON */
+/* ================================================= */
 
-/* ========================= */
-/* SECTION BASE */
-/* ========================= */
-
-section {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 140px 6%;
-}
-
-/* ========================= */
-/* ADVENTURES */
-/* ========================= */
-
-#adventures .section-title {
-  font-size: 1rem;
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  opacity: 0.6;
-  margin-bottom: 80px;
-}
-
-.adventure-block {
-  margin-bottom: 140px;
-  border-radius: 22px;
-  overflow: hidden;
-  position: relative;
-  min-height: 75vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: flex-end;
-  transition: transform 1.6s ease;
-}
-
-.adventure-block:hover {
-  transform: scale(1.02);
-}
-
-.adventure-overlay {
-  width: 100%;
-  padding: 60px;
-  background: linear-gradient(
-    to top,
-    rgba(0,0,0,0.7),
-    rgba(0,0,0,0.1)
-  );
-}
-
-.adventure-content h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin-bottom: 1rem;
-}
-
-.adventure-content p {
-  font-size: 1.1rem;
-  max-width: 600px;
-  opacity: 0.9;
-}
-
-/* ========================= */
-/* DISCOVERIES */
-/* ========================= */
-
-#discoveries {
-  padding-top: 80px;
-}
-
-.discovery {
-  margin-bottom: 160px;
-}
-
-.discovery-inner {
-  display: flex;
-  align-items: center;
-  gap: 5rem;
-}
-
-.discovery-image img {
-  border-radius: 20px;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.3);
-}
-
-.discovery-text h3 {
-  font-size: 2.2rem;
-  margin-bottom: 1.2rem;
-}
-
-.discovery-text p {
-  font-size: 1.15rem;
-  opacity: 0.85;
-  max-width: 520px;
-}
-
-/* ========================= */
-/* CONTACT */
-/* ========================= */
-
-#contact {
-  text-align: center;
-  padding-bottom: 120px;
-}
-
-#contact a {
-  color: #00c3ff;
+.lux-btn {
+  display: inline-block;
+  padding: 14px 42px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
+  letter-spacing: 2px;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
 }
 
-/* ========================= */
-/* CINEMATIC FADE SYSTEM */
-/* ========================= */
+.lux-btn:hover {
+  background: var(--accent);
+  color: var(--section-bg);
+}
+
+/* ================================================= */
+/* SECTION */
+/* ================================================= */
+
+.section {
+  padding: 140px 8%;
+  background: var(--section-bg);
+  transition: background 0.4s ease;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ================================================= */
+/* GRID */
+/* ================================================= */
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  margin-top: 60px;
+}
+
+.card {
+  padding: 50px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+  background: var(--section-bg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.12);
+}
+
+/* ================================================= */
+/* FADE SYSTEM (CINEMATIC B BASE) */
+/* ================================================= */
 
 .fade-up {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.4s ease, transform 1.4s ease;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
 .fade-up.visible {
@@ -257,34 +177,41 @@ section {
   transform: translateY(0);
 }
 
-.fade-soft {
-  opacity: 0;
-  transition: opacity 1.6s ease;
+/* ================================================= */
+/* FOOTER */
+/* ================================================= */
+
+footer {
+  padding: 80px 8%;
+  text-align: center;
+  font-size: 14px;
+  border-top: 1px solid var(--border);
 }
 
-.fade-soft.visible {
-  opacity: 1;
+/* ================================================= */
+/* RESPONSIVE */
+/* ================================================= */
+
+@media (max-width: 1000px) {
+  .grid-3 {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
 }
 
-/* ========================= */
-/* MOBILE */
-/* ========================= */
-
-@media (max-width: 900px) {
-
-  .discovery-inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 2.5rem;
+@media (max-width: 700px) {
+  .grid-3 {
+    grid-template-columns: 1fr;
   }
 
-  .adventure-overlay {
-    padding: 40px 30px;
+  h1 {
+    font-size: 36px;
   }
 
-  nav a {
-    margin-left: 1rem;
-    font-size: 0.8rem;
+  .section {
+    padding: 100px 6%;
   }
-
 }
