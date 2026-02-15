@@ -6,13 +6,13 @@
 <title>Sunny Roads Adventures</title>
 <style>
 /* GLOBAL STYLES */
-* {margin:0;padding:0;box-sizing:border-box;}
+* {margin:0; padding:0; box-sizing:border-box;}
 html {scroll-behavior:smooth;}
 body {
   font-family:'Georgia', serif;
   line-height:1.6;
   overflow-x:hidden;
-  transition: background 0.5s,color 0.5s;
+  transition: background 0.5s, color 0.5s;
   background: linear-gradient(to bottom, #f0e9dd, #fff8f0);
   color:#111;
 }
@@ -35,7 +35,8 @@ h1,h2,h3 {font-family:'Georgia', serif;}
 /* HEADER */
 header {
   position:fixed; top:0; width:100%;
-  background: rgba(255,255,255,0.95);
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
   display:flex; justify-content:space-between; align-items:center;
   padding:1rem 2rem; z-index:999;
   box-shadow:0 2px 5px rgba(0,0,0,0.1);
@@ -86,9 +87,7 @@ header nav a:hover {color:#0099cc;}
 }
 .hero-btn:hover {background:#1ebe5b; transform: scale(1.05);}
 
-@keyframes fadeUp {
-  to {opacity:1; transform: translateY(0);}
-}
+@keyframes fadeUp {to {opacity:1; transform: translateY(0);}}
 
 /* SECTIONS */
 section {padding:6rem 2rem 4rem 2rem; max-width:1200px; margin:0 auto;}
@@ -96,12 +95,10 @@ section h2 {font-size:2rem; margin-bottom:3rem; text-align:center;}
 
 /* CARDS */
 .cards {display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:2rem;}
-.card {position:relative; overflow:hidden; border-radius:1rem; perspective:1000px;}
-.card img {
-  transition: transform 0.6s ease, filter 0.6s ease;
-  will-change: transform;
-}
+.card {position:relative; overflow:hidden; border-radius:1rem; perspective:1000px; transition: transform 0.5s ease;}
+.card img {transition: transform 0.6s ease, filter 0.6s ease; will-change: transform;}
 .card:hover img {transform: scale(1.05) translateY(-5px);}
+.card:hover {transform: translateY(-5px);}
 
 /* CARD TEXT */
 .card-text {
@@ -109,7 +106,6 @@ section h2 {font-size:2rem; margin-bottom:3rem; text-align:center;}
   background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
   color:#fff; padding:1.5rem; font-size:1rem;
   opacity:0; transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
   pointer-events:none;
 }
 .card-text h3 {font-size:1.5rem; margin-bottom:0.5rem;}
@@ -222,9 +218,9 @@ section h2 {font-size:2rem; margin-bottom:3rem; text-align:center;}
 </section>
 
 <script>
-/* TYPEWRITER EFFECT WITH DELAY */
+/* TYPEWRITER EFFECT WITH DELAY & PERSISTENCE */
 const cards = document.querySelectorAll('.card-text');
-const options = { threshold: 0.6 }; // slightly delayed trigger
+const options = { threshold: 0.6 };
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
@@ -240,17 +236,16 @@ const observer = new IntersectionObserver((entries) => {
           if(index < words.length){
             container.querySelector('p').textContent += (index===0?'':' ') + words[index];
             index++;
-            setTimeout(typeWord, 200); // word speed
+            setTimeout(typeWord, 200);
           } else {
             container.classList.add('written');
           }
         }
-        setTimeout(typeWord, 500); // extra half-second delay
+        setTimeout(typeWord, 700); // ½–1 sec delay
       }
     }
   });
 }, options);
-
 cards.forEach(card => observer.observe(card));
 </script>
 </body>
