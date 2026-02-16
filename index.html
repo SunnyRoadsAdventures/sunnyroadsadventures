@@ -5,248 +5,177 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunny Roads Adventures</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
-  --bg:#f6f3ed;
-  --text:#1a1a1a;
-  --accent:#caa64b;
+/* ================= GLOBAL ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+html {
+  scroll-behavior: smooth;
+}
 
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f6f2e9;
+  color: #1a1a1a;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
 /* ================= HEADER ================= */
 
-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:30px 8%;
-  position:fixed;
-  width:100%;
-  top:0;
-  background:rgba(246,243,237,.6);
-  backdrop-filter:blur(18px);
-  z-index:1000;
-  transition:.5s;
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 22px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(246,242,233,0.75);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  transition: all 0.4s ease;
 }
 
-header.scrolled{
-  background:rgba(246,243,237,.95);
-  box-shadow:0 20px 50px rgba(0,0,0,.08);
+header.scrolled {
+  backdrop-filter: blur(14px);
+  background: rgba(246,242,233,0.95);
 }
 
-.logo{
-  font-family:'Playfair Display',serif;
-  letter-spacing:4px;
-  font-size:18px;
+.logo {
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 6px;
+  font-size: 20px;
 }
 
-nav a{
-  margin-left:40px;
-  text-decoration:none;
-  color:var(--text);
-  font-size:14px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  transition:.3s;
+nav a {
+  text-decoration: none;
+  color: #1a1a1a;
+  margin-left: 40px;
+  letter-spacing: 2px;
+  font-size: 13px;
+  transition: 0.3s ease;
 }
 
-nav a:hover{color:var(--accent);}
+nav a:hover {
+  opacity: 0.6;
+}
 
 /* ================= HERO ================= */
 
-.hero{
-  height:100vh;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  overflow:hidden;
+.hero {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  overflow: hidden;
 }
 
-.hero-bg{
-  position:absolute;
-  inset:0;
-  background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
-  transform:scale(1.1);
-  transition:transform .2s ease-out;
+.hero-bg {
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover no-repeat;
+  top: -5%;
+  left: -5%;
+  z-index: -1;
+  transition: transform 0.4s ease;
 }
 
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,.25),rgba(0,0,0,.5));
+.hero-content {
+  max-width: 700px;
 }
 
-.hero-content{
-  position:relative;
-  color:white;
-  max-width:900px;
-  padding:0 8%;
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 56px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  line-height: 1.2;
 }
 
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:80px;
-  font-weight:500;
-  letter-spacing:1px;
-  line-height:1.1;
-  margin-bottom:30px;
+.hero p {
+  font-size: 18px;
+  margin-bottom: 40px;
 }
 
-.hero p{
-  font-size:22px;
-  font-weight:300;
-  letter-spacing:1px;
+.cta-btn {
+  padding: 16px 42px;
+  border-radius: 40px;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  background: linear-gradient(to right, #d4af37, #f1d27a);
+  color: white;
+  transition: all 0.4s ease;
 }
 
-/* ================= SIGNATURE MOMENT ================= */
-
-.signature{
-  padding:220px 8%;
-  text-align:center;
+.cta-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(212,175,55,0.3);
 }
 
-.signature h2{
-  font-family:'Playfair Display',serif;
-  font-size:48px;
-  margin-bottom:40px;
-}
+/* ================= SECTION DIVIDER ================= */
 
-.signature p{
-  max-width:800px;
-  margin:auto;
-  font-size:20px;
-  line-height:1.9;
-  color:#333;
+.section-divider {
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, #d4af37, transparent);
+  margin: 120px 0;
 }
 
 /* ================= EXPERIENCE ================= */
 
-.experience{
-  padding:220px 8%;
+.experience {
+  padding: 140px 8%;
+  display: flex;
+  justify-content: center;
 }
 
-.experience-card{
-  background:white;
-  padding:100px;
-  border-radius:50px;
-  box-shadow:0 80px 160px rgba(0,0,0,.12);
-  transition:.6s ease;
+.experience-card {
+  background: white;
+  padding: 80px;
+  border-radius: 40px;
+  max-width: 800px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.08);
 }
 
-.experience-card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 100px 200px rgba(0,0,0,.18);
+.typewriter {
+  font-size: 20px;
+  line-height: 1.9;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  white-space: pre-line;
 }
 
-.experience-card p{
-  font-size:20px;
-  line-height:1.9;
+.typewriter.visible {
+  opacity: 1;
 }
 
-/* ================= BOOKING ================= */
+/* ================= FOOTER ================= */
 
-.booking{
-  padding:220px 8%;
-  text-align:center;
+footer {
+  padding: 100px 8%;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
-.booking-box{
-  background:white;
-  padding:100px;
-  border-radius:50px;
-  box-shadow:0 60px 140px rgba(0,0,0,.08);
-  max-width:900px;
-  margin:auto;
-}
-
-.booking-box h2{
-  font-family:'Playfair Display',serif;
-  font-size:48px;
-  margin-bottom:60px;
-}
-
-.booking input,
-.booking textarea{
-  width:100%;
-  padding:22px 26px;
-  margin:18px 0;
-  border-radius:25px;
-  border:1px solid rgba(0,0,0,.08);
-  background:#faf8f4;
-  font-size:16px;
-  transition:.3s;
-}
-
-.booking input:focus,
-.booking textarea:focus{
-  outline:none;
-  border-color:var(--accent);
-  box-shadow:0 0 0 5px rgba(202,166,75,.15);
-}
-
-.booking button{
-  margin-top:30px;
-  padding:22px 60px;
-  border-radius:60px;
-  border:none;
-  background:linear-gradient(135deg,#caa64b,#e5c97a);
-  color:white;
-  font-weight:600;
-  letter-spacing:1px;
-  cursor:pointer;
-  transition:.4s cubic-bezier(.22,1,.36,1);
-}
-
-.booking button:hover{
-  transform:translateY(-6px);
-  box-shadow:0 30px 80px rgba(202,166,75,.4);
-}
-
-/* ================= WHATSAPP ================= */
-
-.whatsapp{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  background:linear-gradient(135deg,#caa64b,#e5c97a);
-  padding:16px 28px;
-  border-radius:50px;
-  color:white;
-  font-weight:600;
-  text-decoration:none;
-  box-shadow:0 20px 50px rgba(202,166,75,.4);
-  transition:.3s;
-}
-
-.whatsapp:hover{transform:translateY(-4px);}
-
-/* ================= MOBILE ================= */
-
-@media(max-width:768px){
-
-.hero h1{font-size:44px;}
-.hero p{font-size:18px;}
-
-.signature,
-.experience,
-.booking{padding:140px 6%;}
-
-.experience-card,
-.booking-box{padding:60px 30px;}
-
+footer a {
+  text-decoration: none;
+  color: #1a1a1a;
+  margin: 0 15px;
 }
 
 </style>
@@ -256,78 +185,102 @@ nav a:hover{color:var(--accent);}
 <header>
   <div class="logo">SUNNY ROADS ADVENTURES</div>
   <nav>
-    <a href="#signature">Moment</a>
-    <a href="#experience">Experience</a>
-    <a href="#booking">Reserve</a>
+    <a href="#experience">EXPERIENCE</a>
+    <a href="#reserve">RESERVE</a>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1>Where the World Disappears</h1>
-    <p>A private jungle sanctuary reserved for the few.</p>
+    <h1>Not Just a 4×4 Tour.  
+    A Private Journey Into the Wild.</h1>
+    <p>Exclusive rainforest immersion designed for those who seek more than sightseeing — they seek moments.</p>
+    <button class="cta-btn" onclick="scrollToReserve()">RESERVE YOUR EXPERIENCE</button>
   </div>
 </section>
 
-<section class="signature" id="signature">
-  <h2>The Moment You’ll Never Forget</h2>
-  <p>
-    The jungle opens. The waterfall reveals itself.
-    No other voices. No rush. No schedule.
-    Just you, standing in a place that feels untouched by time.
-    <br><br>
-    This is not transportation.
-    This is arrival.
-  </p>
-</section>
+<div class="section-divider"></div>
 
 <section class="experience" id="experience">
   <div class="experience-card">
-    <p>
-      A curated private journey deep into hidden rainforest.
-      Guided access to secluded waterfalls.
-      Crystal natural pools.
-      A refined gourmet picnic prepared exclusively for you.
-      <br><br>
-      Every detail intentional.
-      Every step unhurried.
-      Every moment yours.
-    </p>
+    <p id="typeText" class="typewriter"></p>
   </div>
 </section>
 
-<section class="booking" id="booking">
-  <div class="booking-box">
-    <h2>Reserve Your Private Escape</h2>
-    <input type="text" placeholder="Full Name">
-    <input type="email" placeholder="Email">
-    <textarea rows="4" placeholder="Preferred date & special requests"></textarea>
-    <button>Request Private Booking</button>
-  </div>
+<div class="section-divider"></div>
+
+<section id="reserve" style="padding:140px 8%; text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif; font-size:40px; margin-bottom:30px;">
+    Your Moment Awaits
+  </h2>
+  <p style="margin-bottom:40px;">Message us directly to curate your private adventure.</p>
+  <button class="cta-btn" onclick="window.location.href='https://wa.me/your-number'">
+    WhatsApp Us
+  </button>
 </section>
 
-<a href="https://wa.me/YOURNUMBER" class="whatsapp">WhatsApp</a>
+<footer>
+  <p>© 2026 Sunny Roads Adventures</p>
+</footer>
 
 <script>
 
-/* Header scroll effect */
-const header=document.querySelector("header");
-window.addEventListener("scroll",()=>{
-  if(window.scrollY>40){
+/* Scroll Header Blur */
+const header = document.querySelector("header");
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 40) {
     header.classList.add("scrolled");
-  }else{
+  } else {
     header.classList.remove("scrolled");
   }
 });
 
-/* Parallax depth */
-const heroBg=document.getElementById("heroBg");
-window.addEventListener("scroll",()=>{
-  let offset=window.scrollY;
-  heroBg.style.transform="scale(1.1) translateY("+offset*0.15+"px)";
+/* Hero Parallax */
+const heroBg = document.getElementById("heroBg");
+window.addEventListener("scroll", () => {
+  let offset = window.scrollY;
+  heroBg.style.transform = "scale(1.1) translateY(" + offset * 0.15 + "px)";
 });
+
+/* Scroll to Reserve */
+function scrollToReserve() {
+  document.getElementById("reserve").scrollIntoView({ behavior: "smooth" });
+}
+
+/* Cinematic Typewriter */
+const text = `A curated private journey deep into hidden rainforest.
+Guided access to secluded waterfalls.
+Crystal natural pools.
+A refined gourmet picnic prepared exclusively for you.
+
+Every detail intentional.
+Every step unhurried.
+Every moment yours.`;
+
+const typeElement = document.getElementById("typeText");
+let started = false;
+let index = 0;
+
+function typeWriter() {
+  if (index < text.length) {
+    typeElement.innerHTML += text.charAt(index);
+    index++;
+    setTimeout(typeWriter, 28);
+  }
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !started) {
+      started = true;
+      typeElement.classList.add("visible");
+      typeWriter();
+    }
+  });
+}, { threshold: 0.4 });
+
+observer.observe(typeElement);
 
 </script>
 
