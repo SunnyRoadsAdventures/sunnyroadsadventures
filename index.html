@@ -1,552 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-
-<style>
-
-/* ================= BASE ================= */
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  font-family: 'Inter', sans-serif;
-  background:#f6f1e8;
-  color:#1c1c1c;
-  overflow-x:hidden;
-}
-
-/* Subtle paper grain texture */
-body::before {
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-  opacity:0.15;
-  pointer-events:none;
-  z-index:1;
-}
-
-/* ================= HEADER ================= */
-
-header {
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:28px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(246,241,232,0.85);
-  backdrop-filter:blur(10px);
-  z-index:1000;
-  transition:all .4s ease;
-}
-
-.logo {
-  font-family:'Cormorant Garamond', serif;
-  letter-spacing:6px;
-  font-size:20px;
-}
-
-nav a {
-  text-decoration:none;
-  margin-left:40px;
-  color:#111;
-  letter-spacing:2px;
-  font-size:13px;
-  transition:.3s;
-}
-
-nav a:hover { opacity:.6; }
-
-/* ================= HERO ================= */
-
-.hero {
-  height:100vh;
-  position:relative;
-  overflow:hidden;
-}
-
-.hero-bg {
-  position:absolute;
-  inset:0;
-  background:url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e") center/cover no-repeat;
-  transform:scale(1.1);
-  transition:transform .2s linear;
-}
-
-.hero-overlay {
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.45));
-}
-
-.hero-content {
-  position:relative;
-  z-index:2;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  color:white;
-  text-align:center;
-}
-
-.hero-content h1 {
-  font-family:'Cormorant Garamond', serif;
-  font-size:64px;
-  letter-spacing:6px;
-  font-weight:300;
-  margin-bottom:30px;
-}
-
-.hero-content button {
-  padding:16px 48px;
-  border:none;
-  background:linear-gradient(135deg,#d4af37,#f3d67a);
-  border-radius:40px;
-  font-size:13px;
-  letter-spacing:3px;
-  cursor:pointer;
-  transition:.4s;
-}
-
-.hero-content button:hover {
-  transform:translateY(-3px);
-}
-
-/* ================= GOLD DIVIDER ================= */
-
-.gold-divider {
-  height:2px;
-  width:200px;
-  margin:120px auto 80px;
-  background:linear-gradient(to right, transparent, #d4af37, transparent);
-  opacity:.7;
-}
-
-/* ================= EXPERIENCE ================= */
-
-.experience-section {
-  padding:0 8% 160px;
-  display:flex;
-  justify-content:center;
-  position:relative;
-  z-index:2;
-}
-
-.experience-card {
-  background:white;
-  padding:110px 10%;
-  border-radius:40px;
-  max-width:1100px;
-  width:100%;
-  box-shadow:0 60px 140px rgba(0,0,0,0.12);
-  position:relative;
-  opacity:0;
-  transform:translateY(60px);
-  transition:all 1.8s ease;
-}
-
-.experience-card.visible {
-  opacity:1;
-  transform:translateY(0);
-}
-
-.experience-card h2 {
-  font-family:'Cormorant Garamond', serif;
-  font-size:40px;
-  font-weight:400;
-  margin-bottom:50px;
-  letter-spacing:3px;
-}
-
-.type-text {
-  font-size:18px;
-  line-height:2;
-  letter-spacing:.5px;
-  min-height:260px;
-  white-space:pre-line;
-}
-
-.cursor {
-  display:inline-block;
-  width:2px;
-  height:20px;
-  background:#111;
-  animation:blink 1s infinite;
-}
-
-@keyframes blink {
-  0%,100%{opacity:1;}
-  50%{opacity:0;}
-}
-
-/* Final glow shimmer */
-.glow {
-  background:linear-gradient(90deg, #111, #d4af37, #111);
-  background-size:200% auto;
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  animation:shimmer 4s linear infinite;
-}
-
-@keyframes shimmer {
-  to { background-position:200% center; }
-}
-
-/* Floating gold dust */
-.dust {
-  position:fixed;
-  width:4px;
-  height:4px;
-  background:#d4af37;
-  border-radius:50%;
-  opacity:0.15;
-  pointer-events:none;
-  animation:float 18s linear infinite;
-}
-
-@keyframes float {
-  from { transform:translateY(100vh); }
-  to { transform:translateY(-10vh); }
-}
-@keyframes float {
-  from { transform:translateY(100vh); }
-  to { transform:translateY(-10vh); }
-}
-
-/* ================= RESERVE SECTION ================= */
-
-.reserve-section {
-   ...
-}
-
-.form-group {
-   ...
-}
-
-.reserve-btn {
-   ...
-}
-
-.whatsapp-book a {
-   ...
-}
-
-
-/* PREMIUM BOOKING */
-
-.reserve-section {
-    background: linear-gradient(to bottom, #f5f3ee, #e8e2d8);
-    padding: 120px 10%;
-}
-
-.booking-card {
-    background: rgba(255,255,255,0.6);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(200,170,100,0.4);
-    border-radius: 20px;
-    padding: 60px;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.08);
-}
-
-.booking-card h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
-}
-
-.booking-card input,
-.booking-card select {
-    width: 100%;
-    padding: 18px;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    border: 1px solid rgba(0,0,0,0.1);
-    font-size: 16px;
-    background: rgba(255,255,255,0.8);
-}
-
-.reserve-btn {
-    background: linear-gradient(90deg, #c6a75e, #e4c87a);
-    border: none;
-    padding: 18px;
-    border-radius: 50px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.reserve-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(200,170,100,0.4);
-}
-
-.whatsapp-btn {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 14px 28px;
-    background: linear-gradient(90deg,#25D366,#1ebe5b);
-    color: white;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.whatsapp-btn:hover {
-    transform: scale(1.05);
-}
-</style>
-</head>
-<body>
-
-<header>
-  <div class="logo">SUNNY ROADS ADVENTURES</div>
-  <nav>
-    <a href="#experience">EXPERIENCE</a>
-    <a href="#reserve">RESERVE</a>
-  </nav>
-</header>
-
+<!-- HERO SECTION -->
 <section class="hero">
-  <div class="hero-bg" id="heroBg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <h1>Elite Jungle Immersion</h1>
-    <button onclick="scrollToReserve()">BEGIN EXPERIENCE</button>
-  </div>
-</section>
+    <div class="gold-particles"></div>
 
-<section class="horizontal-scroll">
-    <h2>Curated Destinations</h2>
-    <div class="scroll-container">
-        <div class="tour-card">Popoyo</div>
-        <div class="tour-card">Ometepe</div>
-        <div class="tour-card">Ojo de Agua</div>
-        <div class="tour-card">Hidden Waterfalls</div>
-        <div class="tour-card">Private Volcano Routes</div>
+    <div class="hero-content">
+        <h1 id="typedText"></h1>
+
+        <p class="hero-sub fade-up">
+            Private expedition design. Crafted without compromise.
+        </p>
+
+        <a href="#experience" class="hero-btn fade-up">
+            Enter Your Journey
+        </a>
     </div>
 </section>
 
-.horizontal-scroll {
-    padding: 120px 0;
-    background: #fff;
-    overflow: hidden;
-}
 
-.scroll-container {
-    display: flex;
-    gap: 40px;
-    overflow-x: auto;
-    padding: 40px;
-    scroll-behavior: smooth;
-}
+<!-- BESPOKE PHILOSOPHY -->
+<section class="bespoke fade-up">
+    <div class="container">
+        <h2>We Follow You.</h2>
 
-.tour-card {
-    min-width: 300px;
-    height: 400px;
-    background: linear-gradient(145deg,#f4efe6,#e6dccd);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-    transition: 0.4s;
-}
-
-.tour-card:hover {
-    transform: scale(1.05);
-}
-
-<div class="gold-divider"></div>
-
-<section class="experience-section" id="experience">
-  <script>
-const text = "The Experience";
-const element = document.getElementById("typedText");
-
-let index = 0;
-let typingSpeed = 80;
-let scrollBoost = 0;
-
-function type() {
-    if (index < text.length) {
-        element.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(type, Math.max(15, typingSpeed - scrollBoost));
-    }
-}
-
-window.addEventListener("scroll", () => {
-    scrollBoost = Math.min(60, window.scrollY / 20);
-
-    if (window.scrollY > 300 && index < text.length) {
-        element.innerHTML = text;
-        index = text.length;
-    }
-});
-
-type();
-</script>
-  </div>
+        <p>
+            You do not join our tours.
+            We engineer your expedition around you.
+            Your pace. Your curiosity. Your threshold.
+            Every route adjusted. Every moment intentional.
+            This is private terrain, redesigned to mirror your ambition.
+        </p>
+    </div>
 </section>
-<div class="gold-divider"></div>
 
-<section class="reserve-section" id="reserve">
 
-  <div class="reserve-container">
+<!-- CURATED DESTINATIONS -->
+<section class="horizontal-scroll fade-up">
+    <div class="container">
+        <h2>Curated Terrains</h2>
 
-    <h2>Private Reservation</h2>
-    <p class="reserve-intro">
-      Limited daily availability. Each experience is personally prepared.
-      Secure your preferred date below.
-    </p>
+        <div class="scroll-container">
+            <div class="tour-card">Popoyo</div>
+            <div class="tour-card">Ometepe</div>
+            <div class="tour-card">Ojo de Agua</div>
+            <div class="tour-card">Volcanic Ridge Routes</div>
+            <div class="tour-card">Hidden Waterfall Access</div>
+        </div>
+    </div>
+</section>
 
-    <form class="reserve-form">
 
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" required>
-      </div>
-
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" required>
-      </div>
-
-      <div class="form-group">
-        <label>Preferred Date</label>
-        <input type="date" required>
-      </div>
-
-      <div class="form-group">
-        <label>Number of Guests</label>
-        <select required>
-          <option value="">Select</option>
-          <option>1 Guest</option>
-          <option>2 Guests</option>
-          <option>3 Guests</option>
-          <option>4 Guests</option>
-          <option>5+ Guests</option>
-        </select>
-      </div>
-
-      <button type="submit" class="reserve-btn">
-        REQUEST PRIVATE EXPERIENCE
-      </button>
-
-    </form>
-
-    <div class="whatsapp-book">
-      <p>Prefer direct contact?</p>
-      <a href="https://wa.me/50558365522" target="_blank">
-        Book via WhatsApp
-      </a>
+<!-- BRAND PILLARS -->
+<section class="pillars fade-up">
+    <div class="pillar">
+        <h3>Precision</h3>
+        <p>
+            Every route is pre-scouted, calibrated, and privately structured.
+        </p>
     </div>
 
-  </div>
+    <div class="pillar">
+        <h3>Privacy</h3>
+        <p>
+            No crowds. No rigid schedules. No shared itineraries.
+        </p>
+    </div>
 
+    <div class="pillar">
+        <h3>Personalization</h3>
+        <p>
+            Your terrain adapts to you — not the other way around.
+        </p>
+    </div>
 </section>
-</section>
 
-<!-- Floating dust particles -->
-<script>
-for(let i=0;i<18;i++){
-  let d=document.createElement("div");
-  d.className="dust";
-  d.style.left=Math.random()*100+"vw";
-  d.style.animationDuration=(12+Math.random()*12)+"s";
-  d.style.animationDelay=Math.random()*10+"s";
-  document.body.appendChild(d);
-}
-</script>
 
-<script>
-
-/* Hero Cinematic Zoom */
-window.addEventListener("scroll",()=>{
-  document.getElementById("heroBg").style.transform =
-  "scale(1.15) translateY(" + window.scrollY * 0.2 + "px)";
-});
-
-/* Smooth Scroll */
-function scrollToReserve(){
-  document.getElementById("experience").scrollIntoView({behavior:"smooth"});
-}
-
-/* Cinematic Type Engine */
-
-const text=`A private journey, crafted with intention.
-
-Beyond the visible trails.
-Beyond expectation.
-
-Into rainforest paths where light filters softly through ancient canopy.
-
-Waterfalls speak in quiet echoes.
-Crystal pools remain undisturbed.
-
-A refined gourmet setting prepared in silence —
-exclusively for you.
-
-No rush.
-No noise.
-No performance.
-
-Only presence.
-
-Every detail intentional.
-Every step unhurried.
-
-Every moment — entirely yours.`;
-
-let index=0;
-const el=document.getElementById("typeText");
-const cursor=document.getElementById("cursor");
-const card=document.querySelector(".experience-card");
-
-function delay(c){
-  if(c===".") return 700;
-  if(c===",") return 350;
-  if(c==="\n") return 500;
-  return 60+Math.random()*40;
-}
-
-function type(){
-  if(index<text.length){
-    let char=text.charAt(index);
-    el.innerHTML+=char;
-    index++;
-    setTimeout(type,delay(char));
-  }else{
-    cursor.style.display="none";
-    el.innerHTML=el.innerHTML.replace(
-      "Every moment — entirely yours.",
-      "<span class='glow'>Every moment — entirely yours.</span>"
-    );
-  }
-}
-
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      card.classList.add("visible");
-      setTimeout(type,1500);
-    }
-  });
-},{threshold:.7});
-
-observer.observe(card);
-
-</script>
-
-</body>
-</html>
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/YOURNUMBER" 
+   class="floating-whatsapp" 
+   target="_blank">
+   WhatsApp
+</a>
