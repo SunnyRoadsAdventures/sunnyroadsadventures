@@ -5,43 +5,66 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunny Roads Adventures</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;500&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg: #f6f2e9;
-  --text: #1c1c1c;
-  --muted: #6e6e6e;
-  --accent: #caa64b;
-  --divider: linear-gradient(90deg,#e8d8b0,#caa64b,#e8d8b0);
+:root{
+  --bg:#f6f2e9;
+  --text:#1b1b1b;
+  --muted:#6e6e6e;
+  --accent:#caa64b;
+  --glass:rgba(255,255,255,.7);
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
   font-family:'Inter',sans-serif;
   background:var(--bg);
   color:var(--text);
   overflow-x:hidden;
+  cursor:none;
+}
+
+/* ===== CUSTOM CURSOR ===== */
+
+.cursor{
+  width:18px;
+  height:18px;
+  border:2px solid var(--accent);
+  border-radius:50%;
+  position:fixed;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+  transition:.08s ease;
+  z-index:9999;
 }
 
 /* ===== HEADER ===== */
+
 header{
   position:fixed;
   width:100%;
-  padding:25px 8%;
+  padding:28px 8%;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  backdrop-filter:blur(15px);
-  background:rgba(255,255,255,0.65);
+  backdrop-filter:blur(18px);
+  background:rgba(255,255,255,.6);
+  transition:.4s;
   z-index:1000;
+}
+
+header.scrolled{
+  padding:18px 8%;
+  background:rgba(255,255,255,.85);
 }
 
 .logo{
   font-family:'Playfair Display',serif;
   font-size:26px;
-  font-weight:600;
 }
 
 nav a{
@@ -61,17 +84,18 @@ nav a::after{
   background:var(--accent);
   transition:.3s;
 }
-nav a:hover::after{ width:100%; }
+nav a:hover::after{width:100%;}
 
-/* ===== HERO VIDEO ===== */
+/* ===== HERO ===== */
+
 .hero{
   height:100vh;
   position:relative;
-  overflow:hidden;
   display:flex;
   align-items:center;
   padding:0 8%;
   color:#fff;
+  overflow:hidden;
 }
 
 .hero video{
@@ -79,8 +103,7 @@ nav a:hover::after{ width:100%; }
   width:100%;
   height:100%;
   object-fit:cover;
-  top:0;
-  left:0;
+  top:0;left:0;
   z-index:-2;
 }
 
@@ -89,7 +112,7 @@ nav a:hover::after{ width:100%; }
   position:absolute;
   width:100%;
   height:100%;
-  background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.3));
+  background:linear-gradient(to bottom,rgba(0,0,0,.45),rgba(0,0,0,.35));
   z-index:-1;
 }
 
@@ -100,52 +123,50 @@ nav a:hover::after{ width:100%; }
 
 .hero h1{
   font-family:'Playfair Display',serif;
-  font-size:68px;
-  line-height:1.1;
+  font-size:70px;
+  line-height:1.05;
   margin-bottom:30px;
 }
 
-.hero p{ font-size:20px; margin-bottom:40px; }
+.hero p{
+  font-size:20px;
+  margin-bottom:40px;
+  opacity:.9;
+}
 
 .btn{
-  padding:18px 44px;
+  padding:18px 46px;
   background:linear-gradient(135deg,#caa64b,#e5c97a);
   border:none;
   border-radius:50px;
   color:#fff;
   font-weight:600;
   text-decoration:none;
-  box-shadow:0 15px 40px rgba(202,166,75,.5);
+  box-shadow:0 18px 50px rgba(202,166,75,.5);
   transition:.4s;
 }
-.btn:hover{ transform:translateY(-4px); }
+.btn:hover{transform:translateY(-5px);}
 
 /* ===== DIVIDER ===== */
+
 .divider{
   height:4px;
-  width:100%;
-  background:var(--divider);
-  margin:0;
+  background:linear-gradient(to right,#e8d8b0,#caa64b,#e8d8b0);
 }
 
 /* ===== SECTIONS ===== */
-section{ padding:180px 8%; }
+
+section{padding:180px 8%;}
 
 .section-title{
   font-family:'Playfair Display',serif;
   font-size:46px;
   text-align:center;
-  margin-bottom:90px;
-}
-
-/* ===== PARALLAX SECTION ===== */
-.parallax{
-  background:url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') center/cover fixed;
-  color:#fff;
-  text-align:center;
+  margin-bottom:100px;
 }
 
 /* ===== CARDS ===== */
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -153,74 +174,69 @@ section{ padding:180px 8%; }
 }
 
 .card{
-  background:rgba(255,255,255,.8);
+  background:var(--glass);
   backdrop-filter:blur(20px);
   padding:60px;
   border-radius:28px;
-  box-shadow:0 25px 70px rgba(0,0,0,.1);
-  opacity:0;
+  box-shadow:0 30px 80px rgba(0,0,0,.1);
   transform:translateY(40px);
+  opacity:0;
   transition:.6s;
 }
 
 .card.visible{
-  opacity:1;
   transform:translateY(0);
+  opacity:1;
 }
 
-/* ===== SLIDER ===== */
+/* ===== GALLERY ===== */
+
 .slider{
   position:relative;
-  max-width:900px;
+  max-width:1000px;
   margin:auto;
   overflow:hidden;
   border-radius:30px;
-  box-shadow:0 40px 100px rgba(0,0,0,.15);
+  box-shadow:0 40px 120px rgba(0,0,0,.2);
 }
 
-.slide{
-  display:none;
-}
-.slide img{
-  width:100%;
-  display:block;
-}
+.slide{display:none;}
+.slide img{width:100%;display:block;}
+.active{display:block;}
 
-.active{ display:block; }
+/* ===== BOOKING ===== */
 
-/* ===== BOOKING FORM ===== */
 .booking{
   background:#fff;
   border-radius:40px;
   padding:120px;
-  box-shadow:0 40px 100px rgba(0,0,0,.1);
+  box-shadow:0 40px 100px rgba(0,0,0,.12);
   text-align:center;
 }
 
-.booking input, .booking textarea{
+.booking input,.booking textarea{
   width:100%;
-  padding:15px;
-  margin:10px 0;
-  border-radius:10px;
+  padding:16px;
+  margin:12px 0;
+  border-radius:12px;
   border:1px solid #ddd;
 }
 
-.booking button{
-  margin-top:20px;
+.payment-options{
+  margin-top:40px;
+  font-weight:500;
+  color:var(--muted);
 }
 
-/* ===== WHATSAPP ===== */
-.whatsapp{
-  position:fixed;
-  bottom:30px;
-  right:30px;
-  background:#caa64b;
-  padding:16px 20px;
-  border-radius:50px;
-  color:#fff;
-  text-decoration:none;
-  box-shadow:0 15px 40px rgba(202,166,75,.5);
+/* ===== FOOTER ===== */
+
+footer{
+  padding:100px 8%;
+  text-align:center;
+  color:var(--muted);
 }
+
+/* ===== ANIMATION ===== */
 
 @keyframes fadeUp{
   from{opacity:0;transform:translateY(40px);}
@@ -231,7 +247,9 @@ section{ padding:180px 8%; }
 
 <body>
 
-<header>
+<div class="cursor"></div>
+
+<header id="header">
   <div class="logo">Sunny Roads Adventures</div>
   <nav>
     <a href="#experiences">Experiences</a>
@@ -245,8 +263,8 @@ section{ padding:180px 8%; }
     <source src="https://cdn.coverr.co/videos/coverr-tropical-beach-1571/1080p.mp4" type="video/mp4">
   </video>
   <div class="hero-content">
-    <h1>Elevated Tropical Experiences</h1>
-    <p>Private luxury journeys crafted for exceptional travelers.</p>
+    <h1>Luxury Travel Without Compromise</h1>
+    <p>Private curated experiences crafted with precision, elegance, and exclusivity.</p>
     <a href="#booking" class="btn">Begin Your Journey</a>
   </div>
 </section>
@@ -256,16 +274,10 @@ section{ padding:180px 8%; }
 <section id="experiences">
   <h2 class="section-title">Signature Experiences</h2>
   <div class="grid">
-    <div class="card"><h3>Waterfall Escape</h3><p>Hidden rainforest immersion with curated comfort.</p></div>
-    <div class="card"><h3>Luxury Coastal Route</h3><p>Secluded beaches and refined discovery.</p></div>
-    <div class="card"><h3>Adventure Immersion</h3><p>Energy balanced with exclusivity.</p></div>
+    <div class="card"><h3>Waterfall Escape</h3><p>Hidden rainforest immersion.</p></div>
+    <div class="card"><h3>Coastal Discovery</h3><p>Secluded beaches refined.</p></div>
+    <div class="card"><h3>Adventure Immersion</h3><p>Energy meets exclusivity.</p></div>
   </div>
-</section>
-
-<div class="divider"></div>
-
-<section class="parallax">
-  <h2 class="section-title">Where Nature Meets Refinement</h2>
 </section>
 
 <div class="divider"></div>
@@ -290,16 +302,25 @@ section{ padding:180px 8%; }
       <textarea rows="4" placeholder="Describe Your Ideal Experience"></textarea>
       <button class="btn" type="submit">Submit Request</button>
     </form>
+    <div class="payment-options">
+      Future Payment Options:<br>
+      Revolut • PayPal
+    </div>
   </div>
 </section>
 
-<footer style="text-align:center;padding:80px;">
+<footer>
   © 2026 Sunny Roads Adventures — Crafted With Excellence
 </footer>
 
-<a href="#" class="whatsapp">WhatsApp</a>
-
 <script>
+/* Custom Cursor */
+const cursor=document.querySelector('.cursor');
+document.addEventListener('mousemove',e=>{
+  cursor.style.left=e.clientX+'px';
+  cursor.style.top=e.clientY+'px';
+});
+
 /* Scroll Reveal */
 const cards=document.querySelectorAll('.card');
 window.addEventListener('scroll',()=>{
@@ -311,19 +332,23 @@ window.addEventListener('scroll',()=>{
   });
 });
 
+/* Header shrink */
+window.addEventListener('scroll',()=>{
+  document.getElementById('header').classList.toggle('scrolled',window.scrollY>50);
+});
+
 /* Slider */
 let slideIndex=0;
 const slides=document.querySelectorAll('.slide');
 function showSlides(){
   slides.forEach(s=>s.classList.remove('active'));
   slideIndex++;
-  if(slideIndex>slides.length) slideIndex=1;
+  if(slideIndex>slides.length)slideIndex=1;
   slides[slideIndex-1].classList.add('active');
   setTimeout(showSlides,4000);
 }
 showSlides();
 
-/* Form Validation */
 document.getElementById('bookingForm').addEventListener('submit',function(e){
   e.preventDefault();
   alert("Thank you. We will contact you shortly.");
