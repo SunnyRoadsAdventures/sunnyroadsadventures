@@ -2,12 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunny Roads Adventures</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunny Roads Adventures</title>
 
-    <style>
-        /* ================= HERO ================= */
+<style>
+
+/* ================= HERO ================= */
 
 .hero {
     height: 100vh;
@@ -160,30 +161,13 @@
     filter: blur(0);
 }
 
-/* ================= GOLD PARTICLES ================= */
-
-.gold-particles span {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: #d4af37;
-    bottom: -10px;
-    animation: rise linear infinite;
-}
-
-@keyframes rise {
-    from { transform: translateY(0); opacity:1; }
-    to { transform: translateY(-120vh); opacity:0; }
-}
-    </style>
-
+</style>
 </head>
 
 <body>
+
 <!-- HERO SECTION -->
 <section class="hero">
-    <div class="gold-particles"></div>
-
     <div class="hero-content">
         <h1 id="typedText"></h1>
 
@@ -197,119 +181,71 @@
     </div>
 </section>
 
-
-<!-- BESPOKE PHILOSOPHY -->
+<!-- BESPOKE -->
 <section class="bespoke fade-up">
-    <div class="container">
-        <h2>We Follow You.</h2>
-
-        <p>
-            You do not join our tours.
-            We engineer your expedition around you.
-            Your pace. Your curiosity. Your threshold.
-            Every route adjusted. Every moment intentional.
-            This is private terrain, redesigned to mirror your ambition.
-        </p>
-    </div>
+    <h2>We Follow You.</h2>
+    <p>
+        You do not join our tours.
+        We engineer your expedition around you.
+        Your pace. Your curiosity. Your threshold.
+        Every route adjusted. Every moment intentional.
+        This is private terrain, redesigned to mirror your ambition.
+    </p>
 </section>
 
-
-<!-- CURATED DESTINATIONS -->
+<!-- DESTINATIONS -->
 <section class="horizontal-scroll fade-up">
-    <div class="container">
-        <h2>Curated Terrains</h2>
-
-        <div class="scroll-container">
-            <div class="tour-card">Popoyo</div>
-            <div class="tour-card">Ometepe</div>
-            <div class="tour-card">Ojo de Agua</div>
-            <div class="tour-card">Volcanic Ridge Routes</div>
-            <div class="tour-card">Hidden Waterfall Access</div>
-        </div>
+    <h2>Curated Terrains</h2>
+    <div class="scroll-container">
+        <div class="tour-card">Popoyo</div>
+        <div class="tour-card">Ometepe</div>
+        <div class="tour-card">Ojo de Agua</div>
+        <div class="tour-card">Volcanic Ridge Routes</div>
+        <div class="tour-card">Hidden Waterfall Access</div>
     </div>
 </section>
 
-
-<!-- BRAND PILLARS -->
+<!-- PILLARS -->
 <section class="pillars fade-up">
     <div class="pillar">
         <h3>Precision</h3>
-        <p>
-            Every route is pre-scouted, calibrated, and privately structured.
-        </p>
+        <p>Every route is pre-scouted, calibrated, and privately structured.</p>
     </div>
 
     <div class="pillar">
         <h3>Privacy</h3>
-        <p>
-            No crowds. No rigid schedules. No shared itineraries.
-        </p>
+        <p>No crowds. No rigid schedules. No shared itineraries.</p>
     </div>
 
     <div class="pillar">
         <h3>Personalization</h3>
-        <p>
-            Your terrain adapts to you — not the other way around.
-        </p>
+        <p>Your terrain adapts to you — not the other way around.</p>
     </div>
 </section>
 
-
-<!-- FLOATING WHATSAPP BUTTON -->
+<!-- WHATSAPP -->
 <a href="https://wa.me/YOURNUMBER" 
    class="floating-whatsapp" 
    target="_blank">
    WhatsApp
 </a>
+
 <script>
+
+// ===== TYPEWRITER =====
+
 const text = "You Do Not Follow Us.";
 const element = document.getElementById("typedText");
 
 let index = 0;
-let baseSpeed = 90;
-let boost = 0;
 
 function typeWriter(){
     if(index < text.length){
         element.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, Math.max(15, baseSpeed - boost));
+        setTimeout(typeWriter, 80);
     }
 }
-
-window.addEventListener("scroll", () => {
-    boost = Math.min(70, window.scrollY / 10);
-    if(window.scrollY > 400){
-        element.innerHTML = text;
-        index = text.length;
-    }
-});
-
-typeWriter();
-</script>
-<script>
-const text = "You Do Not Follow Us.";
-const element = document.getElementById("typedText");
-
-let index = 0;
-let baseSpeed = 90;
-let boost = 0;
-
-function typeWriter(){
-    if(index < text.length){
-        element.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, Math.max(15, baseSpeed - boost));
-    }
-}
-
-window.addEventListener("scroll", () => {
-    boost = Math.min(70, window.scrollY / 10);
-    if(window.scrollY > 400){
-        element.innerHTML = text;
-        index = text.length;
-    }
-});
 
 typeWriter();
 
@@ -329,6 +265,8 @@ const appearOnScroll = new IntersectionObserver((entries) => {
 faders.forEach(el => {
     appearOnScroll.observe(el);
 });
+
 </script>
+
 </body>
 </html>
