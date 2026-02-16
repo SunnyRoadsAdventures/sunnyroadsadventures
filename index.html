@@ -5,11 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunny Roads Adventures</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-/* ===== GLOBAL ===== */
 
 * {
     margin: 0;
@@ -21,10 +19,65 @@ body {
     font-family: 'Inter', sans-serif;
     background: linear-gradient(180deg, #ffffff 0%, #f8f4ec 100%);
     color: #1a1a1a;
-    overflow-x: hidden;
 }
 
-/* ===== HERO ===== */
+/* ================= NAVIGATION ================= */
+
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 25px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    transition: 0.4s ease;
+    z-index: 1000;
+}
+
+nav.scrolled {
+    padding: 18px 8%;
+    background: rgba(255,255,255,0.9);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    height: 1px;
+    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
+    transition: 0.4s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ================= HERO ================= */
 
 .hero {
     height: 100vh;
@@ -37,13 +90,12 @@ body {
 
 .hero-content {
     max-width: 900px;
+    margin-top: 60px;
 }
 
 .hero h1 {
     font-family: 'Playfair Display', serif;
     font-size: 64px;
-    font-weight: 600;
-    line-height: 1.2;
     background: linear-gradient(90deg, #c6a75e, #e6d3a3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -63,7 +115,6 @@ body {
     border-radius: 50px;
     text-decoration: none;
     font-weight: 500;
-    letter-spacing: 1px;
     background: linear-gradient(90deg, #c6a75e, #e6d3a3);
     color: white;
     transition: 0.4s ease;
@@ -74,7 +125,11 @@ body {
     box-shadow: 0 15px 40px rgba(198,167,94,0.3);
 }
 
-/* ===== SECTION DIVIDER ===== */
+/* ================= SECTIONS ================= */
+
+section {
+    padding: 140px 10%;
+}
 
 .divider {
     width: 100px;
@@ -83,53 +138,35 @@ body {
     margin: 60px auto;
 }
 
-/* ===== BESPOKE ===== */
-
-.bespoke {
-    padding: 120px 20px;
+.bespoke, .experience, .pillars {
     text-align: center;
-    max-width: 900px;
-    margin: auto;
 }
 
-.bespoke h2 {
+.bespoke h2,
+.experience h2 {
     font-family: 'Playfair Display', serif;
     font-size: 42px;
     margin-bottom: 30px;
 }
 
 .bespoke p {
-    font-size: 18px;
+    max-width: 700px;
+    margin: auto;
     line-height: 1.8;
     color: #555;
-}
-
-/* ===== EXPERIENCE ===== */
-
-.experience {
-    padding: 120px 20px;
-    text-align: center;
-    background: #ffffff;
-}
-
-.experience h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    margin-bottom: 60px;
 }
 
 .experience-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 40px;
-    max-width: 1100px;
-    margin: auto;
+    margin-top: 60px;
 }
 
 .experience-card {
     padding: 40px;
     border-radius: 20px;
-    background: #ffffff;
+    background: #fff;
     box-shadow: 0 20px 60px rgba(0,0,0,0.05);
     transition: 0.4s ease;
 }
@@ -139,32 +176,18 @@ body {
     box-shadow: 0 30px 80px rgba(198,167,94,0.2);
 }
 
-.experience-card h3 {
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 15px;
-}
-
-/* ===== PILLARS ===== */
-
 .pillars {
-    padding: 120px 20px;
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     gap: 60px;
-    text-align: center;
+    flex-wrap: wrap;
 }
 
 .pillars div {
     max-width: 300px;
 }
 
-.pillars h3 {
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 15px;
-}
-
-/* ===== FADE UP ===== */
+/* ================= FADE ================= */
 
 .fade-up {
     opacity: 0;
@@ -177,7 +200,7 @@ body {
     transform: translateY(0);
 }
 
-/* ===== WHATSAPP ===== */
+/* ================= WHATSAPP ================= */
 
 .floating-whatsapp {
     position: fixed;
@@ -188,7 +211,6 @@ body {
     border-radius: 50px;
     color: white;
     text-decoration: none;
-    font-weight: 500;
     box-shadow: 0 15px 40px rgba(198,167,94,0.3);
 }
 
@@ -196,6 +218,15 @@ body {
 </head>
 
 <body>
+
+<nav id="navbar">
+    <div class="logo">SUNNY ROADS</div>
+    <div class="nav-links">
+        <a href="#experience">Experience</a>
+        <a href="#bespoke">Bespoke</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
 
 <section class="hero">
     <div class="hero-content">
@@ -209,12 +240,11 @@ body {
 
 <div class="divider"></div>
 
-<section class="bespoke fade-up">
+<section id="bespoke" class="bespoke fade-up">
     <h2>We Do Not Offer Tours.</h2>
     <p>
-        We design private expeditions tailored precisely to you.
-        Every route refined. Every detail curated.
-        Discretion. Precision. Excellence.
+        Every expedition is engineered around you. 
+        Absolute privacy. Precision. Control.
     </p>
 </section>
 
@@ -225,15 +255,12 @@ body {
     <div class="experience-grid">
         <div class="experience-card">
             <h3>Volcanic Private Routes</h3>
-            <p>Exclusive terrain access guided and pre-scouted.</p>
         </div>
         <div class="experience-card">
             <h3>Hidden Waterfall Access</h3>
-            <p>Unlisted locations reserved for private guests.</p>
         </div>
         <div class="experience-card">
             <h3>Luxury Jungle Immersion</h3>
-            <p>Refined adventure engineered around your pace.</p>
         </div>
     </div>
 </section>
@@ -247,11 +274,11 @@ body {
     </div>
     <div>
         <h3>Privacy</h3>
-        <p>No crowds. No compromises.</p>
+        <p>No compromises.</p>
     </div>
     <div>
         <h3>Personalization</h3>
-        <p>Your experience. Designed around you.</p>
+        <p>Your experience, redesigned around you.</p>
     </div>
 </section>
 
@@ -259,8 +286,13 @@ body {
 
 <script>
 
-/* Typewriter */
-const text = "You Do Not Follow Us.";
+/* NAV SCROLL EFFECT */
+window.addEventListener("scroll", function(){
+    document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
+});
+
+/* TYPEWRITER */
+const text = "Private Terrain.";
 const element = document.getElementById("typedText");
 let index = 0;
 
@@ -268,12 +300,12 @@ function typeWriter(){
     if(index < text.length){
         element.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 60);
+        setTimeout(typeWriter, 70);
     }
 }
 typeWriter();
 
-/* Scroll reveal */
+/* FADE */
 const faders = document.querySelectorAll(".fade-up");
 
 window.addEventListener("scroll", () => {
