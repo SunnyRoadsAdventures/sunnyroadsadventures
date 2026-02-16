@@ -9,11 +9,11 @@
 
 <style>
 :root {
-  --bg: #f4f1ea;
-  --text: #1a1a1a;
-  --muted: #6b6b6b;
-  --card: #ffffff;
-  --accent: #c9a84e;
+  --bg: #f6f2e9;
+  --text: #1c1c1c;
+  --muted: #6e6e6e;
+  --card: rgba(255,255,255,0.7);
+  --accent: #caa64b;
 }
 
 * {
@@ -27,15 +27,22 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
-  letter-spacing: 0.3px;
+  overflow-x: hidden;
 }
 
+/* ===== GLASS HEADER ===== */
+
 header {
-  padding: 30px 8%;
+  position: fixed;
+  width: 100%;
+  padding: 25px 8%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: transparent;
+  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.6);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  z-index: 1000;
 }
 
 .logo {
@@ -50,98 +57,150 @@ nav a {
   text-decoration: none;
   color: var(--text);
   font-weight: 500;
-  transition: 0.3s ease;
+  position: relative;
 }
 
-nav a:hover {
-  color: var(--accent);
+nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: .3s ease;
 }
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== HERO ===== */
 
 .hero {
-  height: 90vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   padding: 0 8%;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(202,166,75,0.25), transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(255,200,120,0.15), transparent 40%);
 }
 
 .hero-content {
-  max-width: 650px;
+  max-width: 700px;
+  animation: fadeUp 1.2s ease forwards;
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 56px;
-  line-height: 1.2;
+  font-size: 64px;
+  line-height: 1.15;
   margin-bottom: 30px;
 }
 
 .hero p {
-  font-size: 18px;
+  font-size: 20px;
   color: var(--muted);
-  margin-bottom: 40px;
+  margin-bottom: 45px;
 }
 
 .btn {
   display: inline-block;
-  padding: 16px 36px;
-  background: var(--accent);
+  padding: 18px 44px;
+  background: linear-gradient(135deg, #caa64b, #e5c97a);
   color: #fff;
   text-decoration: none;
-  border-radius: 40px;
+  border-radius: 50px;
   font-weight: 600;
-  transition: 0.3s ease;
+  box-shadow: 0 15px 40px rgba(202,166,75,.4);
+  transition: .4s ease;
 }
 
 .btn:hover {
-  opacity: 0.9;
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(202,166,75,.6);
 }
 
+/* ===== SECTION ===== */
+
 section {
-  padding: 160px 8%;
+  padding: 180px 8%;
 }
 
 .section-title {
   font-family: 'Playfair Display', serif;
-  font-size: 42px;
-  margin-bottom: 70px;
+  font-size: 46px;
+  margin-bottom: 90px;
   text-align: center;
 }
 
+/* ===== CARDS ===== */
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 60px;
 }
 
 .card {
+  padding: 60px;
+  border-radius: 28px;
   background: var(--card);
-  padding: 50px;
-  border-radius: 22px;
-  border: 1px solid rgba(0,0,0,0.04);
-  transition: all .4s ease;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.08);
+  transition: all .5s ease;
 }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(0,0,0,.08);
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.12);
 }
 
 .card h3 {
   font-family: 'Playfair Display', serif;
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .card p {
   color: var(--muted);
+  font-size: 16px;
 }
 
+/* ===== FOOTER ===== */
+
 footer {
-  padding: 80px 8%;
+  padding: 120px 8%;
   text-align: center;
-  color: var(--muted);
   font-size: 14px;
+  color: var(--muted);
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:768px){
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  nav {
+    display:none;
+  }
 }
 </style>
 </head>
@@ -152,44 +211,45 @@ footer {
   <div class="logo">Sunny Roads Adventures</div>
   <nav>
     <a href="#">Home</a>
-    <a href="#">Tours</a>
     <a href="#">Experiences</a>
+    <a href="#">Private Tours</a>
     <a href="#">Contact</a>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Discover Tropical Luxury Beyond The Ordinary</h1>
-    <p>Private jungle escapes, hidden waterfalls, and curated adventures designed for travelers who expect more.</p>
-    <a href="#" class="btn">Explore Experiences</a>
+    <h1>Curated Tropical Journeys For The Modern Explorer</h1>
+    <p>Private jungle escapes, hidden waterfalls, and unforgettable coastal luxury — crafted with precision and exclusivity.</p>
+    <a href="#" class="btn">Discover Experiences</a>
   </div>
 </section>
 
 <section>
   <h2 class="section-title">Signature Experiences</h2>
+
   <div class="grid">
 
     <div class="card">
       <h3>Tropical Jungle & Waterfall Escape</h3>
-      <p>Private guided access to hidden waterfalls with gourmet picnic experiences in untouched nature.</p>
+      <p>Private 4x4 access or guided trek into untouched rainforest with gourmet waterfall dining and safe cliff experiences.</p>
     </div>
 
     <div class="card">
       <h3>Luxury Coastal Discovery</h3>
-      <p>Curated beach journeys with secluded coves, premium comfort, and breathtaking ocean views.</p>
+      <p>Secluded beaches, curated ocean viewpoints, and refined comfort for travelers seeking serenity and style.</p>
     </div>
 
     <div class="card">
-      <h3>Adventure Immersion Tours</h3>
-      <p>For those who seek adrenaline and elegance in equal measure, designed with safety and exclusivity.</p>
+      <h3>Adventure Immersion Experience</h3>
+      <p>High-energy exploration balanced with safety, comfort, and elevated service.</p>
     </div>
 
   </div>
 </section>
 
 <footer>
-  © 2026 Sunny Roads Adventures. All rights reserved.
+  © 2026 Sunny Roads Adventures — Crafted With Excellence
 </footer>
 
 </body>
