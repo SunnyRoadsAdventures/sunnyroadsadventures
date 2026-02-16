@@ -266,10 +266,33 @@ nav a:hover { opacity:.6; }
 <div class="gold-divider"></div>
 
 <section class="experience-section" id="experience">
-  <div class="experience-card">
-    <h2>The Experience</h2>
-    <div class="type-text" id="typeText"></div>
-    <span class="cursor" id="cursor"></span>
+  <script>
+const text = "The Experience";
+const element = document.getElementById("typedText");
+
+let index = 0;
+let typingSpeed = 80;
+let scrollBoost = 0;
+
+function type() {
+    if (index < text.length) {
+        element.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(type, Math.max(15, typingSpeed - scrollBoost));
+    }
+}
+
+window.addEventListener("scroll", () => {
+    scrollBoost = Math.min(60, window.scrollY / 20);
+
+    if (window.scrollY > 300 && index < text.length) {
+        element.innerHTML = text;
+        index = text.length;
+    }
+});
+
+type();
+</script>
   </div>
 </section>
 <div class="gold-divider"></div>
