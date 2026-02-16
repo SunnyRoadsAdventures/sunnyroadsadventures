@@ -287,5 +287,48 @@ window.addEventListener("scroll", () => {
 
 typeWriter();
 </script>
+<script>
+const text = "You Do Not Follow Us.";
+const element = document.getElementById("typedText");
+
+let index = 0;
+let baseSpeed = 90;
+let boost = 0;
+
+function typeWriter(){
+    if(index < text.length){
+        element.innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, Math.max(15, baseSpeed - boost));
+    }
+}
+
+window.addEventListener("scroll", () => {
+    boost = Math.min(70, window.scrollY / 10);
+    if(window.scrollY > 400){
+        element.innerHTML = text;
+        index = text.length;
+    }
+});
+
+typeWriter();
+
+
+// ===== FADE IN ON SCROLL =====
+
+const faders = document.querySelectorAll(".fade-up");
+
+const appearOnScroll = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add("appear");
+        }
+    });
+}, { threshold: 0.2 });
+
+faders.forEach(el => {
+    appearOnScroll.observe(el);
+});
+</script>
 </body>
 </html>
