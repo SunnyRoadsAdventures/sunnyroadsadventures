@@ -25,7 +25,7 @@ body {
   font-family: 'Inter', sans-serif;
   background: #f6f2e9;
   color: #1a1a1a;
-  line-height: 1.7;
+  line-height: 1.8;
   overflow-x: hidden;
   opacity: 0;
   animation: pageFade 1.2s ease forwards;
@@ -98,12 +98,12 @@ nav a:hover {
 }
 
 .hero-content {
-  max-width: 720px;
+  max-width: 760px;
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 58px;
+  font-size: 60px;
   font-weight: 600;
   margin-bottom: 30px;
   line-height: 1.15;
@@ -137,27 +137,28 @@ nav a:hover {
   height: 3px;
   width: 100%;
   background: linear-gradient(to right, transparent, #d4af37, transparent);
-  margin: 140px 0;
+  margin: 150px 0;
 }
 
 /* ================= EXPERIENCE ================= */
 
 .experience {
-  padding: 140px 8%;
+  padding: 160px 8%;
   display: flex;
   justify-content: center;
 }
 
 .experience-card {
   background: white;
-  padding: 100px;
+  padding: 120px 8%;
   border-radius: 40px;
-  max-width: 820px;
+  max-width: 1100px;
+  width: 100%;
   box-shadow: 0 60px 140px rgba(0,0,0,0.12);
   position: relative;
   opacity: 0;
-  transform: translateY(50px);
-  transition: all 1.4s ease;
+  transform: translateY(60px);
+  transition: all 1.8s ease;
 }
 
 .experience-card.visible {
@@ -188,8 +189,8 @@ nav a:hover {
 }
 
 .typewriter {
-  font-size: 20px;
-  line-height: 2;
+  font-size: 21px;
+  line-height: 2.2;
   white-space: pre-line;
 }
 
@@ -208,11 +209,10 @@ nav a:hover {
   25%, 75% { opacity: 0; }
 }
 
-/* Final sentence glow */
 .glow {
   color: #b8962e;
-  transition: all 0.8s ease;
-  text-shadow: 0 0 12px rgba(212,175,55,0.4);
+  text-shadow: 0 0 14px rgba(212,175,55,0.4);
+  transition: all 1s ease;
 }
 
 /* ================= FOOTER ================= */
@@ -257,7 +257,7 @@ footer {
 
 <div class="section-divider"></div>
 
-<section id="reserve" style="padding:140px 8%; text-align:center;">
+<section id="reserve" style="padding:160px 8%; text-align:center;">
   <h2 style="font-family:'Playfair Display',serif; font-size:42px; margin-bottom:30px;">
     Your Moment Awaits
   </h2>
@@ -290,16 +290,31 @@ function scrollToReserve() {
   document.getElementById("reserve").scrollIntoView({ behavior: "smooth" });
 }
 
-/* ================= CINEMATIC TYPE ENGINE ================= */
+/* ================= LEGENDARY TYPE ENGINE ================= */
 
-const text = `A curated private journey deep into hidden rainforest.
-Guided access to secluded waterfalls.
-Crystal natural pools.
-A refined gourmet picnic prepared exclusively for you.
+const text = `A private journey, crafted with intention.
+
+Beyond the visible trails.
+Beyond the expected.
+
+Into hidden rainforest paths where sunlight filters softly through ancient canopy.
+
+Where waterfalls speak in quiet echoes,
+and crystal pools wait undisturbed.
+
+A refined gourmet setting prepared in silence —
+exclusively for you.
+
+No rush.
+No noise.
+No performance.
+
+Only presence.
 
 Every detail intentional.
 Every step unhurried.
-Every moment yours.`;
+
+Every moment — entirely yours.`;
 
 const typeElement = document.getElementById("typeText");
 const cursor = document.getElementById("cursor");
@@ -309,29 +324,24 @@ const card = document.querySelector(".experience-card");
 let started = false;
 let index = 0;
 
+function humanDelay(char) {
+  if (char === ",") return 400;
+  if (char === ".") return 700;
+  if (char === "\n") return 500;
+  return 65 + Math.random() * 40;
+}
+
 function typeWriter() {
-
   if (index < text.length) {
-
-    // Slower after paragraph break
-    let speed = 30;
-
-    if (text.substring(index).startsWith("Every detail")) {
-      speed = 60;
-    }
-
-    typeElement.innerHTML += text.charAt(index);
+    let char = text.charAt(index);
+    typeElement.innerHTML += char;
     index++;
-
-    setTimeout(typeWriter, speed);
-
+    setTimeout(typeWriter, humanDelay(char));
   } else {
     cursor.style.display = "none";
-
-    // glow final sentence
     typeElement.innerHTML = typeElement.innerHTML.replace(
-      "Every moment yours.",
-      "<span class='glow'>Every moment yours.</span>"
+      "Every moment — entirely yours.",
+      "<span class='glow'>Every moment — entirely yours.</span>"
     );
   }
 }
@@ -342,10 +352,10 @@ const observer = new IntersectionObserver((entries) => {
       started = true;
       card.classList.add("visible");
       spark.classList.add("active");
-      setTimeout(typeWriter, 1000);
+      setTimeout(typeWriter, 1800);
     }
   });
-}, { threshold: 0.55 });
+}, { threshold: 0.75 });
 
 observer.observe(card);
 
