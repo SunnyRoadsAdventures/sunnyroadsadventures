@@ -27,6 +27,12 @@ body {
   color: #1a1a1a;
   line-height: 1.7;
   overflow-x: hidden;
+  opacity: 0;
+  animation: pageFade 1.2s ease forwards;
+}
+
+@keyframes pageFade {
+  to { opacity: 1; }
 }
 
 /* ================= HEADER ================= */
@@ -35,7 +41,6 @@ header {
   position: fixed;
   width: 100%;
   top: 0;
-  left: 0;
   padding: 22px 8%;
   display: flex;
   justify-content: space-between;
@@ -93,15 +98,15 @@ nav a:hover {
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 720px;
 }
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 56px;
+  font-size: 58px;
   font-weight: 600;
   margin-bottom: 30px;
-  line-height: 1.2;
+  line-height: 1.15;
 }
 
 .hero p {
@@ -110,7 +115,7 @@ nav a:hover {
 }
 
 .cta-btn {
-  padding: 16px 42px;
+  padding: 16px 44px;
   border-radius: 40px;
   border: none;
   font-size: 14px;
@@ -122,17 +127,17 @@ nav a:hover {
 }
 
 .cta-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(212,175,55,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 50px rgba(212,175,55,0.35);
 }
 
-/* ================= SECTION DIVIDER ================= */
+/* ================= DIVIDER ================= */
 
 .section-divider {
   height: 3px;
   width: 100%;
   background: linear-gradient(to right, transparent, #d4af37, transparent);
-  margin: 120px 0;
+  margin: 140px 0;
 }
 
 /* ================= EXPERIENCE ================= */
@@ -145,37 +150,78 @@ nav a:hover {
 
 .experience-card {
   background: white;
-  padding: 80px;
+  padding: 100px;
   border-radius: 40px;
-  max-width: 800px;
-  box-shadow: 0 40px 80px rgba(0,0,0,0.08);
+  max-width: 820px;
+  box-shadow: 0 60px 140px rgba(0,0,0,0.12);
+  position: relative;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1.4s ease;
+}
+
+.experience-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #f7d774, #d4af37);
+  border-radius: 50%;
+  top: 50px;
+  left: 50px;
+  opacity: 0;
+  box-shadow: 0 0 18px #d4af37;
+}
+
+.spark.active {
+  animation: sparkGlow 1.8s ease forwards;
+}
+
+@keyframes sparkGlow {
+  0% { opacity: 0; transform: scale(0.4); }
+  40% { opacity: 1; transform: scale(1.6); }
+  100% { opacity: 0; transform: scale(1); }
 }
 
 .typewriter {
   font-size: 20px;
-  line-height: 1.9;
-  opacity: 0;
-  transition: opacity 1.5s ease;
+  line-height: 2;
   white-space: pre-line;
 }
 
-.typewriter.visible {
-  opacity: 1;
+.cursor {
+  display: inline-block;
+  width: 2px;
+  background: #d4af37;
+  margin-left: 6px;
+  animation: blink 1s infinite;
+  height: 22px;
+  vertical-align: bottom;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+/* Final sentence glow */
+.glow {
+  color: #b8962e;
+  transition: all 0.8s ease;
+  text-shadow: 0 0 12px rgba(212,175,55,0.4);
 }
 
 /* ================= FOOTER ================= */
 
 footer {
-  padding: 100px 8%;
+  padding: 120px 8%;
   text-align: center;
   font-size: 13px;
   letter-spacing: 1px;
-}
-
-footer a {
-  text-decoration: none;
-  color: #1a1a1a;
-  margin: 0 15px;
 }
 
 </style>
@@ -193,8 +239,7 @@ footer a {
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-content">
-    <h1>Not Just a 4×4 Tour.  
-    A Private Journey Into the Wild.</h1>
+    <h1>Not Just a 4×4 Tour.<br>A Private Journey Into the Wild.</h1>
     <p>Exclusive rainforest immersion designed for those who seek more than sightseeing — they seek moments.</p>
     <button class="cta-btn" onclick="scrollToReserve()">RESERVE YOUR EXPERIENCE</button>
   </div>
@@ -204,14 +249,16 @@ footer a {
 
 <section class="experience" id="experience">
   <div class="experience-card">
+    <div class="spark"></div>
     <p id="typeText" class="typewriter"></p>
+    <span class="cursor" id="cursor"></span>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
 <section id="reserve" style="padding:140px 8%; text-align:center;">
-  <h2 style="font-family:'Playfair Display',serif; font-size:40px; margin-bottom:30px;">
+  <h2 style="font-family:'Playfair Display',serif; font-size:42px; margin-bottom:30px;">
     Your Moment Awaits
   </h2>
   <p style="margin-bottom:40px;">Message us directly to curate your private adventure.</p>
@@ -221,34 +268,30 @@ footer a {
 </section>
 
 <footer>
-  <p>© 2026 Sunny Roads Adventures</p>
+  © 2026 Sunny Roads Adventures
 </footer>
 
 <script>
 
-/* Scroll Header Blur */
+/* Header Blur */
 const header = document.querySelector("header");
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 40) {
-    header.classList.add("scrolled");
-  } else {
-    header.classList.remove("scrolled");
-  }
+  header.classList.toggle("scrolled", window.scrollY > 40);
 });
 
 /* Hero Parallax */
 const heroBg = document.getElementById("heroBg");
 window.addEventListener("scroll", () => {
-  let offset = window.scrollY;
-  heroBg.style.transform = "scale(1.1) translateY(" + offset * 0.15 + "px)";
+  heroBg.style.transform = "scale(1.1) translateY(" + window.scrollY * 0.15 + "px)";
 });
 
-/* Scroll to Reserve */
+/* Scroll Button */
 function scrollToReserve() {
   document.getElementById("reserve").scrollIntoView({ behavior: "smooth" });
 }
 
-/* Cinematic Typewriter */
+/* ================= CINEMATIC TYPE ENGINE ================= */
+
 const text = `A curated private journey deep into hidden rainforest.
 Guided access to secluded waterfalls.
 Crystal natural pools.
@@ -259,14 +302,37 @@ Every step unhurried.
 Every moment yours.`;
 
 const typeElement = document.getElementById("typeText");
+const cursor = document.getElementById("cursor");
+const spark = document.querySelector(".spark");
+const card = document.querySelector(".experience-card");
+
 let started = false;
 let index = 0;
 
 function typeWriter() {
+
   if (index < text.length) {
+
+    // Slower after paragraph break
+    let speed = 30;
+
+    if (text.substring(index).startsWith("Every detail")) {
+      speed = 60;
+    }
+
     typeElement.innerHTML += text.charAt(index);
     index++;
-    setTimeout(typeWriter, 28);
+
+    setTimeout(typeWriter, speed);
+
+  } else {
+    cursor.style.display = "none";
+
+    // glow final sentence
+    typeElement.innerHTML = typeElement.innerHTML.replace(
+      "Every moment yours.",
+      "<span class='glow'>Every moment yours.</span>"
+    );
   }
 }
 
@@ -274,13 +340,14 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting && !started) {
       started = true;
-      typeElement.classList.add("visible");
-      typeWriter();
+      card.classList.add("visible");
+      spark.classList.add("active");
+      setTimeout(typeWriter, 1000);
     }
   });
-}, { threshold: 0.4 });
+}, { threshold: 0.55 });
 
-observer.observe(typeElement);
+observer.observe(card);
 
 </script>
 
