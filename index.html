@@ -5,354 +5,365 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunny Roads Adventures</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg:#f6f2e9;
-  --text:#1b1b1b;
-  --muted:#6e6e6e;
-  --accent:#caa64b;
-  --glass:rgba(255,255,255,.7);
+
+/* ========================= */
+/* ROOT COLORS */
+/* ========================= */
+
+:root {
+  --bg: #f6f3ed;
+  --text: #1a1a1a;
+  --accent: #caa64b;
+  --soft: #faf8f4;
 }
 
-*{margin:0;padding:0;box-sizing:border-box;}
-
-html{scroll-behavior:smooth;}
-
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  overflow-x:hidden;
-  cursor:none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ===== CUSTOM CURSOR ===== */
-
-.cursor{
-  width:18px;
-  height:18px;
-  border:2px solid var(--accent);
-  border-radius:50%;
-  position:fixed;
-  pointer-events:none;
-  transform:translate(-50%,-50%);
-  transition:.08s ease;
-  z-index:9999;
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
+/* ========================= */
+/* HEADER */
+/* ========================= */
 
-header{
-  position:fixed;
-  width:100%;
-  padding:28px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  backdrop-filter:blur(18px);
-  background:rgba(255,255,255,.6);
-  transition:.4s;
-  z-index:1000;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 8%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: rgba(246,243,237,.85);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  transition: .3s;
 }
 
-header.scrolled{
-  padding:18px 8%;
-  background:rgba(255,255,255,.85);
+header.scrolled {
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
-.logo{
-  font-family:'Playfair Display',serif;
-  font-size:26px;
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  letter-spacing: 2px;
 }
 
-nav a{
-  margin-left:40px;
-  text-decoration:none;
-  color:var(--text);
-  position:relative;
+nav a {
+  margin-left: 40px;
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 400;
+  transition: .3s;
 }
 
-nav a::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:2px;
-  background:var(--accent);
-  transition:.3s;
-}
-nav a:hover::after{width:100%;}
-
-/* ===== HERO ===== */
-
-.hero{
-  height:100vh;
-  position:relative;
-  display:flex;
-  align-items:center;
-  padding:0 8%;
-  color:#fff;
-  overflow:hidden;
+nav a:hover {
+  color: var(--accent);
 }
 
-.hero video{
-  position:absolute;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  top:0;left:0;
-  z-index:-2;
+/* ========================= */
+/* HERO */
+/* ========================= */
+
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 8%;
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+  position: relative;
 }
 
-.hero::after{
-  content:"";
-  position:absolute;
-  width:100%;
-  height:100%;
-  background:linear-gradient(to bottom,rgba(0,0,0,.45),rgba(0,0,0,.35));
-  z-index:-1;
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.2), rgba(0,0,0,.35));
 }
 
-.hero-content{
-  max-width:700px;
-  animation:fadeUp 1.3s ease forwards;
+.hero-content {
+  position: relative;
+  color: white;
+  max-width: 800px;
 }
 
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:70px;
-  line-height:1.05;
-  margin-bottom:30px;
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  font-weight: 500;
+  margin-bottom: 20px;
 }
 
-.hero p{
-  font-size:20px;
-  margin-bottom:40px;
-  opacity:.9;
+.hero p {
+  font-size: 20px;
+  font-weight: 300;
 }
 
-.btn{
-  padding:18px 46px;
-  background:linear-gradient(135deg,#caa64b,#e5c97a);
-  border:none;
-  border-radius:50px;
-  color:#fff;
-  font-weight:600;
-  text-decoration:none;
-  box-shadow:0 18px 50px rgba(202,166,75,.5);
-  transition:.4s;
-}
-.btn:hover{transform:translateY(-5px);}
+/* ========================= */
+/* SECTION */
+/* ========================= */
 
-/* ===== DIVIDER ===== */
-
-.divider{
-  height:4px;
-  background:linear-gradient(to right,#e8d8b0,#caa64b,#e8d8b0);
+section {
+  padding: 160px 8%;
 }
 
-/* ===== SECTIONS ===== */
-
-section{padding:180px 8%;}
-
-.section-title{
-  font-family:'Playfair Display',serif;
-  font-size:46px;
-  text-align:center;
-  margin-bottom:100px;
+section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  margin-bottom: 40px;
 }
 
-/* ===== CARDS ===== */
+/* ========================= */
+/* MOVING LUXURY DIVIDER */
+/* ========================= */
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:60px;
+.divider {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #e8d8b0,
+    #caa64b,
+    #f3e3c3,
+    #caa64b,
+    #e8d8b0
+  );
+  background-size: 300% 100%;
+  animation: shimmer 6s linear infinite;
 }
 
-.card{
-  background:var(--glass);
-  backdrop-filter:blur(20px);
-  padding:60px;
-  border-radius:28px;
-  box-shadow:0 30px 80px rgba(0,0,0,.1);
-  transform:translateY(40px);
-  opacity:0;
-  transition:.6s;
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
 }
 
-.card.visible{
-  transform:translateY(0);
-  opacity:1;
+/* ========================= */
+/* ADVENTURE BLOCK */
+/* ========================= */
+
+.adventure-block {
+  background: white;
+  padding: 60px;
+  border-radius: 30px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.12);
+  transition: transform .6s ease, box-shadow .6s ease;
 }
 
-/* ===== GALLERY ===== */
-
-.slider{
-  position:relative;
-  max-width:1000px;
-  margin:auto;
-  overflow:hidden;
-  border-radius:30px;
-  box-shadow:0 40px 120px rgba(0,0,0,.2);
+.adventure-block:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 60px 120px rgba(0,0,0,0.18);
 }
 
-.slide{display:none;}
-.slide img{width:100%;display:block;}
-.active{display:block;}
+/* ========================= */
+/* BOOKING */
+/* ========================= */
 
-/* ===== BOOKING ===== */
-
-.booking{
-  background:#fff;
-  border-radius:40px;
-  padding:120px;
-  box-shadow:0 40px 100px rgba(0,0,0,.12);
-  text-align:center;
+.booking {
+  background: white;
+  padding: 80px;
+  border-radius: 30px;
+  box-shadow: 0 40px 100px rgba(0,0,0,.08);
+  max-width: 800px;
+  margin: auto;
 }
 
-.booking input,.booking textarea{
-  width:100%;
-  padding:16px;
-  margin:12px 0;
-  border-radius:12px;
-  border:1px solid #ddd;
+.booking input,
+.booking textarea {
+  width: 100%;
+  padding: 18px 22px;
+  margin: 14px 0;
+  border-radius: 18px;
+  border: 1px solid rgba(0,0,0,.08);
+  font-size: 16px;
+  background: var(--soft);
+  transition: .3s;
 }
 
-.payment-options{
-  margin-top:40px;
-  font-weight:500;
-  color:var(--muted);
+.booking input:focus,
+.booking textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(202,166,75,.15);
 }
 
-/* ===== FOOTER ===== */
-
-footer{
-  padding:100px 8%;
-  text-align:center;
-  color:var(--muted);
+.booking button {
+  margin-top: 20px;
+  padding: 18px 40px;
+  border-radius: 50px;
+  border: none;
+  background: linear-gradient(135deg,#caa64b,#e5c97a);
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
 }
 
-/* ===== ANIMATION ===== */
-
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(40px);}
-  to{opacity:1;transform:translateY(0);}
+.booking button:hover {
+  transform: translateY(-3px);
 }
+
+/* ========================= */
+/* WHATSAPP */
+/* ========================= */
+
+.whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: linear-gradient(135deg,#caa64b,#e5c97a);
+  padding: 16px 28px;
+  border-radius: 50px;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 20px 50px rgba(202,166,75,.4);
+  transition: .3s;
+  z-index: 999;
+}
+
+.whatsapp:hover {
+  transform: translateY(-4px);
+}
+
+/* ========================= */
+/* FADE SYSTEM */
+/* ========================= */
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .9s ease, transform .9s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 6%;
+  }
+
+  nav {
+    margin-top: 20px;
+  }
+
+  nav a {
+    margin-left: 0;
+    margin-right: 25px;
+    font-size: 16px;
+  }
+
+  .hero h1 {
+    font-size: 44px;
+  }
+
+  .hero p {
+    font-size: 17px;
+  }
+
+  section {
+    padding: 120px 6%;
+  }
+
+  .booking {
+    padding: 60px 30px;
+  }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="cursor"></div>
-
-<header id="header">
-  <div class="logo">Sunny Roads Adventures</div>
+<header>
+  <div class="logo">SUNNY ROADS ADVENTURES</div>
   <nav>
-    <a href="#experiences">Experiences</a>
-    <a href="#gallery">Gallery</a>
+    <a href="#experience">Experience</a>
     <a href="#booking">Booking</a>
   </nav>
 </header>
 
 <section class="hero">
-  <video autoplay muted loop>
-    <source src="https://cdn.coverr.co/videos/coverr-tropical-beach-1571/1080p.mp4" type="video/mp4">
-  </video>
-  <div class="hero-content">
-    <h1>Luxury Travel Without Compromise</h1>
-    <p>Private curated experiences crafted with precision, elegance, and exclusivity.</p>
-    <a href="#booking" class="btn">Begin Your Journey</a>
+  <div class="hero-content fade-up">
+    <h1>Luxury Jungle & Waterfall Escape</h1>
+    <p>Private. Cinematic. Unforgettable.</p>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<section id="experiences">
-  <h2 class="section-title">Signature Experiences</h2>
-  <div class="grid">
-    <div class="card"><h3>Waterfall Escape</h3><p>Hidden rainforest immersion.</p></div>
-    <div class="card"><h3>Coastal Discovery</h3><p>Secluded beaches refined.</p></div>
-    <div class="card"><h3>Adventure Immersion</h3><p>Energy meets exclusivity.</p></div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<section id="gallery">
-  <h2 class="section-title">Gallery</h2>
-  <div class="slider">
-    <div class="slide active"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"></div>
-    <div class="slide"><img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98"></div>
-    <div class="slide"><img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"></div>
+<section id="experience">
+  <h2 class="fade-up">The Experience</h2>
+  <div class="adventure-block fade-up">
+    Private 4x4 access, hidden waterfalls, guided adventure, and gourmet picnic prepared exclusively for you.
   </div>
 </section>
 
 <div class="divider"></div>
 
 <section id="booking">
-  <div class="booking">
-    <h2>Request Private Booking</h2>
-    <form id="bookingForm">
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <textarea rows="4" placeholder="Describe Your Ideal Experience"></textarea>
-      <button class="btn" type="submit">Submit Request</button>
-    </form>
-    <div class="payment-options">
-      Future Payment Options:<br>
-      Revolut • PayPal
-    </div>
+  <h2 class="fade-up">Reserve Your Journey</h2>
+  <div class="booking fade-up">
+    <input type="text" placeholder="Full Name">
+    <input type="email" placeholder="Email">
+    <textarea rows="4" placeholder="Message"></textarea>
+    <button>Request Booking</button>
   </div>
 </section>
 
-<footer>
-  © 2026 Sunny Roads Adventures — Crafted With Excellence
-</footer>
+<a href="https://wa.me/YOURNUMBER" class="whatsapp">WhatsApp</a>
 
 <script>
-/* Custom Cursor */
-const cursor=document.querySelector('.cursor');
-document.addEventListener('mousemove',e=>{
-  cursor.style.left=e.clientX+'px';
-  cursor.style.top=e.clientY+'px';
-});
 
-/* Scroll Reveal */
-const cards=document.querySelectorAll('.card');
-window.addEventListener('scroll',()=>{
-  const trigger=window.innerHeight*0.85;
-  cards.forEach(card=>{
-    if(card.getBoundingClientRect().top<trigger){
-      card.classList.add('visible');
+document.addEventListener("DOMContentLoaded", function () {
+
+  const elements = document.querySelectorAll('.hero-content, .adventure-block, .booking, h2');
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('fade-up','visible');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.15 });
+
+  elements.forEach(el => observer.observe(el));
+
+  const header = document.querySelector('header');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
     }
   });
+
 });
 
-/* Header shrink */
-window.addEventListener('scroll',()=>{
-  document.getElementById('header').classList.toggle('scrolled',window.scrollY>50);
-});
-
-/* Slider */
-let slideIndex=0;
-const slides=document.querySelectorAll('.slide');
-function showSlides(){
-  slides.forEach(s=>s.classList.remove('active'));
-  slideIndex++;
-  if(slideIndex>slides.length)slideIndex=1;
-  slides[slideIndex-1].classList.add('active');
-  setTimeout(showSlides,4000);
-}
-showSlides();
-
-document.getElementById('bookingForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  alert("Thank you. We will contact you shortly.");
-});
 </script>
 
 </body>
