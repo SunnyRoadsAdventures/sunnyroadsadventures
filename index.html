@@ -12,7 +12,6 @@
   --bg: #f6f2e9;
   --text: #1c1c1c;
   --muted: #6e6e6e;
-  --card: rgba(255,255,255,0.7);
   --accent: #caa64b;
 }
 
@@ -20,6 +19,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -39,17 +42,17 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(15px);
   background: rgba(255,255,255,0.6);
   border-bottom: 1px solid rgba(0,0,0,0.05);
   z-index: 1000;
+  transition: .4s ease;
 }
 
 .logo {
   font-family: 'Playfair Display', serif;
   font-size: 26px;
   font-weight: 600;
-  letter-spacing: 1px;
 }
 
 nav a {
@@ -75,16 +78,18 @@ nav a:hover::after {
   width: 100%;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO WITH CINEMATIC IMAGE ===== */
 
 .hero {
   height: 100vh;
+  background: 
+    linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.25)),
+    url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover no-repeat;
   display: flex;
   align-items: center;
   padding: 0 8%;
-  background:
-    radial-gradient(circle at 20% 30%, rgba(202,166,75,0.25), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(255,200,120,0.15), transparent 40%);
+  color: #fff;
+  position: relative;
 }
 
 .hero-content {
@@ -94,15 +99,15 @@ nav a:hover::after {
 
 .hero h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 64px;
-  line-height: 1.15;
+  font-size: 68px;
+  line-height: 1.1;
   margin-bottom: 30px;
 }
 
 .hero p {
   font-size: 20px;
-  color: var(--muted);
   margin-bottom: 45px;
+  opacity: .9;
 }
 
 .btn {
@@ -122,7 +127,7 @@ nav a:hover::after {
   box-shadow: 0 20px 60px rgba(202,166,75,.6);
 }
 
-/* ===== SECTION ===== */
+/* ===== SECTIONS ===== */
 
 section {
   padding: 180px 8%;
@@ -146,11 +151,18 @@ section {
 .card {
   padding: 60px;
   border-radius: 28px;
-  background: var(--card);
+  background: rgba(255,255,255,0.75);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(255,255,255,0.6);
   box-shadow: 0 25px 70px rgba(0,0,0,0.08);
   transition: all .5s ease;
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .card:hover {
@@ -166,41 +178,54 @@ section {
 
 .card p {
   color: var(--muted);
-  font-size: 16px;
 }
 
-/* ===== FOOTER ===== */
+/* ===== BOOKING SECTION ===== */
 
-footer {
-  padding: 120px 8%;
+.booking {
+  background: linear-gradient(135deg, #f8f5ee, #efe7d7);
+  border-radius: 40px;
+  padding: 120px;
   text-align: center;
-  font-size: 14px;
-  color: var(--muted);
+  box-shadow: 0 40px 100px rgba(0,0,0,.08);
+}
+
+.booking h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  margin-bottom: 30px;
+}
+
+/* ===== FLOATING WHATSAPP ===== */
+
+.whatsapp {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #caa64b;
+  color: #fff;
+  padding: 16px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 15px 40px rgba(202,166,75,.4);
+  transition: .3s ease;
+}
+
+.whatsapp:hover {
+  transform: translateY(-4px);
 }
 
 /* ===== ANIMATIONS ===== */
 
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ===== RESPONSIVE ===== */
-
 @media(max-width:768px){
-  .hero h1 {
-    font-size: 42px;
-  }
-
-  nav {
-    display:none;
-  }
+  .hero h1 { font-size: 42px; }
+  nav { display:none; }
 }
 </style>
 </head>
@@ -210,47 +235,70 @@ footer {
 <header>
   <div class="logo">Sunny Roads Adventures</div>
   <nav>
-    <a href="#">Home</a>
-    <a href="#">Experiences</a>
-    <a href="#">Private Tours</a>
-    <a href="#">Contact</a>
+    <a href="#experiences">Experiences</a>
+    <a href="#booking">Booking</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-content">
-    <h1>Curated Tropical Journeys For The Modern Explorer</h1>
-    <p>Private jungle escapes, hidden waterfalls, and unforgettable coastal luxury — crafted with precision and exclusivity.</p>
-    <a href="#" class="btn">Discover Experiences</a>
+    <h1>Private Tropical Journeys Designed For The Exceptional</h1>
+    <p>Hidden waterfalls. Secluded beaches. Elevated comfort. Crafted for those who expect more than a vacation.</p>
+    <a href="#experiences" class="btn">Explore Experiences</a>
   </div>
 </section>
 
-<section>
+<section id="experiences">
   <h2 class="section-title">Signature Experiences</h2>
-
   <div class="grid">
 
     <div class="card">
       <h3>Tropical Jungle & Waterfall Escape</h3>
-      <p>Private 4x4 access or guided trek into untouched rainforest with gourmet waterfall dining and safe cliff experiences.</p>
+      <p>Exclusive rainforest access with gourmet dining beside untouched waterfalls.</p>
     </div>
 
     <div class="card">
       <h3>Luxury Coastal Discovery</h3>
-      <p>Secluded beaches, curated ocean viewpoints, and refined comfort for travelers seeking serenity and style.</p>
+      <p>Secluded shores, curated routes, and refined exploration along breathtaking coastlines.</p>
     </div>
 
     <div class="card">
       <h3>Adventure Immersion Experience</h3>
-      <p>High-energy exploration balanced with safety, comfort, and elevated service.</p>
+      <p>High-energy adventure balanced with privacy, safety, and elevated service.</p>
     </div>
 
   </div>
 </section>
 
-<footer>
+<section id="booking">
+  <div class="booking">
+    <h2>Begin Your Private Journey</h2>
+    <p>Every experience is custom tailored. Contact us directly to design your adventure.</p>
+    <br><br>
+    <a href="#" class="btn">Request Private Booking</a>
+  </div>
+</section>
+
+<footer id="contact">
   © 2026 Sunny Roads Adventures — Crafted With Excellence
 </footer>
+
+<a href="#" class="whatsapp">WhatsApp Us</a>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+  const triggerBottom = window.innerHeight * 0.85;
+  cards.forEach(card => {
+    const boxTop = card.getBoundingClientRect().top;
+    if(boxTop < triggerBottom){
+      card.classList.add('visible');
+    }
+  });
+});
+</script>
 
 </body>
 </html>
