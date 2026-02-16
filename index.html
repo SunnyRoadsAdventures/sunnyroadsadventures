@@ -346,6 +346,23 @@ overflow: hidden;
     opacity: 1;
     transform: translateY(0);
 }
+/* Reveal Animation Base */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(8px);
+    transition: 
+        opacity 1.2s ease,
+        transform 1.2s ease,
+        filter 1.2s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+}
 </style>
 </head>
 
