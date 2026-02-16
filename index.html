@@ -522,6 +522,24 @@ window.addEventListener("scroll", () => {
 
 </script>
 <script>
+const reveals = document.querySelectorAll('.reveal');
+
+const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.85;
+
+    reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+
+        if (elementTop < triggerBottom) {
+            el.classList.add('active');
+        }
+    });
+};
+
+window.addEventListener('scroll', revealOnScroll);
+window.addEventListener('load', revealOnScroll);
+</script>
+<script>
 const revealSections = document.querySelectorAll('.bespoke-section');
 
 function revealOnScroll() {
