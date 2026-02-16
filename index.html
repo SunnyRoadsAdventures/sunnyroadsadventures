@@ -336,6 +336,36 @@ nav a:hover { opacity:.6; }
     </div>
 </section>
 
+.horizontal-scroll {
+    padding: 120px 0;
+    background: #fff;
+    overflow: hidden;
+}
+
+.scroll-container {
+    display: flex;
+    gap: 40px;
+    overflow-x: auto;
+    padding: 40px;
+    scroll-behavior: smooth;
+}
+
+.tour-card {
+    min-width: 300px;
+    height: 400px;
+    background: linear-gradient(145deg,#f4efe6,#e6dccd);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transition: 0.4s;
+}
+
+.tour-card:hover {
+    transform: scale(1.05);
+}
+
 <div class="gold-divider"></div>
 
 <section class="experience-section" id="experience">
