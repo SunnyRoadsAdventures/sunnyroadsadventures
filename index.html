@@ -1,164 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sunny Roads Adventures</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
 
-/* ================= HERO ================= */
+/* ===== GLOBAL ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg, #ffffff 0%, #f8f4ec 100%);
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+/* ===== HERO ===== */
 
 .hero {
     height: 100vh;
-    background: radial-gradient(circle at center, #111 0%, #000 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
-    position: relative;
-    overflow: hidden;
+    padding: 0 20px;
 }
 
-.hero-content h1 {
-    font-size: 52px;
-    letter-spacing: 4px;
+.hero-content {
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 64px;
+    font-weight: 600;
+    line-height: 1.2;
+    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
 }
 
 .hero-sub {
-    margin-top: 20px;
     font-size: 20px;
-    color: #d4c8a5;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: #555;
 }
 
 .hero-btn {
     display: inline-block;
-    margin-top: 40px;
     padding: 16px 40px;
-    border: 1px solid #c6a75e;
-    color: #c6a75e;
+    border-radius: 50px;
     text-decoration: none;
-    letter-spacing: 2px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
+    color: white;
     transition: 0.4s ease;
 }
 
 .hero-btn:hover {
-    background: #c6a75e;
-    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(198,167,94,0.3);
 }
 
-/* ================= BESPOKE ================= */
+/* ===== SECTION DIVIDER ===== */
+
+.divider {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
+    margin: 60px auto;
+}
+
+/* ===== BESPOKE ===== */
 
 .bespoke {
-    padding: 120px 10%;
+    padding: 120px 20px;
     text-align: center;
-    background: #f5f3ee;
+    max-width: 900px;
+    margin: auto;
 }
 
 .bespoke h2 {
-    font-size: 36px;
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
     margin-bottom: 30px;
 }
 
 .bespoke p {
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.8;
     font-size: 18px;
+    line-height: 1.8;
+    color: #555;
 }
 
-/* ================= HORIZONTAL SCROLL ================= */
+/* ===== EXPERIENCE ===== */
 
-.horizontal-scroll {
-    padding: 120px 0;
-    background: white;
-}
-
-.horizontal-scroll h2 {
+.experience {
+    padding: 120px 20px;
     text-align: center;
-    margin-bottom: 40px;
+    background: #ffffff;
 }
 
-.scroll-container {
-    display: flex;
+.experience h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    margin-bottom: 60px;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 40px;
-    overflow-x: auto;
-    padding: 40px;
-    scroll-behavior: smooth;
+    max-width: 1100px;
+    margin: auto;
 }
 
-.tour-card {
-    min-width: 300px;
-    height: 380px;
+.experience-card {
+    padding: 40px;
     border-radius: 20px;
-    background: linear-gradient(145deg,#f4efe6,#e6dccd);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
+    background: #ffffff;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.05);
     transition: 0.4s ease;
 }
 
-.tour-card:hover {
-    transform: scale(1.05);
+.experience-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(198,167,94,0.2);
 }
 
-/* ================= PILLARS ================= */
+.experience-card h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+}
+
+/* ===== PILLARS ===== */
 
 .pillars {
+    padding: 120px 20px;
     display: flex;
-    justify-content: space-around;
-    padding: 120px 10%;
-    background: #f5f3ee;
-    text-align: center;
     flex-wrap: wrap;
-    gap: 40px;
+    justify-content: center;
+    gap: 60px;
+    text-align: center;
 }
 
-.pillar {
-    max-width: 280px;
+.pillars div {
+    max-width: 300px;
 }
 
-.pillar h3 {
-    margin-bottom: 20px;
-    font-size: 22px;
+.pillars h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
 }
 
-/* ================= FLOATING WHATSAPP ================= */
-
-.floating-whatsapp {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(90deg,#c6a75e,#e4c87a);
-    padding: 14px 24px;
-    border-radius: 50px;
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    z-index: 1000;
-    transition: 0.3s ease;
-}
-
-.floating-whatsapp:hover {
-    transform: scale(1.1);
-}
-
-/* ================= FADE EFFECT ================= */
+/* ===== FADE UP ===== */
 
 .fade-up {
     opacity: 0;
-    transform: translateY(80px);
-    filter: blur(10px);
-    transition: 1.4s ease;
+    transform: translateY(40px);
+    transition: 1s ease;
 }
 
 .fade-up.appear {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
+}
+
+/* ===== WHATSAPP ===== */
+
+.floating-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
+    padding: 14px 24px;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    box-shadow: 0 15px 40px rgba(198,167,94,0.3);
 }
 
 </style>
@@ -166,104 +197,92 @@
 
 <body>
 
-<!-- HERO SECTION -->
 <section class="hero">
     <div class="hero-content">
         <h1 id="typedText"></h1>
-
         <p class="hero-sub fade-up">
-            Private expedition design. Crafted without compromise.
+            Crafted privately. Executed flawlessly.
         </p>
-
-        <a href="#experience" class="hero-btn fade-up">
-            Enter Your Journey
-        </a>
+        <a href="#experience" class="hero-btn fade-up">Begin Your Journey</a>
     </div>
 </section>
 
-<!-- BESPOKE -->
+<div class="divider"></div>
+
 <section class="bespoke fade-up">
-    <h2>We Follow You.</h2>
+    <h2>We Do Not Offer Tours.</h2>
     <p>
-        You do not join our tours.
-        We engineer your expedition around you.
-        Your pace. Your curiosity. Your threshold.
-        Every route adjusted. Every moment intentional.
-        This is private terrain, redesigned to mirror your ambition.
+        We design private expeditions tailored precisely to you.
+        Every route refined. Every detail curated.
+        Discretion. Precision. Excellence.
     </p>
 </section>
 
-<!-- DESTINATIONS -->
-<section class="horizontal-scroll fade-up">
-    <h2>Curated Terrains</h2>
-    <div class="scroll-container">
-        <div class="tour-card">Popoyo</div>
-        <div class="tour-card">Ometepe</div>
-        <div class="tour-card">Ojo de Agua</div>
-        <div class="tour-card">Volcanic Ridge Routes</div>
-        <div class="tour-card">Hidden Waterfall Access</div>
+<div class="divider"></div>
+
+<section id="experience" class="experience fade-up">
+    <h2>The Experience</h2>
+    <div class="experience-grid">
+        <div class="experience-card">
+            <h3>Volcanic Private Routes</h3>
+            <p>Exclusive terrain access guided and pre-scouted.</p>
+        </div>
+        <div class="experience-card">
+            <h3>Hidden Waterfall Access</h3>
+            <p>Unlisted locations reserved for private guests.</p>
+        </div>
+        <div class="experience-card">
+            <h3>Luxury Jungle Immersion</h3>
+            <p>Refined adventure engineered around your pace.</p>
+        </div>
     </div>
 </section>
 
-<!-- PILLARS -->
+<div class="divider"></div>
+
 <section class="pillars fade-up">
-    <div class="pillar">
+    <div>
         <h3>Precision</h3>
-        <p>Every route is pre-scouted, calibrated, and privately structured.</p>
+        <p>Every detail engineered.</p>
     </div>
-
-    <div class="pillar">
+    <div>
         <h3>Privacy</h3>
-        <p>No crowds. No rigid schedules. No shared itineraries.</p>
+        <p>No crowds. No compromises.</p>
     </div>
-
-    <div class="pillar">
+    <div>
         <h3>Personalization</h3>
-        <p>Your terrain adapts to you — not the other way around.</p>
+        <p>Your experience. Designed around you.</p>
     </div>
 </section>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/YOURNUMBER" 
-   class="floating-whatsapp" 
-   target="_blank">
-   WhatsApp
-</a>
+<a href="https://wa.me/YOURNUMBER" class="floating-whatsapp">WhatsApp</a>
 
 <script>
 
-// ===== TYPEWRITER =====
-
+/* Typewriter */
 const text = "You Do Not Follow Us.";
 const element = document.getElementById("typedText");
-
 let index = 0;
 
 function typeWriter(){
     if(index < text.length){
         element.innerHTML += text.charAt(index);
         index++;
-        setTimeout(typeWriter, 80);
+        setTimeout(typeWriter, 60);
     }
 }
-
 typeWriter();
 
-
-// ===== FADE IN ON SCROLL =====
-
+/* Scroll reveal */
 const faders = document.querySelectorAll(".fade-up");
 
-const appearOnScroll = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add("appear");
+window.addEventListener("scroll", () => {
+    faders.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            el.classList.add("appear");
         }
     });
-}, { threshold: 0.2 });
-
-faders.forEach(el => {
-    appearOnScroll.observe(el);
 });
 
 </script>
