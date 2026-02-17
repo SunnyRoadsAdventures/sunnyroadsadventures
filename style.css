@@ -339,3 +339,106 @@ section {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* =========================================
+   CINEMATIC SMOOTH BASE
+   ========================================= */
+
+html {
+  scroll-behavior: auto; /* we control it manually */
+}
+
+body {
+  transition: background 1.2s ease;
+}
+
+
+/* =========================================
+   SCROLL DEPTH LIGHT SHIFT
+   ========================================= */
+
+body.depth-shift {
+  background:
+    radial-gradient(circle at 50% 20%, rgba(240,216,137,0.12), transparent 50%),
+    linear-gradient(180deg, #ffffff, #f3efe6);
+}
+
+
+/* =========================================
+   GOLD SHIMMER SWEEP ON HEADINGS
+   ========================================= */
+
+h2 {
+  position: relative;
+  overflow: hidden;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(240,216,137,0.4),
+    transparent
+  );
+  transform: skewX(-20deg);
+  animation: shimmerSweep 8s infinite;
+}
+
+@keyframes shimmerSweep {
+  0% { left: -100%; }
+  60% { left: 150%; }
+  100% { left: 150%; }
+}
+
+
+/* =========================================
+   CHAMPAGNE CUSTOM CURSOR (DESKTOP ONLY)
+   ========================================= */
+
+@media (pointer: fine) {
+
+  body {
+    cursor: none;
+  }
+
+  .lux-cursor {
+    position: fixed;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #c6a23a;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: transform 0.08s ease;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE OPTIMIZATION
+   ========================================= */
+
+@media (max-width: 768px) {
+
+  body::before,
+  body::after {
+    animation: none;
+  }
+
+  .light-follow {
+    display: none;
+  }
+
+  section {
+    backdrop-filter: blur(6px);
+  }
+
+}
