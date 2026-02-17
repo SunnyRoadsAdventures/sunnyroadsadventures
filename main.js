@@ -1,21 +1,5 @@
-// Fade-in animation on scroll
+// Future enhancement layer placeholder
+
 document.addEventListener("DOMContentLoaded", function () {
-  const sections = document.querySelectorAll(".fade-section");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    {
-      threshold: 0.2
-    }
-  );
-
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
+  console.log("Empire of White Gold loaded.");
 });
