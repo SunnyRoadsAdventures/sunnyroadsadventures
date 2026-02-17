@@ -3,47 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads | Private Nicaragua Experiences</title>
+<title>Sunny Roads Adventures</title>
 
 <style>
 
-/* ===== EMPIRE HERO ===== */
-
-.empire-hero {
-    background: #f3efe6; /* warm sand */
-    padding: 120px 20px 100px 20px;
-    text-align: center;
-}
-
-.empire-inner {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.empire-hero h1 {
-    font-size: 42px;
-    letter-spacing: 4px;
-    font-weight: 600;
-    line-height: 1.2;
-    color: #111;
-}
-
-.gold-line {
-    width: 60px;
-    height: 2px;
-    background: #c6a85b;
-    margin: 30px auto;
-}
-
-.empire-subtext {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #333;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-/* ===== Base Reset ===== */
+/* ===== GLOBAL ===== */
 
 * {
     margin: 0;
@@ -51,158 +15,31 @@
     box-sizing: border-box;
 }
 
-html, body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #f4f1ea;
-    color: #111;
+body {
+    font-family: 'Georgia', serif;
+    background: #fdfcf9;
+    color: #222;
+    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
-/* ===== Header ===== */
+/* ===== HERO ===== */
 
-header {
-    padding: 20px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    font-size: 14px;
-}
-
-/* ===== Section Title ===== */
-
-.section-title {
-    padding: 60px 20px 30px 20px;
-    font-size: 32px;
-    font-weight: 600;
-}
-
-/* ===== Premium Slider ===== */
-
-.terrain-slider-section {
-    padding-bottom: 80px;
-}
-
-.terrain-track {
+.empire-hero {
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffffff, #f7f3ea);
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-}
-
-.terrain-track::-webkit-scrollbar {
-    display: none;
-}
-
-.terrain-slide {
-    flex: 0 0 85%;
-    margin-left: 20px;
-    border-radius: 20px;
-    overflow: hidden;
-    scroll-snap-align: start;
-    background: #000;
-    position: relative;
-}
-
-.terrain-slide:last-child {
-    margin-right: 20px;
-}
-
-.terrain-slide img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    display: block;
-}
-
-/* ===== Overlay Text ===== */
-
-.terrain-overlay {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    color: white;
-}
-
-.terrain-overlay h2 {
-    font-size: 22px;
-    margin-bottom: 6px;
-}
-
-.terrain-overlay p {
-    font-size: 14px;
-    opacity: 0.9;
-}
-
-/* ===== Experience Cards ===== */
-
-.experience-section {
-    padding: 60px 20px;
-}
-
-.experience-card {
-    background: #e9e6df;
-    padding: 40px;
-    border-radius: 30px;
-    margin-bottom: 20px;
-    font-size: 22px;
-    font-weight: 500;
-}
-
-/* ===== WhatsApp Button ===== */
-
-.whatsapp-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #c8a95b;
-    color: white;
-    padding: 14px 20px;
-    border-radius: 30px;
-    font-size: 14px;
-    text-decoration: none;
-}
-/* ===== PHILOSOPHY ===== */
-
-.empire-philosophy {
-    background: #ffffff;
-    padding: 100px 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 20px;
 }
 
-.empire-philosophy h2 {
-    font-size: 28px;
-    margin-bottom: 30px;
-    font-weight: 600;
-}
-
-.empire-philosophy p {
-    font-size: 18px;
-    line-height: 1.8;
-    color: #444;
-    margin-bottom: 20px;
-}
-
-.empire-bold {
-    font-weight: 600;
-    font-size: 20px;
-    margin-top: 20px;
-}
-
-/* ===== CINEMATIC BASE ANIMATIONS ===== */
-
-.fade-section {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1.4s ease, transform 1.4s ease;
-}
-
-.fade-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Hero stagger animation */
 .empire-hero h1 {
+    font-size: 56px;
+    letter-spacing: 4px;
+    font-weight: 500;
     opacity: 0;
     transform: translateY(30px);
     animation: heroFade 1.6s ease forwards;
@@ -219,10 +56,111 @@ header {
 }
 
 .empire-subtext {
+    font-size: 20px;
+    margin-top: 20px;
+    max-width: 700px;
     opacity: 0;
     transform: translateY(20px);
     animation: heroFade 1.6s ease forwards;
     animation-delay: 1.8s;
+}
+
+/* ===== PHILOSOPHY ===== */
+
+.empire-philosophy {
+    background: #ffffff;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.empire-philosophy h2 {
+    font-size: 30px;
+    margin-bottom: 40px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.empire-philosophy p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #444;
+    margin-bottom: 24px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empire-bold {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+/* ===== SLIDER ===== */
+
+.slider-section {
+    background: #f7f3ea;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    animation: slide 40s linear infinite;
+}
+
+.slider img {
+    width: 420px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 1.2s ease, box-shadow 1.2s ease;
+}
+
+.slider img:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+@keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ===== EXPERIENCE SECTION ===== */
+
+.experience {
+    background: #ffffff;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.experience h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.experience p {
+    font-size: 18px;
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 1.9;
+}
+
+/* ===== CINEMATIC SCROLL ===== */
+
+.fade-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.4s ease, transform 1.4s ease;
+}
+
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @keyframes heroFade {
@@ -238,138 +176,81 @@ header {
     }
 }
 
-/* Soft hover elevation */
-.slider img {
-    transition: transform 1.2s ease, box-shadow 1.2s ease;
-}
+/* ===== FOOTER ===== */
 
-.slider img:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+footer {
+    background: #f7f3ea;
+    padding: 40px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
 </style>
 </head>
-
 <body>
 
-<header>
+<!-- HERO -->
+
 <section class="empire-hero">
-
-    <div class="empire-inner">
-        <h1>
-            PRIVATE TERRAIN<br>
-            ARCHITECTURE
-        </h1>
-
-        <div class="gold-line"></div>
-
-        <p class="empire-subtext">
-            Nicaragua, executed without compromise.<br>
-            Volcanic, coastal and highland expeditions — engineered entirely around you.
-        </p>
-    </div>
-
+    <h1>EMPIRE OF WHITE GOLD</h1>
+    <div class="gold-line"></div>
+    <p class="empire-subtext">
+        A curated world of refined journeys, sculpted moments,
+        and experiences crafted beyond the ordinary.
+    </p>
 </section>
 
-<section class="empire-philosophy">
+<!-- PHILOSOPHY -->
 
-    <div class="empire-inner">
-        <h2>This Is Not A Tour Company.</h2>
-
-        <p>
-            We do not operate on schedules.<br>
-            We do not assemble groups.<br>
-            We do not sell destinations.
-        </p>
-
-        <p class="empire-bold">
-            We construct access.
-        </p>
-    </div>
-
+<section class="empire-philosophy fade-section">
+    <h2>Our Philosophy</h2>
+    <p>
+        We design refined explorations for those who seek depth,
+        elegance, and immersion beyond the surface.
+    </p>
+    <p>
+        Every detail is shaped with intention.
+        Every movement orchestrated with precision.
+    </p>
+    <p class="empire-bold">
+        This is not travel.  
+        This is atmosphere, crafted.
+    </p>
 </section>
-SUNNY ROADS
-</header>
 
-<div class="section-title">
-The Landscape
-</div>
+<!-- SLIDER -->
 
-<section class="terrain-slider-section">
-    <div class="terrain-track">
-
-        <div class="terrain-slide">
-            <img src="popoyo.jpg" alt="Popoyo Nicaragua">
-            <div class="terrain-overlay">
-                <h2>Untouched Pacific Silence</h2>
-                <p>Private coastal access. Sunset dining. Ocean isolation.</p>
-            </div>
-        </div>
-
-        <div class="terrain-slide">
-            <img src="ometepe.jpg" alt="Ometepe Island">
-            <div class="terrain-overlay">
-                <h2>Volcanic Island Majesty</h2>
-                <p>Two volcanoes. One private experience.</p>
-            </div>
-        </div>
-
-        <div class="terrain-slide">
-            <img src="ojo.png" alt="Ojo de Agua">
-            <div class="terrain-overlay">
-                <h2>Volcanic Spring Sanctuaries</h2>
-                <p>Crystal mineral waters. Reserved tranquility.</p>
-            </div>
-        </div>
-
-        <div class="terrain-slide">
-            <img src="cloud.png" alt="Cloud Forest">
-            <div class="terrain-overlay">
-                <h2>Mist. Altitude. Isolation.</h2>
-                <p>Private cloud forest elevation experiences.</p>
-            </div>
-        </div>
-
-        <div class="terrain-slide">
-            <img src="somoto.jpg" alt="Somoto Canyon">
-            <div class="terrain-overlay">
-                <h2>Raw Canyon Power</h2>
-                <p>Ancient rock formations. Controlled adventure.</p>
-            </div>
-        </div>
-
-        <div class="terrain-slide">
-            <img src="esteli.png" alt="Esteli Highlands">
-            <div class="terrain-overlay">
-                <h2>Highland Command</h2>
-                <p>Cool altitude air. Elite rural immersion.</p>
-            </div>
-        </div>
-
+<section class="slider-section fade-section">
+    <div class="slider">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" />
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
+        <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98" />
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" />
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
+        <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98" />
     </div>
 </section>
 
-<section class="experience-section">
-    <div class="section-title">The Experience</div>
+<!-- EXPERIENCE -->
 
-    <div class="experience-card">
-        Volcanic Private Routes
-    </div>
-
-    <div class="experience-card">
-        Hidden Waterfall Access
-    </div>
-
-    <div class="experience-card">
-        Luxury Jungle Immersion
-    </div>
+<section class="experience fade-section">
+    <h2>The Experience</h2>
+    <p>
+        From hidden waterfalls to private curated escapes,
+        each journey is elevated through craftsmanship,
+        intimacy, and cinematic detail.
+    </p>
 </section>
 
-<a class="whatsapp-btn" href="#">
-WhatsApp
-</a>
+<footer>
+    © 2026 Sunny Roads Adventures — Empire Standard
+</footer>
+
 <script>
+
+/* SCROLL FADE */
+
 const sections = document.querySelectorAll('.fade-section');
 
 const observer = new IntersectionObserver(entries => {
@@ -385,6 +266,19 @@ const observer = new IntersectionObserver(entries => {
 sections.forEach(section => {
     observer.observe(section);
 });
+
+/* ULTRA SUBTLE PARALLAX */
+
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const images = document.querySelectorAll('.slider img');
+
+    images.forEach(img => {
+        img.style.transform = `translateY(${scrolled * 0.01}px)`;
+    });
+});
+
 </script>
+
 </body>
 </html>
