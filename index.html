@@ -188,6 +188,66 @@ header {
     margin-top: 20px;
 }
 
+/* ===== CINEMATIC BASE ANIMATIONS ===== */
+
+.fade-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.4s ease, transform 1.4s ease;
+}
+
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hero stagger animation */
+.empire-hero h1 {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFade 1.6s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.gold-line {
+    width: 0;
+    height: 2px;
+    background: #c6a85b;
+    margin: 30px auto;
+    animation: lineDraw 1.4s ease forwards;
+    animation-delay: 1.2s;
+}
+
+.empire-subtext {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFade 1.6s ease forwards;
+    animation-delay: 1.8s;
+}
+
+@keyframes heroFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineDraw {
+    to {
+        width: 60px;
+    }
+}
+
+/* Soft hover elevation */
+.slider img {
+    transition: transform 1.2s ease, box-shadow 1.2s ease;
+}
+
+.slider img:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
 </style>
 </head>
 
