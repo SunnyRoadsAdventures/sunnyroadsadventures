@@ -1,23 +1,98 @@
 /* =========================================
-   EMPIRE OF WHITE GOLD — INTERACTION CORE
+   EMPIRE OF WHITE GOLD
+   CINEMATIC INTERACTION ENGINE
    ========================================= */
 
 
-/* GOLD LIGHT FOLLOW */
-const light = document.createElement("div");
-light.classList.add("light-follow");
-document.body.appendChild(light);
+/* ===============================
+   CUSTOM CURSOR (DESKTOP ONLY)
+=============================== */
 
-document.addEventListener("mousemove", (e) => {
-  light.style.left = e.clientX + "px";
-  light.style.top = e.clientY + "px";
+if (window.matchMedia("(pointer: fine)").matches) {
+
+  const cursor = document.createElement("div");
+  cursor.classList.add("lux-cursor");
+  document.body.appendChild(cursor);
+
+  document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+  });
+
+}
+
+
+/* ===============================
+   CINEMATIC SCROLL DEPTH SHIFT
+=============================== */
+
+window.addEventListener("scroll", () => {
+
+  const scrollY = window.scrollY;
+  const trigger = window.innerHeight * 0.4;
+
+  if (scrollY > trigger) {
+    document.body.classList.add("depth-shift");
+  } else {
+    document.body.classList.remove("depth-shift");
+  }
+
 });
 
 
-/* FLOATING GOLD DUST GENERATOR */
+/* ===============================
+   ULTRA SMOOTH PARALLAX DEPTH
+=============================== */
+
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+
+  const scrollY = window.scrollY;
+
+  sections.forEach((section, index) => {
+
+    const speed = 0.02 * (index + 1);
+    section.style.transform = `translateY(${scrollY * speed}px)`;
+
+  });
+
+});
+
+
+/* ===============================
+   CINEMATIC FADE-IN
+=============================== */
+
+const observer = new IntersectionObserver((entries) => {
+
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = "translateY(0)";
+    }
+  });
+
+}, {
+  threshold: 0.15
+});
+
+sections.forEach(section => {
+  section.style.opacity = 0;
+  section.style.transform = "translateY(40px)";
+  section.style.transition = "opacity 1.4s ease, transform 1.4s ease";
+  observer.observe(section);
+});
+
+
+/* ===============================
+   GOLD DUST GENERATOR
+=============================== */
+
 const dustContainer = document.querySelector(".gold-dust");
 
-for (let i = 0; i < 25; i++) {
+for (let i = 0; i < 30; i++) {
+
   const particle = document.createElement("span");
 
   particle.style.top = Math.random() * 100 + "%";
@@ -29,31 +104,19 @@ for (let i = 0; i < 25; i++) {
 }
 
 
-/* SECTION FADE-IN ON SCROLL */
-const sections = document.querySelectorAll("section");
+/* ===============================
+   GOLD LIGHT FOLLOW (SOFT)
+=============================== */
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("fade-in", "visible");
-    }
+if (window.matchMedia("(pointer: fine)").matches) {
+
+  const light = document.createElement("div");
+  light.classList.add("light-follow");
+  document.body.appendChild(light);
+
+  document.addEventListener("mousemove", (e) => {
+    light.style.left = e.clientX + "px";
+    light.style.top = e.clientY + "px";
   });
-}, {
-  threshold: 0.2
-});
 
-sections.forEach(section => {
-  section.classList.add("fade-in");
-  observer.observe(section);
-});
-
-
-/* PARALLAX DEPTH */
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-
-  sections.forEach((section, index) => {
-    const speed = 0.03 * (index + 1);
-    section.style.transform = `translateY(${scrollY * speed}px)`;
-  });
-});
+}
