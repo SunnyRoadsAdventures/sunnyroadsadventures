@@ -162,17 +162,16 @@ html, body {
 }
 
 .image-scale {
-  background-image: url('../assets/images/scale.webp');
+  background-image: url('../assets/images/image-scale.webp');
 }
 
 .image-detail {
-  background-image: url('../assets/images/detail.webp');
+  background-image: url('../assets/images/image-detail.webp');
 }
 
 .image-expansion {
-  background-image: url('../assets/images/expansion.webp');
+  background-image: url('../assets/images/image-expansion.webp');
 }
-
 /* FOOTER */
 .footer {
   background: #000;
