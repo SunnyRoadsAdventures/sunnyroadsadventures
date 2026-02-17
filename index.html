@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures | Private Luxury Terrain Experiences in Nicaragua</title>
-<meta name="description" content="Private, architected luxury terrain experiences in Nicaragua. Crafted privately. Executed flawlessly. Bespoke jungle and volcanic expeditions designed around you.">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Sunny Roads | Private Nicaragua Experiences</title>
 
 <style>
+
+/* ===== Base Reset ===== */
 
 * {
     margin: 0;
@@ -16,444 +15,129 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(180deg, #ffffff 0%, #f8f4ec 100%);
-    color: #1a1a1a;
+html, body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    background: #f4f1ea;
+    color: #111;
+    overflow-x: hidden;
 }
 
-/* ================= NAVIGATION ================= */
+/* ===== Header ===== */
 
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    padding: 25px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(10px);
-    transition: 0.4s ease;
-    z-index: 1000;
-}
-
-nav.scrolled {
-    padding: 18px 8%;
-    background: rgba(255,255,255,0.9);
-}
-
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
+header {
+    padding: 20px;
+    font-weight: 600;
     letter-spacing: 2px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 40px;
-}
-
-.nav-links a {
-    text-decoration: none;
-    color: #333;
     font-size: 14px;
-    letter-spacing: 2px;
-    position: relative;
 }
 
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0%;
-    height: 1px;
-    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
-    transition: 0.4s ease;
+/* ===== Section Title ===== */
+
+.section-title {
+    padding: 60px 20px 30px 20px;
+    font-size: 32px;
+    font-weight: 600;
 }
 
-.nav-links a:hover::after {
-    width: 100%;
+/* ===== Premium Slider ===== */
+
+.terrain-slider-section {
+    padding-bottom: 80px;
 }
 
-/* ================= HERO ================= */
-
-.hero {
-    height: 100vh;
+.terrain-track {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
-.hero-content {
-    max-width: 900px;
-    margin-top: 60px;
+.terrain-track::-webkit-scrollbar {
+    display: none;
 }
 
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 64px;
-    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 30px;
-}
-
-.hero-sub {
-    font-size: 20px;
-    font-weight: 300;
-    margin-bottom: 40px;
-    color: #555;
-}
-
-.hero-btn {
-    display: inline-block;
-    padding: 16px 40px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 500;
-    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
-    color: white;
-    transition: 0.4s ease;
-}
-
-.hero-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(198,167,94,0.3);
-}
-
-/* ================= SECTIONS ================= */
-
-section {
-    padding: 140px 10%;
-}
-
-.divider {
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
-    margin: 60px auto;
-}
-
-<section class="crafted-section">
-    <div class="bespoke-wrapper">
-
-        <span class="section-eyebrow">A Personal Approach</span>
-
-        <h2 class="luxury-title">
-            Crafted Around You.<br>
-            <span class="gold-text">Not the Other Way Around.</span>
-        </h2>
-
-        <div class="gold-divider"></div>
-
-        <p class="luxury-description">
-            No two journeys feel the same —
-            because no two people are the same.
-            <br><br>
-            Some seek stillness.  
-            Some seek elevation.  
-            Some seek challenge.
-            <br><br>
-            We listen first.
-            <br><br>
-            Your pace.  
-            Your comfort.  
-            Your ambition.
-            <br><br>
-            Everything quietly aligned around how you want to experience it.
-        </p>
-
-    </div>
-</section>
-</section>
-
-.experience-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 40px;
-    margin-top: 60px;
-}
-
-.experience-card {
-    padding: 40px;
+.terrain-slide {
+    flex: 0 0 85%;
+    margin-left: 20px;
     border-radius: 20px;
-    background: #fff;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.05);
-    transition: 0.4s ease;
-}
-
-.experience-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 30px 80px rgba(198,167,94,0.2);
-}
-
-.pillars {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
-}
-
-.pillars div {
-    max-width: 300px;
-}
-
-/* ================= FADE ================= */
-
-.fade-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: 1s ease;
-}
-
-.fade-up.appear {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ================= WHATSAPP ================= */
-
-.floating-whatsapp {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: linear-gradient(90deg, #c6a75e, #e6d3a3);
-    padding: 14px 24px;
-    border-radius: 50px;
-    color: white;
-    text-decoration: none;
-    box-shadow: 0 15px 40px rgba(198,167,94,0.3);
-}
-/* =========================
-   BESPOKE SECTION – WHITE GOLD EMPIRE
-========================= */
-
-.bespoke-section {
-    background: linear-gradient(to bottom, #ffffff 0%, #f7f5ef 100%);
-    padding: 160px 8%;
-    display: flex;
-    justify-content: center;position: relative;
-overflow: hidden;
-.bespoke-section::before {
-    content: "";
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(198,167,79,0.08) 0%, transparent 70%);
-    top: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 0;
-/* =========================
-   CRAFTED SECTION
-========================= */
-
-.crafted-section {
-    padding: 160px 8%;
-    background: linear-gradient(to bottom, #ffffff 0%, #f9f6ef 100%);
-    display: flex;
-    justify-content: center;
-}
-
-/* =========================
-   ARCHITECTED SECTION
-========================= */
-
-.architected-section {
-    padding: 180px 8%;
-    background: linear-gradient(to bottom, #f9f6ef 0%, #ffffff 100%);
-    display: flex;
-    justify-content: center;
-}
-}
-
-.bespoke-wrapper {
+    overflow: hidden;
+    scroll-snap-align: start;
+    background: #000;
     position: relative;
-    z-index: 2;
-}
 }
 
-.bespoke-wrapper {
-    max-width: 850px;
-    text-align: center;
-}
-
-/* Eyebrow Text */
-
-.section-eyebrow {
-    font-size: 13px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #c6a74f;
-    display: block;
-    margin-bottom: 30px;
-    font-weight: 500;
-}
-
-/* Main Title */
-
-.luxury-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 58px;
-    line-height: 1.25;
-    font-weight: 400;
-    color: #141414;
-    letter-spacing: -0.5px;
-}
-}
-
-/* Gold Gradient Text */
-
-.gold-text {
-    background: linear-gradient(90deg, #b8973d, #f2df9b, #b8973d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* Divider */
-
-.gold-divider {
-    width: 140px;
-    height: 2px;
-    margin: 50px auto;
-    background: linear-gradient(to right, transparent, #c6a74f, transparent);
-}
-
-/* Description */
-
-.luxury-description {
-    font-size: 18px;
-    line-height: 2.1;
-    color: #555;
-    font-weight: 300;
-    letter-spacing: 0.4px;
-}px;
-}
-
-/* Subtle Fade Reveal Effect */
-
-.bespoke-section {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1.2s ease;
-}
-
-.bespoke-section.appear {
-    opacity: 1;
-    transform: translateY(0);
-}
-/* Reveal Animation Base */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    filter: blur(8px);
-    transition: 
-        opacity 1.2s ease,
-        transform 1.2s ease,
-        filter 1.2s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0px);
-}
-/* ===== Mobile Slider Adjustment ===== */
-
-@media (max-width: 768px) {
-    .terrain-slide {
-    min-width: 100%;
-    height: auto;
+.terrain-slide:last-child {
+    margin-right: 20px;
 }
 
 .terrain-slide img {
     width: 100%;
-    height: auto;
+    height: 400px;
     object-fit: cover;
+    display: block;
 }
-    }
 
-    .terrain-overlay {
-        bottom: 30px;
-        left: 20px;
-        right: 20px;
-    }
+/* ===== Overlay Text ===== */
 
-    .terrain-overlay h2 {
-        font-size: 24px;
-    }
-
-    .terrain-overlay p {
-        font-size: 14px;
-    
+.terrain-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: white;
 }
+
+.terrain-overlay h2 {
+    font-size: 22px;
+    margin-bottom: 6px;
+}
+
+.terrain-overlay p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ===== Experience Cards ===== */
+
+.experience-section {
+    padding: 60px 20px;
+}
+
+.experience-card {
+    background: #e9e6df;
+    padding: 40px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+/* ===== WhatsApp Button ===== */
+
+.whatsapp-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #c8a95b;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 30px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
 </style>
 </head>
 
 <body>
 
-<nav id="navbar">
-    <div class="logo">SUNNY ROADS</div>
-    <div class="nav-links">
-        <a href="#experience">Experience</a>
-        <a href="#bespoke">Bespoke</a>
-        <a href="#">Contact</a>
-    </div>
-</nav>
+<header>
+SUNNY ROADS
+</header>
 
-<section class="hero">
-    <div class="hero-content">
-        <h1 id="typedText"></h1>
-        <p class="hero-sub fade-up">
-            Crafted privately. Executed flawlessly.
-        </p>
-        <a href="#experience" class="hero-btn fade-up">Begin Your Journey</a>
-    </div>
-</section>
-
-<div class="divider"></div>
-<section class="crafted-section">
-    <div class="bespoke-wrapper">
-
-        <span class="section-eyebrow">A Personal Approach</span>
-
-        <h2 class="luxury-title">
-            Crafted Around You.<br>
-            <span class="gold-text">Not the Other Way Around.</span>
-        </h2>
-
-        <div class="gold-divider"></div>
-
-        <p class="luxury-description reveal">
-            No two journeys feel the same —
-            because no two people are the same.
-            <br><br>
-            Some seek stillness.  
-            Some seek elevation.  
-            Some seek challenge.
-            <br><br>
-            We listen first.
-            <br><br>
-            Your pace.  
-            Your comfort.  
-            Your ambition.
-            <br><br>
-            Everything quietly aligned around how you want to experience it.
-        </p>
-
-    </div>
-</section>
-</section>
-
-<div class="divider"></div>
-
-}
+<div class="section-title">
+The Landscape
+</div>
 
 <section class="terrain-slider-section">
     <div class="terrain-track">
@@ -509,139 +193,25 @@ overflow: hidden;
     </div>
 </section>
 
-<section id="experience" class="experience fade-up">
-    <h2>The Experience</h2>
-    <div class="experience-grid">
-        <div class="experience-card">
-            <h3>Volcanic Private Routes</h3>
-        </div>
-        <div class="experience-card">
-            <h3>Hidden Waterfall Access</h3>
-        </div>
-        <div class="experience-card">
-            <h3>Luxury Jungle Immersion</h3>
-        </div>
+<section class="experience-section">
+    <div class="section-title">The Experience</div>
+
+    <div class="experience-card">
+        Volcanic Private Routes
+    </div>
+
+    <div class="experience-card">
+        Hidden Waterfall Access
+    </div>
+
+    <div class="experience-card">
+        Luxury Jungle Immersion
     </div>
 </section>
 
-<div class="divider"></div>
-<section class="architected-section">
-    <div class="bespoke-wrapper">
-
-        <span class="section-eyebrow">Private Structure</span>
-
-        <h2 class="luxury-title">
-            Your Journey.<br>
-            <span class="gold-text">Architected in Private.</span>
-        </h2>
-
-        <div class="gold-divider"></div>
-
-        <p class="luxury-description">
-            Every route recalibrated.
-            <br><br>
-            Every detail privately aligned.
-            <br><br>
-            Terrain selection.  
-            Timing.  
-            Access.  
-            Comfort layers.
-            <br><br>
-            Nothing left to improvisation.
-            <br><br>
-            Precision is not visible.
-            But it is always felt.
-        </p>
-
-    </div>
-</section>
-
-<section class="pillars fade-up">
-    <div>
-        <h3>Precision</h3>
-        <p>Every detail engineered.</p>
-    </div>
-    <div>
-        <h3>Privacy</h3>
-        <p>No compromises.</p>
-    </div>
-    <div>
-        <h3>Personalization</h3>
-        <p>Your experience, redesigned around you.</p>
-    </div>
-</section>
-
-<a href="https://wa.me/YOURNUMBER" class="floating-whatsapp">WhatsApp</a>
-
-<script>
-
-/* NAV SCROLL EFFECT */
-window.addEventListener("scroll", function(){
-    document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
-});
-
-/* TYPEWRITER */
-const text = "Private Terrain.";
-const element = document.getElementById("typedText");
-let index = 0;
-
-function typeWriter(){
-    if(index < text.length){
-        element.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeWriter, 70);
-    }
-}
-typeWriter();
-
-/* FADE */
-const faders = document.querySelectorAll(".fade-up");
-
-window.addEventListener("scroll", () => {
-    faders.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            el.classList.add("appear");
-        }
-    });
-});
-
-</script>
-<script>
-const reveals = document.querySelectorAll('.reveal');
-
-const revealOnScroll = () => {
-    const triggerBottom = window.innerHeight * 0.85;
-
-    reveals.forEach(el => {
-        const elementTop = el.getBoundingClientRect().top;
-
-        if (elementTop < triggerBottom) {
-            el.classList.add('active');
-        }
-    });
-};
-
-window.addEventListener('scroll', revealOnScroll);
-window.addEventListener('load', revealOnScroll);
-</script>
-<script>
-const revealSections = document.querySelectorAll('.bespoke-section');
-
-function revealOnScroll() {
-    revealSections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-
-        if(sectionTop < windowHeight - 100){
-            section.classList.add('appear');
-        }
-    });
-}
-
-window.addEventListener('scroll', revealOnScroll);
-revealOnScroll();
-</script>
+<a class="whatsapp-btn" href="#">
+WhatsApp
+</a>
 
 </body>
 </html>
