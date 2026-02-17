@@ -368,7 +368,15 @@ overflow: hidden;
 
 @media (max-width: 768px) {
     .terrain-slide {
-        height: 60vh;
+    min-width: 100%;
+    height: auto;
+}
+
+.terrain-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
     }
 
     .terrain-overlay {
@@ -383,7 +391,7 @@ overflow: hidden;
 
     .terrain-overlay p {
         font-size: 14px;
-    }
+    
 }
 </style>
 </head>
