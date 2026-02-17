@@ -1,4 +1,32 @@
 /* =========================
+   GLOBAL RESET
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #F8F6F2 40%,
+    #ECE7DF 100%
+  );
+  color: #111;
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* =========================
    GOLD VEIN (Embedded Thread)
 ========================= */
 
@@ -18,7 +46,7 @@ body::before {
     rgba(201,166,70,0.0)
   );
   filter: blur(1.2px);
-  opacity: 0.7;
+  opacity: 0.75;
   animation: veinShift 18s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 0;
@@ -37,4 +65,141 @@ body::before {
     transform: translateX(-1px) scaleY(0.98);
     opacity: 0.7;
   }
+}
+
+/* =========================
+   SUBTLE GOLD MICRO PARTICLES
+========================= */
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 22% 30%, rgba(230,199,106,0.25) 1px, transparent 2px),
+    radial-gradient(circle at 75% 65%, rgba(230,199,106,0.25) 1px, transparent 2px),
+    radial-gradient(circle at 40% 85%, rgba(230,199,106,0.2) 1px, transparent 2px);
+  pointer-events: none;
+  z-index: 0;
+  animation: sparkleFade 10s ease-in-out infinite alternate;
+}
+
+@keyframes sparkleFade {
+  0% { opacity: 0.15; }
+  100% { opacity: 0.4; }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 7vw, 6rem);
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  margin-bottom: 40px;
+}
+
+.hero p {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  max-width: 700px;
+  margin: 0 auto;
+  color: #444;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+section {
+  padding: 140px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-light {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(6px);
+}
+
+.section-ivory {
+  background: rgba(246,243,238,0.85);
+  backdrop-filter: blur(6px);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* =========================
+   GOLD DIVIDER (SHIMMER)
+========================= */
+
+.gold-line {
+  width: 80px;
+  height: 2px;
+  margin: 40px auto;
+  background: linear-gradient(
+    90deg,
+    #C9A646,
+    #F4E2A1,
+    #C9A646
+  );
+  background-size: 200% 100%;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.philosophy-intro {
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.section-text {
+  font-size: 1.15rem;
+  max-width: 720px;
+  margin: 20px auto;
+  color: #555;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  padding: 80px 20px;
+  text-align: center;
+  background: #ffffff;
+  font-size: 0.9rem;
+  color: #888;
 }
