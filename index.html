@@ -1,64 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunny Roads Adventures</title>
 
-  <title>Empire of White Gold</title>
-  <meta name="description" content="Empire of White Gold is a private, curated experience platform designed for those who seek intentional elevation." />
+<style>
 
-  <!-- Preload Custom Font -->
-  <link rel="preload" href="assets/fonts/ArchitecturalSerif.woff2" as="font" type="font/woff2" crossorigin>
+/* ===== GLOBAL ===== */
 
-  <link rel="stylesheet" href="css/styles.css" />
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: #fdfcf9;
+    color: #222;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* ===== HERO ===== */
+
+.empire-hero {
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffffff, #f7f3ea);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.empire-hero h1 {
+    font-size: 56px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFade 1.6s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.gold-line {
+    width: 0;
+    height: 2px;
+    background: #c6a85b;
+    margin: 30px auto;
+    animation: lineDraw 1.4s ease forwards;
+    animation-delay: 1.2s;
+}
+
+.empire-subtext {
+    font-size: 20px;
+    margin-top: 20px;
+    max-width: 700px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: heroFade 1.6s ease forwards;
+    animation-delay: 1.8s;
+}
+
+/* ===== PHILOSOPHY ===== */
+
+.empire-philosophy {
+    background: #ffffff;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.empire-philosophy h2 {
+    font-size: 30px;
+    margin-bottom: 40px;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.empire-philosophy p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #444;
+    margin-bottom: 24px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.empire-bold {
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+/* ===== SLIDER ===== */
+
+.slider-section {
+    background: #f7f3ea;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.slider {
+    display: flex;
+    gap: 40px;
+    width: max-content;
+    animation: slide 40s linear infinite;
+}
+
+.slider img {
+    width: 420px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 1.2s ease, box-shadow 1.2s ease;
+}
+
+.slider img:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+@keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* ===== EXPERIENCE SECTION ===== */
+
+.experience {
+    background: #ffffff;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.experience h2 {
+    font-size: 30px;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.experience p {
+    font-size: 18px;
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 1.9;
+}
+
+/* ===== CINEMATIC SCROLL ===== */
+
+.fade-section {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 1.4s ease, transform 1.4s ease;
+}
+
+.fade-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes heroFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes lineDraw {
+    to {
+        width: 60px;
+    }
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    background: #f7f3ea;
+    padding: 40px;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+</style>
 </head>
-
 <body>
 
-<header class="header">
-  <div class="logo">Empire of White Gold</div>
-  <a href="inquiry.html" class="cta">Request Access</a>
-</header>
+<!-- HERO -->
 
-<main>
-
-<section class="hero">
-  <div class="hero-content">
-    <h1>Not all who arrive, enter.</h1>
-    <p class="subtext">Empire of White Gold</p>
+<section class="empire-hero">
+    <h1>EMPIRE OF WHITE GOLD</h1>
     <div class="gold-line"></div>
-    <a href="inquiry.html" class="btn-primary">Request Access</a>
-  </div>
+    <p class="empire-subtext">
+        A curated world of refined journeys, sculpted moments,
+        and experiences crafted beyond the ordinary.
+    </p>
 </section>
 
-<section class="fade-section white-section">
-  <h2>This Is Not Travel.<br>This Is Elevation.</h2>
+<!-- PHILOSOPHY -->
+
+<section class="empire-philosophy fade-section">
+    <h2>Our Philosophy</h2>
+    <p>
+        We design refined explorations for those who seek depth,
+        elegance, and immersion beyond the surface.
+    </p>
+    <p>
+        Every detail is shaped with intention.
+        Every movement orchestrated with precision.
+    </p>
+    <p class="empire-bold">
+        This is not travel.  
+        This is atmosphere, crafted.
+    </p>
 </section>
 
-<section class="fade-section white-section">
-  <h2>Access Is Intentional.</h2>
-  <p>Experiences are privately curated and personally reviewed.</p>
+<!-- SLIDER -->
+
+<section class="slider-section fade-section">
+    <div class="slider">
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" />
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
+        <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98" />
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470" />
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" />
+        <img src="https://images.unsplash.com/photo-1493558103817-58b2924bce98" />
+    </div>
 </section>
 
-<section class="fade-section image-section image-scale">
-  <h2>Designed Without Compromise.</h2>
+<!-- EXPERIENCE -->
+
+<section class="experience fade-section">
+    <h2>The Experience</h2>
+    <p>
+        From hidden waterfalls to private curated escapes,
+        each journey is elevated through craftsmanship,
+        intimacy, and cinematic detail.
+    </p>
 </section>
 
-<section class="fade-section image-section image-detail">
-  <h2>Every Detail Matters.</h2>
-</section>
-
-<section class="fade-section image-section image-expansion">
-  <h2>The Empire Extends Beyond The Horizon.</h2>
-</section>
-
-</main>
-
-<footer class="footer">
-  <div class="footer-logo">Empire of White Gold</div>
-  <div class="sigil"></div>
+<footer>
+    © 2026 Sunny Roads Adventures — Empire Standard
 </footer>
 
-<script src="js/main.js"></script>
+<script>
+
+/* SCROLL FADE */
+
+const sections = document.querySelectorAll('.fade-section');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+sections.forEach(section => {
+    observer.observe(section);
+});
+
+/* ULTRA SUBTLE PARALLAX */
+
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const images = document.querySelectorAll('.slider img');
+
+    images.forEach(img => {
+        img.style.transform = `translateY(${scrolled * 0.01}px)`;
+    });
+});
+
+</script>
+
 </body>
 </html>
