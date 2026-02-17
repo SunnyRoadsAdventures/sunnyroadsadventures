@@ -364,6 +364,27 @@ overflow: hidden;
     transform: translateY(0);
     filter: blur(0px);
 }
+/* ===== Mobile Slider Adjustment ===== */
+
+@media (max-width: 768px) {
+    .terrain-slide {
+        height: 60vh;
+    }
+
+    .terrain-overlay {
+        bottom: 30px;
+        left: 20px;
+        right: 20px;
+    }
+
+    .terrain-overlay h2 {
+        font-size: 24px;
+    }
+
+    .terrain-overlay p {
+        font-size: 14px;
+    }
+}
 </style>
 </head>
 
@@ -423,6 +444,11 @@ overflow: hidden;
 </section>
 
 <div class="divider"></div>
+
+.terrain-slide {
+    min-width: 100%;
+    height: auto;
+}
 
 <section class="terrain-slider-section">
     <div class="terrain-track">
