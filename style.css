@@ -284,4 +284,58 @@ p {
     padding: 100px 8%;
   }
 
+}/* =========================================
+   MARBLE GRAIN OVERLAY
+   ========================================= */
+
+body::before {
+  background-image:
+    url("https://www.transparenttextures.com/patterns/white-marble.png");
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+}
+
+
+/* =========================================
+   MOUSE REACTIVE GOLD LIGHT
+   ========================================= */
+
+.light-follow {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle,
+    rgba(240,216,137,0.25),
+    rgba(240,216,137,0.12),
+    transparent 70%);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: transform 0.08s ease-out;
+}
+
+
+/* =========================================
+   SECTION PARALLAX DEPTH
+   ========================================= */
+
+section {
+  transform: translateY(0);
+  transition: transform 0.6s ease-out;
+}
+
+
+/* =========================================
+   ENTRANCE ANIMATION
+   ========================================= */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
