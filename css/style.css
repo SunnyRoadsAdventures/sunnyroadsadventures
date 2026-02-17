@@ -1,0 +1,40 @@
+/* =========================
+   GOLD VEIN (Embedded Thread)
+========================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 48%;
+  width: 6px;
+  height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    rgba(201,166,70,0.0),
+    rgba(201,166,70,0.6),
+    rgba(244,226,161,0.9),
+    rgba(201,166,70,0.7),
+    rgba(201,166,70,0.0)
+  );
+  filter: blur(1.2px);
+  opacity: 0.7;
+  animation: veinShift 18s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes veinShift {
+  0% {
+    transform: translateX(0px) scaleY(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(2px) scaleY(1.02);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(-1px) scaleY(0.98);
+    opacity: 0.7;
+  }
+}
