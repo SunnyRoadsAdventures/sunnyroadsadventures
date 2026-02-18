@@ -1,176 +1,190 @@
-/* ===== GLOBAL ===== */
+/* =========================
+   GLOBAL RESET
+========================= */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Georgia', serif;
-    background: #fdfcf9;
-    color: #222;
-    scroll-behavior: smooth;
-    overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+  background: #0b0b0b;
+  color: #f5f5f5;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
-/* ===== HERO ===== */
-
-.empire-hero {
-    height: 100vh;
-    background: linear-gradient(to bottom, #ffffff, #f7f3ea);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
-.empire-hero h1 {
-    font-size: 56px;
-    letter-spacing: 4px;
-    font-weight: 500;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: heroFade 1.6s ease forwards;
-    animation-delay: 0.4s;
+section {
+  padding: 100px 20px;
+  text-align: center;
+  position: relative;
+  opacity: 1;        /* FORCE VISIBLE */
+  transform: none;   /* NO HIDDEN ANIMATION */
 }
 
-.gold-line {
-    width: 0;
-    height: 2px;
-    background: #c6a85b;
-    margin: 30px auto;
-    animation: lineDraw 1.4s ease forwards;
-    animation-delay: 1.2s;
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url("assets/images/cloud.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.empire-subtext {
-    font-size: 20px;
-    margin-top: 20px;
-    max-width: 700px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: heroFade 1.6s ease forwards;
-    animation-delay: 1.8s;
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
 }
 
-/* ===== SECTIONS ===== */
-
-.empire-section,
-.empire-philosophy,
-.experience {
-    background: #ffffff;
-    padding: 120px 20px;
-    text-align: center;
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
 }
 
-.empire-alt,
-.slider-section,
-footer {
-    background: #f7f3ea;
-    padding: 120px 20px;
-    text-align: center;
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
 }
 
-.empire-section h2,
-.empire-philosophy h2,
-.empire-alt h2,
-.experience h2 {
-    font-size: 30px;
-    margin-bottom: 40px;
-    font-weight: 500;
-    letter-spacing: 2px;
+.hero p {
+  font-size: 1.1rem;
+  font-weight: 300;
 }
 
-.empire-section p,
-.empire-philosophy p,
-.empire-alt p,
-.experience p {
-    font-size: 18px;
-    line-height: 1.9;
-    color: #444;
-    margin-bottom: 24px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+/* =========================
+   SECTIONS
+========================= */
+
+.section-light {
+  background: linear-gradient(to bottom, #111, #141414);
 }
 
-.empire-bold {
-    font-weight: 600;
-    font-size: 20px;
-    margin-top: 30px;
+.section-ivory {
+  background: linear-gradient(to bottom, #141414, #101010);
 }
 
-/* ===== SLIDER ===== */
-
-.slider-section {
-    overflow: hidden;
+.container {
+  max-width: 900px;
+  margin: auto;
 }
+
+.section-text {
+  margin: 20px 0;
+  font-weight: 300;
+  opacity: 0.9;
+}
+
+/* =========================
+   GOLD DIVIDER (MOVING)
+========================= */
+
+.gold-divider {
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #a67c00,
+    #ffd700,
+    #fff1a8,
+    #ffd700,
+    #a67c00
+  );
+  background-size: 300% 100%;
+  animation: goldMove 6s linear infinite;
+}
+
+@keyframes goldMove {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* =========================
+   GOLD BUTTON
+========================= */
+
+.btn-gold {
+  padding: 14px 30px;
+  border: none;
+  background: linear-gradient(135deg,#a67c00,#ffd700);
+  color: #111;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.4s ease;
+}
+
+.btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(255,215,0,0.4);
+}
+
+/* =========================
+   GOLD DUST (SUBTLE SPARKLE)
+========================= */
+
+.gold-dust span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: sparkle 10s infinite;
+}
+
+@keyframes sparkle {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.5); }
+}
+
+/* =========================
+   IMAGE SLIDER
+========================= */
 
 .slider {
-    display: flex;
-    gap: 40px;
-    width: max-content;
-    animation: slide 40s linear infinite;
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  overflow: hidden;
 }
 
-.slider img {
-    width: 420px;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 1.2s ease, box-shadow 1.2s ease;
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease;
 }
 
-.slider img:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+.slide.active {
+  opacity: 1;
 }
 
-@keyframes slide {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-}
-
-/* ===== FADE SCROLL ===== */
-
-.fade-section {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 1.4s ease, transform 1.4s ease;
-}
-
-.fade-section.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-@keyframes heroFade {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes lineDraw {
-    to {
-        width: 60px;
-    }
-}
-
-/* ===== FOOTER ===== */
-
-footer {
-    padding: 40px;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-/* INVITATION PAGE */
+/* =========================
+   INVITATION PAGE
+========================= */
 
 .invitation-body {
-  background: #050505;
+  background: #0b0b0b;
 }
 
 .invitation-hero {
@@ -180,25 +194,6 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-}
-
-.invitation-content {
-  position: relative;
-  z-index: 2;
-  max-width: 700px;
-  padding: 20px;
-}
-
-.invitation-content h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem;
-  margin-bottom: 20px;
-}
-
-.invitation-content p {
-  font-weight: 300;
-  line-height: 1.6;
 }
 
 .invitation-form-section {
@@ -218,23 +213,22 @@ footer {
 .form-group {
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .form-group label {
   margin-bottom: 8px;
   font-size: 0.9rem;
-  color: #d4af37;
-  letter-spacing: 1px;
+  color: #ffd700;
 }
 
 .form-group input,
 .form-group textarea {
   padding: 14px;
   background: #111;
-  border: 1px solid rgba(255,215,0,0.2);
+  border: 1px solid rgba(255,215,0,0.3);
   color: white;
   border-radius: 8px;
-  font-family: 'Inter', sans-serif;
   transition: 0.3s;
 }
 
@@ -242,26 +236,69 @@ footer {
 .form-group textarea:focus {
   outline: none;
   border-color: #ffd700;
-  box-shadow: 0 0 10px rgba(255,215,0,0.2);
+  box-shadow: 0 0 10px rgba(255,215,0,0.3);
 }
 
-.invitation-form button {
-  margin-top: 20px;
-}
+/* =========================
+   SUCCESS OVERLAY
+========================= */
 
-.invitation-footer {
-  padding: 60px 20px;
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease;
+  z-index: 9999;
 }
 
-.back-link {
-  display: inline-block;
-  margin-top: 20px;
-  color: #ffd700;
-  text-decoration: none;
-  transition: 0.3s;
+.success-overlay.active {
+  opacity: 1;
+  visibility: visible;
 }
 
-.back-link:hover {
-  opacity: 0.7;
+.success-content {
+  max-width: 500px;
+  padding: 40px;
+}
+
+.success-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  padding: 40px 20px;
+  background: #0a0a0a;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  section {
+    padding: 70px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .slider {
+    height: 50vh;
+  }
+
 }
