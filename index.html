@@ -92,22 +92,32 @@
     </p>
 </section>
 
-<!-- INVITATION -->
 <section class="empire-section fade-section">
     <h2>The Invitation</h2>
     <p>
         Access is arranged through private correspondence.
         Begin with a conversation.
     </p>
-</section>
-<section class="empire-section fade-section">
-    <h2>The Invitation</h2>
-    <p>
-        Access is arranged through private correspondence.
-    </p>
-    <a href="mailto:your@email.com" class="contact-btn">
+
+    <button class="contact-btn" onclick="toggleForm()">
         Begin Private Inquiry
-    </a>
+    </button>
+
+    <div id="inquiry-form" class="form-container">
+        <form action="https://formspree.io/f/xrealgyw" method="POST">
+            
+            <input type="text" name="name" placeholder="Your Name" required>
+            
+            <input type="email" name="email" placeholder="Your Email" required>
+            
+            <textarea name="message" placeholder="Tell us about your desired experience..." required></textarea>
+            
+            <button type="submit" class="submit-btn">
+                Send Inquiry
+            </button>
+        </form>
+    </div>
+</section>
 </section>
 <footer>
     © 2026 Sunny Roads Adventures — Empire Standard
