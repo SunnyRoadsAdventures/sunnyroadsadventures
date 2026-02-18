@@ -83,6 +83,17 @@ p {
 }
 
 /* LIGHT SECTION SYSTEM */
+.empire-alt p,
+.empire-section p,
+.empire-philosophy p {
+    color: #1c1c1c;
+}
+
+.empire-alt h2,
+.empire-section h2,
+.empire-philosophy h2 {
+    color: #111111;
+}
 .empire-section {
     background: linear-gradient(
         180deg,
