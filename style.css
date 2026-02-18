@@ -95,7 +95,8 @@ p {
     background: linear-gradient(
         180deg,
         #f5f2eb 0%,
-        #efe9dd 100%
+        #ffffff 45%,
+        rgba(212,175,55,0.30) 100%
     );
 }
 
