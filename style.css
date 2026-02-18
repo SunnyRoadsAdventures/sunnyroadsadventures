@@ -75,10 +75,13 @@ p {
     font-size: 18px;
     font-weight: 300;
 }
+.empire-section,
+.empire-alt,
+.empire-philosophy,
+.experience {
+    background: #ffffff;
+}
 
-/* DARK SECTION */
-.empire-section {
-    background: #111;
 }
 
 /* ALT SECTION */
