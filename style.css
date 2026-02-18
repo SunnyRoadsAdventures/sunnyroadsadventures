@@ -285,3 +285,36 @@ textarea {
 .success-overlay { ... }
 ...
 @keyframes fadeUp { ... }
+
+/* ===== SLIDER STABLE VERSION ===== */
+
+.slider-section {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    display: flex;
+    width: 300%;
+    animation: slide 18s infinite linear;
+}
+
+.slider img {
+    width: 100%;
+    height: 420px; /* balanced size */
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+/* Animation */
+@keyframes slide {
+    0%   { transform: translateX(0); }
+    33%  { transform: translateX(0); }
+
+    38%  { transform: translateX(-100%); }
+    66%  { transform: translateX(-100%); }
+
+    71%  { transform: translateX(-200%); }
+    100% { transform: translateX(-200%); }
+}
