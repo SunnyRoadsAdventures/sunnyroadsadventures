@@ -105,10 +105,13 @@ p {
 .empire-alt {
     background: linear-gradient(
         180deg,
-        #f5f2eb 0%,
-        #ffffff 45%,
-        rgba(212,175,55,0.30) 100%
+        #d8caa4 0%,          /* matches gold above */
+        #e6d6b3 30%,
+        #efe2c6 55%,
+        #f4e8cf 75%,
+        #e0c27a 100%         /* stronger gold toward slider */
     );
+}
 }
 
 .empire-philosophy {
