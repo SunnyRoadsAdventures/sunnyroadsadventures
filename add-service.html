@@ -3,332 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sunny Roads Adventures</title>
-<style>
-/* ===== BASE STYLES ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to bottom, #e0f7fa, #ffffff);
-  color: #333;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* ===== HEADER & LOGO VIDEO ===== */
-header {
-  position: relative;
-  width: 100%;
-  height: 180px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #f0f8ff;
-  border-bottom: 2px solid #d0e6f0;
-  z-index: 10;
-}
-
-#logoVideo {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-  border: 3px solid #a0e1e0;
-}
-
-/* ===== NAVIGATION ===== */
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-  gap: 20px;
-  z-index: 10;
-  position: relative;
-}
-
-nav button {
-  background: #00bcd4;
-  border: none;
-  padding: 10px 22px;
-  border-radius: 12px;
-  font-size: 16px;
-  cursor: pointer;
-  color: #fff;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-/* ===== SECTIONS ===== */
-section {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 50px 20px;
-  transition: background 1s ease;
-  text-align: center;
-  position: relative;
-  z-index: 10;
-}
-
-h1, h2 {
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-/* ===== TOUR CARDS ===== */
-.tour-card {
-  width: 280px;
-  height: 180px;
-  background: linear-gradient(to top, #ffffff, #e0f7fa);
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 15px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-  cursor: pointer;
-  border: 2px solid #a0e1e0;
-}
-
-.tour-card h3 {
-  margin-bottom: 10px;
-  font-size: 18px;
-  color: #00796b;
-}
-
-.tour-card p {
-  font-size: 14px;
-  text-align: center;
-  color: #555;
-}
-
-/* ===== TOUR CONTAINER ===== */
-#toursContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-}
-
-/* ===== VIDEO CLASSES ===== */
-#classesVideo {
-  margin-top: 20px;
-  width: 80%;
-  max-width: 600px;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-}
-
-/* ===== JOIN HUB FORM ===== */
-#joinHub {
-  background: #f0f8ff;
-  border: 2px solid #d0e6f0;
-  border-radius: 16px;
-  padding: 30px;
-  max-width: 600px;
-  width: 90%;
-  margin-top: 40px;
-  text-align: left;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-}
-
-#joinHub h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-#joinHub p.description {
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-
-#joinHub form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-#joinHub input, #joinHub textarea, #joinHub select {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #a0e1e0;
-  font-size: 14px;
-}
-
-#joinHub button {
-  background: #00bcd4;
-  border: none;
-  padding: 12px 20px;
-  border-radius: 12px;
-  font-size: 16px;
-  color: #fff;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-#joinHub button:hover {
-  background: #26c6da;
-}
-
-/* ===== FOOTER ===== */
-footer {
-  width: 100%;
-  padding: 30px;
-  text-align: center;
-  background: #f0f8ff;
-  border-top: 2px solid #d0e6f0;
-  margin-top: 50px;
-  position: relative;
-  z-index: 10;
-}
-
-footer p {
-  color: #555;
-  font-weight: 500;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  nav button { font-size: 14px; padding: 8px 16px; }
-  .tour-card { width: 90%; height: 150px; }
-  #classesVideo { width: 100%; }
-}
-</style>
+<title>Private Invitation | Sunny Roads Adventures</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
 
-<!-- HEADER WITH LOGO VIDEO -->
-<header>
-  <video id="logoVideo" src="sra.mp4" autoplay loop muted playsinline></video>
-</header>
+<body class="invitation-body">
 
-<!-- NAVIGATION -->
-<nav>
-  <button data-section="home">Home</button>
-  <button data-section="tours">Tours</button>
-  <button data-section="classes">Classes</button>
-  <button data-section="all-routes">All Routes</button>
-  <button data-section="joinHub">Join the Hub</button>
-  <button data-section="contact">Contact</button>
-</nav>
-
-<!-- SECTIONS -->
-<section id="home">
-  <h1>Welcome to Sunny Roads Adventures!</h1>
-  <p>Explore immersive tours, adventures, and experiences designed to delight and inspire.</p>
-  <img src="map.png" alt="Map of routes" style="width:80%;max-width:600px;margin-top:20px;border-radius:12px;">
-</section>
-
-<section id="tours">
-  <h2>Our Tours</h2>
-  <div id="toursContainer">
-    <div class="tour-card"><h3>Volcano Hike</h3><p>Feel the thrill of walking a majestic volcano.</p></div>
-    <div class="tour-card"><h3>Lake Kayak</h3><p>Paddle through serene waters and enjoy nature.</p></div>
-    <div class="tour-card"><h3>City Highlights</h3><p>Discover hidden gems and local secrets.</p></div>
-    <div class="tour-card"><h3>Jungle Safari</h3><p>Meet exotic wildlife on an unforgettable safari.</p></div>
+<section class="invitation-hero">
+  <div class="overlay"></div>
+  <div class="invitation-content">
+    <h1>Private Invitation</h1>
+    <p>
+      Your journey begins with intention.
+      Share your vision, and we will craft something extraordinary.
+    </p>
   </div>
 </section>
 
-<section id="classes">
-  <h2>Learn with Blackie</h2>
-  <p>Spanish & English lessons with our fun medieval blacksmith guide.</p>
-  <video id="classesVideo" controls>
-    <source src="classes.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</section>
+<div class="gold-divider"></div>
 
-<section id="all-routes">
-  <h2>All Routes & Prices</h2>
-  <p>Check our suggested transport prices from Granada and nearby towns.</p>
-  <ul>
-    <li>Masaya & Catarina: $24</li>
-    <li>Managua: $48</li>
-    <li>Rivas: $62</li>
-    <li>San Juan del Sur: $74</li>
-    <li>Popoyo: $74</li>
-  </ul>
-</section>
+<section class="invitation-form-section">
+  <form class="invitation-form">
 
-<section id="joinHub">
-  <h2>Join the Hub</h2>
-  <p class="description">
-    Become part of the Sunny Roads Service Hub! Provide your service to locals and visitors. Fill out the form below and our team will review your application.
-  </p>
-  <form action="https://formsubmit.co/sunnyroadsadcentures@gmail.com" method="POST">
-    <input type="text" name="name" placeholder="Your Name or Company Name" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-    <input type="text" name="whatsapp" placeholder="WhatsApp Number" required>
-    <select name="serviceType" required>
-      <option value="" disabled selected>Select Service Type</option>
-      <option value="Food Delivery">Food Delivery</option>
-      <option value="Pet Services">Pet Services</option>
-      <option value="Personal Assistant">Personal Assistant</option>
-      <option value="Pharmacy Delivery">Pharmacy Delivery</option>
-      <option value="Construction / Plumbing">Construction / Plumbing</option>
-      <option value="Rentals / Hostel">Rentals / Hostel</option>
-      <option value="Other">Other</option>
-    </select>
-    <select name="membership" required>
-      <option value="" disabled selected>Select Membership Type</option>
-      <option value="Weekly">Weekly</option>
-      <option value="Monthly">Monthly</option>
-      <option value="Custom">Custom</option>
-    </select>
-    <textarea name="description" placeholder="Short description of your service" rows="4" required></textarea>
-    <label>
-      <input type="checkbox" name="agree" required> I agree to the review process and terms
-    </label>
-    <button type="submit">Submit Application</button>
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" required>
+    </div>
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" required>
+    </div>
+
+    <div class="form-group">
+      <label>Preferred Travel Dates</label>
+      <input type="text">
+    </div>
+
+    <div class="form-group">
+      <label>Number of Guests</label>
+      <input type="number" min="1">
+    </div>
+
+    <div class="form-group">
+      <label>Describe Your Ideal Experience</label>
+      <textarea rows="5"></textarea>
+    </div>
+
+    <button type="submit" class="btn-gold">Submit Private Request</button>
+
   </form>
 </section>
 
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Email: info@sunnyroadsadventures.com</p>
-  <p>WhatsApp: +50558365522</p>
+<div class="gold-divider"></div>
+
+<section class="invitation-footer">
+  <p>
+    We respond personally within 24 hours.
+  </p>
+  <a href="index.html" class="back-link">Return to Main Experience</a>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <p>© 2026 Sunny Roads Adventures</p>
-</footer>
-
-<script>
-// ===== NAVIGATION =====
-document.querySelectorAll('nav button').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const sectionId = btn.getAttribute('data-section');
-    document.querySelectorAll('section').forEach(sec => {
-      sec.style.display = (sec.id === sectionId) ? 'flex' : 'none';
-    });
-  });
-});
-
-// ===== INITIAL VIEW =====
-document.querySelectorAll('section').forEach((sec, i) => {
-  sec.style.display = (i===0) ? 'flex' : 'none';
-});
-
-// ===== TOUR CARD CLICK =====
-document.querySelectorAll('.tour-card').forEach(card => {
-  card.addEventListener('click', () => {
-    alert("Tour: " + card.querySelector('h3').textContent + "\nDetails: " + card.querySelector('p').textContent);
-  });
-});
-</script>
+<script src="main.js"></script>
 </body>
 </html>
