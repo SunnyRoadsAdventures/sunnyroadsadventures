@@ -376,3 +376,11 @@ footer {
     text-align: center;
     border-top: 1px solid rgba(212,175,55,0.15);
 }
+/* ===== DARK FOOTER FIX ===== */
+
+footer {
+    background: #0b0b0b !important;
+    color: rgba(212,175,55,0.75) !important;
+    padding: 80px 20px;
+    text-align: center;
+}
