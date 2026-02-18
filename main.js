@@ -1,13 +1,14 @@
-// Fade in sections
 const sections = document.querySelectorAll('.fade-section');
 
-const observer = new IntersectionObserver(entries => {
+const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if(entry.isIntersecting){
             entry.target.classList.add('visible');
         }
     });
-}, { threshold: 0.2 });
+}, {
+    threshold: 0.15
+});
 
 sections.forEach(section => {
     observer.observe(section);
