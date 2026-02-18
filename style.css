@@ -89,10 +89,12 @@ p {
     color: #1c1c1c;
 }
 
-.empire-alt h2,
-.empire-section h2,
-.empire-philosophy h2 {
-    color: #111111;
+.empire-alt {
+    background: linear-gradient(
+        180deg,
+        #f5f2eb 0%,
+        #efe9dd 100%
+    );
 }
 .empire-section {
     background: linear-gradient(
