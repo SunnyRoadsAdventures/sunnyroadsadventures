@@ -103,5 +103,65 @@
 </section>
 
 <script src="main.js"></script>
+
+/* SUCCESS OVERLAY */
+
+.success-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease;
+  z-index: 9999;
+}
+
+.success-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.success-content {
+  max-width: 500px;
+  padding: 40px;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.success-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.success-content p {
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.gold-line-success {
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg,#a67c00,#ffd700,#a67c00);
+  margin: 0 auto 30px auto;
+  animation: expandLine 1.5s ease forwards;
+}
+
+@keyframes expandLine {
+  to { width: 80px; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </body>
 </html>
