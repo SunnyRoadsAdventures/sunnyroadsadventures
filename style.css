@@ -351,3 +351,28 @@ textarea {
     text-decoration: none;
     font-weight: 600;
 }
+/* ===== INQUIRY LUXURY VERSION ===== */
+
+.inquiry-section {
+    padding: 120px 20px;
+    text-align: center;
+    background: radial-gradient(
+        circle at top,
+        #1a1405 0%,
+        #0b0b0b 60%
+    );
+}
+
+.inquiry-section h2 {
+    color: #f5f5f5;
+}
+
+/* ===== FOOTER REFINED ===== */
+
+footer {
+    background: #0b0b0b;
+    color: rgba(212, 175, 55, 0.6);
+    padding: 60px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(212,175,55,0.15);
+}
