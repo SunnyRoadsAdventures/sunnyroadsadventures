@@ -167,3 +167,101 @@ footer {
     font-size: 14px;
     letter-spacing: 1px;
 }
+/* INVITATION PAGE */
+
+.invitation-body {
+  background: #050505;
+}
+
+.invitation-hero {
+  position: relative;
+  height: 60vh;
+  background: url("assets/images/cloud.png") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.invitation-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  padding: 20px;
+}
+
+.invitation-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.invitation-content p {
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.invitation-form-section {
+  padding: 100px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.invitation-form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  color: #d4af37;
+  letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 14px;
+  background: #111;
+  border: 1px solid rgba(255,215,0,0.2);
+  color: white;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  transition: 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255,215,0,0.2);
+}
+
+.invitation-form button {
+  margin-top: 20px;
+}
+
+.invitation-footer {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #ffd700;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.back-link:hover {
+  opacity: 0.7;
+}
