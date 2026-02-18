@@ -49,8 +49,11 @@ p {
     background: linear-gradient(
         180deg,
         #f8f5f0 0%,
-        #efe7d8 40%,
-        #e4d2a3 100%
+        #efe7d8 25%,
+        #e4d2a3 55%,
+        #f1e7cf 75%,
+        #faf7f1 90%,
+        #ffffff 100%
     );
     display: flex;
     flex-direction: column;
