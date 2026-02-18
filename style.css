@@ -116,13 +116,14 @@ p {
 .slider {
     display: flex;
     width: 600%;
-    animation: slide 30s infinite linear;
+    animation: slide 60s infinite linear;
 }
 
 .slider img {
     width: 100vw;
     height: 80vh;
     object-fit: cover;
+    filter: brightness(0.95) contrast(1.05);
 }
 
 /* FOOTER */
@@ -259,4 +260,17 @@ textarea {
     box-shadow:
         0 0 30px rgba(200,170,70,0.6),
         0 6px 25px rgba(0,0,0,0.25);
+}section:not(.empire-hero):not(.slider-section)::before {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 1px;
+    margin: 0 auto 60px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #d4af37,
+        transparent
+    );
+    opacity: 0.6;
 }
