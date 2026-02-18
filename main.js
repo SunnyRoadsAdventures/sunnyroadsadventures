@@ -1,32 +1,22 @@
-/* ======================================
-   WHITE GOLD CINEMATIC ENGINE
-====================================== */
+// LIGHT FOLLOW
+const light = document.querySelector(".light-follow");
 
-/* Fade-in sections */
+document.addEventListener("mousemove", e => {
+  light.style.left = e.clientX + "px";
+  light.style.top = e.clientY + "px";
+});
+
+// FADE IN SECTIONS
 const sections = document.querySelectorAll("section");
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.classList.add("visible");
+      entry.target.style.transition = "opacity 2.4s ease, transform 2.4s ease";
+      entry.target.style.opacity = "1";
+      entry.target.style.transform = "translateY(0)";
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.2 });
 
-sections.forEach(section => {
-  observer.observe(section);
-});
-
-/* Gold Dust Generator */
-const dustContainer = document.querySelector(".gold-dust");
-
-for (let i = 0; i < 20; i++) {
-  const particle = document.createElement("span");
-
-  particle.style.left = Math.random() * 100 + "vw";
-  particle.style.top = Math.random() * 100 + "vh";
-  particle.style.animationDuration = 15 + Math.random() * 20 + "s";
-  particle.style.opacity = 0.2 + Math.random() * 0.3;
-
-  dustContainer.appendChild(particle);
-}
+sections.forEach(section => observer.observe(section));
