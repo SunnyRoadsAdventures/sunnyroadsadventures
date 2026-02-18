@@ -56,13 +56,6 @@ p {
     padding: 0 10%;
 }
 
-.empire-hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.6);
-}
-
 .empire-hero h1,
 .empire-hero p,
 .gold-line {
