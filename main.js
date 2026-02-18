@@ -1,4 +1,5 @@
-/* IMAGE SLIDER */
+/* SLIDER */
+
 const slides = document.querySelectorAll(".slide");
 let index = 0;
 
@@ -15,34 +16,20 @@ if(slides.length > 0){
   setInterval(showSlide, 5000);
 }
 
-/* FORM AJAX SUBMIT */
+/* FADE IN */
 
-const form = document.getElementById("invitationForm");
-const overlay = document.getElementById("successOverlay");
+const fadeSections = document.querySelectorAll(".fade-section");
 
-if(form){
-  form.addEventListener("submit", async function(e){
-    e.preventDefault();
+function revealOnScroll() {
+  fadeSections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+    const triggerPoint = window.innerHeight - 100;
 
-    const data = new FormData(form);
-
-    try {
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-
-      if(response.ok){
-        form.reset();
-        overlay.classList.add("active");
-      } else {
-        alert("Something went wrong. Please try again.");
-      }
-    } catch(error){
-      alert("Network error. Please try again.");
+    if(sectionTop < triggerPoint) {
+      section.classList.add("visible");
     }
   });
 }
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
