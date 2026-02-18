@@ -1,35 +1,14 @@
-/* SLIDER */
+// Fade in sections
+const sections = document.querySelectorAll('.fade-section');
 
-const slides = document.querySelectorAll(".slide");
-let index = 0;
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.2 });
 
-function showSlide() {
-  slides.forEach(slide => slide.classList.remove("active"));
-  index++;
-  if(index >= slides.length){
-    index = 0;
-  }
-  slides[index].classList.add("active");
-}
-
-if(slides.length > 0){
-  setInterval(showSlide, 5000);
-}
-
-/* FADE IN */
-
-const fadeSections = document.querySelectorAll(".fade-section");
-
-function revealOnScroll() {
-  fadeSections.forEach(section => {
-    const sectionTop = section.getBoundingClientRect().top;
-    const triggerPoint = window.innerHeight - 100;
-
-    if(sectionTop < triggerPoint) {
-      section.classList.add("visible");
-    }
-  });
-}
-
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
+sections.forEach(section => {
+    observer.observe(section);
+});
