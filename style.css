@@ -1,30 +1,16 @@
-/* =========================================
-   EMPIRE OF WHITE GOLD — IMMERSIVE EDITION
-   ========================================= */
+/* ======================================
+   WHITE GOLD MUSEUM EDITION
+   Calm. Refined. Unified.
+====================================== */
 
 :root {
-
-  /* Whites */
-  --pure-white: #ffffff;
-  --warm-ivory: #fdfbf7;
-  --bone-white: #f6f1e8;
-  --fiber-white: #fafafa;
-
-  /* Gold spectrum */
-  --white-gold: #f3ead7;
-  --champagne: #e6d3a3;
-  --soft-gold: #d4b36a;
-  --pure-gold: #c6a23a;
-  --bright-gold: #f0d889;
-
-  /* Text */
-  --text-dark: #111;
-  --text-soft: #555;
-
+  --bg-main: #fefdf9;
+  --bg-soft: #f4f1ea;
+  --gold-soft: #d4b36a;
+  --gold-light: #e8d8b5;
+  --text-main: #1a1a1a;
+  --text-soft: #5a5a5a;
 }
-
-
-/* ================= RESET ================= */
 
 * {
   margin: 0;
@@ -33,412 +19,126 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
   font-family: "Cormorant Garamond", serif;
-  background:
-    radial-gradient(circle at 30% 20%, rgba(240,216,137,0.08), transparent 40%),
-    radial-gradient(circle at 70% 70%, rgba(214,179,106,0.08), transparent 50%),
-    linear-gradient(180deg, var(--pure-white), var(--bone-white));
-  color: var(--text-dark);
+  background: linear-gradient(180deg, var(--bg-main), var(--bg-soft));
+  color: var(--text-main);
   overflow-x: hidden;
-  position: relative;
+  line-height: 1.8;
 }
 
-
-/* =========================================
-   SILK / MARBLE DEPTH LAYER
-   ========================================= */
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(120deg, rgba(255,255,255,0.4) 0%, transparent 40%),
-    linear-gradient(60deg, rgba(230,211,163,0.15) 0%, transparent 60%);
-  mix-blend-mode: overlay;
-  pointer-events: none;
-  z-index: 0;
+/* Container */
+.container {
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
 }
 
-
-/* =========================================
-   GOLD VEIN THREADS (MULTIPLE)
-   ========================================= */
-
-body::after {
-  content: "";
-  position: fixed;
-  top: -20%;
-  left: 50%;
-  width: 2px;
-  height: 140%;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--bright-gold),
-    var(--pure-gold),
-    var(--bright-gold),
-    transparent
-  );
-  opacity: 0.6;
-  filter: blur(0.5px);
-  animation: veinFlow 12s linear infinite;
-  z-index: 1;
-}
-
-@keyframes veinFlow {
-  0% { transform: translateY(-15%) scaleY(1); }
-  50% { transform: translateY(5%) scaleY(1.05); }
-  100% { transform: translateY(-15%) scaleY(1); }
-}
-
-
-/* =========================================
-   FLOATING GOLD DUST
-   ========================================= */
-
-.gold-dust {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.gold-dust span {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  background: var(--bright-gold);
-  border-radius: 50%;
-  opacity: 0.6;
-  animation: dustFloat 20s linear infinite;
-}
-
-@keyframes dustFloat {
-  0% { transform: translateY(0); opacity: 0.3; }
-  50% { opacity: 0.8; }
-  100% { transform: translateY(-100vh); opacity: 0; }
-}
-
-
-/* =========================================
-   SECTIONS — WHITE GLASS ARCHITECTURE
-   ========================================= */
-
+/* Sections unified */
 section {
+  padding: 140px 8%;
   position: relative;
-  padding: 140px 10%;
-  background: rgba(255,255,255,0.65);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(198,162,58,0.15);
-  border-bottom: 1px solid rgba(198,162,58,0.15);
-  z-index: 3;
-  transition: background 0.6s ease;
+  background: transparent;
 }
 
-section:hover {
-  background: rgba(255,255,255,0.8);
-}
-
-
-/* =========================================
-   LIVING GOLD DIVIDER
-   ========================================= */
-
-section::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 25%;
-  width: 50%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--pure-gold),
-    var(--bright-gold),
-    var(--pure-gold),
-    transparent
-  );
-  animation: dividerPulse 5s ease-in-out infinite;
-}
-
-@keyframes dividerPulse {
-  0% { opacity: 0.4; transform: scaleX(0.9); }
-  50% { opacity: 1; transform: scaleX(1.1); }
-  100% { opacity: 0.4; transform: scaleX(0.9); }
-}
-
-
-/* =========================================
-   HERO — WHITE GOLD GLOW
-   ========================================= */
-
+/* Hero */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  background:
-    radial-gradient(circle at center, rgba(240,216,137,0.15), transparent 60%),
-    linear-gradient(160deg, var(--pure-white), var(--white-gold));
 }
 
-.hero h1 {
-  font-size: 4rem;
-  letter-spacing: 8px;
+/* Headings */
+h1 {
+  font-size: 3.5rem;
   font-weight: 600;
-  background: linear-gradient(
-    90deg,
-    var(--pure-gold),
-    var(--bright-gold),
-    var(--pure-gold)
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: goldBreath 6s ease-in-out infinite;
+  letter-spacing: 4px;
+  margin-bottom: 20px;
 }
 
-@keyframes goldBreath {
-  0% { filter: brightness(1); }
-  50% { filter: brightness(1.2); }
-  100% { filter: brightness(1); }
+h2 {
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
 }
 
-.gold-line {
-  width: 140px;
-  height: 2px;
-  margin: 40px auto;
+/* Divider */
+.divider {
+  width: 120px;
+  height: 1px;
+  margin: 30px auto;
   background: linear-gradient(
     90deg,
     transparent,
-    var(--pure-gold),
+    var(--gold-soft),
     transparent
   );
 }
 
-.hero p {
-  max-width: 750px;
-  margin: auto;
-  font-size: 1.25rem;
-  line-height: 1.9;
-  color: var(--text-soft);
-}
-
-
-/* =========================================
-   HEADINGS
-   ========================================= */
-
-h2 {
-  font-size: 3rem;
-  margin-bottom: 40px;
-  font-weight: 600;
-  position: relative;
-}
-
-h2::before {
-  content: "";
-  position: absolute;
-  left: -40px;
-  top: 50%;
-  width: 30px;
-  height: 1px;
-  background: var(--pure-gold);
-}
-
-
-/* =========================================
-   PARAGRAPHS
-   ========================================= */
-
+/* Paragraphs */
 p {
-  font-size: 1.2rem;
-  line-height: 1.9;
-  margin-bottom: 30px;
-  max-width: 850px;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  font-size: 1.15rem;
+  color: var(--text-soft);
+  margin-bottom: 20px;
 }
 
-
-/* =========================================
-   RESPONSIVE
-   ========================================= */
-
-@media (max-width: 768px) {
-
-  .hero h1 {
-    font-size: 2.5rem;
-    letter-spacing: 4px;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  section {
-    padding: 100px 8%;
-  }
-
-}/* =========================================
-   MARBLE GRAIN OVERLAY
-   ========================================= */
-
-body::before {
-  background-image:
-    url("https://www.transparenttextures.com/patterns/white-marble.png");
-  opacity: 0.15;
-  mix-blend-mode: overlay;
+.lead {
+  font-size: 1.3rem;
+  color: #444;
 }
 
-
-/* =========================================
-   MOUSE REACTIVE GOLD LIGHT
-   ========================================= */
-
-.light-follow {
+/* Gold dust */
+.gold-dust span {
   position: fixed;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle,
-    rgba(240,216,137,0.25),
-    rgba(240,216,137,0.12),
-    transparent 70%);
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-  transition: transform 0.08s ease-out;
+  width: 2px;
+  height: 2px;
+  background: var(--gold-light);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: float 20s linear infinite;
 }
 
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100vh); }
+}
 
-/* =========================================
-   SECTION PARALLAX DEPTH
-   ========================================= */
-
+/* Fade animation */
 section {
-  transform: translateY(0);
-  transition: transform 0.6s ease-out;
-}
-
-
-/* =========================================
-   ENTRANCE ANIMATION
-   ========================================= */
-
-.fade-in {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  transform: translateY(30px);
+  transition: opacity 2s ease, transform 2s ease;
 }
 
-.fade-in.visible {
+section.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* =========================================
-   CINEMATIC SMOOTH BASE
-   ========================================= */
-
-html {
-  scroll-behavior: auto; /* we control it manually */
-}
-
-body {
-  transition: background 1.2s ease;
-}
-
-
-/* =========================================
-   SCROLL DEPTH LIGHT SHIFT
-   ========================================= */
-
-body.depth-shift {
-  background:
-    radial-gradient(circle at 50% 20%, rgba(240,216,137,0.12), transparent 50%),
-    linear-gradient(180deg, #ffffff, #f3efe6);
-}
-
-
-/* =========================================
-   GOLD SHIMMER SWEEP ON HEADINGS
-   ========================================= */
-
-h2 {
-  position: relative;
-  overflow: hidden;
-}
-
-h2::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(240,216,137,0.4),
-    transparent
-  );
-  transform: skewX(-20deg);
-  animation: shimmerSweep 8s infinite;
-}
-
-@keyframes shimmerSweep {
-  0% { left: -100%; }
-  60% { left: 150%; }
-  100% { left: 150%; }
-}
-
-
-/* =========================================
-   CHAMPAGNE CUSTOM CURSOR (DESKTOP ONLY)
-   ========================================= */
-
-@media (pointer: fine) {
-
-  body {
-    cursor: none;
-  }
-
-  .lux-cursor {
-    position: fixed;
-    width: 14px;
-    height: 14px;
-    border: 1px solid #c6a23a;
-    border-radius: 50%;
-    pointer-events: none;
-    transform: translate(-50%, -50%);
-    z-index: 9999;
-    transition: transform 0.08s ease;
-  }
-
-}
-
-
-/* =========================================
-   MOBILE OPTIMIZATION
-   ========================================= */
-
+/* Mobile */
 @media (max-width: 768px) {
 
-  body::before,
-  body::after {
-    animation: none;
+  h1 {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
   }
 
-  .light-follow {
-    display: none;
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
   }
 
   section {
-    backdrop-filter: blur(6px);
+    padding: 100px 6%;
   }
-
 }
