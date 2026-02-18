@@ -11,15 +11,44 @@
 
 <body class="invitation-body">
 
-<section class="invitation-hero">
-  <div class="overlay"></div>
-  <div class="invitation-content">
-    <h1>Private Invitation</h1>
-    <p>
-      Your journey begins with intention.
-      Share your vision, and we will craft something extraordinary.
-    </p>
-  </div>
+<section class="invitation-form-section">
+  <form 
+    class="invitation-form"
+    id="invitationForm"
+    action="https://formspree.io/f/xrealgyw"
+    method="POST"
+  >
+
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label>Preferred Travel Dates</label>
+      <input type="text" name="dates">
+    </div>
+
+    <div class="form-group">
+      <label>Number of Guests</label>
+      <input type="number" name="guests" min="1">
+    </div>
+
+    <div class="form-group">
+      <label>Describe Your Ideal Experience</label>
+      <textarea name="message" rows="5"></textarea>
+    </div>
+
+    <button type="submit" class="btn-gold submit-btn">
+      Submit Private Request
+    </button>
+
+  </form>
 </section>
 
 <div class="gold-divider"></div>
