@@ -1,14 +1,28 @@
-// Scroll reveal animation
-const reveals = document.querySelectorAll(".reveal");
+/* SCROLL FADE */
 
-window.addEventListener("scroll", () => {
-  reveals.forEach(el => {
-    const windowHeight = window.innerHeight;
-    const elementTop = el.getBoundingClientRect().top;
-    const revealPoint = 100;
+const sections = document.querySelectorAll('.fade-section');
 
-    if (elementTop < windowHeight - revealPoint) {
-      el.classList.add("active");
-    }
-  });
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+sections.forEach(section => {
+    observer.observe(section);
+});
+
+/* ULTRA SUBTLE PARALLAX */
+
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const images = document.querySelectorAll('.slider img');
+
+    images.forEach(img => {
+        img.style.transform = `translateY(${scrolled * 0.01}px)`;
+    });
 });
