@@ -1,16 +1,6 @@
-/* ======================================
-   WHITE GOLD MUSEUM EDITION
-   Calm. Refined. Unified.
-====================================== */
-
-:root {
-  --bg-main: #fefdf9;
-  --bg-soft: #f4f1ea;
-  --gold-soft: #d4b36a;
-  --gold-light: #e8d8b5;
-  --text-main: #1a1a1a;
-  --text-soft: #5a5a5a;
-}
+/* =========================================
+   GLOBAL RESET
+========================================= */
 
 * {
   margin: 0;
@@ -18,127 +8,161 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: auto;
-}
+/* =========================================
+   ULTRA SOFT BACKGROUND
+========================================= */
 
 body {
   font-family: "Cormorant Garamond", serif;
-  background: linear-gradient(180deg, var(--bg-main), var(--bg-soft));
-  color: var(--text-main);
+  background:
+    radial-gradient(circle at 50% 20%, rgba(212,180,95,0.03), transparent 60%),
+    linear-gradient(180deg, #fdfcf8, #f8f6f1);
+  color: #2d2a26;
   overflow-x: hidden;
-  line-height: 1.8;
 }
 
-/* Container */
-.container {
-  max-width: 900px;
-  margin: auto;
-  text-align: center;
-}
+/* =========================================
+   HERO SECTION
+========================================= */
 
-/* Sections unified */
-section {
-  padding: 140px 8%;
-  position: relative;
-  background: transparent;
-}
-
-/* Hero */
 .hero {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 20px;
 }
 
-/* Headings */
-h1 {
-  font-size: 3.5rem;
-  font-weight: 600;
-  letter-spacing: 4px;
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 2px;
   margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: 1.2rem;
+  opacity: 0.7;
+  margin-bottom: 40px;
+}
+
+/* =========================================
+   CTA BUTTON
+========================================= */
+
+.cta-button {
+  padding: 14px 38px;
+  border: 1px solid rgba(180,150,70,0.4);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  color: #2d2a26;
+  background: rgba(255,255,255,0.5);
+  backdrop-filter: blur(6px);
+  transition: all 0.5s ease;
+}
+
+.cta-button:hover {
+  background: rgba(212,180,95,0.12);
+  border-color: rgba(180,150,70,0.6);
+}
+
+.secondary {
+  margin-top: 30px;
+  display: inline-block;
+}
+
+/* =========================================
+   SECTIONS (UNIFIED COLOR)
+========================================= */
+
+section {
+  padding: 140px 12%;
+  text-align: center;
+  background: transparent;
+  opacity: 0;
+  transform: translateY(30px);
 }
 
 h2 {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
   font-weight: 500;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+  position: relative;
 }
 
-/* Divider */
-.divider {
-  width: 120px;
+h2::after {
+  content: "";
+  display: block;
+  width: 60px;
   height: 1px;
-  margin: 30px auto;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gold-soft),
-    transparent
-  );
+  margin: 15px auto 0;
+  background: rgba(180,150,70,0.4);
 }
 
-/* Paragraphs */
 p {
-  font-family: "Inter", sans-serif;
-  font-weight: 300;
-  font-size: 1.15rem;
-  color: var(--text-soft);
-  margin-bottom: 20px;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.9;
+  font-size: 1.05rem;
+  opacity: 0.75;
 }
 
-.lead {
-  font-size: 1.3rem;
-  color: #444;
-}
+/* =========================================
+   GOLD DUST (VERY SOFT)
+========================================= */
 
-/* Gold dust */
 .gold-dust span {
-  position: fixed;
-  width: 2px;
-  height: 2px;
-  background: var(--gold-light);
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(212,180,95,0.25);
   border-radius: 50%;
-  opacity: 0.4;
-  animation: float 20s linear infinite;
+  animation: floatDust 20s linear infinite;
 }
 
-@keyframes float {
-  from { transform: translateY(0); }
-  to { transform: translateY(-100vh); }
+@keyframes floatDust {
+  0% { transform: translateY(0px); opacity: 0; }
+  20% { opacity: 0.4; }
+  100% { transform: translateY(-600px); opacity: 0; }
 }
 
-/* Fade animation */
-section {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 2s ease, transform 2s ease;
+/* =========================================
+   LIGHT FOLLOW — REDUCED AGAIN
+========================================= */
+
+.light-follow {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  pointer-events: none;
+  background: radial-gradient(circle,
+    rgba(212,180,95,0.08),
+    rgba(212,180,95,0.03),
+    transparent 70%);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  transition: 0.2s ease-out;
 }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* =========================================
+   MOBILE
+========================================= */
 
-/* Mobile */
 @media (max-width: 768px) {
 
-  h1 {
-    font-size: 2.2rem;
-    letter-spacing: 2px;
+  .hero-content h1 {
+    font-size: 2rem;
   }
 
-  h2 {
-    font-size: 1.8rem;
+  section {
+    padding: 100px 8%;
   }
 
   p {
     font-size: 1rem;
   }
 
-  section {
-    padding: 100px 6%;
-  }
 }
