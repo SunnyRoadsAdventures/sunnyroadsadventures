@@ -1,22 +1,14 @@
-// LIGHT FOLLOW
-const light = document.querySelector(".light-follow");
+// Scroll reveal animation
+const reveals = document.querySelectorAll(".reveal");
 
-document.addEventListener("mousemove", e => {
-  light.style.left = e.clientX + "px";
-  light.style.top = e.clientY + "px";
-});
+window.addEventListener("scroll", () => {
+  reveals.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const revealPoint = 100;
 
-// FADE IN SECTIONS
-const sections = document.querySelectorAll("section");
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.transition = "opacity 2.4s ease, transform 2.4s ease";
-      entry.target.style.opacity = "1";
-      entry.target.style.transform = "translateY(0)";
+    if (elementTop < windowHeight - revealPoint) {
+      el.classList.add("active");
     }
   });
-}, { threshold: 0.2 });
-
-sections.forEach(section => observer.observe(section));
+});
