@@ -1,6 +1,12 @@
-/* =========================================
-   GLOBAL RESET
-========================================= */
+:root {
+  --pure-white: #f8f7f4;
+  --warm-ivory: #f4f1ea;
+  --bone-white: #f1ede4;
+  --soft-gold: #d6b56c;
+  --champagne: #e2c98f;
+  --deep-gold: #c9a64f;
+  --text-dark: #2d2d2d;
+}
 
 * {
   margin: 0;
@@ -8,161 +14,174 @@
   box-sizing: border-box;
 }
 
-/* =========================================
-   ULTRA SOFT BACKGROUND
-========================================= */
-
 body {
-  font-family: "Cormorant Garamond", serif;
-  background:
-    radial-gradient(circle at 50% 20%, rgba(212,180,95,0.03), transparent 60%),
-    linear-gradient(180deg, #fdfcf8, #f8f6f1);
-  color: #2d2a26;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to bottom, var(--pure-white), var(--warm-ivory));
+  color: var(--text-dark);
   overflow-x: hidden;
 }
 
-/* =========================================
-   HERO SECTION
-========================================= */
-
-.hero {
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
+/* GOLD THREAD */
+.gold-thread {
+  position: fixed;
+  top: 0;
+  right: 10%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--champagne),
+    var(--deep-gold),
+    transparent
+  );
+  opacity: 0.4;
+  animation: threadMove 10s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.hero-content h1 {
-  font-size: 3rem;
+@keyframes threadMove {
+  0% { transform: translateY(-10%); }
+  50% { transform: translateY(10%); }
+  100% { transform: translateY(-10%); }
+}
+
+/* GOLD DUST */
+.gold-dust span {
+  position: fixed;
+  width: 3px;
+  height: 3px;
+  background: var(--champagne);
+  border-radius: 50%;
+  opacity: 0;
+  animation: sparkle 6s infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.6; transform: scale(1); }
+}
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  background: var(--pure-white);
+  padding: 0 20px;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
   font-weight: 500;
   letter-spacing: 2px;
-  margin-bottom: 20px;
+  color: var(--deep-gold);
+  transition: 0.6s ease;
+}
+
+h1:hover {
+  text-shadow: 0 0 12px rgba(201,166,79,0.3);
 }
 
 .tagline {
+  margin-top: 20px;
   font-size: 1.2rem;
-  opacity: 0.7;
-  margin-bottom: 40px;
+  opacity: 0.8;
 }
 
-/* =========================================
-   CTA BUTTON
-========================================= */
-
-.cta-button {
-  padding: 14px 38px;
-  border: 1px solid rgba(180,150,70,0.4);
-  text-decoration: none;
-  font-size: 0.9rem;
-  letter-spacing: 1.5px;
-  color: #2d2a26;
-  background: rgba(255,255,255,0.5);
-  backdrop-filter: blur(6px);
-  transition: all 0.5s ease;
-}
-
-.cta-button:hover {
-  background: rgba(212,180,95,0.12);
-  border-color: rgba(180,150,70,0.6);
-}
-
-.secondary {
-  margin-top: 30px;
-  display: inline-block;
-}
-
-/* =========================================
-   SECTIONS (UNIFIED COLOR)
-========================================= */
-
+/* SECTIONS */
 section {
-  padding: 140px 12%;
+  padding: 120px 20px;
   text-align: center;
-  background: transparent;
-  opacity: 0;
-  transform: translateY(30px);
+}
+
+.section-light {
+  background: var(--pure-white);
+}
+
+.section-ivory {
+  background: var(--bone-white);
 }
 
 h2 {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-  font-weight: 500;
-  position: relative;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+  color: var(--deep-gold);
+  transition: 0.6s ease;
 }
 
-h2::after {
-  content: "";
-  display: block;
-  width: 60px;
-  height: 1px;
-  margin: 15px auto 0;
-  background: rgba(180,150,70,0.4);
+h2:hover {
+  text-shadow: 0 0 10px rgba(201,166,79,0.2);
 }
 
 p {
-  max-width: 650px;
-  margin: 0 auto;
-  line-height: 1.9;
+  max-width: 700px;
+  margin: 20px auto;
+  line-height: 1.8;
   font-size: 1.05rem;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
-/* =========================================
-   GOLD DUST (VERY SOFT)
-========================================= */
-
-.gold-dust span {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: rgba(212,180,95,0.25);
-  border-radius: 50%;
-  animation: floatDust 20s linear infinite;
+/* GOLD DIVIDER */
+.gold-divider {
+  width: 120px;
+  height: 2px;
+  margin: 25px auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--champagne),
+    var(--deep-gold),
+    transparent
+  );
+  animation: shimmer 5s linear infinite;
 }
 
-@keyframes floatDust {
-  0% { transform: translateY(0px); opacity: 0; }
-  20% { opacity: 0.4; }
-  100% { transform: translateY(-600px); opacity: 0; }
+@keyframes shimmer {
+  0% { background-position: -200px; }
+  100% { background-position: 200px; }
 }
 
-/* =========================================
-   LIGHT FOLLOW — REDUCED AGAIN
-========================================= */
-
-.light-follow {
-  position: fixed;
-  width: 280px;
-  height: 280px;
-  pointer-events: none;
-  background: radial-gradient(circle,
-    rgba(212,180,95,0.08),
-    rgba(212,180,95,0.03),
-    transparent 70%);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 0;
-  transition: 0.2s ease-out;
+/* CTA BUTTON */
+.cta-button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 14px 40px;
+  border: 1px solid var(--champagne);
+  color: var(--deep-gold);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 1px;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(6px);
+  transition: all 0.4s ease;
 }
 
-/* =========================================
-   MOBILE
-========================================= */
+.cta-button:hover {
+  background: var(--champagne);
+  color: white;
+  box-shadow: 0 0 20px rgba(201,166,79,0.25);
+}
 
+/* REVEAL ANIMATION */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1.2s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
-
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  section {
-    padding: 100px 8%;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.8rem; }
+  p { font-size: 1rem; }
 }
