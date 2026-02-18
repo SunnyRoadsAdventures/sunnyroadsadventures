@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Private Invitation | Sunny Roads Adventures</title>
+
 <link rel="stylesheet" href="style.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -24,31 +25,40 @@
 <div class="gold-divider"></div>
 
 <section class="invitation-form-section">
-  <form class="invitation-form">
+  <form 
+    class="invitation-form"
+    action="https://formspree.io/f/xrealgyw"
+    method="POST"
+  >
+  
+    <!-- OPTIONAL REDIRECT (UNCOMMENT IF YOU ADD THANKYOU.HTML) -->
+    <!--
+    <input type="hidden" name="_redirect" value="https://sunnyroadsadventures.github.io/sunnyroadsadventures/thankyou.html">
+    -->
 
     <div class="form-group">
       <label>Your Name</label>
-      <input type="text" required>
+      <input type="text" name="name" required>
     </div>
 
     <div class="form-group">
       <label>Email Address</label>
-      <input type="email" required>
+      <input type="email" name="email" required>
     </div>
 
     <div class="form-group">
       <label>Preferred Travel Dates</label>
-      <input type="text">
+      <input type="text" name="dates">
     </div>
 
     <div class="form-group">
       <label>Number of Guests</label>
-      <input type="number" min="1">
+      <input type="number" name="guests" min="1">
     </div>
 
     <div class="form-group">
       <label>Describe Your Ideal Experience</label>
-      <textarea rows="5"></textarea>
+      <textarea name="message" rows="5"></textarea>
     </div>
 
     <button type="submit" class="btn-gold">Submit Private Request</button>
@@ -59,9 +69,7 @@
 <div class="gold-divider"></div>
 
 <section class="invitation-footer">
-  <p>
-    We respond personally within 24 hours.
-  </p>
+  <p>We respond personally within 24 hours.</p>
   <a href="index.html" class="back-link">Return to Main Experience</a>
 </section>
 
