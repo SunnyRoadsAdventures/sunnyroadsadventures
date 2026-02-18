@@ -42,12 +42,18 @@ p {
 /* HERO */
 .empire-hero {
     height: 100vh;
-    background: url("assets/images/slide1.jpg") center/cover no-repeat;
+    background: linear-gradient(
+        180deg,
+        #f8f5f0 0%,
+        #efe7d8 40%,
+        #e4d2a3 100%
+    );
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
+    text-align: center;
+    padding: 0 10%;
 }
 
 .empire-hero::after {
