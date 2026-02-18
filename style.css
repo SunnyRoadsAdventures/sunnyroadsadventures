@@ -318,3 +318,36 @@ textarea {
     71%  { transform: translateX(-200%); }
     100% { transform: translateX(-200%); }
 }
+/* INQUIRY SECTION */
+
+.inquiry-section {
+    padding: 100px 20px;
+    text-align: center;
+    background: #0d0d0d;
+}
+
+.inquiry-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.inquiry-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.inquiry-section p {
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: rgba(255,255,255,0.75);
+}
+
+.btn-gold {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(90deg,#a67c00,#ffd700,#a67c00);
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
