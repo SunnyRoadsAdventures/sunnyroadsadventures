@@ -1,3 +1,17 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    background: #ffffff;
+    color: #111;
+}
+
+/* Hero Section */
 .hero {
     height: 100vh;
     display: flex;
@@ -10,6 +24,9 @@
 
 .hero-inner {
     max-width: 850px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeLuxury 1.6s ease forwards;
 }
 
 .empire-title {
@@ -20,6 +37,7 @@
     margin-bottom: 30px;
     letter-spacing: 1px;
     line-height: 1.1;
+    text-shadow: 0 0 20px rgba(198, 167, 78, 0.15);
 }
 
 .brand-name {
@@ -36,4 +54,12 @@
     color: #555;
     max-width: 520px;
     margin: 0 auto;
+}
+
+/* Animation */
+@keyframes fadeLuxury {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
