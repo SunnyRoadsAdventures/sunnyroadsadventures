@@ -31,13 +31,14 @@ body {
 
 .empire-title {
     font-family: "Playfair Display", serif;
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(3.2rem, 6vw, 5.4rem);
     font-weight: 500;
-    color: #c6a74e;
-    margin-bottom: 30px;
-    letter-spacing: 1px;
-    line-height: 1.1;
-    text-shadow: 0 0 20px rgba(198, 167, 78, 0.15);
+    color: #b8963c;
+    margin-bottom: 35px;
+    letter-spacing: 2px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    text-shadow: 0 4px 30px rgba(184, 150, 60, 0.15);
 }
 
 .brand-name {
