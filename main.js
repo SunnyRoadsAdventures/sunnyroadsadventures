@@ -1,18 +1,24 @@
-const video = document.getElementById("heroVideo");
-const flash = document.querySelector(".white-flash");
-const title = document.querySelector(".hero-title");
-const subtitle = document.querySelector(".hero-subtitle");
+document.addEventListener("DOMContentLoaded", function () {
 
-video.addEventListener("ended", function () {
+    const video = document.getElementById("heroVideo");
+    const flash = document.querySelector(".white-flash");
+    const title = document.querySelector(".hero-title");
+    const subtitle = document.querySelector(".hero-subtitle");
 
-    video.pause();
-    video.currentTime = video.duration; // lock on last frame
+    if (!video) return; // safety check
 
-    flash.classList.add("active");
+    video.addEventListener("ended", function () {
 
-    setTimeout(() => {
-        title.classList.add("visible");
-        subtitle.classList.add("visible");
-    }, 800);
+        video.pause();
+        video.currentTime = video.duration; // lock on last frame
+
+        if (flash) flash.classList.add("active");
+
+        setTimeout(() => {
+            if (title) title.classList.add("visible");
+            if (subtitle) subtitle.classList.add("visible");
+        }, 800);
+
+    });
 
 });
