@@ -6,71 +6,38 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">>
+
+    <link rel="stylesheet" href="style.css">
+
     <title>Empire of White & Gold</title>
 </head>
 <body>
 
-<section class="hero">
-    <div class="hero-inner">
-        <div class="hero-title-wrap">
-<svg viewBox="0 0 1200 400" class="hero-svg" xmlns="http://www.w3.org/2000/svg">
+    <!-- SECTION 1 — GOLDEN HORIZON INTRO -->
+    <section class="empire-intro">
+        <div class="horizon-wrapper">
+            <div class="horizon-line"></div>
+        </div>
+    </section>
 
-  <defs>
 
-    <!-- Dark forged steel gradient -->
-    <linearGradient id="steelGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2e2e2e"/>
-      <stop offset="25%" stop-color="#555555"/>
-      <stop offset="50%" stop-color="#1f1f1f"/>
-      <stop offset="75%" stop-color="#4a4a4a"/>
-      <stop offset="100%" stop-color="#2b2b2b"/>
-    </linearGradient>
+    <!-- SECTION 2 — IMMERSIVE PORTAL -->
+    <section class="empire-portal">
 
-    <!-- Gold vein gradient -->
-    <linearGradient id="goldVein" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#a88930"/>
-      <stop offset="50%" stop-color="#e0c46c"/>
-      <stop offset="100%" stop-color="#6e561f"/>
-    </linearGradient>
+        <div class="portal-frame">
+            <div class="portal-inner">
+                <!-- Image or video will go here later -->
+            </div>
+        </div>
 
-    <!-- Subtle noise texture -->
-    <filter id="noise">
-      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
-      <feColorMatrix type="saturate" values="0"/>
-      <feBlend mode="multiply"/>
-    </filter>
+        <div class="portal-text">
+            <h2>Curated Destinations</h2>
+            <p>
+                Crafted for those who travel beyond expectation.
+            </p>
+        </div>
 
-  </defs>
-
-  <!-- Main Title -->
-  <text x="50%" y="45%" text-anchor="middle"
-        font-size="90"
-        font-family="Georgia, serif"
-        fill="url(#steelGradient)"
-        filter="url(#noise)"
-        letter-spacing="4">
-    EMPIRE OF WHITE & GOLD
-  </text>
-
-  <!-- Gold vein line -->
-  <line x1="200" y1="220" x2="1000" y2="220"
-        stroke="url(#goldVein)"
-        stroke-width="1.5"
-        opacity="0.8" />
-
-  <!-- Brand Name -->
-  <text x="50%" y="320%" text-anchor="middle"
-        font-size="50"
-        font-family="Georgia, serif"
-        fill="url(#steelGradient)"
-        letter-spacing="2">
-    Sunny Roads Adventures
-  </text>
-
-</svg>
-</div>
-</section>
+    </section>
 
 <script src="main.js"></script>
 </body>
