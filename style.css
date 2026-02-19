@@ -1,3 +1,12 @@
+body {
+    margin: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(184,150,60,0.06), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(184,150,60,0.05), transparent 45%),
+        linear-gradient(180deg, #ffffff, #fafafa);
+    overflow-x: hidden;
+}
+
 /* Reset */
 * {
     margin: 0;
