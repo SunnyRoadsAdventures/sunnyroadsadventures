@@ -5,10 +5,11 @@ const subtitle = document.querySelector(".hero-subtitle");
 
 video.addEventListener("ended", function () {
 
-    // Fade to white
+    video.pause();
+    video.currentTime = video.duration; // lock on last frame
+
     flash.classList.add("active");
 
-    // After white flash (0.8 sec), show text
     setTimeout(() => {
         title.classList.add("visible");
         subtitle.classList.add("visible");
