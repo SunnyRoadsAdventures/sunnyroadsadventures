@@ -161,12 +161,9 @@ body {
 
 .gold-divider {
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100vw;
+    width: 100%;
     height: 3px;
-    margin: 35px 0;
-box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+    margin: 25px auto;
 
     background: linear-gradient(
         90deg,
@@ -180,7 +177,6 @@ box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
     background-size: 250% 100%;
     animation: goldFlow 8s linear infinite;
 }
-
 @keyframes goldFlow {
     from { background-position: 0% 0%; }
     to   { background-position: 250% 0%; }
