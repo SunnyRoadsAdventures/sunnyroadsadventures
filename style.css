@@ -63,23 +63,38 @@ body {
 }
 
 .hero-title {
+    opacity: 0;
+    color: #b9932f;
     font-family: 'Playfair Display', serif;
-    font-size: 3.5rem;
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: 1px;
+    transition: opacity 2s ease;
+}
+
+.hero-brand {
+    opacity: 0;
+    color: #b9932f;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    margin-top: 1rem;
     letter-spacing: 2px;
+    transition: opacity 2s ease;
 }
 
 .hero-subtitle {
-    margin-top: 1rem;
-    font-size: 1.2rem;
-    font-weight: 300;
-}
-
-/* ACTIVE STATES */
-.white-flash.active {
-    opacity: 1;
+    opacity: 0;
+    color: #b9932f;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    margin-top: 1.5rem;
+    letter-spacing: 1px;
+    transition: opacity 2s ease;
 }
 
 .hero-title.visible,
+.hero-brand.visible,
 .hero-subtitle.visible {
     opacity: 1;
 }
