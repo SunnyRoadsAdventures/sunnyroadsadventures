@@ -45,9 +45,11 @@ body {
     font-family: "Playfair Display", serif;
     font-size: clamp(1.7rem, 3vw, 2.4rem);
     font-weight: 400;
-    margin-bottom: 50px;
-    letter-spacing: 1px;
-    color: #222;
+    margin-bottom: 55px;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, #8f8f8f, #cfcfcf, #9a9a9a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .hero-subtext {
