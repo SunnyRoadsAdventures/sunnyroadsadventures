@@ -14,11 +14,10 @@ body {
 /* HERO SECTION */
 .hero {
     position: relative;
-    height: 100vh;
+    height: 100svh;   /* modern fix */
     width: 100%;
     overflow: hidden;
 }
-
 /* VIDEO FULL SCENERY (NO ZOOM CROP) */
 .hero-video {
     position: absolute;
