@@ -13,13 +13,63 @@
 
 <section class="hero">
     <div class="hero-inner">
-        <h1 class="empire-title">Empire of White & Gold</h1>
-        <h1 class="brand-name">Sunny Roads Adventures</h1>
-        <p class="hero-subtext">
-            Private journeys shaped by precision, atmosphere, and refined exploration.
-        </p>
-<div class="luxury-line"></div>
-    </div>
+        <div class="hero-title-wrap">
+<svg viewBox="0 0 1200 400" class="hero-svg" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+
+    <!-- Dark forged steel gradient -->
+    <linearGradient id="steelGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2e2e2e"/>
+      <stop offset="25%" stop-color="#555555"/>
+      <stop offset="50%" stop-color="#1f1f1f"/>
+      <stop offset="75%" stop-color="#4a4a4a"/>
+      <stop offset="100%" stop-color="#2b2b2b"/>
+    </linearGradient>
+
+    <!-- Gold vein gradient -->
+    <linearGradient id="goldVein" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a88930"/>
+      <stop offset="50%" stop-color="#e0c46c"/>
+      <stop offset="100%" stop-color="#6e561f"/>
+    </linearGradient>
+
+    <!-- Subtle noise texture -->
+    <filter id="noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feBlend mode="multiply"/>
+    </filter>
+
+  </defs>
+
+  <!-- Main Title -->
+  <text x="50%" y="45%" text-anchor="middle"
+        font-size="90"
+        font-family="Georgia, serif"
+        fill="url(#steelGradient)"
+        filter="url(#noise)"
+        letter-spacing="4">
+    EMPIRE OF WHITE & GOLD
+  </text>
+
+  <!-- Gold vein line -->
+  <line x1="200" y1="220" x2="1000" y2="220"
+        stroke="url(#goldVein)"
+        stroke-width="1.5"
+        opacity="0.8" />
+
+  <!-- Brand Name -->
+  <text x="50%" y="320%" text-anchor="middle"
+        font-size="50"
+        font-family="Georgia, serif"
+        fill="url(#steelGradient)"
+        letter-spacing="2">
+    Sunny Roads Adventures
+  </text>
+
+</svg>
+</div>
 </section>
 
 <script src="main.js"></script>
