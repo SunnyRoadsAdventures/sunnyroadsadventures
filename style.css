@@ -51,10 +51,10 @@ body {
 }
 
 .hero-subtext {
-    font-size: 1.1rem;
-    line-height: 1.9;
-    color: #555;
-    max-width: 520px;
+    font-size: 1.15rem;
+    line-height: 2;
+    color: #666;
+    max-width: 540px;
     margin: 0 auto;
 }
 
