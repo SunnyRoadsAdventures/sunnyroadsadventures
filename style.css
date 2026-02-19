@@ -89,6 +89,19 @@ body {
     font-family: 'Inter', sans-serif;
     transition: opacity 2s ease;
 }
+/* HERO TEXT SPACING */
+
+.hero-title {
+    margin-bottom: 40px;
+}
+
+.hero-brand {
+    margin: 40px 0;
+}
+
+.hero-subtitle {
+    margin-top: 40px;
+}
 
 /* SHOW WHEN JS ADDS .visible */
 .hero-title.visible,
