@@ -83,14 +83,18 @@ body {
     transition: opacity 2s ease;
 }
 
-.hero-subtitle {
+..hero-subtitle {
     opacity: 0;
     color: #b9932f;
     font-family: 'Inter', sans-serif;
-    font-size: clamp(1rem, 2.5vw, 1.5rem);
-    margin-top: 1.5rem;
-    letter-spacing: 1px;
     transition: opacity 2s ease;
+}
+
+/* SHOW WHEN JS ADDS .visible */
+.hero-title.visible,
+.hero-brand.visible,
+.hero-subtitle.visible {
+    opacity: 1;
 }
 
 .hero-title.visible,
