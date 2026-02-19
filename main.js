@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const title = document.querySelector(".hero-title");
     const brand = document.querySelector(".hero-brand"); // ADD THIS
     const subtitle = document.querySelector(".hero-subtitle");
+const dividers = document.querySelectorAll(".gold-divider");
 
     if (!video) return;
 
