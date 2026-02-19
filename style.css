@@ -149,3 +149,38 @@ body {
     font-size: 24px;
     margin-top: 50px;
 }
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    margin-top: 50px;
+}
+
+/* ============================= */
+/* PREMIUM GOLD DIVIDER */
+/* ============================= */
+
+.gold-divider {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100vw;
+    height: 3px;
+    margin: 35px 0;
+
+    background: linear-gradient(
+        90deg,
+        #7a5c1a 0%,
+        #cfae3c 25%,
+        #f5e6a8 50%,
+        #cfae3c 75%,
+        #7a5c1a 100%
+    );
+
+    background-size: 250% 100%;
+    animation: goldFlow 8s linear infinite;
+}
+
+@keyframes goldFlow {
+    from { background-position: 0% 0%; }
+    to   { background-position: 250% 0%; }
+}
