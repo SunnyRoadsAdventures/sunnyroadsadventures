@@ -1,142 +1,115 @@
-body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    color: #111;
-    overflow-x: hidden;
+/* =========================
+   EMPIRE WHITE & GOLD SYSTEM
+========================= */
 
-    background:
-        radial-gradient(circle at 20% 30%, rgba(184,150,60,0.06), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(184,150,60,0.05), transparent 45%),
-        linear-gradient(180deg, #ffffff, #fafafa);
+:root {
+    --empire-white: #FDFCF9;
+    --empire-gold-light: #E8D48A;
+    --empire-gold-main: #C6A75E;
+    --empire-gold-dark: #9F7F35;
+    --text-dark: #1a1a1a;
+    --text-soft: #555;
 }
-/* Reset */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Body */
 body {
-    margin: 0;
-    font-family: "Inter", sans-serif;
-    color: #111;
+    background: var(--empire-white);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
     overflow-x: hidden;
-    position: relative;
-    z-index: 1;
-
-    background:
-        radial-gradient(circle at 20% 30%, rgba(184,150,60,0.06), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(184,150,60,0.05), transparent 45%),
-        linear-gradient(180deg, #ffffff, #fafafa);
 }
 
-/* Silk Light Drift */
-body::before {
-    content: "";
-    position: fixed;
-    width: 200%;
-    height: 200%;
-    top: -50%;
-    left: -50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
-    animation: slowDrift 30s linear infinite;
-    pointer-events: none;
-    z-index: 0;   /* important */
-}
+/* =========================
+   SECTION 1 — HORIZON
+========================= */
 
-@keyframes slowDrift {
-    0% { transform: translate(0,0); }
-    50% { transform: translate(5%,5%); }
-    100% { transform: translate(0,0); }
-}
-
-/* Hero Section */
-.hero {
+.empire-intro {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 8%;
-    text-align: center;
-    background: linear-gradient(to bottom, #ffffff 0%, #f9f9f9 100%);
-
-    /* animation */
-    opacity: 0;
-    transform: translateY(40px);
-    animation: fadeLuxury 1.8s ease forwards;
 }
 
-@keyframes fadeLuxury {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.hero-inner {
-    max-width: 850px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeLuxury 1.6s ease forwards;
+.horizon-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.empire-title {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(3.2rem, 6vw, 5.4rem);
-    font-weight: 500;
-    color: #b8963c;
-    margin-bottom: 35px;
-    letter-spacing: 2px;
-    line-height: 1.05;
-    text-transform: uppercase;
-    text-shadow: 0 4px 30px rgba(184, 150, 60, 0.15); text-shadow:
-    0 1px 0 rgba(255,255,255,0.6),
-    0 3px 8px rgba(184,150,60,0.25);
-}
-
-.brand-name {
-    font-size: 2.4rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-
-    background: linear-gradient(
-        120deg,
-        #f2f2f2 0%,
-        #cfcfcf 15%,
-        #8a8a8a 35%,
-        #5e5e5e 55%,
-        #3f3f3f 75%,
-        #a88930 90%,
-        #6e561f 100%
-    );
-
-    background-size: 200% 200%;
-    animation: metalShift 8s ease-in-out infinite alternate;
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    text-shadow:
-        0 1px 0 rgba(255,255,255,0.6),
-        0 2px 6px rgba(0,0,0,0.15);
-}
-.hero-subtext {
-    font-size: 1.15rem;
-    line-height: 2;
-    color: #666;
-    max-width: 540px;
-    margin: 0 auto;
-}
-
-/* Animation */
-@keyframes metalShift {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-}
-}
-.luxury-line {
-    width: 80px;
+.horizon-line {
+    width: 60%;
     height: 1px;
-    background: linear-gradient(to right, transparent, #b8963c, transparent);
-    margin: 60px auto 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--empire-gold-light),
+        var(--empire-gold-main),
+        var(--empire-gold-light),
+        transparent
+    );
+    box-shadow: 0 0 12px rgba(198,167,94,0.4);
+}
+
+/* =========================
+   SECTION 2 — PORTAL
+========================= */
+
+.empire-portal {
+    min-height: 100vh;
+    padding: 120px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.portal-frame {
+    width: 70%;
+    max-width: 1100px;
+    aspect-ratio: 16 / 9;
+    border: 6px solid var(--empire-gold-main);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.08),
+        0 0 30px rgba(198,167,94,0.25);
+    background: #ffffff;
+    position: relative;
+}
+
+.portal-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg,
+        #ffffff,
+        #f4f4f4
+    );
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.portal-text {
+    text-align: center;
+    margin-top: 60px;
+    max-width: 700px;
+}
+
+.portal-text h2 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 4px;
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.portal-text p {
+    font-size: 1rem;
+    color: var(--text-soft);
+    line-height: 1.6;
 }
