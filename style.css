@@ -100,13 +100,15 @@ body::before {
     letter-spacing: 1.5px;
 }
     background: linear-gradient(
-        135deg,
-        #d6d6d6 0%,
-        #a8a8a8 25%,
-        #7c7c7c 45%,
-        #b8963c 65%,
-        #8f6f2a 85%
-    );
+    120deg,
+    #f2f2f2 0%,
+    #cfcfcf 15%,
+    #8a8a8a 35%,
+    #5e5e5e 55%,
+    #3f3f3f 75%,
+    #a88930 90%,
+    #6e561f 100%
+);
 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
