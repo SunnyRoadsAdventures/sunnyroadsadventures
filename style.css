@@ -80,7 +80,9 @@ body::before {
     letter-spacing: 2px;
     line-height: 1.05;
     text-transform: uppercase;
-    text-shadow: 0 4px 30px rgba(184, 150, 60, 0.15);
+    text-shadow: 0 4px 30px rgba(184, 150, 60, 0.15); text-shadow:
+    0 1px 0 rgba(255,255,255,0.6),
+    0 3px 8px rgba(184,150,60,0.25);
 }
 
 .brand-name {
