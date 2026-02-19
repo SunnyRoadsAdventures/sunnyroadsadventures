@@ -67,3 +67,9 @@ body {
         transform: translateY(0);
     }
 }
+.luxury-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #b8963c, transparent);
+    margin: 60px auto 0;
+}
