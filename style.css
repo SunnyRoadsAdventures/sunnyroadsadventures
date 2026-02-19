@@ -1,3 +1,4 @@
+/* RESET */
 * {
     margin: 0;
     padding: 0;
@@ -5,97 +6,76 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
     background: #ffffff;
-    color: #111;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
 
 /* HERO SECTION */
-
 .hero {
     position: relative;
     height: 100vh;
+    width: 100%;
     overflow: hidden;
 }
 
+/* VIDEO FULL SCENERY (NO ZOOM CROP) */
 .hero-video {
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain; /* THIS preserves full scenery */
+    background: #ffffff;
 }
 
-/* WHITE FADE OVERLAY */
-
-.white-fade {
+/* WHITE FLASH TRANSITION */
+.white-flash {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: #ffffff;
     opacity: 0;
-    transition: opacity 3s ease;
+    transition: opacity 2s ease;
     z-index: 2;
 }
 
-/* HERO TEXT */
-
+/* TEXT OVERLAY */
 .hero-overlay {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     z-index: 3;
+    text-align: center;
+}
 
+/* GOLD TEXT (INVISIBLE INITIALLY) */
+.hero-title,
+.hero-subtitle {
     opacity: 0;
-    transition: opacity 3s ease;
+    color: #d4af37; /* Luxury gold */
+    transition: opacity 2s ease;
 }
 
-.hero-overlay h1 {
+.hero-title {
     font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    font-weight: 600;
+    font-size: 3.5rem;
     letter-spacing: 2px;
-    color: #d4af37; /* Light Gold */
 }
 
-.hero-overlay p {
-    margin-top: 20px;
+.hero-subtitle {
+    margin-top: 1rem;
     font-size: 1.2rem;
     font-weight: 300;
-    color: #d4af37;
-    letter-spacing: 3px;
-    text-transform: uppercase;
 }
 
 /* ACTIVE STATES */
-
-.white-fade.active {
+.white-flash.active {
     opacity: 1;
 }
 
-.hero-overlay.active {
+.hero-title.visible,
+.hero-subtitle.visible {
     opacity: 1;
-}
-
-/* CONTENT SECTIONS */
-
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 100px 20px;
-    text-align: center;
-}
-
-h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    color: #d4af37;
-}
-
-p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #444;
 }
