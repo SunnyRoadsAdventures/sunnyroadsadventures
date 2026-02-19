@@ -95,16 +95,26 @@ body::before {
 }
 
 .brand-name {
-    font-family: "Playfair Display", serif;
-    font-size: clamp(1.7rem, 3vw, 2.4rem);
-    font-weight: 400;
-    margin-bottom: 55px;
-    letter-spacing: 1.5px;
-    background: linear-gradient(135deg, #8f8f8f, #cfcfcf, #9a9a9a);
+    font-size: 3.2rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+
+    background: linear-gradient(
+        135deg,
+        #d6d6d6 0%,
+        #a8a8a8 25%,
+        #7c7c7c 45%,
+        #b8963c 65%,
+        #8f6f2a 85%
+    );
+
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
 
+    text-shadow:
+        0 1px 0 rgba(255,255,255,0.6),
+        0 4px 12px rgba(184,150,60,0.25);
+}
 .hero-subtext {
     font-size: 1.15rem;
     line-height: 2;
