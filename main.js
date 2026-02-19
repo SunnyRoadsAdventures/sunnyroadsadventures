@@ -1,3 +1,5 @@
+
+console.log("JS Loaded");
 const video = document.getElementById("heroVideo");
 const flash = document.querySelector(".white-flash");
 const title = document.querySelector(".hero-title");
