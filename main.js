@@ -1,22 +1,17 @@
-
-console.log("JS Loaded");
 const video = document.getElementById("heroVideo");
 const flash = document.querySelector(".white-flash");
 const title = document.querySelector(".hero-title");
 const subtitle = document.querySelector(".hero-subtitle");
 
-function handleTimeUpdate() {
-    if (video.currentTime >= 15) {
+video.addEventListener("ended", function () {
 
-        flash.classList.add("active");
+    // Fade to white
+    flash.classList.add("active");
 
-        setTimeout(() => {
-            title.classList.add("visible");
-            subtitle.classList.add("visible");
-        }, 1000);
+    // After white flash (0.8 sec), show text
+    setTimeout(() => {
+        title.classList.add("visible");
+        subtitle.classList.add("visible");
+    }, 800);
 
-        video.removeEventListener("timeupdate", handleTimeUpdate);
-    }
-}
-
-video.addEventListener("timeupdate", handleTimeUpdate);
+});
