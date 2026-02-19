@@ -17,11 +17,18 @@ const dividers = document.querySelectorAll(".gold-divider");
         if (flash) flash.classList.add("active");
 
         setTimeout(() => {
-            if (title) title.classList.add("visible");
-            if (brand) brand.classList.add("visible"); // ADD THIS
-            if (subtitle) subtitle.classList.add("visible");
-        }, 800);
 
+    if (title) title.classList.add("visible");
+    if (brand) brand.classList.add("visible");
+    if (subtitle) subtitle.classList.add("visible");
+
+    if (dividers) {
+        dividers.forEach(div => {
+            div.classList.add("visible");
+        });
+    }
+
+}, 800);
     });
 
 });
