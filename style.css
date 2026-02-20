@@ -62,25 +62,6 @@ body {
 }
 
 /* ============================= */
-/* HERO FADE SYSTEM (JS CONTROLLED) */
-/* ============================= */
-
-.hero-title,
-.hero-brand,
-.hero-subtitle,
-.gold-divider {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1.8s ease, transform 1.8s ease;
-}
-
-/* Added by JS */
-.hero-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ============================= */
 /* HERO TYPOGRAPHY */
 /* ============================= */
 
@@ -292,4 +273,21 @@ body {
   line-height: 1.6;
   color: #333;
   margin-top: 30px;
+}
+/* ============================= */
+/* HERO FADE-IN AFTER VIDEO */
+/* ============================= */
+
+.hero-title,
+.hero-brand,
+.hero-subtitle,
+.gold-divider {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.hero-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
