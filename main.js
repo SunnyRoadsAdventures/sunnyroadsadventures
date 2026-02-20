@@ -21,3 +21,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+// =============================
+// Tower Ascent Reveal Logic
+// =============================
+
+const towerLayers = document.querySelectorAll('.tower-layer');
+
+const towerObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        towerObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.25
+  }
+);
+
+towerLayers.forEach(layer => {
+  towerObserver.observe(layer);
+});
