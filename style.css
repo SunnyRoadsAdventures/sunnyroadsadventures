@@ -442,3 +442,57 @@ body {
 .tower-philosophy p:last-child {
   margin-bottom: 0;
 }
+/* ============================= */
+/* FLOOR SEPARATORS (ATMOSPHERE) */
+/* ============================= */
+
+.tower-layer {
+  position: relative;
+  overflow: hidden;
+}
+
+/* top fade */
+.tower-layer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+}
+
+/* bottom fade */
+.tower-layer::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  pointer-events: none;
+}
+
+/* Ocean – soft opening */
+.ocean-layer::before {
+  background: linear-gradient(to bottom, #ffffff 0%, rgba(255,255,255,0) 100%);
+}
+.ocean-layer::after {
+  background: linear-gradient(to top, #ffffff 0%, rgba(255,255,255,0) 100%);
+}
+
+/* Volcano – compression */
+.volcano-layer::before {
+  background: linear-gradient(to bottom, #000000 0%, rgba(0,0,0,0) 100%);
+}
+.volcano-layer::after {
+  background: linear-gradient(to top, #000000 0%, rgba(0,0,0,0) 100%);
+}
+
+/* Colonial – arrival */
+.colonial-layer::before {
+  background: linear-gradient(to bottom, #f5efe4 0%, rgba(245,239,228,0) 100%);
+}
+.colonial-layer::after {
+  background: linear-gradient(to top, #f5efe4 0%, rgba(245,239,228,0) 100%);
+}
