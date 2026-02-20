@@ -419,3 +419,26 @@ body {
 .colonial-layer .tower-invitation {
   color: rgba(0,0,0,0.6);
 }
+
+/* ============================= */
+/* TOWER – INNER CONTAINER */
+/* ============================= */
+
+.tower-inner {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* vertical rhythm */
+.tower-title {
+  line-height: 1.1;
+}
+
+.tower-philosophy {
+  margin-top: 2.5rem;
+}
+
+.tower-philosophy p:last-child {
+  margin-bottom: 0;
+}
