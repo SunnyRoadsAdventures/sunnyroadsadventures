@@ -122,27 +122,18 @@
   backface-visibility: hidden;
 }
 
-/* Background image – sharpened, crisp */
-.tower-bg {
-    position: absolute;
-    inset: 0;
-    background-image: url("tower.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+<!-- TOWER BACKGROUND (SHARP IMAGE) -->
+<div class="tower-media">
+  <img src="tower.png" alt="The Tower" />
+</div>
 
-    /* CRISP / SHARP SETTINGS */
-    filter: contrast(1.08) saturate(1.05);
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
-
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    will-change: transform;
-
-    z-index: 0;
-}
-
+<!-- TOWER SECTION CONTENT -->
+<section class="tower-intro">
+  <div class="tower-content">
+    <h2 class="tower-title">We design journeys.</h2>
+    <h3 class="tower-subtitle">We shape ascension.</h3>
+  </div>
+</section>
 /* Dark elegance overlay – reduced fog, more clarity */
 .tower-bg::after {
     content: "";
