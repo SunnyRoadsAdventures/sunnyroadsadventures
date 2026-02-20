@@ -396,3 +396,26 @@ body {
 .volcano-layer .tower-invitation {
   color: rgba(245,245,245,0.6);
 }
+/* ============================= */
+/* COLONIAL – INNER CONTENT */
+/* ============================= */
+
+.colonial-inner {
+  max-width: 700px;
+}
+
+.colonial-layer .tower-title {
+  color: #1a1a1a;
+}
+
+.colonial-layer .tower-lead {
+  color: rgba(0,0,0,0.65);
+}
+
+.colonial-layer .tower-philosophy p {
+  color: rgba(0,0,0,0.75);
+}
+
+.colonial-layer .tower-invitation {
+  color: rgba(0,0,0,0.6);
+}
