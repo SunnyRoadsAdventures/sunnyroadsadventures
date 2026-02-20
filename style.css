@@ -212,10 +212,15 @@ body {
 .tower-bg {
     position: absolute;
     inset: 0;
+
     background-image: url("tower.png");
     background-size: cover;
-    background-position: center;
-    filter: brightness(0.85);
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    /* FORCE SHARP RENDERING */
+    image-rendering: auto;
+
     z-index: 0;
 }
 
