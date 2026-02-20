@@ -59,3 +59,15 @@ window.addEventListener("scroll", () => {
     }
 
 });
+
+const floors = document.querySelectorAll('.tower-floor');
+
+window.addEventListener('scroll', () => {
+    floors.forEach((floor, index) => {
+        const rect = floor.getBoundingClientRect();
+
+        if (rect.top <= window.innerHeight * 0.8) {
+            floor.style.transform = "translateY(0)";
+        }
+    });
+});
