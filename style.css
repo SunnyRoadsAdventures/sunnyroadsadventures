@@ -319,3 +319,31 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Ocean – calm, open */
+.ocean-layer {
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    rgba(245,239,228,0.4) 100%
+  );
+}
+
+/* Volcano – tension, night power */
+.volcano-layer {
+  background: radial-gradient(
+    circle at top,
+    #1a1a1a 0%,
+    #000000 70%
+  );
+  color: #f5f5f5;
+}
+
+/* Colonial – warmth, refinement */
+.colonial-layer {
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    rgba(245,239,228,0.6) 100%
+  );
+}
