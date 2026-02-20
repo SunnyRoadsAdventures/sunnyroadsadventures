@@ -1,17 +1,17 @@
 // ===== HERO 15.8 SECOND FADE =====
-window.addEventListener("load", () => {
+window.addEventListener("DOMContentLoaded", function () {
 
-    setTimeout(() => {
+    setTimeout(function () {
 
         document.querySelector(".hero-title")?.classList.add("hero-visible");
         document.querySelector(".hero-brand")?.classList.add("hero-visible");
         document.querySelector(".hero-subtitle")?.classList.add("hero-visible");
 
-        document.querySelectorAll(".gold-divider").forEach(divider => {
+        document.querySelectorAll(".gold-divider").forEach(function (divider) {
             divider.classList.add("hero-visible");
         });
 
-    }, 15800); // 15.8 seconds
+    }, 15800);
 
 });
 
