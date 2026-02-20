@@ -208,10 +208,16 @@ body {
 /* ================================================= */
 
 .tower {
-  position: relative;
-  height: 400vh;
-}
+    position: relative;
+    height: 100vh;
 
+    background-image: url("tower.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+
+    image-rendering: pixelated;
+}
 /* ================= FLOOR ================= */
 
 .tower-floor {
