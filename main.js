@@ -32,3 +32,30 @@ const dividers = document.querySelectorAll(".gold-divider");
     });
 
 });
+const towerSection = document.querySelector(".tower-section");
+const layers = document.querySelectorAll(".tower-layer");
+
+window.addEventListener("scroll", () => {
+
+    if (!towerSection) return;
+
+    const rect = towerSection.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top <= 0 && rect.bottom >= windowHeight) {
+
+        const scrollProgress = Math.abs(rect.top) / windowHeight;
+
+        layers.forEach((layer, index) => {
+            const triggerPoint = index;
+
+            if (scrollProgress > triggerPoint) {
+                layer.style.transform = "translateY(0)";
+            } else {
+                layer.style.transform = "translateY(100%)";
+            }
+        });
+
+    }
+
+});
