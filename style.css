@@ -260,16 +260,14 @@ body {
     align-items: center;
     justify-content: center;
 
-    background: linear-gradient(
-        to bottom,
-        #ffffff 0%,
-        #f8f6f2 40%,
-        #efe9dd 100%
-    );
+    background: #ffffff;
+
+    border-top: 1px solid rgba(207, 174, 60, 0.3);
+
+    box-shadow: 0 -40px 80px rgba(0,0,0,0.06);
 
     transition: transform 0.8s ease;
 }
-
 .tower-content {
     text-align: center;
 }
