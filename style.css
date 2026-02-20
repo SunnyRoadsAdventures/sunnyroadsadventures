@@ -331,3 +331,31 @@ body {
     opacity: 0;
     transition: all 0.6s ease;
 }
+.ocean {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.35),
+        rgba(255,255,255,0.75)
+    ),
+    url("ocean.jpg");
+}
+
+.volcano {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.35),
+        rgba(255,255,255,0.75)
+    ),
+    url("volcano.jpg");
+}
+
+.colonial {
+    background-image: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.35) 0%,
+        rgba(255,255,255,0.75) 60%,
+        rgba(255,255,255,0.95) 85%,
+        rgba(255,255,255,1) 100%
+    ),
+    url("colonial.jpg");
+}
