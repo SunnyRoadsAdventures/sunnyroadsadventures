@@ -206,6 +206,10 @@ body {
     position: sticky;
     top: 0;
     overflow: hidden;
+
+    /* GPU clarity fix */
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 /* Background image */
