@@ -41,9 +41,6 @@ body {
     transition: opacity 2s ease;
     z-index: 2;
 }
-.tower-layer {
-    transform: translateY(0);
-}
 
 /* TEXT OVERLAY */
 .hero-overlay {
@@ -86,7 +83,7 @@ body {
     transition: opacity 2s ease;
 }
 
-.hero-subtitle {
+..hero-subtitle {
     opacity: 0;
     color: #b9932f;
     font-family: 'Inter', sans-serif;
@@ -185,7 +182,10 @@ body {
     animation: goldFlow 8s linear infinite;
 }
 
-
+.gold-divider.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 @keyframes goldFlow {
     from { background-position: 0% 0%; }
     to   { background-position: 250% 0%; }
@@ -270,112 +270,4 @@ body {
 }
 .tower-content {
     text-align: center;
-}
-/* ===== IMMERSIVE SECTIONS ===== */
-
-.experience-section {
-    height: 100vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #111;
-    overflow: hidden;
-
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-.experience-content {
-    max-width: 650px;
-    margin: 0 auto;
-    padding: 0 20px;
-    padding-top: 10vh;
-    opacity: 0;
-    transform: translateY(15px);
-    transition: all 0.6s ease-out;
-}
-.experience-title {
-    font-family: 'YourSerifFont', serif;
-    font-size: 48px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-}
-
-.experience-text {
-    font-family: 'YourSansFont', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 1.8;
-    margin-bottom: 12px;
-}
-
-.gold-divider {
-    width: 60px;
-    height: 1px;
-    background-color: #CFAE3C;
-    margin: 30px auto;
-    opacity: 0;
-    transition: all 0.6s ease;
-}
-
-.section-cta {
-    font-family: 'YourSansFont', sans-serif;
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    opacity: 0;
-    transition: all 0.6s ease;
-}
-.ocean {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.35),
-        rgba(255,255,255,0.75)
-    ),
-    url("ocean.jpg");
-}
-
-.volcano {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.35),
-        rgba(255,255,255,0.75)
-    ),
-    url("volcano.jpg");
-}
-
-.colonial {
-    background-image: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.35) 0%,
-        rgba(255,255,255,0.75) 60%,
-        rgba(255,255,255,0.95) 85%,
-        rgba(255,255,255,1) 100%
-    ),
-    url("colonial.jpg");
-}
-.summit-section {
-    background-color: #ffffff;
-    padding: 140px 20px;
-    text-align: center;
-}
-
-.final-cta {
-    border: 1px solid #CFAE3C;
-    background-color: #ffffff;
-    color: #111;
-    padding: 16px 40px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    transition: all 0.4s ease;
-}
-
-.final-cta:hover {
-    background-color: #CFAE3C;
-    color: #ffffff;
 }
