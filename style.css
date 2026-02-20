@@ -291,3 +291,31 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
+/* ============================= */
+/* TOWER ASCENT – BASE STRUCTURE */
+/* ============================= */
+
+.tower-ascent {
+  background: #ffffff;
+  position: relative;
+}
+
+/* shared layer styling */
+.tower-layer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem 8vw;
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+/* when revealed */
+.tower-layer.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
