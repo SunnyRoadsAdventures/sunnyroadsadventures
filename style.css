@@ -260,11 +260,15 @@ body {
     justify-content: center;
 
     background: linear-gradient(
-    to bottom,
-    #ffffff 0%,
-    #f8f6f2 40%,
-    #efe9dd 100%
-);
+        to bottom,
+        #ffffff 0%,
+        #f8f6f2 40%,
+        #efe9dd 100%
+    );
+
+    transform: translateY(100%);
+    transition: transform 0.8s ease;
+}
 
 .tower-content {
     text-align: center;
