@@ -1,3 +1,9 @@
+window.addEventListener("load", () => {
+    document.querySelector(".hero-title").classList.add("visible");
+    document.querySelector(".hero-brand").classList.add("visible");
+    document.querySelector(".hero-subtitle").classList.add("visible");
+});
+
 const tower = document.querySelector(".tower");
 const floors = document.querySelectorAll(".tower-floor");
 
