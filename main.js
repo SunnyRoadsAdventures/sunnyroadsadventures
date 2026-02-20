@@ -1,18 +1,19 @@
-console.log("JS LOADED");
+const heroVideo = document.getElementById("heroVideo");
 
-window.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM READY");
+if (heroVideo) {
+    heroVideo.addEventListener("timeupdate", () => {
+        if (heroVideo.currentTime >= 15.8) {
 
-    setTimeout(function () {
-        console.log("FADE TRIGGER");
+            document.querySelector(".hero-title")?.classList.add("hero-visible");
+            document.querySelector(".hero-brand")?.classList.add("hero-visible");
+            document.querySelector(".hero-subtitle")?.classList.add("hero-visible");
 
-        document.querySelector(".hero-title")?.classList.add("hero-visible");
-        document.querySelector(".hero-brand")?.classList.add("hero-visible");
-        document.querySelector(".hero-subtitle")?.classList.add("hero-visible");
+            document.querySelectorAll(".gold-divider").forEach(divider => {
+                divider.classList.add("hero-visible");
+            });
 
-        document.querySelectorAll(".gold-divider").forEach(divider => {
-            divider.classList.add("hero-visible");
-        });
-
-    }, 15800);
-});
+            // Prevent retrigger
+            heroVideo.removeEventListener("timeupdate", arguments.callee);
+        }
+    });
+}
