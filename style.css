@@ -1,9 +1,13 @@
+/* ============================= */
+/* GLOBAL RESET */
+/* ============================= */
+
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
 }
-/* RESET */
+
 * {
     margin: 0;
     padding: 0;
@@ -16,23 +20,26 @@ body {
     overflow-x: hidden;
 }
 
+/* ============================= */
 /* HERO SECTION */
+/* ============================= */
+
 .hero {
     position: relative;
-    height: 100svh;   /* modern fix */
+    height: 100svh;
     width: 100%;
     overflow: hidden;
 }
-/* VIDEO FULL SCENERY (NO ZOOM CROP) */
+
 .hero-video {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: contain;
-    object-position: center top; /* pushes image upward */
+    object-position: center top;
 }
 
-/* WHITE FLASH TRANSITION */
+/* White flash (kept intact) */
 .white-flash {
     position: absolute;
     inset: 0;
@@ -42,7 +49,7 @@ body {
     z-index: 2;
 }
 
-/* TEXT OVERLAY */
+/* Overlay */
 .hero-overlay {
     position: absolute;
     inset: 0;
@@ -54,62 +61,78 @@ body {
     text-align: center;
 }
 
-/* GOLD TEXT (INVISIBLE INITIALLY) */
+/* ============================= */
+/* HERO TEXT — FADE SYSTEM */
+/* ============================= */
+
 .hero-title,
-.hero-subtitle {
+.hero-brand,
+.hero-subtitle,
+.gold-divider {
     opacity: 0;
-    color: #d4af37; /* Luxury gold */
-    transition: opacity 2s ease;
+    transform: translateY(20px);
+    transition: opacity 1.8s ease, transform 1.8s ease;
 }
 
+/* When JS adds this class */
+.hero-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Typography */
 .hero-title {
-    opacity: 0;
     color: #b9932f;
     font-family: 'Playfair Display', serif;
     font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 600;
     line-height: 1.1;
     letter-spacing: 1px;
-    transition: opacity 2s ease;
-}
-
-.hero-brand {
-    opacity: 0;
-    color: #b9932f;
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.2rem, 3vw, 2rem);
-    margin-top: 1rem;
-    letter-spacing: 2px;
-    transition: opacity 2s ease;
-}
-
-.hero-subtitle {
-    opacity: 0;
-    color: #b9932f;
-    font-family: 'Inter', sans-serif;
-    transition: opacity 2s ease;
-}
-/* HERO TEXT SPACING */
-
-.hero-title {
     margin-bottom: 40px;
 }
 
 .hero-brand {
+    color: #b9932f;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    letter-spacing: 2px;
     margin: 40px 0;
 }
 
 .hero-subtitle {
+    color: #b9932f;
+    font-family: 'Inter', sans-serif;
     margin-top: 40px;
 }
 
-/* SHOW WHEN JS ADDS .visible */
-.hero-title.visible,
-.hero-brand.visible,
-.hero-subtitle.visible {
-    opacity: 1;
+/* ============================= */
+/* GOLD DIVIDERS (ALL 3 SAFE) */
+/* ============================= */
+
+.gold-divider {
+    width: 100%;
+    height: 3px;
+    margin: 25px auto;
+    background: linear-gradient(
+        90deg,
+        #7a5c1a 0%,
+        #cfae3c 25%,
+        #f5e6a8 50%,
+        #cfae3c 75%,
+        #7a5c1a 100%
+    );
+    background-size: 250% 100%;
+    animation: goldFlow 8s linear infinite;
 }
 
+@keyframes goldFlow {
+    from { background-position: 0% 0%; }
+    to   { background-position: 250% 0%; }
+}
+
+/* ============================= */
+/* INTRO CONTENT */
+/* ============================= */
 
 .intro-content {
     background: #ffffff;
@@ -144,106 +167,14 @@ body {
     font-size: 24px;
     margin-top: 50px;
 }
-.signature {
-    font-family: 'Playfair Display', serif;
-    font-size: 24px;
-    margin-top: 50px;
-}
 
 /* ============================= */
-/* PREMIUM GOLD DIVIDER */
-/* ============================= */
-
-.gold-divider {
-    position: relative;
-    width: 100%;
-    height: 3px;
-    margin: 25px auto;
-
-    opacity: 0;              /* HIDDEN AT START */
-    transform: translateY(10px);
-    transition: opacity 1.2s ease, transform 1.2s ease;
-
-    background: linear-gradient(
-        90deg,
-        #7a5c1a 0%,
-        #cfae3c 25%,
-        #f5e6a8 50%,
-        #cfae3c 75%,
-        #7a5c1a 100%
-    );
-
-    background-size: 250% 100%;
-    animation: goldFlow 8s linear infinite;
-}
-
-.gold-divider.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-@keyframes goldFlow {
-    from { background-position: 0% 0%; }
-    to   { background-position: 250% 0%; }
-}
-/* ============================= */
-/* TOWER SECTION */
-/* ============================= */
-
-.tower-section {
-    position: relative;
-    height: 400vh;
-    background: #000;
-}
-
-.tower-bg {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    background: url("tower.png") center/cover no-repeat;
-    z-index: 1;
-}
-
-.tower-layer {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    padding: 40px;
-    text-align: center;
-
-    background: #0d0d0d;
-    color: white;
-
-    transform: translateY(100%);
-    transition: transform 0.6s ease-out;
-
-    z-index: 2;
-}
-
-.tower-layer h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    margin-bottom: 20px;
-}
-
-.tower-layer p {
-    font-size: 20px;
-    max-width: 600px;
-    opacity: 0.8;
-}
-
-/* ============================= */
-/* TOWER SECTION */
+/* TOWER SECTION (UNTOUCHED) */
 /* ============================= */
 
 .tower {
     position: relative;
-    height: 400vh; /* 4 floors = 400vh */
+    height: 400vh;
 }
 
 .tower-floor {
@@ -256,13 +187,12 @@ body {
     justify-content: center;
 
     background: #ffffff;
-
     border-top: 1px solid rgba(207, 174, 60, 0.3);
-
     box-shadow: 0 -40px 80px rgba(0,0,0,0.06);
 
     transition: transform 0.8s ease;
 }
+
 .tower-content {
     text-align: center;
 }
