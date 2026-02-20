@@ -122,33 +122,38 @@
   backface-visibility: hidden;
 }
 
-/* Background image */
+/* Background image – sharpened, crisp */
 .tower-bg {
-  position: absolute;
-  inset: 0;
+    position: absolute;
+    inset: 0;
+    background-image: url("tower.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 
-  background-image: url("tower.png");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+    /* CRISP / SHARP SETTINGS */
+    filter: contrast(1.08) saturate(1.05);
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
 
-  image-rendering: auto;
-  z-index: 0;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    will-change: transform;
+
+    z-index: 0;
 }
 
-/* Dark elegance overlay */
+/* Dark elegance overlay – reduced fog, more clarity */
 .tower-bg::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.18),
-    rgba(0,0,0,0.38)
-  );
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.12),
+        rgba(0, 0, 0, 0.28)
+    );
 }
-
 /* Content above image */
 .tower-intro .tower-content {
   position: relative;
