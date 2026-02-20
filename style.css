@@ -359,3 +359,23 @@ body {
     ),
     url("colonial.jpg");
 }
+.summit-section {
+    background-color: #ffffff;
+    padding: 140px 20px;
+    text-align: center;
+}
+
+.final-cta {
+    border: 1px solid #CFAE3C;
+    background-color: #ffffff;
+    color: #111;
+    padding: 16px 40px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.4s ease;
+}
+
+.final-cta:hover {
+    background-color: #CFAE3C;
+    color: #ffffff;
+}
