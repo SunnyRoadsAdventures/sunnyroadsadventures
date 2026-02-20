@@ -28,4 +28,34 @@ if (tower && floors.length > 0) {
 
     });
 
-}
+}// existing code above
+
+// ---- EXPERIENCE ANIMATION ----
+const sections = document.querySelectorAll(".experience-section");
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const content = entry.target.querySelector(".experience-content");
+            const divider = entry.target.querySelector(".gold-divider");
+            const cta = entry.target.querySelector(".section-cta");
+
+            setTimeout(() => {
+                content.style.opacity = "1";
+                content.style.transform = "translateY(0)";
+            }, 400);
+
+            setTimeout(() => {
+                divider.style.opacity = "1";
+            }, 700);
+
+            setTimeout(() => {
+                cta.style.opacity = "1";
+            }, 900);
+        }
+    });
+}, { threshold: 0.4 });
+
+sections.forEach(section => {
+    observer.observe(section);
+});
