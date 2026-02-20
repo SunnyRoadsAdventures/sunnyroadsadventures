@@ -373,3 +373,26 @@ body {
   font-style: italic;
   opacity: 0.6;
 }
+/* ============================= */
+/* VOLCANO – INNER CONTENT */
+/* ============================= */
+
+.volcano-inner {
+  max-width: 680px;
+}
+
+.volcano-layer .tower-title {
+  color: #f5f5f5;
+}
+
+.volcano-layer .tower-lead {
+  color: rgba(245,245,245,0.7);
+}
+
+.volcano-layer .tower-philosophy p {
+  color: rgba(245,245,245,0.85);
+}
+
+.volcano-layer .tower-invitation {
+  color: rgba(245,245,245,0.6);
+}
