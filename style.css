@@ -41,6 +41,9 @@ body {
     transition: opacity 2s ease;
     z-index: 2;
 }
+.tower-layer {
+    transform: translateY(0);
+}
 
 /* TEXT OVERLAY */
 .hero-overlay {
