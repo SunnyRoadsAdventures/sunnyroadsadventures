@@ -90,93 +90,24 @@
         </div>
     </section>
 
-   /* ============================== */
-/* TOWER – INSIDE THE TOWER */
-/* ============================== */
+    <!-- ============================= -->
+    <!-- TOWER INTRO SECTION -->
+    <!-- ============================= -->
 
-.tower {
-  position: relative;
-  height: 400vh;
-}
+    <section class="tower-intro">
 
-.tower-floor {
-  height: 100vh;
-  position: sticky;
-  top: 0;
+        <div class="tower-media">
+            <img src="tower.png" alt="The Tower">
+        </div>
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+        <div class="tower-content">
+            <h2 class="tower-title">We design journeys.</h2>
+            <h3 class="tower-subtitle">We shape ascension.</h3>
+        </div>
 
-  background: #ffffff;
-  border-top: 1px solid rgba(207, 174, 60, 0.3);
-  box-shadow: 0 -40px 80px rgba(0,0,0,0.06);
-}
+    </section>
 
-.tower-intro {
-  position: sticky;
-  top: 0;
-  overflow: hidden;
+</main>
 
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-<!-- TOWER INTRO SECTION -->
-<section class="tower-intro">
-
-  <!-- Background Image -->
-  <div class="tower-media">
-    <img src="tower.png" alt="The Tower" />
-  </div>
-
-  <!-- Content -->
-  <div class="tower-content">
-    <h2 class="tower-title">We design journeys.</h2>
-    <h3 class="tower-subtitle">We shape ascension.</h3>
-  </div>
-
-</section>
-/* Dark elegance overlay – reduced fog, more clarity */
-.tower-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.12),
-        rgba(0, 0, 0, 0.28)
-    );
-}
-/* Content above image */
-.tower-intro .tower-content {
-  position: relative;
-  z-index: 2;
-
-  max-width: 900px;
-  padding: 40px;
-  text-align: center;
-}
-
-/* Title */
-.tower-title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 6vw, 4rem);
-  color: #0e0e0e;
-  margin-bottom: 34px;
-
-  text-shadow: 0 4px 18px rgba(0,0,0,0.18);
-}
-
-/* Manifesto text (UPDATED) */
-.tower-text.tower-manifesto {
-  font-size: 24px;
-  line-height: 1.55;
-
-  color: rgba(15,15,15,0.92);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-
-  text-shadow:
-    0 3px 12px rgba(0,0,0,0.25);
-}
+</body>
+</html>
