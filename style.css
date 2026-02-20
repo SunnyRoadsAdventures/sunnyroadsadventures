@@ -196,3 +196,18 @@ body {
 .tower-content {
     text-align: center;
 }
+/* ===== HERO 15.8s FADE SYSTEM (LOCKED) ===== */
+
+.hero-title,
+.hero-brand,
+.hero-subtitle,
+.gold-divider {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1.8s ease, transform 1.8s ease;
+}
+
+.hero-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
