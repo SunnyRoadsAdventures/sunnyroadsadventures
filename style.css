@@ -39,7 +39,7 @@ body {
     object-position: center top;
 }
 
-/* White flash (kept intact) */
+/* White flash (kept, unused but safe) */
 .white-flash {
     position: absolute;
     inset: 0;
@@ -62,7 +62,7 @@ body {
 }
 
 /* ============================= */
-/* HERO TEXT — FADE SYSTEM */
+/* HERO FADE SYSTEM (JS CONTROLLED) */
 /* ============================= */
 
 .hero-title,
@@ -74,13 +74,16 @@ body {
     transition: opacity 1.8s ease, transform 1.8s ease;
 }
 
-/* When JS adds this class */
+/* Added by JS */
 .hero-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Typography */
+/* ============================= */
+/* HERO TYPOGRAPHY */
+/* ============================= */
+
 .hero-title {
     color: #b9932f;
     font-family: 'Playfair Display', serif;
@@ -106,7 +109,7 @@ body {
 }
 
 /* ============================= */
-/* GOLD DIVIDERS (ALL 3 SAFE) */
+/* GOLD DIVIDERS (ALL 3) */
 /* ============================= */
 
 .gold-divider {
@@ -169,7 +172,7 @@ body {
 }
 
 /* ============================= */
-/* TOWER SECTION (UNTOUCHED) */
+/* TOWER SECTION (UNCHANGED) */
 /* ============================= */
 
 .tower {
@@ -195,19 +198,4 @@ body {
 
 .tower-content {
     text-align: center;
-}
-/* ===== HERO 15.8s FADE SYSTEM (LOCKED) ===== */
-
-.hero-title,
-.hero-brand,
-.hero-subtitle,
-.gold-divider {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 1.8s ease, transform 1.8s ease;
-}
-
-.hero-visible {
-    opacity: 1;
-    transform: translateY(0);
 }
