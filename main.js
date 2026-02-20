@@ -1,3 +1,7 @@
+setTimeout(() => {
+  console.log("⚠️ Forcing is-visible on all layers");
+  layers.forEach(layer => layer.classList.add("is-visible"));
+}, 2000);
 document.addEventListener("DOMContentLoaded", () => {
   const layers = document.querySelectorAll(".tower-layer");
   const video = document.querySelector("video");
