@@ -379,3 +379,19 @@ body {
     background-color: #CFAE3C;
     color: #ffffff;
 }
+
+.experience-content {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
+
+.gold-divider {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.section-cta {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
