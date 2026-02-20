@@ -203,67 +203,105 @@ body {
     text-shadow: 0 2px 12px rgba(0,0,0,0.15);
 }
 }/* ============================= */
-/* TOWER — INSIDE THE TOWER */
-/* ============================= */
+/* ================================================= */
+/* ================== TOWER SECTION ================= */
+/* ================================================= */
+
+.tower {
+  position: relative;
+  height: 400vh;
+}
+
+/* ================= FLOOR ================= */
+
+.tower-floor {
+  height: 100vh;
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+  border-top: 1px solid rgba(207, 174, 60, 0.3);
+  box-shadow: 0 -40px 80px rgba(0, 0, 0, 0.06);
+
+  transition: transform 0.8s ease;
+}
+
+/* ================= CONTENT ================= */
+
+.tower-content {
+  text-align: center;
+  color: #111;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= INSIDE TOWER ================= */
 
 .tower-intro {
-    position: sticky;
-    top: 0;
-    overflow: hidden;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
 
-    /* GPU clarity fix */
-    transform: translateZ(0);
-    backface-visibility: hidden;
+  /* GPU clarity fix */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
-/* Background image */
+/* ================= BACKGROUND IMAGE ================= */
+
 .tower-bg {
-    position: absolute;
-    inset: 0;
+  position: absolute;
+  inset: 0;
 
-    background-image: url("tower.png");
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
+  background-image: url("tower.png");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 
-    /* FORCE SHARP RENDERING */
-    image-rendering: auto;
+  image-rendering: auto;
 
-    z-index: 0;
+  z-index: 0;
 }
 
-/* Dark overlay for elegance */
+/* ================= DARK OVERLAY ================= */
+
 .tower-bg::after {
-    content: "";
-    position: absolute;
-    inset: 0;
+  content: "";
+  position: absolute;
+  inset: 0;
 
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.12),
-        rgba(0,0,0,0.30)
-    );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.12),
+    rgba(0, 0, 0, 0.30)
+  );
 }
 
-/* Content above image */
+/* ================= CONTENT ABOVE IMAGE ================= */
+
 .tower-intro .tower-content {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    padding: 40px;
+  position: relative;
+  z-index: 2;
+
+  max-width: 900px;
+  padding: 40px;
 }
 
-/* Typography */
+/* ================= TYPOGRAPHY ================= */
+
 .tower-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 6vw, 4rem);
-    color: #111;
-    margin-bottom: 30px;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.8rem, 6vw, 4rem);
+  color: #111;
+  margin-bottom: 30px;
 }
 
 .tower-text {
-    font-size: 22px;
-    line-height: 1.6;
-    color: #333;
-    margin-top: 30px;
+  font-size: 22px;
+  line-height: 1.6;
+  color: #333;
+  margin-top: 30px;
 }
