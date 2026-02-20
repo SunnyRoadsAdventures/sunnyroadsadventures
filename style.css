@@ -212,7 +212,7 @@ body {
 .tower-bg {
     position: absolute;
     inset: 0;
-    background-image: url("tower.jpg");
+    background-image: url("tower.png");
     background-size: cover;
     background-position: center;
     filter: brightness(0.85);
