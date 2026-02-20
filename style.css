@@ -248,6 +248,7 @@ body {
 
 .tower {
     position: relative;
+    height: 400vh; /* 4 floors = 400vh */
 }
 
 .tower-floor {
