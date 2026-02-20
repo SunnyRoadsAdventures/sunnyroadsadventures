@@ -198,4 +198,54 @@ body {
 
 .tower-content {
     text-align: center;
+}/* ============================= */
+/* TOWER — INSIDE THE TOWER */
+/* ============================= */
+
+.tower-intro {
+    position: sticky;
+    top: 0;
+    overflow: hidden;
+}
+
+/* Background image */
+.tower-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url("tower.jpg");
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.85);
+    z-index: 0;
+}
+
+/* Dark overlay for elegance */
+.tower-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.78);
+}
+
+/* Content above image */
+.tower-intro .tower-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 40px;
+}
+
+/* Typography */
+.tower-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 4rem);
+    color: #111;
+    margin-bottom: 30px;
+}
+
+.tower-text {
+    font-size: 22px;
+    line-height: 1.6;
+    color: #333;
+    margin-top: 30px;
 }
