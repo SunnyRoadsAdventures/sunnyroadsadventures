@@ -45,3 +45,28 @@ const towerObserver = new IntersectionObserver(
 towerLayers.forEach(layer => {
   towerObserver.observe(layer);
 });
+
+/* ============================= */
+/* TOWER ASCENT – SCROLL REVEAL */
+/* ============================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const towerLayers = document.querySelectorAll(".tower-layer");
+
+  if (!towerLayers.length) return;
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    },
+    {
+      threshold: 0.25
+    }
+  );
+
+  towerLayers.forEach(layer => observer.observe(layer));
+});
