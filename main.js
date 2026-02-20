@@ -1,8 +1,9 @@
-// Fade-in observer for tower layers
 document.addEventListener("DOMContentLoaded", () => {
   const layers = document.querySelectorAll(".tower-layer");
+  const video = document.querySelector("video");
 
-  console.log("Fade observer loaded. Layers found:", layers.length);
+  console.log("Layers found:", layers.length);
+  console.log("Video found:", !!video);
 
   if (!layers.length) return;
 
@@ -11,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target); // animate once
+          observer.unobserve(entry.target);
         }
       });
     },
@@ -21,5 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  layers.forEach(layer => observer.observe(layer));
+  // 🔒 Lock fades until video finishes
+  const startObserving = () => {
+    layers.forEach(layer => observer.observe(layer));
+    console.log("Fade observer ACTIVATED");
+  };
+
+  if (video) {
+    video.addEventListener("ended", startObserving, { once: true });
+  } else {
+    // fallback if no video
+    startObserving();
+  }
 });
