@@ -185,10 +185,7 @@ body {
     animation: goldFlow 8s linear infinite;
 }
 
-.gold-divider.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+
 @keyframes goldFlow {
     from { background-position: 0% 0%; }
     to   { background-position: 250% 0%; }
