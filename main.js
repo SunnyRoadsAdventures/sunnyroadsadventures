@@ -71,3 +71,16 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+const floors = document.querySelectorAll(".tower-floor");
+
+window.addEventListener("scroll", () => {
+    const trigger = window.innerHeight * 0.8;
+
+    floors.forEach((floor) => {
+        const rect = floor.getBoundingClientRect();
+
+        if (rect.top < trigger) {
+            floor.style.transform = "translateY(0)";
+        }
+    });
+});
