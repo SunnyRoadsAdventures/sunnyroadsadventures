@@ -1,15 +1,19 @@
-const video = document.getElementById("heroVideo");
-const overlay = document.querySelector(".hero-overlay");
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("heroVideo");
+  const title = document.querySelector(".title");
+  const brand = document.querySelector(".brand");
+  const whiteFade = document.querySelector(".white-fade");
 
-// SAFETY LOG
-console.log("nomess.js running");
+  if (!video) return;
 
-// 15s → fade video
-setTimeout(() => {
-  video.classList.add("fade-out");
-}, 15000);
+  video.addEventListener("ended", () => {
+    // White cinematic fade
+    whiteFade.style.opacity = "1";
 
-// 16s → show titles
-setTimeout(() => {
-  overlay.classList.add("fade-in");
-}, 16000);
+    // Slight delay, then reveal text
+    setTimeout(() => {
+      title.classList.add("hero-visible");
+      brand.classList.add("hero-visible");
+    }, 300);
+  });
+});
