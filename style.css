@@ -67,10 +67,7 @@ html, body {
 }
 
 .hero-tagline {
-  margin-top: 0.6rem;
-  font-size: 1rem;
-  letter-spacing: 0.18em;
-  color: var(--champagne-gold);
+  margin-top: 1.2rem; /* bigger breathing space */
 }
 
 /* DIVIDER */
@@ -94,10 +91,7 @@ html, body {
 }
 
 .brand-tagline {
-  margin-top: 0.4rem;
-  font-size: 0.95rem;
-  letter-spacing: 0.16em;
-  color: var(--champagne-gold);
+  margin-top: 1.2rem; /* FIX: forces visible gap */
 }
 
 /* CTA */
