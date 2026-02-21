@@ -112,3 +112,6 @@ html, body {
   letter-spacing: 0.22em;
   color: var(--champagne-gold);
 }
+.cta {
+  margin-top: 2.8rem; /* ⬅️ visual pause before action */
+}
