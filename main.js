@@ -34,11 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   debug("Fade observer ACTIVATED + safety check ran");
+const startObserving = () => {
+  layers.forEach(layer => {
+    observer.observe(layer);
+
+    // 🔴 DIAGNOSTIC FORCE (temporary)
+    layer.classList.add("is-visible");
+  });
+
+  debug("Fade observer ACTIVATED (forced visible)");
 };
-  const startObserving = () => {
-    layers.forEach(layer => observer.observe(layer));
-    debug("Fade observer ACTIVATED");
-  };
 
   if (video) {
     video.addEventListener("ended", startObserving, { once: true });
