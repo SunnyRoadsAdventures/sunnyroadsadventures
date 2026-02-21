@@ -1,3 +1,11 @@
+
+document.body.insertAdjacentHTML(
+  "beforeend",
+  "<div style='position:fixed;top:10px;left:10px;z-index:99999;background:red;color:white;padding:6px;font-size:12px'>JS RUNNING</div>"
+);
+
+
+
 // main.js — STABLE BASELINE
 
 document.addEventListener("DOMContentLoaded", () => {
