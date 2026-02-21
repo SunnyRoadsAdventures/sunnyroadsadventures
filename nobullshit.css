@@ -28,7 +28,6 @@ html, body {
   background: white;
 }
 
-/* OVERLAY */
 .hero-overlay {
   position: absolute;
   inset: 0;
@@ -36,17 +35,25 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
-  opacity: 0;
+  pointer-events: none;
 }
 
-/* TITLES */
-.title {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 7vw, 6rem);
-  color: #B8953F;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
+.title,
+.brand {
+  opacity: 0;
+  filter: blur(12px);
+  transform: translateY(12px);
+  transition:
+    opacity 1.6s ease,
+    filter 1.6s ease,
+    transform 1.6s ease;
+  color: #b8953f;
+}
+
+.hero-visible {
+  opacity: 1;
+  filter: blur(0);
+  transform: translateY(0);
 }
 
 .brand {
