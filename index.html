@@ -209,24 +209,7 @@
 <!-- 👆 THIS IS WHAT YOU ADD -->
 
 </main>
-<script>
-  const layers = document.querySelectorAll('.tower-layer');
 
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-        }
-      });
-    },
-    {
-      threshold: 0.15
-    }
-  );
-
-  layers.forEach(layer => observer.observe(layer));
-</script>
 
 <script src="main.js"></script>
 </body>
