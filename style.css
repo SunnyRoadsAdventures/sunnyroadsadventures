@@ -496,22 +496,7 @@ body {
 .colonial-layer::after {
   background: linear-gradient(to top, #f5efe4 0%, rgba(245,239,228,0) 100%);
 }
-/* ============================= */
-/* TOWER ASCENT – SCROLL FADE IN */
-/* ============================= */
 
-.tower-layer {
-  opacity: 0;
-  transform: translateY(40px);
-  transition:
-    opacity 0.9s ease,
-    transform 0.9s ease;
-}
-
-.tower-layer.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 /* === FADE-IN LOCK (FINAL AUTHORITY) === */
 .tower-layer {
