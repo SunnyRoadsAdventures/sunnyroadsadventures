@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const video = document.getElementById("heroVideo");
-  const title = document.querySelector(".title");
-  const brand = document.querySelector(".brand");
+  const title = document.querySelector(".hero-tagline");
+const brand = document.querySelector(".hero-brand");
   const whiteFade = document.querySelector(".white-fade");
 
   if (!video) return;
