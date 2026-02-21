@@ -1,3 +1,42 @@
+/* RESET & FOUNDATION */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: #ffffff;
+  font-family: "Georgia", serif;
+}
+
+/* HERO SECTION */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* VIDEO — FULLY VISIBLE, NO CROP */
+#heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* IMPORTANT: full video visible */
+  background: #ffffff;
+}
+
+/* WHITE FADE */
+.white-fade {
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* TEXT OVERLAY — HARD HIDDEN INITIALLY */
 .hero-text {
   position: absolute;
   inset: 0;
@@ -6,11 +45,68 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
+  padding-bottom: 12vh;
   text-align: center;
 
   opacity: 0;
-  visibility: visible; /* IMPORTANT for SEO */
   pointer-events: none;
+}
+
+/* COLORS */
+:root {
+  --royal-gold: #b8953f;
+  --champagne-gold: #c6a75e;
+}
+
+/* TYPOGRAPHY */
+.hero-title {
+  font-size: 2.2rem;
+  letter-spacing: 0.12em;
+  color: var(--royal-gold);
+  margin: 0;
+}
+
+.hero-tagline {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  color: var(--champagne-gold);
+}
+
+/* DIVIDER */
+.gold-divider {
+  width: 120px;
+  height: 2px;
+  margin: 24px auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--champagne-gold),
+    transparent
+  );
+}
+
+/* BRAND */
+.brand {
+  font-size: 1.4rem;
+  letter-spacing: 0.14em;
+  color: var(--royal-gold);
+  margin: 0;
+}
+
+.brand-tagline {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  color: var(--champagne-gold);
+}
+
+/* CTA */
+.hero-cta {
+  margin-top: 1.4rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+  color: var(--champagne-gold);
 }
