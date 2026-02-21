@@ -81,6 +81,23 @@ html, body {
     var(--champagne-gold),
     transparent
   );
+.gold-divider.royal {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--royal-gold),
+    transparent
+  );
+}
+
+.gold-divider.champagne {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--champagne-gold),
+    transparent
+  );
+}
 }
 
 .brand {
