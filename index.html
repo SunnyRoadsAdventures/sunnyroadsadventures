@@ -1,13 +1,54 @@
-<video id="heroVideo" autoplay muted playsinline>
-  <source src="tow.mp4" type="video/mp4">
-</video>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<div class="white-fade"></div>
+  <!-- SEO -->
+  <title>Empire Of White & Gold | Sunny Roads Adventures</title>
+  <meta name="description" content="Empire Of White & Gold — Where luxury meets meaning. Curated luxury travel and private experiences by Sunny Roads Adventures." />
 
-<div class="hero-text">
-  <h1 class="hero-title">Empire Of White &amp; Gold</h1>
-  <p class="hero-tagline">Where Luxury Meets Meaning</p>
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-  <h2 class="brand">Sunny Roads Adventures</h2>
-  <p class="brand-tagline">Luxury Travel &amp; Curated Experiences</p>
-</div>
+<body>
+
+  <section class="hero" role="banner">
+
+    <!-- Video -->
+    <video
+      id="heroVideo"
+      autoplay
+      muted
+      playsinline
+      preload="auto"
+      aria-label="Luxury cinematic introduction video"
+    >
+      <source src="tow.mp4" type="video/mp4" />
+    </video>
+
+    <!-- White cinematic fade -->
+    <div class="white-fade"></div>
+
+    <!-- Text overlay (SEO-visible, user-hidden until video ends) -->
+    <div class="hero-text">
+      <h1 class="hero-title">Empire Of White &amp; Gold</h1>
+
+      <p class="hero-tagline">Where Luxury Meets Meaning</p>
+
+      <div class="gold-divider"></div>
+
+      <h2 class="brand">Sunny Roads Adventures</h2>
+
+      <p class="brand-tagline">Luxury Travel &amp; Curated Experiences</p>
+
+      <p class="hero-cta">Begin Your Journey</p>
+    </div>
+
+  </section>
+
+  <!-- Scripts -->
+  <script src="main.js"></script>
+</body>
+</html>
