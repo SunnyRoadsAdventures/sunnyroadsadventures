@@ -1,4 +1,4 @@
-
+alert("main.js is running");
 
 // main.js — STABLE BASELINE
 
