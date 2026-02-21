@@ -3,13 +3,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroText = document.querySelector(".hero-text");
   const whiteFade = document.querySelector(".white-fade");
 
-  if (!video || !heroText || !whiteFade) return;
+  if (!video || !heroText) return;
+
+  // Ensure text is hidden no matter what
+  heroText.style.opacity = "0";
 
   video.addEventListener("ended", () => {
-    whiteFade.style.opacity = "1";
+    if (whiteFade) {
+      whiteFade.style.opacity = "1";
+    }
 
     setTimeout(() => {
       heroText.style.opacity = "1";
-    }, 400);
+    }, 300);
   });
 });
