@@ -89,7 +89,7 @@ html, body {
 .brand {
   font-size: 1.4rem;
   letter-spacing: 0.14em;
-  color: var(--royal-gold);
+  color: var(--champagne-gold); /* ← change from royal */
   margin: 0;
 }
 
