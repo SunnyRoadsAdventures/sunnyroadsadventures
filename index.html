@@ -209,40 +209,7 @@
 <!-- 👆 THIS IS WHAT YOU ADD -->
 
 </main>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("✅ JS LOADED");
 
-  const layers = document.querySelectorAll(".tower-layer");
-  const video = document.getElementById("tow");
-
-  if (!layers.length) {
-    console.error("❌ No .tower-layer elements found");
-    return;
-  }
-
-  console.log("🎯 tower layers found:", layers.length);
-
-  function revealText() {
-    console.log("✨ Revealing tower text");
-    layers.forEach(layer => layer.classList.add("is-visible"));
-  }
-
-  // ✅ Trigger when video ends
-  if (video) {
-    video.addEventListener("ended", () => {
-      console.log("🎬 Video ended");
-      revealText();
-    });
-
-    // SAFETY FALLBACK (mobile autoplay issues)
-    setTimeout(revealText, 6000);
-  } else {
-    console.warn("⚠️ Video not found, revealing immediately");
-    revealText();
-  }
-});
-</script>
 
 
 <script src="main.js" defer></script>
