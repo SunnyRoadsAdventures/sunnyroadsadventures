@@ -512,3 +512,15 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* === FADE-IN LOCK (FINAL AUTHORITY) === */
+.tower-layer {
+  opacity: 0 !important;
+  transform: translateY(30px) !important;
+  transition: opacity 0.8s ease, transform 0.8s ease !important;
+}
+
+.tower-layer.is-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
