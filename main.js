@@ -1,54 +1,54 @@
-alert("main.js is running");
-
-// main.js — STABLE BASELINE
+// ==============================
+// main.js — STABLE FINAL VERSION
+// ==============================
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  // 🔹 Elements
   const layers = document.querySelectorAll(".tower-layer");
-  const video = document.querySelector("video");
-
-  // 🔎 Mobile-safe debug (no console needed)
-  const debug = (msg) => {
-    const el = document.createElement("div");
-    el.textContent = msg;
-    el.style.cssText =
-      "position:fixed;bottom:10px;left:10px;background:#000;color:#0f0;font:12px monospace;padding:6px;z-index:9999";
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), 3000);
-  };
-
-  debug(`JS loaded. Layers: ${layers.length}`);
-  debug(`Video found: ${!!video}`);
+  const video  = document.querySelector("video");
 
   if (!layers.length) return;
 
- const startObserving = () => {
-  layers.forEach(layer => {
-    observer.observe(layer);
-
-    // 🔒 SAFETY: if already visible, force fade
-    const rect = layer.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.85) {
-      layer.classList.add("is-visible");
-      observer.unobserve(layer);
+  // ==============================
+  // 🔥 FADE-IN OBSERVER (CORRECT)
+  // ==============================
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target); // animate once
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: "0px 0px -10% 0px"
     }
-  });
+  );
 
-  debug("Fade observer ACTIVATED + safety check ran");
-const startObserving = () => {
-  layers.forEach(layer => {
-    observer.observe(layer);
+  // ==============================
+  // 🔹 START OBSERVING FUNCTION
+  // ==============================
+  const startObserving = () => {
+    layers.forEach(layer => observer.observe(layer));
+  };
 
-    // 🔴 DIAGNOSTIC FORCE (temporary)
-    layer.classList.add("is-visible");
-  });
-
-  debug("Fade observer ACTIVATED (forced visible)");
-};
-
+  // ==============================
+  // 🎥 WAIT FOR tow.mp4 TO FINISH
+  // ==============================
   if (video) {
-    video.addEventListener("ended", startObserving, { once: true });
-    debug("Waiting for video end");
+    video.addEventListener(
+      "ended",
+      () => {
+        startObserving(); // 🔥 fade starts AFTER video ends
+      },
+      { once: true }
+    );
   } else {
+    // Safety fallback if video is missing
     startObserving();
   }
+
 });
