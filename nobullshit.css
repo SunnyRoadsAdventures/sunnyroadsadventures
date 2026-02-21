@@ -199,3 +199,20 @@ html, body {
   z-index: 10;
   position: relative;
 }
+
+.hero-text {
+  position: relative !important;
+  z-index: 9999 !important;
+  background: black !important;
+  color: gold !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+.hero-text * {
+  color: gold !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  filter: none !important;
+}
