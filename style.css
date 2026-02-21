@@ -99,7 +99,7 @@ html, body {
 }
 
 .brand-tagline {
-  margin-top: 0.15rem; /* ⬅️ tighter, elegant */
+  margin-top: 0.4rem;
   font-size: 0.95rem;
   letter-spacing: 0.16em;
   color: var(--champagne-gold);
