@@ -193,4 +193,15 @@ html, body {
 
 .hero-cta {
   opacity: 0.95;
+}/* === VISIBILITY SAFETY OVERRIDE === */
+.title,
+.brand,
+.subtitle,
+.tagline {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  color: #bfa34a !important; /* gold */
+  z-index: 10 !important;
+  position: relative;
 }
