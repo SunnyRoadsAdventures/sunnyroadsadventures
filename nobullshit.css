@@ -116,3 +116,81 @@ html, body {
   opacity: 1;
   filter: blur(0);
 }
+.hero-text {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto;
+  padding-top: 14vh;
+  color: #c9a24d;
+}
+
+/* TITLE */
+.hero-title {
+  font-size: clamp(2.6rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+/* TAGLINE */
+.hero-tagline {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  opacity: 0.9;
+}
+
+/* GOLD DIVIDER */
+.gold-divider {
+  width: 160px;
+  height: 2px;
+  margin: 2.5rem auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #e6c36a,
+    transparent
+  );
+  animation: goldPulse 3s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(230, 195, 106, 0.6);
+}
+
+@keyframes goldPulse {
+  0% {
+    background-position: 0%;
+    box-shadow: 0 0 6px rgba(230, 195, 106, 0.3);
+  }
+  50% {
+    background-position: 100%;
+    box-shadow: 0 0 12px rgba(230, 195, 106, 0.9);
+  }
+  100% {
+    background-position: 0%;
+    box-shadow: 0 0 6px rgba(230, 195, 106, 0.3);
+  }
+}
+
+/* BRAND NAME */
+.hero-brand {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin: 0;
+  letter-spacing: 0.12em;
+}
+
+/* SUBTEXT */
+.hero-sub {
+  margin-top: 2.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.16em;
+  opacity: 0.85;
+}
+
+.hero-sub p {
+  margin: 0.8rem 0;
+}
+
+.hero-cta {
+  opacity: 0.95;
+}
