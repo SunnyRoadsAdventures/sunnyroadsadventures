@@ -49,9 +49,9 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center; /* ⬅️ CENTER vertically */
 
-  padding-bottom: 12vh;
+  transform: translateY(8vh); /* ⬅️ subtle lift upward */
   text-align: center;
 
   opacity: 0;
