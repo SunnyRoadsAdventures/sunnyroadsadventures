@@ -1,31 +1,26 @@
-const tower = document.querySelector(".tower");
-const floors = document.querySelectorAll(".tower-floor");
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ main.js loaded");
 
-if (tower && floors.length > 0) {
+  const layers = document.querySelectorAll(".tower-layer");
+  const video = document.getElementById("heroVideo");
 
-    window.addEventListener("scroll", () => {
+  if (!layers.length) {
+    console.error("❌ No tower layers found");
+    return;
+  }
 
-        const towerTop = tower.offsetTop;
-        const towerHeight = tower.offsetHeight;
-        const scrollY = window.scrollY;
+  function revealText() {
+    console.log("✨ Revealing tower layers");
+    layers.forEach(layer => layer.classList.add("is-visible"));
+  }
 
-        // Only animate while inside tower section
-        if (scrollY >= towerTop && scrollY <= towerTop + towerHeight) {
+  if (video) {
+    video.addEventListener("ended", revealText);
 
-            const progress = (scrollY - towerTop) / towerHeight;
-
-            floors.forEach((floor, index) => {
-
-                const offset = (progress * floors.length) - index;
-
-                const translate = Math.max(0, 100 - offset * 100);
-
-                floor.style.transform = `translateY(${translate}%)`;
-
-            });
-
-        }
-
-    });
-
-}
+    // Mobile safety fallback
+    setTimeout(revealText, 7000);
+  } else {
+    console.warn("⚠️ Video not found, revealing immediately");
+    revealText();
+  }
+});
