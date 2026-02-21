@@ -51,16 +51,11 @@ html, body {
   align-items: center;
   justify-content: center;
 
-  transform: translateY(4vh); /* ⬅️ moves whole block UP */
+  transform: translateY(4vh); /* moves whole block UP */
   text-align: center;
 
   opacity: 0;
   pointer-events: none;
-}
-/* COLORS */
-:root {
-  --royal-gold: #b8953f;
-  --champagne-gold: #c6a75e;
 }
 
 /* TYPOGRAPHY */
