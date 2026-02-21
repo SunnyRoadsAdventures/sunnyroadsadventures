@@ -1,13 +1,21 @@
-setTimeout(() => {
-  console.log("⚠️ Forcing is-visible on all layers");
-  layers.forEach(layer => layer.classList.add("is-visible"));
-}, 2000);
+// main.js — STABLE BASELINE
+
 document.addEventListener("DOMContentLoaded", () => {
   const layers = document.querySelectorAll(".tower-layer");
   const video = document.querySelector("video");
 
-  console.log("Layers found:", layers.length);
-  console.log("Video found:", !!video);
+  // 🔎 Mobile-safe debug (no console needed)
+  const debug = (msg) => {
+    const el = document.createElement("div");
+    el.textContent = msg;
+    el.style.cssText =
+      "position:fixed;bottom:10px;left:10px;background:#000;color:#0f0;font:12px monospace;padding:6px;z-index:9999";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 3000);
+  };
+
+  debug(`JS loaded. Layers: ${layers.length}`);
+  debug(`Video found: ${!!video}`);
 
   if (!layers.length) return;
 
@@ -26,16 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  // 🔒 Lock fades until video finishes
   const startObserving = () => {
     layers.forEach(layer => observer.observe(layer));
-    console.log("Fade observer ACTIVATED");
+    debug("Fade observer ACTIVATED");
   };
 
   if (video) {
     video.addEventListener("ended", startObserving, { once: true });
+    debug("Waiting for video end");
   } else {
-    // fallback if no video
     startObserving();
   }
 });
