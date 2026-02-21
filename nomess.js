@@ -1,19 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
   const video = document.getElementById("heroVideo");
-  const title = document.querySelector(".hero-tagline");
-const brand = document.querySelector(".hero-brand");
   const whiteFade = document.querySelector(".white-fade");
+  const heroText = document.querySelector(".hero-text");
 
-  if (!video) return;
+  if (!video || !heroText) return;
 
-  video.addEventListener("ended", () => {
-    // White cinematic fade
+  function revealText() {
     whiteFade.style.opacity = "1";
+    heroText.classList.add("hero-visible");
+  }
 
-    // Slight delay, then reveal text
-    setTimeout(() => {
-      title.classList.add("hero-visible");
-      brand.classList.add("hero-visible");
-    }, 300);
-  });
+  // Primary (when video ends)
+  video.addEventListener("ended", revealText);
+
+  // Fallback (mobile safety)
+  setTimeout(() => {
+    if (!heroText.classList.contains("hero-visible")) {
+      revealText();
+    }
+  }, 7000); // after 7 seconds
 });
