@@ -1,54 +1,31 @@
-// ==============================
-// main.js — STABLE FINAL VERSION
-// ==============================
+const tower = document.querySelector(".tower");
+const floors = document.querySelectorAll(".tower-floor");
 
-document.addEventListener("DOMContentLoaded", () => {
+if (tower && floors.length > 0) {
 
-  // 🔹 Elements
-  const layers = document.querySelectorAll(".tower-layer");
-  const video  = document.querySelector("video");
+    window.addEventListener("scroll", () => {
 
-  if (!layers.length) return;
+        const towerTop = tower.offsetTop;
+        const towerHeight = tower.offsetHeight;
+        const scrollY = window.scrollY;
 
-  // ==============================
-  // 🔥 FADE-IN OBSERVER (CORRECT)
-  // ==============================
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target); // animate once
+        // Only animate while inside tower section
+        if (scrollY >= towerTop && scrollY <= towerTop + towerHeight) {
+
+            const progress = (scrollY - towerTop) / towerHeight;
+
+            floors.forEach((floor, index) => {
+
+                const offset = (progress * floors.length) - index;
+
+                const translate = Math.max(0, 100 - offset * 100);
+
+                floor.style.transform = `translateY(${translate}%)`;
+
+            });
+
         }
-      });
-    },
-    {
-      threshold: 0.15,
-      rootMargin: "0px 0px -10% 0px"
-    }
-  );
 
-  // ==============================
-  // 🔹 START OBSERVING FUNCTION
-  // ==============================
-  const startObserving = () => {
-    layers.forEach(layer => observer.observe(layer));
-  };
+    });
 
-  // ==============================
-  // 🎥 WAIT FOR tow.mp4 TO FINISH
-  // ==============================
-  if (video) {
-    video.addEventListener(
-      "ended",
-      () => {
-        startObserving(); // 🔥 fade starts AFTER video ends
-      },
-      { once: true }
-    );
-  } else {
-    // Safety fallback if video is missing
-    startObserving();
-  }
-
-});
+}
