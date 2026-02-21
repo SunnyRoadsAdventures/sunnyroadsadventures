@@ -24,7 +24,8 @@ html, body {
 #heroVideo {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* IMPORTANT: full video visible */
+  object-fit: contain;
+  object-position: top center; /* ⬅️ THIS is the key */
   background: #ffffff;
 }
 
