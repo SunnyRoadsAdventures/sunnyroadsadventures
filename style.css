@@ -74,7 +74,7 @@ html, body {
 .gold-divider {
   width: 120px;
   height: 2px;
-  margin: 24px auto;
+  margin: 2rem auto;
   background: linear-gradient(
     90deg,
     transparent,
