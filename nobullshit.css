@@ -216,3 +216,17 @@ html, body {
   visibility: visible !important;
   filter: none !important;
 }
+
+/* === FORCE VISIBILITY DEBUG === */
+.hero-text,
+.hero-title,
+.hero-tagline,
+.brand {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+  filter: none !important;
+  transform: none !important;
+  color: #B8953F !important;
+  z-index: 9999 !important;
+}
