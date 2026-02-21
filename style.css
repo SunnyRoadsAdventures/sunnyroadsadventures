@@ -103,7 +103,7 @@ html, body {
   font-size: 0.95rem;
   letter-spacing: 0.16em;
   color: var(--champagne-gold);
-)
+}
 
 /* CTA */
 .hero-cta {
