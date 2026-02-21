@@ -92,7 +92,6 @@ html, body {
   );
 }
 
-/* BRAND */
 .brand {
   font-size: 1.4rem;
   letter-spacing: 0.14em;
@@ -100,6 +99,12 @@ html, body {
   margin: 0;
 }
 
+.brand-tagline {
+  margin-top: 0.15rem; /* ⬅️ tighter, elegant */
+  font-size: 0.95rem;
+  letter-spacing: 0.16em;
+  color: var(--champagne-gold);
+}
 .brand-tagline {
   margin-top: 0.4rem;
   font-size: 0.95rem;
