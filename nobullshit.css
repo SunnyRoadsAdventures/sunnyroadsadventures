@@ -88,3 +88,31 @@ html, body {
   opacity: 1;
   transition: opacity 1.5s ease;
 }
+.hero-text {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero-tagline {
+  margin-top: 24px;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b8953f;
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 1.2s ease, filter 1.2s ease;
+}
+
+.hero-visible + .hero-tagline,
+.hero-tagline.hero-visible {
+  opacity: 1;
+  filter: blur(0);
+}
