@@ -19,21 +19,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!layers.length) return;
 
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.15,
-      rootMargin: "0px 0px -10% 0px"
-    }
-  );
+ const startObserving = () => {
+  layers.forEach(layer => {
+    observer.observe(layer);
 
+    // 🔒 SAFETY: if already visible, force fade
+    const rect = layer.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) {
+      layer.classList.add("is-visible");
+      observer.unobserve(layer);
+    }
+  });
+
+  debug("Fade observer ACTIVATED + safety check ran");
+};
   const startObserving = () => {
     layers.forEach(layer => observer.observe(layer));
     debug("Fade observer ACTIVATED");
