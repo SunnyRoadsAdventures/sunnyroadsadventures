@@ -107,13 +107,13 @@ html, body {
   color: var(--champagne-gold);
 }
 
+/* BRAND */
 .brand {
   font-size: 1.4rem;
   letter-spacing: 0.14em;
-  color: var(--champagne-gold); /* ← change from royal */
+  color: var(--champagne-gold);
   margin: 0;
 }
-
 .brand-tagline {
   margin-top: 1.2rem; /* FIX: forces visible gap */
 }
