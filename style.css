@@ -1,37 +1,50 @@
+/* ================================
+   ROOT VARIABLES
+================================ */
 :root {
-  --royal-gold: #b08d57;       /* deeper, regal */
-  --champagne-gold: #e6c88c;   /* lighter, luxury */
+  --royal-gold: #c9a24d;
+  --champagne-gold: #f3e6c1;
+  --soft-white: #ffffff;
+  --dark-bg: #000000;
 }
 
-/* RESET & FOUNDATION */
-html, body {
+/* ================================
+   GLOBAL RESET
+================================ */
+* {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  background: #ffffff;
-  font-family: "Georgia", serif;
+  box-sizing: border-box;
 }
 
-/* HERO SECTION */
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: var(--dark-bg);
+  font-family: "Cormorant Garamond", serif;
+  color: var(--soft-white);
+  overflow-x: hidden;
+}
+
+/* ================================
+   HERO SECTION
+================================ */
 .hero {
   position: relative;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
 }
 
-/* VIDEO — FULLY VISIBLE, NO CROP */
-#heroVideo {
+/* VIDEO */
+.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: top center; /* ⬅️ THIS is the key */
-  background: #ffffff;
+  object-fit: cover;
 }
 
 /* WHITE FADE */
@@ -40,70 +53,33 @@ html, body {
   inset: 0;
   background: white;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 2;
   pointer-events: none;
+  transition: opacity 1.2s ease;
+  z-index: 2;
 }
 
-/* TEXT OVERLAY — HARD HIDDEN INITIALLY */
+/* ================================
+   HERO TEXT (HIDDEN INITIALLY)
+================================ */
 .hero-text {
   position: absolute;
-  inset: 0;
-  z-index: 3;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  transform: translateY(4vh); /* moves whole block UP */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -46%);
   text-align: center;
-
+  z-index: 3;
   opacity: 0;
-  pointer-events: none;
+  transition: opacity 1.2s ease;
 }
 
-/* TYPOGRAPHY */
-.hero-title {
-  font-size: 2.2rem;
-  letter-spacing: 0.12em;
-  color: var(--royal-gold);
-  margin: 0;
+/* JS will add this */
+.hero-visible {
+  opacity: 1;
 }
 
-.hero-tagline {
-  margin-top: 1.2rem; /* bigger breathing space */
-}
-
-/* DIVIDER */
-.gold-divider {
-  width: 120px;
-  height: 2px;
-  margin: 2rem auto;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--champagne-gold),
-    transparent
-  );
-.gold-divider.royal {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--royal-gold),
-    transparent
-  );
-}
-
-.gold-divider.champagne {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--champagne-gold),
-    transparent
-  );
-}
-/* TEXT COLORS */
+/* ================================
+   TEXT COLORS
+================================ */
 .text-royal {
   color: var(--royal-gold);
 }
@@ -112,60 +88,105 @@ html, body {
   color: var(--champagne-gold);
 }
 
+/* ================================
+   TITLES & TEXT
+================================ */
+.hero-title {
+  font-size: 3.2rem;
+  letter-spacing: 0.18em;
+  margin-bottom: 1.6rem;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  opacity: 0.9;
+  margin-bottom: 2.4rem;
+}
+
 /* BRAND */
 .brand {
-  font-size: 1.4rem;
-  letter-spacing: 0.14em;
-  color: var(--champagne-gold);
-  margin: 0;
+  font-size: 1.6rem;
+  letter-spacing: 0.16em;
+  margin-top: 2.2rem;
 }
+
 .brand-tagline {
-  margin-top: 1.2rem; /* FIX: forces visible gap */
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  margin-top: 1.4rem;
+  opacity: 0.85;
 }
 
-/* CTA */
-.hero-cta {
-  margin-top: 1.4rem;
+.hero-tagline {
   font-size: 0.95rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.16em;
+  margin-top: 1.6rem;
+  opacity: 0.8;
+}
+
+/* ================================
+   GOLD DIVIDERS
+================================ */
+.gold-divider {
+  width: 140px;
+  height: 1px;
+  margin: 2.2rem auto;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    currentColor,
+    transparent
+  );
+}
+
+/* Royal Divider */
+.gold-divider.royal {
+  color: var(--royal-gold);
+}
+
+/* Champagne Divider */
+.gold-divider.champagne {
   color: var(--champagne-gold);
 }
-.cta {
-  margin-top: 2.8rem; /* ⬅️ visual pause before action */
-}
 
-/* =========================
+/* ================================
    EXPERIENCE SECTION
-========================= */
-
-.experience-section {
-  padding: 8rem 6vw;
-  background: #000;
+================================ */
+.experience {
+  padding: 6rem 1.6rem;
   text-align: center;
-}
-
-.experience-title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: 0.12em;
-  margin-bottom: 4rem;
-}
-
-.experience-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 4rem;
-  max-width: 1100px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.experience-item h3 {
-  font-size: 1.2rem;
+.experience-title {
+  font-size: 2rem;
   letter-spacing: 0.16em;
-  margin-bottom: 1.2rem;
+  margin-bottom: 2rem;
 }
 
-.experience-item p {
-  font-size: 0.95rem;
-  line-height: 1.8;
-  opacity: 0.85;
+.experience-text {
+  font-size: 1.05rem;
+  letter-spacing: 0.08em;
+  line-height: 1.9;
+  margin-bottom: 2rem;
+  opacity: 0.9;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .brand {
+    font-size: 1.3rem;
+  }
+
+  .experience {
+    padding: 4rem 1.4rem;
+  }
 }
