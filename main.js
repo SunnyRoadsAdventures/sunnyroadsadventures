@@ -20,8 +20,12 @@
       }
     };
 
-    // ✅ Fade in when video actually starts playing
-    heroVideo.addEventListener("playing", revealText, { once: true });
+    // Reveal when video is actually ready (bulletproof)
+if (heroVideo.readyState >= 2) {
+  revealText();
+} else {
+  heroVideo.addEventListener("loadeddata", revealText, { once: true });
+}
 
     // ✅ If autoplay already active
     if (!heroVideo.paused && !heroVideo.ended) {
