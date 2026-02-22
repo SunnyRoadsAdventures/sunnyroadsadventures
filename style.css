@@ -330,3 +330,37 @@ body {
   border-radius: 6px;
   box-shadow: 0 30px 80px rgba(0,0,0,0.55);
 }
+
+/* ================================
+   BEGINNING SECTION
+================================ */
+
+.beginning-section {
+  padding: 10rem 6vw;
+  background: #0b0b0b;
+}
+
+.beginning-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.beginning-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.36em;
+  opacity: 0.75;
+  margin-bottom: 1.6rem;
+}
+
+.beginning-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1.25;
+  margin-bottom: 2.2rem;
+}
+
+.beginning-text {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  opacity: 0.9;
+}
