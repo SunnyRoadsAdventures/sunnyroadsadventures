@@ -364,3 +364,53 @@ body {
   line-height: 1.85;
   opacity: 0.9;
 }
+
+/* ================================
+   INVITATION SECTION
+================================ */
+
+.invitation-section {
+  padding: 12rem 6vw;
+  background: #0b0b0b;
+}
+
+.invitation-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.invitation-eyebrow {
+  font-size: 0.8rem;
+  letter-spacing: 0.34em;
+  opacity: 0.75;
+  margin-bottom: 1.8rem;
+}
+
+.invitation-title {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  line-height: 1.25;
+  margin-bottom: 2.4rem;
+}
+
+.invitation-text {
+  font-size: 1.05rem;
+  line-height: 1.85;
+  opacity: 0.9;
+  margin-bottom: 3.6rem;
+}
+
+.invitation-cta span {
+  font-size: 0.9rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(212,175,55,0.45);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.invitation-cta span:hover {
+  opacity: 0.75;
+}
+
