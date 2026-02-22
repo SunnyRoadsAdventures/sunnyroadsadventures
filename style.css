@@ -61,20 +61,24 @@ body {
 /* ================================
    HERO TEXT (HIDDEN INITIALLY)
 ================================ */
+/* ================================
+   HERO TEXT ANIMATION
+================================ */
 .hero-text {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -46%);
+  top: 16vh;
+  width: 100%;
   text-align: center;
-  z-index: 3;
+  color: var(--royal-gold);
   opacity: 0;
-  transition: opacity 1.2s ease;
+  transform: translateY(4vh);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
+  will-change: opacity, transform;
 }
 
-/* JS will add this */
-.hero-visible {
+.hero-text.is-visible {
   opacity: 1;
+  transform: translateY(0);
 }
 
 /* ================================
