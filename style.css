@@ -1,3 +1,8 @@
+:root {
+  --royal-gold: #b08d57;       /* deeper, regal */
+  --champagne-gold: #e6c88c;   /* lighter, luxury */
+}
+
 /* RESET & FOUNDATION */
 html, body {
   margin: 0;
