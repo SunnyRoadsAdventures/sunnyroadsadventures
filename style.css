@@ -400,17 +400,19 @@ body {
   margin-bottom: 3.6rem;
 }
 
-.invitation-cta span {
+.invitation-cta a {
   font-size: 0.9rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid rgba(212,175,55,0.45);
-  cursor: pointer;
-  transition: opacity 0.3s ease;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(212,175,55,0.5);
+  color: var(--champagne-gold);
+  text-decoration: none;
+  transition: opacity 0.3s ease, border-color 0.3s ease;
 }
 
-.invitation-cta span:hover {
+.invitation-cta a:hover {
   opacity: 0.75;
+  border-color: rgba(212,175,55,0.85);
 }
 
