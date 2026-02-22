@@ -189,4 +189,83 @@ body {
   .experience {
     padding: 4rem 1.4rem;
   }
+)
+/* ============================
+   PHILOSOPHY SECTION
+============================ */
+
+.philosophy-section {
+  position: relative;
+  width: 100%;
+  background: #0b0b0b; /* deep luxury dark */
+  padding: 8rem 1.5rem 9rem;
 }
+
+.philosophy-inner {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Eyebrow / Intro */
+.philosophy-eyebrow {
+  font-size: 0.9rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 2.2rem;
+  opacity: 0.9;
+}
+
+/* Main Philosophy Title */
+.philosophy-title {
+  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  margin-bottom: 2.8rem;
+}
+
+/* Divider */
+.philosophy-section .gold-divider {
+  width: 180px;
+  height: 1px;
+  margin: 3rem auto 3.6rem;
+  opacity: 0.85;
+}
+
+/* Body Text */
+.philosophy-text {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  opacity: 0.92;
+}
+
+.philosophy-text p {
+  margin-bottom: 2.4rem;
+}
+
+/* Last paragraph no extra gap */
+.philosophy-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* ============================
+   RESPONSIVE TUNING
+============================ */
+
+@media (max-width: 768px) {
+  .philosophy-section {
+    padding: 6rem 1.2rem 7rem;
+  }
+
+  .philosophy-title {
+    font-size: 2rem;
+  }
+
+  .philosophy-text {
+    font-size: 1rem;
+  }
+)
