@@ -5,32 +5,27 @@ document.addEventListener("DOMContentLoaded", function () {
   const whiteFade = document.querySelector(".white-fade");
   const blackFade = document.querySelector(".black-fade");
 
-  if (!heroVideo || !heroText || !whiteFade || !blackFade) return;
+  if (!heroVideo || !heroText || !whiteFade || !blackFade) {
+    console.log("Hero elements not found");
+    return;
+  }
 
-  heroText.classList.remove("is-visible");
-  heroText.style.opacity = "0";
+  console.log("Hero system ready");
 
   heroVideo.addEventListener("ended", function () {
+    console.log("Video ended fired");
 
-    // 1. Fade to white
     whiteFade.style.opacity = "1";
 
-    // 2. After 1s → start transition to obsidian
     setTimeout(() => {
-
-      // Fade white out
+      console.log("Switching to black");
       whiteFade.style.opacity = "0";
-
-      // Fade black in
       blackFade.style.opacity = "1";
-
     }, 1000);
 
-    // 3. Show text AFTER obsidian is visible
     setTimeout(() => {
       heroText.classList.add("is-visible");
     }, 2000);
-
   });
 
 });
