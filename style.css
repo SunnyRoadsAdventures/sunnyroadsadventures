@@ -57,8 +57,7 @@ body {
   z-index: 2;
 }
 
-/* HERO TEXT */
-.hero-text {
+/.hero-text {
   position: absolute;
   top: 16vh;
   width: 100%;
@@ -68,6 +67,8 @@ body {
   transform: translateY(4vh);
   transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
   will-change: opacity, transform;
+
+  z-index: 3; /* ADD THIS */
 }
 
 .hero-text.is-visible {
