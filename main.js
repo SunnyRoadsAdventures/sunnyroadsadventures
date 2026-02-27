@@ -1,49 +1,21 @@
-document.addEventListener("DOMContentLoaded", function () {
+const heroVideo = document.getElementById("heroVideo");
+const heroText = document.querySelector(".hero-text");
+const whiteFade = document.querySelector(".white-fade");
 
-  const welcomeVideo = document.getElementById("welcomeVideo");
-  const buttons = document.querySelectorAll(".lang-btn");
+if (heroVideo && heroText && whiteFade) {
 
-  /* ------------------------------
-     HERO VIDEO FADE LOGIC
-  ------------------------------ */
-  const heroVideo = document.getElementById("heroVideo");
-  const heroText = document.querySelector(".hero-text");
-  const whiteFade = document.querySelector(".white-fade");
+  heroVideo.addEventListener("timeupdate", function () {
 
-  if (heroVideo && heroText && whiteFade) {
-    heroVideo.addEventListener("ended", function () {
-      // Fade white overlay first
+    // Trigger when 0.5s remains
+    if (heroVideo.duration - heroVideo.currentTime < 0.5) {
+
       whiteFade.style.opacity = "1";
+      heroText.classList.add("is-visible");
 
-      // Then fade in hero text after slight delay
-      setTimeout(() => {
-        heroText.classList.add("is-visible");
-      }, 300);
-    });
-  }
+      // Remove listener so it only runs once
+      heroVideo.removeEventListener("timeupdate", arguments.callee);
+    }
 
-  /* ------------------------------
-     LANGUAGE SWITCHER
-  ------------------------------ */
-  window.switchLanguage = function(lang) {
+  });
 
-    if (!welcomeVideo) return;
-
-    buttons.forEach(btn => btn.classList.remove("active"));
-
-    // Choose video source
-    const newSource = lang === "eng" ? "eng.mp4" : "esp.mp4";
-
-    // Pause, change source, then wait for user to click play
-    welcomeVideo.pause();
-    welcomeVideo.src = newSource;
-    welcomeVideo.load();
-
-    // Update active button
-    const activeBtn = document.querySelector(
-      `.lang-btn[onclick="switchLanguage('${lang}')"]`
-    );
-    if (activeBtn) activeBtn.classList.add("active");
-  };
-
-});
+}
