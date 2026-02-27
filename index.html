@@ -1,164 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+document.addEventListener("DOMContentLoaded", function () {
 
-  <title>Empire of White & Gold | Sunny Roads Adventures</title>
+  /* ==============================
+     HERO VIDEO FADE LOGIC
+  ============================== */
 
-  <meta name="description" content="Sunny Roads Adventures offers privately crafted luxury journeys in Nicaragua. Each experience unfolds through private conversation, shaped with intention, discretion, and meaning." />
+  const heroVideo = document.getElementById("heroVideo");
+  const heroText = document.querySelector(".hero-text");
+  const whiteFade = document.querySelector(".white-fade");
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
-</head>
+  if (heroVideo && heroText && whiteFade) {
 
-<body>
+    heroVideo.addEventListener("ended", function () {
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-  <video id="heroVideo" autoplay muted playsinline>
-    <source src="tow.mp4" type="video/mp4" />
-  </video>
+      // Fade white overlay
+      whiteFade.style.opacity = "1";
 
-  <div class="white-fade"></div>
+      // Fade in text slightly after
+      setTimeout(function () {
+        heroText.classList.add("is-visible");
+      }, 300);
 
-  <!-- 👇 HERO TEXT BLOCK -->
-  <div class="hero-text">
+    });
 
-    <!-- ✅ PLACE THE H1 RIGHT HERE -->
-    <h1 class="hero-title text-royal">
-      Empire of White & Gold
-    </h1>
+  }
 
-    <p class="hero-subtitle text-champagne">
-      Where Luxury Meets Meaning
-    </p>
+  /* ==============================
+     LANGUAGE SWITCHER
+  ============================== */
 
-    <div class="gold-divider royal"></div>
+  const welcomeVideo = document.getElementById("welcomeVideo");
+  const buttons = document.querySelectorAll(".lang-btn");
 
-    <p class="brand text-royal">
-      Sunny Roads Adventures
-    </p>
+  window.switchLanguage = function(lang) {
 
-    <p class="brand-tagline">
-      Luxury Travel & Curated Experiences
-    </p>
+    if (!welcomeVideo) return;
 
-    <p class="brand-tagline">
-      Discover Your Journey
-    </p>
+    buttons.forEach(function(btn) {
+      btn.classList.remove("active");
+    });
 
-  </div>
-</section>
+    const newSource = lang === "eng" ? "eng.mp4" : "esp.mp4";
 
-  <!-- EXPERIENCE / PHILOSOPHY SECTION -->
-  <section class="philosophy-section">
-  <div class="philosophy-inner">
+    welcomeVideo.pause();
+    welcomeVideo.src = newSource;
+    welcomeVideo.load();
 
-    <p class="philosophy-eyebrow text-champagne">
-      A Different Way of Traveling
-    </p>
+    const activeBtn = document.querySelector(
+      `.lang-btn[onclick="switchLanguage('${lang}')"]`
+    );
 
-    <h2 class="philosophy-title text-royal">
-      Journeys Are Not Selected.<br>
-      They Are Revealed.
-    </h2>
+    if (activeBtn) {
+      activeBtn.classList.add("active");
+    }
 
-    <div class="gold-divider royal"></div>
+  };
 
-    <div class="philosophy-text text-champagne">
-      <p>
-        Every experience begins quietly — through attention, conversation,
-        and understanding. What unfolds is guided by nuance rather than
-        templates, shaped by intention rather than instruction.
-      </p>
-
-      <p>
-        Each journey is composed through rhythm, atmosphere, and timing.
-        The destination matters less than the way it is felt.
-      </p>
-
-      <p>
-        Some moments are meant to be shared openly. Others are designed to
-        remain unspoken. Both are approached with equal care.
-      </p>
-
-      <p>
-        This is travel guided by restraint, discretion, and meaning —
-        created for those who recognize the difference without explanation.
-      </p>
-    </div>
-
-  </div>
-</section>
-<section class="vision-section">
-  <div class="vision-inner">
-
-    <!-- Language Toggle -->
-    <div class="language-toggle">
-      <button onclick="switchLanguage('eng')" class="lang-btn active">English</button>
-      <button onclick="switchLanguage('esp')" class="lang-btn">Español</button>
-    </div>
-
-    <!-- Welcome Video -->
-<video 
-  id="welcomeVideo"
-  controls
-  preload="metadata"
-  poster="thumb.png"
-  src="eng.mp4">
-</video>
-<section class="beginning-section">
-  <div class="beginning-inner">
-    <div class="beginning-eyebrow">THE BEGINNING</div>
-    <h2 class="beginning-title">Every journey starts before it is seen</h2>
-    <p class="beginning-text">
-      Moments of clarity rarely announce themselves.<br>
-      They arrive quietly — through conversation, attention, and trust.<br>
-      What follows is never rushed, never replicated, and never accidental.
-    </p>
-  </div>
-</section>
-
-<section class="invitation-section">
-  <div class="invitation-inner">
-    <div class="invitation-eyebrow">WHEN THE TIME FEELS RIGHT</div>
-    <h2 class="invitation-title">A conversation, when it matters</h2>
-    <p class="invitation-text">
-      Not every journey begins with a destination.<br>
-      Some begin with a feeling — and the right moment to explore it.
-    </p>
-
-   <div class="invitation-cta">
-  <a href="https://wa.me/50558365522" target="_blank" aria-label="Begin a private conversation">
-    Begin Your Journey
-  </a>
-</div>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-
-    <p class="footer-brand">
-      Sunny Roads Adventures
-    </p>
-
-    <p class="footer-philosophy">
-      Privately crafted journeys in Nicaragua, shaped through conversation, intention, and refined detail.
-    </p>
-
-    <p class="footer-location">
-      Granada · Nicaragua
-    </p>
-
-    <p class="footer-legal">
-      © 2026 Sunny Roads Adventures. All journeys are privately curated.
-    </p>
-
-  </div>
-</footer>
-
-  <!-- JS -->
-<script src="main.js"></script>
-
-</body>
-</html>
+});
