@@ -10,19 +10,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (heroVideo && heroText && whiteFade) {
 
+    // Make sure text is hidden on load (for safety)
+    heroText.classList.remove("is-visible");
+    whiteFade.style.opacity = "0";
+
     heroVideo.addEventListener("ended", function () {
 
-      // Fade white overlay
+      // Fade white overlay in
+      whiteFade.style.transition = "opacity 0.8s ease";
       whiteFade.style.opacity = "1";
 
-      // Fade in text slightly after
+      // Fade in text slightly after white appears
       setTimeout(function () {
         heroText.classList.add("is-visible");
-      }, 300);
+      }, 400);
 
     });
 
   }
+
 
   /* ==============================
      LANGUAGE SWITCHER
