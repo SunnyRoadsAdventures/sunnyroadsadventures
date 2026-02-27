@@ -1,46 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* =========================
-     HERO VIDEO FADE SYSTEM
-  ========================== */
-
-  const heroVideo = document.getElementById("heroVideo");
-  const heroText = document.querySelector(".hero-text");
-  const whiteFade = document.querySelector(".white-fade");
-
-  if (heroVideo && heroText) {
-
-    heroVideo.addEventListener("ended", () => {
-
-      if (whiteFade) {
-        whiteFade.style.opacity = "1";
-      }
-
-      setTimeout(() => {
-        heroText.classList.add("is-visible");
-      }, 300);
-
-    });
-
-  }
-
-
-  /* =========================
-     LANGUAGE TOGGLE SYSTEM
-  ========================== */
-
-  const welcomeVideo = document.getElementById("welcomeVideo");
+  const languageVideo = document.getElementById("languageVideo");
   const buttons = document.querySelectorAll(".lang-btn");
 
   window.switchLanguage = function(lang) {
 
-    if (!welcomeVideo) return;
+    if (!languageVideo) return;
 
+    // Remove active class
     buttons.forEach(btn => btn.classList.remove("active"));
 
+    // Set correct video
     const newSource = lang === "eng" ? "eng.mp4" : "esp.mp4";
-    welcomeVideo.src = newSource;
 
+    languageVideo.pause();
+    languageVideo.src = newSource;
+    languageVideo.load();
+
+    // Activate correct button
     const activeBtn = document.querySelector(
       `.lang-btn[onclick="switchLanguage('${lang}')"]`
     );
@@ -48,11 +25,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (activeBtn) {
       activeBtn.classList.add("active");
     }
-
-    welcomeVideo.load();
-
-    // DO NOT autoplay
-    // User must press play manually
 
   };
 
