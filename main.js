@@ -3,6 +3,23 @@ document.addEventListener("DOMContentLoaded", function () {
   const welcomeVideo = document.getElementById("welcomeVideo");
   const buttons = document.querySelectorAll(".lang-btn");
 
+  /* ------------------------------
+     HERO VIDEO FADE LOGIC
+  ------------------------------ */
+
+  const heroVideo = document.getElementById("heroVideo");
+  const heroText = document.querySelector(".hero-text");
+
+  if (heroVideo && heroText) {
+    heroVideo.addEventListener("ended", function () {
+      heroText.classList.add("show");
+    });
+  }
+
+  /* ------------------------------
+     LANGUAGE SWITCHER
+  ------------------------------ */
+
   window.switchLanguage = function(lang) {
 
     if (!welcomeVideo) return;
