@@ -57,18 +57,19 @@ body {
   z-index: 2;
 }
 
-/.hero-text {
+.hero-text {
   position: absolute;
-  top: 16vh;
+  top: 24vh;
   width: 100%;
   text-align: center;
-  color: var(--royal-gold);
+
   opacity: 0;
   transform: translateY(4vh);
   transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
-  will-change: opacity, transform;
 
-  z-index: 3; /* ADD THIS */
+  z-index: 3;
+
+  color: var(--royal-gold); /* FORCE BASE COLOR */
 }
 
 .hero-text.is-visible {
