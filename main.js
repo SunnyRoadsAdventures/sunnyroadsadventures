@@ -1,23 +1,18 @@
-document.addEventListener("DOMContentLoaded", () => {
+function switchLanguage(lang) {
+  const video = document.getElementById("welcomeVideo");
+  const buttons = document.querySelectorAll(".lang-btn");
 
-  const heroVideo = document.getElementById("heroVideo");
-  const heroText = document.querySelector(".hero-text");
+  // Remove active state
+  buttons.forEach(btn => btn.classList.remove("active"));
 
-  if (!heroVideo || !heroText) {
-    console.warn("Hero video or hero text not found.");
-    return;
+  if (lang === "eng") {
+    video.src = "eng.mp4";
+    buttons[0].classList.add("active");
+  } else {
+    video.src = "esp.mp4";
+    buttons[1].classList.add("active");
   }
 
-  let revealed = false;
-
-  const revealText = () => {
-    if (!revealed) {
-      heroText.classList.add("is-visible");
-      revealed = true;
-    }
-  };
-
-  // 🔒 Reveal ONLY when video fully ends
-  heroVideo.addEventListener("ended", revealText, { once: true });
-
-});
+  video.load();
+  video.play();
+}
