@@ -1,16 +1,14 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-  // =========================
-  // HERO VIDEO FADE SYSTEM
-  // =========================
+  /* =========================
+     HERO VIDEO FADE SYSTEM
+  ========================== */
+
   const heroVideo = document.getElementById("heroVideo");
   const heroText = document.querySelector(".hero-text");
   const whiteFade = document.querySelector(".white-fade");
 
   if (heroVideo && heroText) {
-
-    // Always start hidden
-    heroText.style.opacity = "0";
 
     heroVideo.addEventListener("ended", () => {
 
@@ -19,37 +17,43 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       setTimeout(() => {
-        heroText.style.opacity = "1";
+        heroText.classList.add("is-visible");
       }, 300);
 
     });
+
   }
 
-  // =========================
-  // LANGUAGE TOGGLE SYSTEM
-  // =========================
+
+  /* =========================
+     LANGUAGE TOGGLE SYSTEM
+  ========================== */
+
   const welcomeVideo = document.getElementById("welcomeVideo");
   const buttons = document.querySelectorAll(".lang-btn");
 
-  if (welcomeVideo && buttons.length) {
+  window.switchLanguage = function(lang) {
 
-    window.switchLanguage = function(lang) {
+    if (!welcomeVideo) return;
 
-      buttons.forEach(btn => btn.classList.remove("active"));
+    buttons.forEach(btn => btn.classList.remove("active"));
 
-      if (lang === "eng") {
-        welcomeVideo.src = "eng.mp4";
-        buttons[0].classList.add("active");
-      } else {
-        welcomeVideo.src = "esp.mp4";
-        buttons[1].classList.add("active");
-      }
+    const newSource = lang === "eng" ? "eng.mp4" : "esp.mp4";
+    welcomeVideo.src = newSource;
 
-      welcomeVideo.load();
-      welcomeVideo.play();
+    const activeBtn = document.querySelector(
+      `.lang-btn[onclick="switchLanguage('${lang}')"]`
+    );
 
-    };
+    if (activeBtn) {
+      activeBtn.classList.add("active");
+    }
 
-  }
+    welcomeVideo.load();
+
+    // DO NOT autoplay
+    // User must press play manually
+
+  };
 
 });
