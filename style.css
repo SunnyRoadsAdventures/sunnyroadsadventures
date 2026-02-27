@@ -37,7 +37,6 @@ body {
   overflow: hidden;
 }
 
-/* VIDEO */
 .hero video {
   position: absolute;
   top: 0;
@@ -58,12 +57,7 @@ body {
   z-index: 2;
 }
 
-/* ================================
-   HERO TEXT (HIDDEN INITIALLY)
-================================ */
-/* ================================
-   HERO TEXT ANIMATION
-================================ */
+/* HERO TEXT */
 .hero-text {
   position: absolute;
   top: 16vh;
@@ -81,9 +75,7 @@ body {
   transform: translateY(0);
 }
 
-/* ================================
-   TEXT COLORS
-================================ */
+/* TEXT COLORS */
 .text-royal {
   color: var(--royal-gold);
 }
@@ -92,9 +84,7 @@ body {
   color: var(--champagne-gold);
 }
 
-/* ================================
-   TITLES & TEXT
-================================ */
+/* TITLES */
 .hero-title {
   font-size: 3.2rem;
   letter-spacing: 0.18em;
@@ -122,16 +112,7 @@ body {
   opacity: 0.85;
 }
 
-.hero-tagline {
-  font-size: 0.95rem;
-  letter-spacing: 0.16em;
-  margin-top: 1.6rem;
-  opacity: 0.8;
-}
-
-/* ================================
-   GOLD DIVIDERS
-================================ */
+/* GOLD DIVIDER */
 .gold-divider {
   width: 140px;
   height: 1px;
@@ -144,19 +125,15 @@ body {
   );
 }
 
-/* Royal Divider */
 .gold-divider.royal {
   color: var(--royal-gold);
 }
 
-/* Champagne Divider */
 .gold-divider.champagne {
   color: var(--champagne-gold);
 }
 
-/* ================================
-   EXPERIENCE SECTION
-================================ */
+/* EXPERIENCE SECTION */
 .experience {
   padding: 6rem 1.6rem;
   text-align: center;
@@ -178,9 +155,7 @@ body {
   opacity: 0.9;
 }
 
-/* ================================
-   RESPONSIVE
-================================ */
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .hero-title {
     font-size: 2.4rem;
@@ -193,15 +168,15 @@ body {
   .experience {
     padding: 4rem 1.4rem;
   }
-)
+}
+
 /* ============================
    PHILOSOPHY SECTION
 ============================ */
-
 .philosophy-section {
   position: relative;
   width: 100%;
-  background: #0b0b0b; /* deep luxury dark */
+  background: #0b0b0b;
   padding: 8rem 1.5rem 9rem;
 }
 
@@ -211,7 +186,6 @@ body {
   text-align: center;
 }
 
-/* Eyebrow / Intro */
 .philosophy-eyebrow {
   font-size: 0.9rem;
   letter-spacing: 0.28em;
@@ -220,7 +194,6 @@ body {
   opacity: 0.9;
 }
 
-/* Main Philosophy Title */
 .philosophy-title {
   font-size: clamp(2.2rem, 4.2vw, 3.2rem);
   font-weight: 400;
@@ -229,7 +202,6 @@ body {
   margin-bottom: 2.8rem;
 }
 
-/* Divider */
 .philosophy-section .gold-divider {
   width: 180px;
   height: 1px;
@@ -237,7 +209,6 @@ body {
   opacity: 0.85;
 }
 
-/* Body Text */
 .philosophy-text {
   max-width: 720px;
   margin: 0 auto;
@@ -251,15 +222,11 @@ body {
   margin-bottom: 2.4rem;
 }
 
-/* Last paragraph no extra gap */
 .philosophy-text p:last-child {
   margin-bottom: 0;
 }
 
-/* ============================
-   RESPONSIVE TUNING
-============================ */
-
+/* RESPONSIVE PHILOSOPHY */
 @media (max-width: 768px) {
   .philosophy-section {
     padding: 6rem 1.2rem 7rem;
@@ -272,73 +239,61 @@ body {
   .philosophy-text {
     font-size: 1rem;
   }
-)
-
-/* ================================
-   INITIATION SECTION
-================================ */
-
-.initiation-section {
-  padding: 9rem 6vw;
-  background: #0b0b0b;
-}
-
-.initiation-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.initiation-eyebrow {
-  font-size: 0.85rem;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  margin-bottom: 1.8rem;
-  opacity: 0.85;
-}
-
-.initiation-title {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
-  line-height: 1.25;
-  margin-bottom: 2.2rem;
-}
-
-.initiation-text p {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  margin: 2rem 0;
-  opacity: 0.92;
 }
 
 /* ================================
    VISION SECTION
 ================================ */
-
 .vision-section {
-  padding: 8rem 0;
-  background: #0b0b0b;
-  display: flex;
-  justify-content: center;
+  background: #000;
+  padding: 80px 0;
+  text-align: center;
 }
 
 .vision-inner {
   max-width: 1100px;
   width: 100%;
+  margin: 0 auto;
   padding: 0 6vw;
 }
 
-.vision-inner img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 6px;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+.vision-inner video {
+  width: 80%;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
+  transition: opacity 0.4s ease;
+}
+
+/* LANGUAGE TOGGLE */
+.language-toggle {
+  margin-bottom: 30px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #d4af37;
+  padding: 10px 22px;
+  margin: 0 8px;
+  cursor: pointer;
+  font-family: serif;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.lang-btn.active {
+  background: #d4af37;
+  color: #000;
 }
 
 /* ================================
    BEGINNING SECTION
 ================================ */
-
 .beginning-section {
   padding: 10rem 6vw;
   background: #0b0b0b;
@@ -372,7 +327,6 @@ body {
 /* ================================
    INVITATION SECTION
 ================================ */
-
 .invitation-section {
   padding: 12rem 6vw;
   background: #0b0b0b;
@@ -423,7 +377,6 @@ body {
 /* ================================
    FOOTER
 ================================ */
-
 .site-footer {
   background: #080808;
   padding: 5rem 6vw 4rem;
@@ -460,42 +413,4 @@ body {
 .footer-legal {
   font-size: 0.75rem;
   opacity: 0.45;
-}
-.vision-section {
-  background: #000;
-  padding: 80px 0;
-  text-align: center;
-}
-
-.vision-inner video {
-  width: 80%;
-  max-width: 900px;
-  border-radius: 12px;
-  box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
-  transition: opacity 0.4s ease;
-}
-
-.language-toggle {
-  margin-bottom: 30px;
-}
-
-.lang-btn {
-  background: transparent;
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  color: #d4af37;
-  padding: 10px 22px;
-  margin: 0 8px;
-  cursor: pointer;
-  font-family: serif;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
-
-.lang-btn:hover {
-  background: rgba(212, 175, 55, 0.15);
-}
-
-.lang-btn.active {
-  background: #d4af37;
-  color: #000;
 }
