@@ -1,21 +1,19 @@
-const heroVideo = document.getElementById("heroVideo");
-const heroText = document.querySelector(".hero-text");
-const whiteFade = document.querySelector(".white-fade");
+document.addEventListener("DOMContentLoaded", function () {
 
-if (heroVideo && heroText && whiteFade) {
+  const heroVideo = document.getElementById("heroVideo");
+  const heroText = document.querySelector(".hero-text");
+  const whiteFade = document.querySelector(".white-fade");
 
-  heroVideo.addEventListener("timeupdate", function () {
+  if (heroVideo && heroText && whiteFade) {
 
-    // Trigger when 0.5s remains
-    if (heroVideo.duration - heroVideo.currentTime < 0.5) {
-
+    heroVideo.addEventListener("ended", function () {
       whiteFade.style.opacity = "1";
-      heroText.classList.add("is-visible");
 
-      // Remove listener so it only runs once
-      heroVideo.removeEventListener("timeupdate", arguments.callee);
-    }
+      setTimeout(() => {
+        heroText.classList.add("is-visible");
+      }, 300);
+    });
 
-  });
+  }
 
-}
+});
