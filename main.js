@@ -7,25 +7,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (!heroVideo || !heroText || !whiteFade || !blackFade) return;
 
-  // Make sure text is NEVER visible at start
   heroText.classList.remove("is-visible");
   heroText.style.opacity = "0";
 
-  // When video ends (NO loop assumed)
   heroVideo.addEventListener("ended", function () {
 
-    // Step 1: Fade to white
+    // 1. Fade to white
     whiteFade.style.opacity = "1";
 
-    // Step 2: After white is visible, fade to obsidian
+    // 2. After 1s → start transition to obsidian
     setTimeout(() => {
-      blackFade.style.opacity = "1";
-    }, 800);
 
-    // Step 3: Reveal text after background is dark
+      // Fade white out
+      whiteFade.style.opacity = "0";
+
+      // Fade black in
+      blackFade.style.opacity = "1";
+
+    }, 1000);
+
+    // 3. Show text AFTER obsidian is visible
     setTimeout(() => {
       heroText.classList.add("is-visible");
-    }, 1500);
+    }, 2000);
 
   });
 
