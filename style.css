@@ -461,4 +461,41 @@ body {
   font-size: 0.75rem;
   opacity: 0.45;
 }
+.vision-section {
+  background: #000;
+  padding: 80px 0;
+  text-align: center;
+}
 
+.vision-inner video {
+  width: 80%;
+  max-width: 900px;
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
+  transition: opacity 0.4s ease;
+}
+
+.language-toggle {
+  margin-bottom: 30px;
+}
+
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #d4af37;
+  padding: 10px 22px;
+  margin: 0 8px;
+  cursor: pointer;
+  font-family: serif;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.lang-btn:hover {
+  background: rgba(212, 175, 55, 0.15);
+}
+
+.lang-btn.active {
+  background: #d4af37;
+  color: #000;
+}
