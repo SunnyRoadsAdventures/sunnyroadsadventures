@@ -19,7 +19,6 @@
 
     <div class="white-fade"></div>
 
-    <!-- HERO TEXT -->
     <div class="hero-text">
       <h1 class="hero-title text-royal">
         Empire of White & Gold
@@ -84,16 +83,25 @@
   <!-- VISION SECTION -->
   <section class="vision-section">
     <div class="vision-inner">
+
       <!-- Language Toggle -->
       <div class="language-toggle">
         <button onclick="switchLanguage('eng')" class="lang-btn active">English</button>
         <button onclick="switchLanguage('esp')" class="lang-btn">Español</button>
       </div>
 
-      <!-- Welcome Video -->
-      <video id="welcomeVideo" autoplay muted playsinline>
+      <!-- Welcome Video (UPDATED - NO AUTOPLAY + THUMBNAIL) -->
+      <video
+        id="welcomeVideo"
+        controls
+        playsinline
+        preload="metadata"
+        poster="thumb.png"
+      >
         <source src="eng.mp4" type="video/mp4">
+        Your browser does not support the video tag.
       </video>
+
     </div>
   </section>
 
