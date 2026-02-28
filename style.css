@@ -17,14 +17,38 @@ GLOBAL RESET
   box-sizing: border-box;
 }
 
+/* ================================
+BASE STRUCTURE
+================================ */
 html,
 body {
   width: 100%;
   height: 100%;
-  background: var(--dark-bg);
   font-family: "Cormorant Garamond", serif;
   color: var(--soft-white);
   overflow-x: hidden;
+}
+
+/* ================================
+GLOBAL BLACK GLASS BACKGROUND
+================================ */
+body {
+  background: url("kayla.jpg") center center / cover no-repeat fixed;
+  background-color: #000;
+}
+
+/* Subtle Royal Gold Reflection */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 85% 10%,
+    rgba(201, 162, 77, 0.07),
+    transparent 60%
+  );
+  z-index: 0;
 }
 
 /* ================================
@@ -35,6 +59,7 @@ HERO SECTION
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  z-index: 1;
 }
 
 .hero video {
@@ -67,6 +92,7 @@ HERO SECTION
   transform: translateY(4vh);
   transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
   will-change: opacity, transform;
+  z-index: 3;
 }
 
 .hero-text.is-visible {
@@ -74,15 +100,9 @@ HERO SECTION
   transform: translateY(0);
 }
 
-.text-royal {
-  color: var(--royal-gold);
-}
+.text-royal { color: var(--royal-gold); }
+.text-champagne { color: var(--champagne-gold); }
 
-.text-champagne {
-  color: var(--champagne-gold);
-}
-
-/* TITLES & TEXT */
 .hero-title {
   font-size: 3.2rem;
   letter-spacing: 0.18em;
@@ -116,20 +136,18 @@ HERO SECTION
   background: linear-gradient(90deg, transparent, currentColor, transparent);
 }
 
-.gold-divider.royal {
-  color: var(--royal-gold);
-}
+.gold-divider.royal { color: var(--royal-gold); }
+.gold-divider.champagne { color: var(--champagne-gold); }
 
-.gold-divider.champagne {
-  color: var(--champagne-gold);
-}
-
-/* PHILOSOPHY SECTION */
+/* ================================
+PHILOSOPHY SECTION
+================================ */
 .philosophy-section {
   position: relative;
   width: 100%;
-  background: #0b0b0b;
+  background: transparent;
   padding: 8rem 1.5rem 9rem;
+  z-index: 1;
 }
 
 .philosophy-inner {
@@ -154,13 +172,6 @@ HERO SECTION
   margin-bottom: 2.8rem;
 }
 
-.philosophy-section .gold-divider {
-  width: 180px;
-  height: 1px;
-  margin: 3rem auto 3.6rem;
-  opacity: 0.85;
-}
-
 .philosophy-text {
   max-width: 720px;
   margin: 0 auto;
@@ -174,15 +185,14 @@ HERO SECTION
   margin-bottom: 2.4rem;
 }
 
-.philosophy-text p:last-child {
-  margin-bottom: 0;
-}
-
-/* VISION SECTION */
+/* ================================
+VISION SECTION
+================================ */
 .vision-section {
-  background: #000;
+  background: transparent;
   padding: 80px 0;
   text-align: center;
+  z-index: 1;
 }
 
 .vision-inner {
@@ -195,224 +205,14 @@ HERO SECTION
   width: 80%;
   max-width: 900px;
   border-radius: 12px;
-  box-shadow: 0 0 40px rgba(212, 175, 55, 0.25);
-  transition: opacity 0.4s ease;
+  box-shadow: 0 0 40px rgba(201,162,77,0.25);
 }
 
-.language-toggle {
-  margin-bottom: 30px;
-}
-
-.lang-btn {
+/* ================================
+BEGINNING SECTION
+================================ */
+.beginning-section {
   background: transparent;
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  color: #d4af37;
-  padding: 10px 22px;
-  margin: 0 8px;
-  cursor: pointer;
-  font-family: serif;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
-}
-
-.lang-btn:hover {
-  background: rgba(212, 175, 55, 0.15);
-}
-
-.lang-btn.active {
-  background: #d4af37;
-  color: #000;
-}
-
-
-/* BEGINNING, INVITATION, FOOTER sections remain as per your original CSS */
-
-.container.narrow {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.section-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  margin-bottom: 18px;
-  opacity: 0.7;
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: 300;
-  margin-bottom: 24px;
-}
-
-.section-body {
-  font-size: 16px;
-  line-height: 1.8;
-  opacity: 0.85;
-  margin-bottom: 40px;
-}
-
-.divider.subtle {
-  width: 60px;
-  height: 1px;
-  background: #c6a95f;
-  margin: 24px auto;
-  opacity: 0.6;
-}
-
-.invitation-cta.refined a {
-  display: inline-block;
-  padding: 14px 36px;
-  border: 1px solid #c6a95f;
-  text-decoration: none;
-  letter-spacing: 2px;
-  font-size: 12px;
-  transition: all 0.3s ease;
-}
-
-.invitation-cta.refined a:hover {
-  background: #c6a95f;
-  color: white;
-}
-
-.site-footer.refined {
-  padding: 80px 20px;
-  text-align: center;
-  font-size: 14px;
-  opacity: 0.75;
-}
-
-.footer-brand {
-  font-size: 18px;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-}
-
-/* ===== REFINED BEGINNING SECTION ===== */
-
-.beginning-section {
-  padding: 120px 20px;
-  text-align: center;
-}
-
-.beginning-inner {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.beginning-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  opacity: 0.6;
-  margin-bottom: 20px;
-}
-
-.beginning-title {
-  font-size: 34px;
-  font-weight: 300;
-  margin-bottom: 30px;
-}
-
-.beginning-text {
-  font-size: 16px;
-  line-height: 1.8;
-  opacity: 0.85;
-}
-
-
-/* ===== REFINED INVITATION SECTION ===== */
-
-.invitation-section {
-  padding: 140px 20px;
-  text-align: center;
-}
-
-.invitation-inner {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.invitation-eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 12px;
-  opacity: 0.6;
-  margin-bottom: 20px;
-}
-
-.invitation-title {
-  font-size: 34px;
-  font-weight: 300;
-  margin-bottom: 30px;
-}
-
-.invitation-text {
-  font-size: 16px;
-  line-height: 1.8;
-  opacity: 0.85;
-  margin-bottom: 50px;
-}
-
-
-/* ===== LUXURY BUTTON ===== */
-
-.invitation-cta a {
-  display: inline-block;
-  padding: 14px 40px;
-  border: 1px solid #c6a95f;
-  letter-spacing: 2px;
-  font-size: 12px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.invitation-cta a:hover {
-  background: #c6a95f;
-  color: #000;
-}
-
-
-/* ===== CLEAN FOOTER ===== */
-
-.site-footer {
-  padding: 100px 20px 60px;
-  text-align: center;
-  font-size: 14px;
-  opacity: 0.75;
-}
-
-.footer-inner {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.footer-brand {
-  font-size: 18px;
-  letter-spacing: 2px;
-  margin-bottom: 25px;
-}
-
-.footer-philosophy {
-  margin-bottom: 25px;
-  line-height: 1.7;
-}
-
-.footer-location {
-  margin-bottom: 15px;
-  opacity: 0.6;
-}
-
-.footer-legal {
-  opacity: 0.5;
-  font-size: 12px;
-}
-
-/* BEGINNING SECTION */
-.beginning-section {
-  background: #000;
   padding: 140px 20px 120px;
   text-align: center;
 }
@@ -445,9 +245,11 @@ HERO SECTION
   opacity: 0.85;
 }
 
-/* INVITATION SECTION */
+/* ================================
+INVITATION SECTION
+================================ */
 .invitation-section {
-  background: #000;
+  background: transparent;
   padding: 120px 20px 140px;
   text-align: center;
   border-top: 1px solid rgba(191,164,111,0.2);
@@ -482,12 +284,11 @@ HERO SECTION
   margin-bottom: 60px;
 }
 
-/* LUXURY CTA BUTTON */
 .invitation-cta a {
   display: inline-block;
   padding: 16px 48px;
   border: 1px solid #bfa46f;
-  color: #d6c7a3; /* champagne */
+  color: #d6c7a3;
   text-decoration: none;
   letter-spacing: 2px;
   font-size: 14px;
@@ -498,4 +299,40 @@ HERO SECTION
 .invitation-cta a:hover {
   background: rgba(191,164,111,0.08);
   box-shadow: 0 0 20px rgba(191,164,111,0.2);
+}
+
+/* ================================
+FOOTER
+================================ */
+.site-footer {
+  padding: 100px 20px 60px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.footer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+.footer-philosophy {
+  margin-bottom: 25px;
+  line-height: 1.7;
+}
+
+.footer-location {
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+.footer-legal {
+  opacity: 0.5;
+  font-size: 12px;
 }
