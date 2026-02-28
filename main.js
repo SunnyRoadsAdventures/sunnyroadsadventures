@@ -1,42 +1,47 @@
-// 3d/test.js (or inside a <script> in 3d/index.html)
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.module.js';
+document.addEventListener("DOMContentLoaded", () => {
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({antialias: true});
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+  // =========================
+  // HERO VIDEO FADE SYSTEM
+  // =========================
+  const heroVideo = document.getElementById("heroVideo");
+  const heroText = document.querySelector(".hero-text");
+  const whiteFade = document.querySelector(".white-fade");
 
-const textureLoader = new THREE.TextureLoader();
-const obsidianTexture = textureLoader.load('blackglass.png');
+  if (heroVideo && heroText) {
+    heroText.style.opacity = "0";  
 
-const geometry = new THREE.PlaneGeometry(5, 5, 64, 64);
-const material = new THREE.MeshStandardMaterial({
-  map: obsidianTexture,
-  roughness: 0.1,
-  metalness: 0.5,
-  transparent: true
-});
+    heroVideo.addEventListener("ended", () => {  
+      if (whiteFade) {  
+        whiteFade.style.opacity = "1";  
+      }  
 
-const plane = new THREE.Mesh(geometry, material);
-scene.add(plane);
+      setTimeout(() => {  
+        heroText.style.opacity = "1";  
+      }, 300);  
+    });
+  }
 
-const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(5,5,5);
-scene.add(light);
+  // =========================
+  // LANGUAGE TOGGLE SYSTEM
+  // =========================
+  const welcomeVideo = document.getElementById("welcomeVideo");
+  const buttons = document.querySelectorAll(".lang-btn");
 
-camera.position.z = 5;
+  if (welcomeVideo && buttons.length) {
+    window.switchLanguage = function(lang) {  
+      buttons.forEach(btn => btn.classList.remove("active"));  
 
-function animate() {
-  requestAnimationFrame(animate);
-  plane.rotation.y += 0.002;
-  plane.rotation.x += 0.001;
-  renderer.render(scene, camera);
-}
-animate();
+      if (lang === "eng") {  
+        welcomeVideo.src = "eng.mp4";  
+        buttons[0].classList.add("active");  
+      } else {  
+        welcomeVideo.src = "esp.mp4";  
+        buttons[1].classList.add("active");  
+      }  
 
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth/window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+      welcomeVideo.load();  
+      welcomeVideo.play();  
+    };
+  }
+
 });
