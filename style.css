@@ -1,54 +1,31 @@
-/* ================================
-   ROOT VARIABLES
-================================ */
 :root {
   --royal-gold: #c9a24d;
   --champagne-gold: #f3e6c1;
   --soft-white: #ffffff;
-  --dark-bg: #050505;
 }
 
-/* ================================
-   GLOBAL RESET
-================================ */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   width: 100%;
   height: 100%;
-  background: var(--dark-bg);
   font-family: "Cormorant Garamond", serif;
   color: var(--soft-white);
-  overflow-x: hidden;
-}
-
-/* ================================
-   OBSIDIAN SECTION BASE
-================================ */
-
-.philosophy-section,
-.beginning-section,
-.invitation-section,
-.vision-section,
-.site-footer {
   background:
-    radial-gradient(circle at 20% 15%, rgba(255,255,255,0.035), transparent 50%),
-    radial-gradient(circle at 80% 85%, rgba(255,255,255,0.02), transparent 55%),
+    radial-gradient(circle at 20% 15%, rgba(255,255,255,0.04), transparent 50%),
+    radial-gradient(circle at 80% 85%, rgba(255,255,255,0.02), transparent 60%),
     linear-gradient(180deg, #0b0b0c 0%, #050505 60%, #000000 100%);
 }
 
-/* ================================
-   HERO – unchanged
-================================ */
-
+/* HERO */
 .hero {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   overflow: hidden;
 }
@@ -59,30 +36,87 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
+}
+
+.white-fade,
+.black-fade {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+  pointer-events: none;
 }
 
 .white-fade {
-  position: absolute;
-  inset: 0;
   background: #ffffff;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1.2s ease;
   z-index: 1;
 }
 
 .black-fade {
-  position: absolute;
-  inset: 0;
   background:
-    radial-gradient(circle at 20% 15%, rgba(255,255,255,0.05), transparent 45%),
-    radial-gradient(circle at 80% 85%, rgba(255,255,255,0.03), transparent 50%),
-    linear-gradient(to bottom, #0A0A0A, #050505);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1.8s ease;
+    radial-gradient(circle at 25% 20%, rgba(255,255,255,0.04), transparent 50%),
+    linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
   z-index: 2;
 }
 
-/* (Rest of your typography rules unchanged below this point) */
+.hero-text {
+  position: absolute;
+  top: 35%;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  z-index: 3;
+  color: var(--royal-gold);
+}
+
+.hero-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-title {
+  font-size: 3rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  letter-spacing: 0.15em;
+  color: var(--champagne-gold);
+}
+
+/* PHILOSOPHY */
+.philosophy-section {
+  padding: 8rem 2rem;
+  text-align: center;
+}
+
+.philosophy-title {
+  font-size: 2.4rem;
+  margin: 2rem 0;
+  color: var(--royal-gold);
+}
+
+.philosophy-text {
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+  color: var(--champagne-gold);
+}
+
+.gold-divider {
+  width: 150px;
+  height: 1px;
+  margin: 2rem auto;
+  background: linear-gradient(90deg, transparent, var(--royal-gold), transparent);
+}
+
+/* FOOTER */
+.site-footer {
+  padding: 4rem 2rem;
+  text-align: center;
+  opacity: 0.7;
+}
