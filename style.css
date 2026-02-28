@@ -1,10 +1,7 @@
-:root {
-  --royal-gold: #c9a24d;
-  --champagne-gold: #f3e6c1;
-  --soft-white: #ffffff;
-}
+/* =========================
+   GLOBAL RESET
+========================= */
 
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -12,111 +9,113 @@
 }
 
 html, body {
-  width: 100%;
   height: 100%;
-  font-family: "Cormorant Garamond", serif;
-  color: var(--soft-white);
-  background:
-    radial-gradient(circle at 20% 15%, rgba(255,255,255,0.04), transparent 50%),
-    radial-gradient(circle at 80% 85%, rgba(255,255,255,0.02), transparent 60%),
-    linear-gradient(180deg, #0b0b0c 0%, #050505 60%, #000000 100%);
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: #000;
+  color: #d4af37; /* soft royal gold */
+  overflow-x: hidden;
 }
 
-/* HERO */
-.hero {
+
+/* =========================
+   MASTER GLASS WORLD
+========================= */
+
+.glass-world {
   position: relative;
+  min-height: 100vh;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+
+  /* Obsidian Glass Base */
+  background-image: url("blackglass.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  /* Strong black enhancement */
+  background-color: #000;
+
+  display: flex;
+  flex-direction: column;
 }
 
-.hero video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 
-.white-fade,
-.black-fade {
+/* =========================
+   VERTICAL MELT LAYER
+========================= */
+
+.glass-world::after {
+  content: "";
   position: absolute;
   inset: 0;
-  opacity: 0;
-  transition: opacity 1.5s ease;
+
+  /* Smooth evolution into pure black */
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.35) 25%,
+    rgba(0,0,0,0.55) 45%,
+    rgba(0,0,0,0.75) 65%,
+    rgba(0,0,0,0.92) 82%,
+    rgba(0,0,0,0.98) 92%,
+    #000 100%
+  );
+
   pointer-events: none;
 }
 
-.white-fade {
-  background: #ffffff;
-  z-index: 1;
-}
 
-.black-fade {
-  background:
-    radial-gradient(circle at 25% 20%, rgba(255,255,255,0.04), transparent 50%),
-    linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
-  z-index: 2;
-}
+/* =========================
+   SECTION STRUCTURE
+========================= */
 
-.hero-text {
-  position: absolute;
-  top: 35%;
-  width: 100%;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-  z-index: 3;
-  color: var(--royal-gold);
-}
-
-.hero-text.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.hero-title {
-  font-size: 3rem;
-  letter-spacing: 0.2em;
-  margin-bottom: 1rem;
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  letter-spacing: 0.15em;
-  color: var(--champagne-gold);
-}
-
-/* PHILOSOPHY */
-.philosophy-section {
-  padding: 8rem 2rem;
+section {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-.philosophy-title {
-  font-size: 2.4rem;
-  margin: 2rem 0;
-  color: var(--royal-gold);
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+h1, h2, h3 {
+  font-weight: 300;
+  letter-spacing: 2px;
 }
 
-.philosophy-text {
+h1 {
+  font-size: clamp(36px, 5vw, 72px);
+}
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
   max-width: 700px;
-  margin: 0 auto;
-  line-height: 1.8;
-  color: var(--champagne-gold);
+  margin: 20px auto 0;
+  color: rgba(212, 175, 55, 0.85);
 }
 
-.gold-divider {
-  width: 150px;
-  height: 1px;
-  margin: 2rem auto;
-  background: linear-gradient(90deg, transparent, var(--royal-gold), transparent);
-}
 
-/* FOOTER */
-.site-footer {
-  padding: 4rem 2rem;
-  text-align: center;
-  opacity: 0.7;
+/* =========================
+   MOBILE OPTIMIZATION
+========================= */
+
+@media (max-width: 768px) {
+
+  .glass-world {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+
+  section {
+    padding: 100px 6vw;
+  }
+
 }
