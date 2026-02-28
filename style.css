@@ -224,4 +224,68 @@ HERO SECTION
   color: #000;
 }
 
+
 /* BEGINNING, INVITATION, FOOTER sections remain as per your original CSS */
+
+.container.narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  margin-bottom: 18px;
+  opacity: 0.7;
+}
+
+.section-title {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.section-body {
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.85;
+  margin-bottom: 40px;
+}
+
+.divider.subtle {
+  width: 60px;
+  height: 1px;
+  background: #c6a95f;
+  margin: 24px auto;
+  opacity: 0.6;
+}
+
+.invitation-cta.refined a {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1px solid #c6a95f;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 12px;
+  transition: all 0.3s ease;
+}
+
+.invitation-cta.refined a:hover {
+  background: #c6a95f;
+  color: white;
+}
+
+.site-footer.refined {
+  padding: 80px 20px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.footer-brand {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
