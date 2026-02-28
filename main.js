@@ -5,27 +5,36 @@ document.addEventListener("DOMContentLoaded", function () {
   const whiteFade = document.querySelector(".white-fade");
   const blackFade = document.querySelector(".black-fade");
 
-  if (!heroVideo || !heroText || !whiteFade || !blackFade) {
-    console.log("Hero elements not found");
-    return;
-  }
+  if (!heroVideo || !heroText || !whiteFade || !blackFade) return;
 
-  console.log("Hero system ready");
+  let transitionTriggered = false;
 
-  heroVideo.addEventListener("ended", function () {
-    console.log("Video ended fired");
+  heroVideo.addEventListener("timeupdate", function () {
 
-    whiteFade.style.opacity = "1";
+    if (!transitionTriggered && heroVideo.duration > 0) {
 
-    setTimeout(() => {
-      console.log("Switching to black");
-      whiteFade.style.opacity = "0";
-      blackFade.style.opacity = "1";
-    }, 1000);
+      // When 0.4 seconds remain
+      if (heroVideo.currentTime >= heroVideo.duration - 0.4) {
 
-    setTimeout(() => {
-      heroText.classList.add("is-visible");
-    }, 2000);
+        transitionTriggered = true;
+
+        // Fade to white
+        whiteFade.style.opacity = "1";
+
+        // After white is visible → switch to obsidian
+        setTimeout(() => {
+          whiteFade.style.opacity = "0";
+          blackFade.style.opacity = "1";
+        }, 900);
+
+        // Show text after obsidian settles
+        setTimeout(() => {
+          heroText.classList.add("is-visible");
+        }, 1700);
+
+      }
+    }
+
   });
 
 });
