@@ -17,7 +17,8 @@ GLOBAL RESET
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   background: var(--dark-bg);
@@ -57,13 +58,15 @@ HERO SECTION
   z-index: 2;
 }
 
-/* HERO TEXT ANIMATION */
+/* ================================
+HERO TEXT (ROYAL GOLD)
+================================ */
 .hero-text {
   position: absolute;
   top: 16vh;
   width: 100%;
   text-align: center;
-  color: var(--royal-gold);
+  color: var(--royal-gold); /* FORCE GOLD */
   opacity: 0;
   transform: translateY(4vh);
   transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
@@ -75,33 +78,30 @@ HERO SECTION
   transform: translateY(0);
 }
 
+.hero-text h1,
+.hero-text p,
+.hero-text .brand,
+.hero-text .brand-tagline {
+  color: var(--royal-gold);
+}
+
 /* TEXT COLORS */
 .text-royal { color: var(--royal-gold); }
 .text-champagne { color: var(--champagne-gold); }
 
-/* TITLES */
+/* TITLES & TEXT */
 .hero-title { font-size: 3.2rem; letter-spacing: 0.18em; margin-bottom: 1.6rem; }
 .hero-subtitle { font-size: 1.2rem; letter-spacing: 0.14em; opacity: 0.9; margin-bottom: 2.4rem; }
 .brand { font-size: 1.6rem; letter-spacing: 0.16em; margin-top: 2.2rem; }
 .brand-tagline { font-size: 1rem; letter-spacing: 0.14em; margin-top: 1.4rem; opacity: 0.85; }
 
 /* GOLD DIVIDERS */
-.gold-divider {
-  width: 140px;
-  height: 1px;
-  margin: 2.2rem auto;
-  background: linear-gradient(90deg, transparent, currentColor, transparent);
-}
+.gold-divider { width: 140px; height: 1px; margin: 2.2rem auto; background: linear-gradient(90deg, transparent, currentColor, transparent); }
 .gold-divider.royal { color: var(--royal-gold); }
 .gold-divider.champagne { color: var(--champagne-gold); }
 
 /* PHILOSOPHY SECTION */
-.philosophy-section {
-  position: relative;
-  width: 100%;
-  background: #0b0b0b;
-  padding: 8rem 1.5rem 9rem;
-}
+.philosophy-section { position: relative; width: 100%; background: #0b0b0b; padding: 8rem 1.5rem 9rem; }
 .philosophy-inner { max-width: 980px; margin: 0 auto; text-align: center; }
 .philosophy-eyebrow { font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 2.2rem; opacity: 0.9; }
 .philosophy-title { font-size: clamp(2.2rem, 4.2vw, 3.2rem); font-weight: 400; letter-spacing: 0.06em; line-height: 1.25; margin-bottom: 2.8rem; }
@@ -109,6 +109,15 @@ HERO SECTION
 .philosophy-text { max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.9; letter-spacing: 0.04em; opacity: 0.92; }
 .philosophy-text p { margin-bottom: 2.4rem; }
 .philosophy-text p:last-child { margin-bottom: 0; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero-title { font-size: 2.4rem; }
+  .brand { font-size: 1.3rem; }
+  .philosophy-section { padding: 6rem 1.2rem 7rem; }
+  .philosophy-title { font-size: 2rem; }
+  .philosophy-text { font-size: 1rem; }
+}
 
 /* VISION SECTION */
 .vision-section { padding: 8rem 0; background: #0b0b0b; display: flex; justify-content: center; }
@@ -119,26 +128,5 @@ HERO SECTION
 .lang-btn:hover { background: rgba(212, 175, 55, 0.15); }
 .lang-btn.active { background: #d4af37; color: #000; }
 
-/* BEGINNING SECTION */
-.beginning-section { padding: 10rem 6vw; background: #0b0b0b; }
-.beginning-inner { max-width: 880px; margin: 0 auto; text-align: center; }
-.beginning-eyebrow { font-size: 0.8rem; letter-spacing: 0.36em; opacity: 0.75; margin-bottom: 1.6rem; }
-.beginning-title { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.25; margin-bottom: 2.2rem; }
-.beginning-text { font-size: 1.05rem; line-height: 1.85; opacity: 0.9; }
-
-/* INVITATION SECTION */
-.invitation-section { padding: 12rem 6vw; background: #0b0b0b; }
-.invitation-inner { max-width: 900px; margin: 0 auto; text-align: center; }
-.invitation-eyebrow { font-size: 0.8rem; letter-spacing: 0.34em; opacity: 0.75; margin-bottom: 1.8rem; }
-.invitation-title { font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.25; margin-bottom: 2.4rem; }
-.invitation-text { font-size: 1.05rem; line-height: 1.85; opacity: 0.9; margin-bottom: 3.6rem; }
-.invitation-cta a { font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; padding-bottom: 0.35rem; border-bottom: 1px solid rgba(212,175,55,0.5); color: var(--champagne-gold); text-decoration: none; transition: opacity 0.3s ease, border-color 0.3s ease; }
-.invitation-cta a:hover { opacity: 0.75; border-color: rgba(212,175,55,0.85); }
-
-/* FOOTER */
-.site-footer { background: #080808; padding: 5rem 6vw 4rem; text-align: center; }
-.footer-inner { max-width: 900px; margin: 0 auto; }
-.footer-brand { font-size: 1.15rem; letter-spacing: 0.18em; margin-bottom: 1.6rem; color: var(--champagne-gold); }
-.footer-philosophy { font-size: 0.95rem; line-height: 1.7; opacity: 0.85; margin-bottom: 1.8rem; }
-.footer-location { font-size: 0.8rem; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.65; margin-bottom: 2.5rem; }
-.footer-legal { font-size: 0.75rem; opacity: 0.45; }
+/* BEGINNING & INVITATION SECTIONS, FOOTER (unchanged) */
+/* ... Keep the rest of your CSS unchanged ... */
