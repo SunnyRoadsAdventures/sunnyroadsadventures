@@ -59,29 +59,19 @@ body {
 }
 
 /* ================================
-   HERO TEXT (FADE IN AFTER VIDEO)
+   HERO TEXT (ALWAYS VISIBLE FOR TEST)
 ================================ */
 .hero-text {
   position: absolute;
-  top: 16vh; /* vertical alignment */
+  top: 16vh;
   width: 100%;
   text-align: center;
-
-  opacity: 0;
-  transform: translateY(4vh);
-  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
-  will-change: opacity, transform;
-
-  /* Ensure royal gold text */
-  color: var(--royal-gold);
-}
-
-.hero-text.is-visible {
-  opacity: 1;
+  color: var(--royal-gold); /* royal gold text */
+  opacity: 1; /* visible immediately */
   transform: translateY(0);
+  transition: none;
 }
 
-/* Ensure all child elements inherit royal gold */
 .hero-text * {
   color: var(--royal-gold);
 }
@@ -127,26 +117,12 @@ body {
   opacity: 0.85;
 }
 
-.hero-tagline {
-  font-size: 0.95rem;
-  letter-spacing: 0.16em;
-  margin-top: 1.6rem;
-  opacity: 0.8;
-}
-
-/* ================================
-   GOLD DIVIDERS
-================================ */
+/* GOLD DIVIDERS */
 .gold-divider {
   width: 140px;
   height: 1px;
   margin: 2.2rem auto;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    currentColor,
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
 }
 
 .gold-divider.royal {
@@ -158,53 +134,12 @@ body {
 }
 
 /* ================================
-   EXPERIENCE SECTION
-================================ */
-.experience {
-  padding: 6rem 1.6rem;
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.experience-title {
-  font-size: 2rem;
-  letter-spacing: 0.16em;
-  margin-bottom: 2rem;
-}
-
-.experience-text {
-  font-size: 1.05rem;
-  letter-spacing: 0.08em;
-  line-height: 1.9;
-  margin-bottom: 2rem;
-  opacity: 0.9;
-}
-
-/* ================================
-   RESPONSIVE
-================================ */
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.4rem;
-  }
-
-  .brand {
-    font-size: 1.3rem;
-  }
-
-  .experience {
-    padding: 4rem 1.4rem;
-  }
-}
-
-/* ================================
    PHILOSOPHY SECTION
 ================================ */
 .philosophy-section {
   position: relative;
   width: 100%;
-  background: #0b0b0b; /* deep luxury dark */
+  background: #0b0b0b;
   padding: 8rem 1.5rem 9rem;
 }
 
@@ -254,8 +189,22 @@ body {
   margin-bottom: 0;
 }
 
-/* RESPONSIVE PHILOSOPHY */
+/* ================================
+   RESPONSIVE
+================================ */
 @media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .brand {
+    font-size: 1.3rem;
+  }
+
+  .experience {
+    padding: 4rem 1.4rem;
+  }
+
   .philosophy-section {
     padding: 6rem 1.2rem 7rem;
   }
@@ -270,136 +219,19 @@ body {
 }
 
 /* ================================
-   BEGINNING SECTION
-================================ */
-.beginning-section {
-  padding: 10rem 6vw;
-  background: #0b0b0b;
-}
-
-.beginning-inner {
-  max-width: 880px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.beginning-eyebrow {
-  font-size: 0.8rem;
-  letter-spacing: 0.36em;
-  opacity: 0.75;
-  margin-bottom: 1.6rem;
-}
-
-.beginning-title {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.25;
-  margin-bottom: 2.2rem;
-}
-
-.beginning-text {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  opacity: 0.9;
-}
-
-/* ================================
-   INVITATION SECTION
-================================ */
-.invitation-section {
-  padding: 12rem 6vw;
-  background: #0b0b0b;
-}
-
-.invitation-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.invitation-eyebrow {
-  font-size: 0.8rem;
-  letter-spacing: 0.34em;
-  opacity: 0.75;
-  margin-bottom: 1.8rem;
-}
-
-.invitation-title {
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
-  line-height: 1.25;
-  margin-bottom: 2.4rem;
-}
-
-.invitation-text {
-  font-size: 1.05rem;
-  line-height: 1.85;
-  opacity: 0.9;
-  margin-bottom: 3.6rem;
-}
-
-.invitation-cta a {
-  font-size: 0.9rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  padding-bottom: 0.35rem;
-  border-bottom: 1px solid rgba(212,175,55,0.5);
-  color: var(--champagne-gold);
-  text-decoration: none;
-  transition: opacity 0.3s ease, border-color 0.3s ease;
-}
-
-.invitation-cta a:hover {
-  opacity: 0.75;
-  border-color: rgba(212,175,55,0.85);
-}
-
-/* ================================
-   FOOTER
-================================ */
-.site-footer {
-  background: #080808;
-  padding: 5rem 6vw 4rem;
-  text-align: center;
-}
-
-.footer-inner {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.footer-brand {
-  font-size: 1.15rem;
-  letter-spacing: 0.18em;
-  margin-bottom: 1.6rem;
-  color: var(--champagne-gold);
-}
-
-.footer-philosophy {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  opacity: 0.85;
-  margin-bottom: 1.8rem;
-}
-
-.footer-location {
-  font-size: 0.8rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  opacity: 0.65;
-  margin-bottom: 2.5rem;
-}
-
-.footer-legal {
-  font-size: 0.75rem;
-  opacity: 0.45;
-}
-
-/* ================================
    VISION SECTION
 ================================ */
 .vision-section {
-  background: #000;
-  padding: 80px 0;
-  text-align: center;
+  padding: 8rem 0;
+  background: #0b0b0b;
+  display: flex;
+  justify-content: center;
+}
+
+.vision-inner {
+  max-width: 1100px;
+  width: 100%;
+  padding: 0 6vw;
 }
 
 .vision-inner video {
@@ -433,4 +265,20 @@ body {
 .lang-btn.active {
   background: #d4af37;
   color: #000;
+}
+
+/* ================================
+   BEGINNING & INVITATION SECTION
+================================ */
+.beginning-section,
+.invitation-section {
+  padding: 10rem 6vw;
+  background: #0b0b0b;
+}
+
+.beginning-inner,
+.invitation-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
 }
