@@ -1,17 +1,39 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // HERO TEXT VISIBLE IMMEDIATELY
+
+  // =========================
+  // HERO VIDEO FADE SYSTEM
+  // =========================
+  const heroVideo = document.getElementById("heroVideo");
   const heroText = document.querySelector(".hero-text");
-  if (heroText) {
-    heroText.style.opacity = "1"; // show immediately
+  const whiteFade = document.querySelector(".white-fade");
+
+  if (heroVideo && heroText) {
+    // hidden initially
+    heroText.style.opacity = "0";  
+
+    heroVideo.addEventListener("ended", () => {  
+      // white fade
+      if (whiteFade) {  
+        whiteFade.style.opacity = "1";  
+      }  
+
+      // fade in text after white fade
+      setTimeout(() => {  
+        heroText.classList.add("is-visible"); // CSS handles fade
+      }, 900);
+    });
   }
 
+  // =========================
   // LANGUAGE TOGGLE SYSTEM
+  // =========================
   const welcomeVideo = document.getElementById("welcomeVideo");
   const buttons = document.querySelectorAll(".lang-btn");
 
   if (welcomeVideo && buttons.length) {
     window.switchLanguage = function(lang) {
       buttons.forEach(btn => btn.classList.remove("active"));
+
       if (lang === "eng") {
         welcomeVideo.src = "eng.mp4";
         buttons[0].classList.add("active");
@@ -19,8 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
         welcomeVideo.src = "esp.mp4";
         buttons[1].classList.add("active");
       }
+
       welcomeVideo.load();
       welcomeVideo.play();
     };
   }
+
 });
