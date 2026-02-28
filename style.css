@@ -336,3 +336,38 @@ FOOTER
   opacity: 0.5;
   font-size: 12px;
 }
+
+/* ================================
+ULTRA GLASS DEPTH ENHANCEMENT
+================================ */
+
+/* Soft cinematic edge vignette */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+      ellipse at center,
+      transparent 55%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+  z-index: 0;
+}
+
+/* Subtle internal glass sheen */
+.glass-sheen {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.02) 0%,
+    rgba(255,255,255,0.04) 20%,
+    rgba(255,255,255,0.01) 40%,
+    transparent 60%
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.5;
+  z-index: 0;
+}
