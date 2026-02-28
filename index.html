@@ -1,151 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Empire of White & Gold | Sunny Roads Adventures</title>
-  <meta name="description" content="Sunny Roads Adventures offers privately crafted luxury journeys in Nicaragua. Each experience unfolds through private conversation, shaped with intention, discretion, and meaning." />
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunny Roads Adventures</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+
   <!-- HERO SECTION -->
   <section class="hero">
     <video id="heroVideo" autoplay muted playsinline>
-      <source src="tow.mp4" type="video/mp4" />
+      <source src="tow.mp4" type="video/mp4">
     </video>
 
     <div class="white-fade"></div>
 
-    <!-- HERO TEXT -->
     <div class="hero-text">
-      <h1 class="hero-title text-royal">
-        Empire of White & Gold
-      </h1>
-
-      <p class="hero-subtitle text-champagne">
-        Where Luxury Meets Meaning
-      </p>
-
-      <div class="gold-divider royal"></div>
-
-      <p class="brand text-royal">
-        Sunny Roads Adventures
-      </p>
-
-      <p class="brand-tagline">
-        Luxury Travel & Curated Experiences
-      </p>
-
-      <p class="brand-tagline">
-        Discover Your Journey
+      <h5>THE BEGINNING</h5>
+      <h1>Every journey<br>starts before it is seen</h1>
+      <p>
+        Moments of clarity rarely announce themselves.
+        They arrive quietly — through presence and awareness.
       </p>
     </div>
   </section>
 
-  <!-- PHILOSOPHY SECTION -->
-  <section class="philosophy-section">
-    <div class="philosophy-inner">
-      <p class="philosophy-eyebrow text-champagne">
-        A Different Way of Traveling
-      </p>
+  <!-- WELCOME SECTION -->
+  <section class="welcome-section">
 
-      <h2 class="philosophy-title text-royal">
-        Journeys Are Not Selected.<br>
-        They Are Revealed.
-      </h2>
-
-      <div class="gold-divider royal"></div>
-
-      <div class="philosophy-text text-champagne">
-        <p>
-          Every experience begins quietly — through attention, conversation,
-          and understanding. What unfolds is guided by nuance rather than
-          templates, shaped by intention rather than instruction.
-        </p>
-        <p>
-          Each journey is composed through rhythm, atmosphere, and timing.
-          The destination matters less than the way it is felt.
-        </p>
-        <p>
-          Some moments are meant to be shared openly. Others are designed to
-          remain unspoken. Both are approached with equal care.
-        </p>
-        <p>
-          This is travel guided by restraint, discretion, and meaning —
-          created for those who recognize the difference without explanation.
-        </p>
-      </div>
+    <div class="language-toggle">
+      <button class="lang-btn active" onclick="switchLanguage('eng')">English</button>
+      <button class="lang-btn" onclick="switchLanguage('esp')">Español</button>
     </div>
-  </section>
 
-  <!-- VISION SECTION -->
-  <section class="vision-section">
-    <div class="vision-inner">
-      <!-- Language Toggle -->
-      <div class="language-toggle">
-        <button onclick="switchLanguage('eng')" class="lang-btn active">English</button>
-        <button onclick="switchLanguage('esp')" class="lang-btn">Español</button>
-      </div>
-
-      <!-- Welcome Video -->
-      <video id="welcomeVideo" autoplay muted playsinline>
-        <source src="eng.mp4" type="video/mp4">
-      </video>
+    <div class="video-container">
+      <video id="welcomeVideo" autoplay muted playsinline controls src="eng.mp4"></video>
     </div>
-  </section>
 
-  <!-- BEGINNING SECTION -->
-  <section class="beginning-section">
-    <div class="beginning-inner">
-      <div class="beginning-eyebrow">THE BEGINNING</div>
-      <h2 class="beginning-title">Every journey starts before it is seen</h2>
-      <p class="beginning-text">
-        Moments of clarity rarely announce themselves.<br>
-        They arrive quietly — through conversation, attention, and trust.<br>
-        What follows is never rushed, never replicated, and never accidental.
-      </p>
-    </div>
-  </section>
-
-  <!-- INVITATION SECTION -->
-  <section class="invitation-section">
-    <div class="invitation-inner">
-      <div class="invitation-eyebrow">WHEN THE TIME FEELS RIGHT</div>
-      <h2 class="invitation-title">A conversation, when it matters</h2>
-      <p class="invitation-text">
-        Not every journey begins with a destination.<br>
-        Some begin with a feeling — and the right moment to explore it.
-      </p>
-
-      <div class="invitation-cta">
-        <a href="https://wa.me/50558365522" target="_blank" aria-label="Begin a private conversation">
-          Begin Your Journey
-        </a>
-      </div>
-    </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="site-footer">
+  <footer>
     <div class="footer-inner">
-      <p class="footer-brand">Sunny Roads Adventures</p>
-
       <p class="footer-philosophy">
         Privately crafted journeys in Nicaragua, shaped through conversation, intention, and refined detail.
       </p>
-
-      <p class="footer-location">Granada · Nicaragua</p>
-
+      <p class="footer-location">
+        Granada · Nicaragua
+      </p>
       <p class="footer-legal">
         © 2026 Sunny Roads Adventures. All journeys are privately curated.
       </p>
     </div>
   </footer>
 
-  <!-- JS -->
   <script src="main.js" defer></script>
 </body>
 </html>
