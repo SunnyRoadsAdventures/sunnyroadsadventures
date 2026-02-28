@@ -1,7 +1,16 @@
-/* =========================
-   GLOBAL RESET
-========================= */
+/* ================================
+ROOT VARIABLES
+================================ */
+:root {
+  --royal-gold: #c9a24d;
+  --champagne-gold: #f3e6c1;
+  --soft-white: #ffffff;
+  --dark-bg: #000000;
+}
 
+/* ================================
+GLOBAL RESET
+================================ */
 * {
   margin: 0;
   padding: 0;
@@ -9,113 +18,127 @@
 }
 
 html, body {
+  width: 100%;
   height: 100%;
-  font-family: 'Helvetica Neue', Arial, sans-serif;
-  background: #000;
-  color: #d4af37; /* soft royal gold */
+  background: var(--dark-bg);
+  font-family: "Cormorant Garamond", serif;
+  color: var(--soft-white);
   overflow-x: hidden;
 }
 
-
-/* =========================
-   MASTER GLASS WORLD
-========================= */
-
-.glass-world {
+/* ================================
+HERO SECTION
+================================ */
+.hero {
   position: relative;
-  min-height: 100vh;
-  width: 100%;
-
-  /* Obsidian Glass Base */
-  background-image: url("blackglass.png");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-
-  /* Strong black enhancement */
-  background-color: #000;
-
-  display: flex;
-  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
+/* VIDEO */
+.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-/* =========================
-   VERTICAL MELT LAYER
-========================= */
-
-.glass-world::after {
-  content: "";
+/* WHITE FADE */
+.white-fade {
   position: absolute;
   inset: 0;
-
-  /* Smooth evolution into pure black */
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.15) 0%,
-    rgba(0,0,0,0.35) 25%,
-    rgba(0,0,0,0.55) 45%,
-    rgba(0,0,0,0.75) 65%,
-    rgba(0,0,0,0.92) 82%,
-    rgba(0,0,0,0.98) 92%,
-    #000 100%
-  );
-
+  background: white;
+  opacity: 0;
   pointer-events: none;
+  transition: opacity 1.2s ease;
+  z-index: 2;
 }
 
-
-/* =========================
-   SECTION STRUCTURE
-========================= */
-
-section {
-  position: relative;
-  min-height: 100vh;
-  padding: 120px 8vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* HERO TEXT ANIMATION */
+.hero-text {
+  position: absolute;
+  top: 16vh;
+  width: 100%;
   text-align: center;
+  color: var(--royal-gold);
+  opacity: 0;
+  transform: translateY(4vh);
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
+  will-change: opacity, transform;
 }
 
-
-/* =========================
-   TYPOGRAPHY
-========================= */
-
-h1, h2, h3 {
-  font-weight: 300;
-  letter-spacing: 2px;
+.hero-text.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-h1 {
-  font-size: clamp(36px, 5vw, 72px);
+/* TEXT COLORS */
+.text-royal { color: var(--royal-gold); }
+.text-champagne { color: var(--champagne-gold); }
+
+/* TITLES */
+.hero-title { font-size: 3.2rem; letter-spacing: 0.18em; margin-bottom: 1.6rem; }
+.hero-subtitle { font-size: 1.2rem; letter-spacing: 0.14em; opacity: 0.9; margin-bottom: 2.4rem; }
+.brand { font-size: 1.6rem; letter-spacing: 0.16em; margin-top: 2.2rem; }
+.brand-tagline { font-size: 1rem; letter-spacing: 0.14em; margin-top: 1.4rem; opacity: 0.85; }
+
+/* GOLD DIVIDERS */
+.gold-divider {
+  width: 140px;
+  height: 1px;
+  margin: 2.2rem auto;
+  background: linear-gradient(90deg, transparent, currentColor, transparent);
 }
+.gold-divider.royal { color: var(--royal-gold); }
+.gold-divider.champagne { color: var(--champagne-gold); }
 
-p {
-  font-size: 18px;
-  line-height: 1.7;
-  max-width: 700px;
-  margin: 20px auto 0;
-  color: rgba(212, 175, 55, 0.85);
+/* PHILOSOPHY SECTION */
+.philosophy-section {
+  position: relative;
+  width: 100%;
+  background: #0b0b0b;
+  padding: 8rem 1.5rem 9rem;
 }
+.philosophy-inner { max-width: 980px; margin: 0 auto; text-align: center; }
+.philosophy-eyebrow { font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 2.2rem; opacity: 0.9; }
+.philosophy-title { font-size: clamp(2.2rem, 4.2vw, 3.2rem); font-weight: 400; letter-spacing: 0.06em; line-height: 1.25; margin-bottom: 2.8rem; }
+.philosophy-section .gold-divider { width: 180px; height: 1px; margin: 3rem auto 3.6rem; opacity: 0.85; }
+.philosophy-text { max-width: 720px; margin: 0 auto; font-size: 1.05rem; line-height: 1.9; letter-spacing: 0.04em; opacity: 0.92; }
+.philosophy-text p { margin-bottom: 2.4rem; }
+.philosophy-text p:last-child { margin-bottom: 0; }
 
+/* VISION SECTION */
+.vision-section { padding: 8rem 0; background: #0b0b0b; display: flex; justify-content: center; }
+.vision-inner { max-width: 1100px; width: 100%; padding: 0 6vw; }
+.vision-inner video { width: 80%; max-width: 900px; border-radius: 12px; box-shadow: 0 0 40px rgba(212, 175, 55, 0.25); transition: opacity 0.4s ease; }
+.language-toggle { margin-bottom: 30px; }
+.lang-btn { background: transparent; border: 1px solid rgba(212, 175, 55, 0.5); color: #d4af37; padding: 10px 22px; margin: 0 8px; cursor: pointer; font-family: serif; letter-spacing: 1px; transition: all 0.3s ease; }
+.lang-btn:hover { background: rgba(212, 175, 55, 0.15); }
+.lang-btn.active { background: #d4af37; color: #000; }
 
-/* =========================
-   MOBILE OPTIMIZATION
-========================= */
+/* BEGINNING SECTION */
+.beginning-section { padding: 10rem 6vw; background: #0b0b0b; }
+.beginning-inner { max-width: 880px; margin: 0 auto; text-align: center; }
+.beginning-eyebrow { font-size: 0.8rem; letter-spacing: 0.36em; opacity: 0.75; margin-bottom: 1.6rem; }
+.beginning-title { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.25; margin-bottom: 2.2rem; }
+.beginning-text { font-size: 1.05rem; line-height: 1.85; opacity: 0.9; }
 
-@media (max-width: 768px) {
+/* INVITATION SECTION */
+.invitation-section { padding: 12rem 6vw; background: #0b0b0b; }
+.invitation-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.invitation-eyebrow { font-size: 0.8rem; letter-spacing: 0.34em; opacity: 0.75; margin-bottom: 1.8rem; }
+.invitation-title { font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.25; margin-bottom: 2.4rem; }
+.invitation-text { font-size: 1.05rem; line-height: 1.85; opacity: 0.9; margin-bottom: 3.6rem; }
+.invitation-cta a { font-size: 0.9rem; letter-spacing: 0.28em; text-transform: uppercase; padding-bottom: 0.35rem; border-bottom: 1px solid rgba(212,175,55,0.5); color: var(--champagne-gold); text-decoration: none; transition: opacity 0.3s ease, border-color 0.3s ease; }
+.invitation-cta a:hover { opacity: 0.75; border-color: rgba(212,175,55,0.85); }
 
-  .glass-world {
-    background-attachment: scroll;
-    background-size: cover;
-  }
-
-  section {
-    padding: 100px 6vw;
-  }
-
-}
+/* FOOTER */
+.site-footer { background: #080808; padding: 5rem 6vw 4rem; text-align: center; }
+.footer-inner { max-width: 900px; margin: 0 auto; }
+.footer-brand { font-size: 1.15rem; letter-spacing: 0.18em; margin-bottom: 1.6rem; color: var(--champagne-gold); }
+.footer-philosophy { font-size: 0.95rem; line-height: 1.7; opacity: 0.85; margin-bottom: 1.8rem; }
+.footer-location { font-size: 0.8rem; letter-spacing: 0.28em; text-transform: uppercase; opacity: 0.65; margin-bottom: 2.5rem; }
+.footer-legal { font-size: 0.75rem; opacity: 0.45; }
