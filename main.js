@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const whiteFade = document.querySelector(".white-fade");
 
   if (heroVideo && heroText) {
+    // Always start hidden  
     heroText.style.opacity = "0";  
 
     heroVideo.addEventListener("ended", () => {  
@@ -16,7 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
       }  
 
       setTimeout(() => {  
-        heroText.style.opacity = "1";  
+        // Add visible class and ensure gold text
+        heroText.classList.add("is-visible");
+        heroText.querySelectorAll("*").forEach(el => {
+          el.style.color = "var(--royal-gold)";
+        });
       }, 300);  
     });
   }
