@@ -289,3 +289,123 @@ HERO SECTION
   letter-spacing: 2px;
   margin-bottom: 20px;
 }
+
+/* ===== REFINED BEGINNING SECTION ===== */
+
+.beginning-section {
+  padding: 120px 20px;
+  text-align: center;
+}
+
+.beginning-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.beginning-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+.beginning-title {
+  font-size: 34px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.beginning-text {
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+
+/* ===== REFINED INVITATION SECTION ===== */
+
+.invitation-section {
+  padding: 140px 20px;
+  text-align: center;
+}
+
+.invitation-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.invitation-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  opacity: 0.6;
+  margin-bottom: 20px;
+}
+
+.invitation-title {
+  font-size: 34px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.invitation-text {
+  font-size: 16px;
+  line-height: 1.8;
+  opacity: 0.85;
+  margin-bottom: 50px;
+}
+
+
+/* ===== LUXURY BUTTON ===== */
+
+.invitation-cta a {
+  display: inline-block;
+  padding: 14px 40px;
+  border: 1px solid #c6a95f;
+  letter-spacing: 2px;
+  font-size: 12px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.invitation-cta a:hover {
+  background: #c6a95f;
+  color: #000;
+}
+
+
+/* ===== CLEAN FOOTER ===== */
+
+.site-footer {
+  padding: 100px 20px 60px;
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.footer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-size: 18px;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+.footer-philosophy {
+  margin-bottom: 25px;
+  line-height: 1.7;
+}
+
+.footer-location {
+  margin-bottom: 15px;
+  opacity: 0.6;
+}
+
+.footer-legal {
+  opacity: 0.5;
+  font-size: 12px;
+}
