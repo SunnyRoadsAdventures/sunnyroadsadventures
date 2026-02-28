@@ -409,3 +409,93 @@ HERO SECTION
   opacity: 0.5;
   font-size: 12px;
 }
+
+/* BEGINNING SECTION */
+.beginning-section {
+  background: #000;
+  padding: 140px 20px 120px;
+  text-align: center;
+}
+
+.beginning-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.beginning-eyebrow {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #bfa46f;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.beginning-title {
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #f5f1e6;
+  margin-bottom: 40px;
+}
+
+.beginning-text {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #cfc6b2;
+  opacity: 0.85;
+}
+
+/* INVITATION SECTION */
+.invitation-section {
+  background: #000;
+  padding: 120px 20px 140px;
+  text-align: center;
+  border-top: 1px solid rgba(191,164,111,0.2);
+}
+
+.invitation-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.invitation-eyebrow {
+  font-size: 12px;
+  letter-spacing: 4px;
+  color: #bfa46f;
+  opacity: 0.8;
+  margin-bottom: 30px;
+}
+
+.invitation-title {
+  font-size: 46px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: #f5f1e6;
+  margin-bottom: 35px;
+}
+
+.invitation-text {
+  font-size: 18px;
+  line-height: 1.9;
+  color: #cfc6b2;
+  opacity: 0.85;
+  margin-bottom: 60px;
+}
+
+/* LUXURY CTA BUTTON */
+.invitation-cta a {
+  display: inline-block;
+  padding: 16px 48px;
+  border: 1px solid #bfa46f;
+  color: #d6c7a3; /* champagne */
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: all 0.4s ease;
+}
+
+.invitation-cta a:hover {
+  background: rgba(191,164,111,0.08);
+  box-shadow: 0 0 20px rgba(191,164,111,0.2);
+}
