@@ -1,0 +1,1 @@
+const obsidianTexture = textureLoader.load('textures/blackglass.png');
