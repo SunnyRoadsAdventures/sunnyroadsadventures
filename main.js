@@ -8,19 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const whiteFade = document.querySelector(".white-fade");
 
   if (heroVideo && heroText) {
-    // hidden initially
-    heroText.style.opacity = "0";  
+    // start hidden
+    heroText.style.opacity = "0";
 
-    heroVideo.addEventListener("ended", () => {  
-      // White fade
-      if (whiteFade) {  
-        whiteFade.style.opacity = "1";  
-      }  
+    heroVideo.addEventListener("ended", () => {
+      if (whiteFade) {
+        whiteFade.style.opacity = "1";
+      }
 
-      // Fade in hero text
-      setTimeout(() => {  
-        heroText.classList.add("is-visible"); // CSS handles fade
-      }, 900);
+      setTimeout(() => {
+        heroText.classList.add("is-visible"); // uses CSS transition
+      }, 300);
     });
   }
 
