@@ -12,17 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
     heroText.style.opacity = "0";  
 
     heroVideo.addEventListener("ended", () => {  
-      console.log("tower.mp4 ended"); // debug
-
-      // white fade
+      // White fade
       if (whiteFade) {  
         whiteFade.style.opacity = "1";  
       }  
 
-      // fade in text after white fade
+      // Fade in hero text
       setTimeout(() => {  
         heroText.classList.add("is-visible"); // CSS handles fade
-        console.log("hero text visible"); // debug
       }, 900);
     });
   }
