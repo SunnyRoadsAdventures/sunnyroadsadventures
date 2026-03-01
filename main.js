@@ -9,12 +9,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const blackFade = document.querySelector(".black-fade");
   const kayla = document.querySelector(".kayla-reveal");
   const heroText = document.querySelector(".hero-text");
+  const heroSection = document.querySelector(".hero");
 
   if (video && heroText) {
 
     heroText.style.opacity = "0";
 
     video.addEventListener("ended", () => {
+
+      // 0️⃣ Hide video gradually
+      video.style.transition = "opacity 1s ease";
+      video.style.opacity = "0";
+      video.style.pointerEvents = "none";
+
+      setTimeout(() => {
+        video.style.display = "none";
+
+        // Ensure hero section still full height
+        if (heroSection) {
+          heroSection.style.height = "100vh";
+          heroSection.style.overflow = "hidden";
+        }
+
+      }, 1000);
 
       // 1️⃣ Fade to white
       if (whiteFade) {
@@ -32,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // 3️⃣ Reveal kayla image
           if (kayla) {
+            kayla.style.visibility = "visible";
             kayla.style.opacity = "1";
           }
 
