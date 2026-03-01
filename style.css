@@ -106,7 +106,10 @@ HERO SECTION
   text-align: center;
 }
 
-.hero video {
+.hero video,
+.white-fade,
+.black-fade,
+.kayla-reveal {
   position: absolute;
   top: 0;
   left: 0;
@@ -115,28 +118,44 @@ HERO SECTION
   object-fit: cover;
 }
 
-.white-fade {
-  position: absolute;
-  inset: 0;
-  background: white;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 1.2s ease;
-  z-index: 2;
+.hero video {
+  z-index: 1;
 }
 
-/* HERO TEXT */
+.white-fade {
+  background: white;
+  opacity: 0;
+  z-index: 3;
+  transition: opacity 2.5s ease;
+}
+
+.black-fade {
+  background: black;
+  opacity: 0;
+  z-index: 4;
+  transition: opacity 2s ease;
+}
+
+.kayla-reveal {
+  background: url('kayla.jpg') center center / cover no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 2;
+  transition: opacity 4s ease;
+}
+
 .hero-text {
-  position: absolute;
+  position: relative;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 3s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
   top: 16vh;
   width: 100%;
   color: var(--royal-gold);
-  opacity: 0;
-  transform: translateY(4vh);
-  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
-  z-index: 3;
+  text-align: center;
 }
 
+/* Text visible class */
 .hero-text.is-visible {
   opacity: 1;
   transform: translateY(0);
@@ -374,46 +393,4 @@ FOOTER
 .footer-legal {
   opacity: 0.5;
   font-size: 12px;
-}
-
-/* White fade */
-.white-fade {
-  position: absolute;
-  inset: 0;
-  background: white;
-  opacity: 0;
-  z-index: 2;
-  transition: opacity 2.5s ease;
-}
-
-/* Black fade layer */
-.black-fade {
-  position: absolute;
-  inset: 0;
-  background: black;
-  opacity: 0;
-  z-index: 3;
-  transition: opacity 3s ease;
-}
-
-/* Kayla background reveal */
-.kayla-reveal {
-  position: absolute;
-  inset: 0;
-  background: url('kayla.jpg') center center / cover no-repeat;
-  opacity: 0;
-  z-index: 1;
-  transition: opacity 4s ease;
-}
-
-/* Ensure hero video is below overlays */
-.hero video {
-  position: relative;
-  z-index: 0;
-}
-
-/* Text stays on top */
-.hero-text {
-  position: relative;
-  z-index: 5;
 }
