@@ -1,17 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
-     CINEMATIC HERO SEQUENCE (ASYNC)
+     CINEMATIC HERO SEQUENCE
   ========================== */
 
+  const heroSection = document.querySelector(".hero");
   const video = document.getElementById("heroVideo");
   const whiteFade = document.querySelector(".white-fade");
   const blackFade = document.querySelector(".black-fade");
   const kayla = document.querySelector(".kayla-reveal");
   const heroText = document.querySelector(".hero-text");
-  const heroSection = document.querySelector(".hero");
 
-  // Helper function to pause
+  // Helper function for async waits
   const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
   async function playCinematic() {
@@ -57,10 +57,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // 4️⃣ Fade in hero text
     heroText.style.transition = "opacity 3s ease";
     heroText.style.opacity = "1";
+
+    // 5️⃣ Fade out black layer so kayla is fully visible
+    if (blackFade) {
+      blackFade.style.transition = "opacity 2s ease";
+      blackFade.style.opacity = "0";
+    }
   }
 
   playCinematic();
-
 
   /* =========================
      LANGUAGE TOGGLE SYSTEM
@@ -70,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".lang-btn");
 
   window.switchLanguage = function(lang) {
+
     if (!welcomeVideo) return;
 
     buttons.forEach(btn => btn.classList.remove("active"));
@@ -85,5 +91,14 @@ document.addEventListener("DOMContentLoaded", () => {
     welcomeVideo.load();
     welcomeVideo.play();
   };
+
+  /* =========================
+     PARALLAX BACKGROUND DEPTH
+  ========================== */
+
+  window.addEventListener("scroll", () => {
+    const depth = window.scrollY * 0.15;
+    document.body.style.backgroundPosition = `center ${-depth}px`;
+  });
 
 });
