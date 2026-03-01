@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* =========================
-     CINEMATIC HERO SEQUENCE
+     CINEMATIC HERO SEQUENCE (ASYNC)
   ========================== */
 
   const video = document.getElementById("heroVideo");
@@ -11,62 +11,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroText = document.querySelector(".hero-text");
   const heroSection = document.querySelector(".hero");
 
-  if (video && heroText) {
+  // Helper function to pause
+  const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+  async function playCinematic() {
+    if (!video || !heroText) return;
 
     heroText.style.opacity = "0";
 
-    video.addEventListener("ended", () => {
+    // Wait for video to end
+    await new Promise(resolve => video.addEventListener("ended", resolve));
 
-      // 0️⃣ Hide video gradually
-      video.style.transition = "opacity 1s ease";
-      video.style.opacity = "0";
-      video.style.pointerEvents = "none";
+    // 0️⃣ Hide video gradually
+    video.style.transition = "opacity 1s ease";
+    video.style.opacity = "0";
+    video.style.pointerEvents = "none";
+    await wait(1000);
+    video.style.display = "none";
 
-      setTimeout(() => {
-        video.style.display = "none";
+    // Keep hero section full height
+    if (heroSection) {
+      heroSection.style.height = "100vh";
+      heroSection.style.overflow = "hidden";
+    }
 
-        // Ensure hero section still full height
-        if (heroSection) {
-          heroSection.style.height = "100vh";
-          heroSection.style.overflow = "hidden";
-        }
+    // 1️⃣ Fade to white
+    if (whiteFade) {
+      whiteFade.style.opacity = "1";
+    }
+    await wait(2500);
 
-      }, 1000);
+    // 2️⃣ Fade to black
+    if (blackFade) {
+      blackFade.style.opacity = "1";
+    }
+    await wait(1500);
 
-      // 1️⃣ Fade to white
-      if (whiteFade) {
-        whiteFade.style.opacity = "1";
-      }
+    // 3️⃣ Reveal kayla image
+    if (kayla) {
+      kayla.style.visibility = "visible";
+      kayla.style.opacity = "1";
+    }
+    await wait(2000);
 
-      setTimeout(() => {
-
-        // 2️⃣ Fade to black
-        if (blackFade) {
-          blackFade.style.opacity = "1";
-        }
-
-        setTimeout(() => {
-
-          // 3️⃣ Reveal kayla image
-          if (kayla) {
-            kayla.style.visibility = "visible";
-            kayla.style.opacity = "1";
-          }
-
-          setTimeout(() => {
-
-            // 4️⃣ Fade in text
-            heroText.style.transition = "opacity 3s ease";
-            heroText.style.opacity = "1";
-
-          }, 2000);
-
-        }, 1500);
-
-      }, 2500);
-
-    });
+    // 4️⃣ Fade in hero text
+    heroText.style.transition = "opacity 3s ease";
+    heroText.style.opacity = "1";
   }
+
+  playCinematic();
 
 
   /* =========================
@@ -77,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttons = document.querySelectorAll(".lang-btn");
 
   window.switchLanguage = function(lang) {
-
     if (!welcomeVideo) return;
 
     buttons.forEach(btn => btn.classList.remove("active"));
