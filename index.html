@@ -154,7 +154,15 @@
       </p>
     </div>
   </footer>
+<script>
+  const body = document.body;
 
+  window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    const depth = scrollY * 0.15; 
+    body.style.backgroundPosition = `center ${-depth}px`;
+  });
+</script>
   <!-- JS -->
   <script src="main.js" defer></script>
 </body>
