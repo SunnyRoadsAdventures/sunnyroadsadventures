@@ -11,7 +11,8 @@
 </head>
 
 <body>
-<div class="glass-sheen"></div>
+
+  <div class="glass-sheen"></div>
 
   <!-- HERO SECTION -->
   <section class="hero">
@@ -92,7 +93,7 @@
         <button onclick="switchLanguage('esp')" class="lang-btn">Español</button>
       </div>
 
-      <!-- Welcome Video (UPDATED - NO AUTOPLAY + THUMBNAIL) -->
+      <!-- Welcome Video -->
       <video
         id="welcomeVideo"
         controls
@@ -154,16 +155,17 @@
       </p>
     </div>
   </footer>
-<script>
-  const body = document.body;
 
-  window.addEventListener("scroll", () => {
-    const scrollY = window.scrollY;
-    const depth = scrollY * 0.15; 
-    body.style.backgroundPosition = `center ${-depth}px`;
-  });
-</script>
-  <!-- JS -->
+  <!-- JS FILE -->
   <script src="main.js" defer></script>
+
+  <!-- PARALLAX DEPTH SCRIPT -->
+  <script>
+    window.addEventListener("scroll", () => {
+      const depth = window.scrollY * 0.15;
+      document.body.style.backgroundPosition = `center ${-depth}px`;
+    });
+  </script>
+
 </body>
 </html>
