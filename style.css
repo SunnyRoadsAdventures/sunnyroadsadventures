@@ -394,3 +394,30 @@ FOOTER
   opacity: 0.5;
   font-size: 12px;
 }
+
+.main-nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+display:flex;
+gap:30px;
+padding:18px 40px;
+background:rgba(0,0,0,0.65);
+backdrop-filter:blur(6px);
+z-index:9999;
+}
+
+.main-nav a{
+color:white;
+text-decoration:none;
+font-size:15px;
+letter-spacing:1px;
+}
+
+.lessons-tab{
+color:#d4af37;
+border:1px solid #d4af37;
+padding:6px 14px;
+border-radius:6px;
+}
