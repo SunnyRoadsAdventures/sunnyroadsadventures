@@ -5,6 +5,7 @@ const player = document.getElementById("videoPlayer");
 const video = document.getElementById("lessonVideo");
 
 
+// Lesson click
 lessons.forEach(lesson => {
 
 lesson.addEventListener("click", () => {
@@ -30,6 +31,7 @@ video.play();
 });
 
 
+// Close video
 function closeVideo(){
 
 video.pause();
@@ -41,6 +43,7 @@ player.classList.add("hidden");
 }
 
 
+// Unlock lessons
 function unlockLessons(){
 
 let code = document.getElementById("unlockCode").value;
