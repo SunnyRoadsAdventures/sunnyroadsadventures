@@ -1,63 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Curated Language Lessons</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curated Language Lessons</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="language-lessons-container">
 
-  <!-- Header / Hero -->
-  <section class="lessons-hero">
-    <h1>Curated Language Lessons</h1>
-    <p>Learn English or Spanish in 35-second micro-lessons</p>
-    <a href="#subscribe" class="subscribe-btn">Subscribe to Start Learning</a>
-  </section>
+<!-- Hero -->
+<section class="lessons-hero">
+<h1>Curated Language Lessons</h1>
+<p>Learn English or Spanish in 35-second micro-lessons</p>
+<a href="#subscribe" class="subscribe-btn">Subscribe to Start Learning</a>
+</section>
 
-  <!-- Kids English Section -->
-  <section class="kids-english">
-    <h2>Kids English</h2>
-    <div class="lesson-grid">
-      <div class="lesson" data-locked="true">
-        <div class="thumbnail">Lesson 1: Hello / Hi</div>
-        <span class="lock-icon">🔒</span>
-      </div>
-      <div class="lesson" data-locked="true">
-        <div class="thumbnail">Lesson 2: Numbers 1–5</div>
-        <span class="lock-icon">🔒</span>
-      </div>
-      <!-- Add more lessons -->
-    </div>
-  </section>
 
-  <!-- Adults Spanish Section -->
-  <section class="adults-spanish">
-    <h2>Adults Spanish</h2>
-    <div class="lesson-grid">
-      <div class="lesson" data-locked="true">
-        <div class="thumbnail">Lesson 1: Hola – Hello</div>
-        <span class="lock-icon">🔒</span>
-      </div>
-      <div class="lesson" data-locked="true">
-        <div class="thumbnail">Lesson 2: Gracias – Thank you</div>
-        <span class="lock-icon">🔒</span>
-      </div>
-      <!-- Add more lessons -->
-    </div>
-  </section>
+<!-- Unlock Access -->
+<div class="unlock-box">
 
-  <!-- Subscription CTA -->
-  <section class="subscribe-section" id="subscribe">
-    <h2>Unlock All Lessons Instantly</h2>
-    <p>Weekly: $2.99 | Monthly: $7.99</p>
-    <a href="/checkout" class="subscribe-btn">Subscribe Now</a>
-  </section>
+<h3>Subscriber Access</h3>
+
+<input type="password" id="unlockCode" placeholder="Enter access code">
+
+<button onclick="unlockLessons()">Unlock Lessons</button>
 
 </div>
 
+
+<!-- Kids English -->
+<section class="kids-english">
+
+<h2>Kids English</h2>
+
+<div class="lesson-grid">
+
+<div class="lesson locked" data-video="videos/english/lesson1.mp4">
+<div class="thumbnail">Lesson 1 – Hello</div>
+<span class="lock-icon">🔒</span>
+</div>
+
+<div class="lesson locked" data-video="videos/english/lesson2.mp4">
+<div class="thumbnail">Lesson 2 – Numbers</div>
+<span class="lock-icon">🔒</span>
+</div>
+
+<div class="lesson locked" data-video="videos/english/lesson3.mp4">
+<div class="thumbnail">Lesson 3 – Colors</div>
+<span class="lock-icon">🔒</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Adult Spanish -->
+<section class="adults-spanish">
+
+<h2>Adult Spanish</h2>
+
+<div class="lesson-grid">
+
+<div class="lesson locked" data-video="videos/spanish/lesson1.mp4">
+<div class="thumbnail">Lesson 1 – Hola</div>
+<span class="lock-icon">🔒</span>
+</div>
+
+<div class="lesson locked" data-video="videos/spanish/lesson2.mp4">
+<div class="thumbnail">Lesson 2 – Gracias</div>
+<span class="lock-icon">🔒</span>
+</div>
+
+<div class="lesson locked" data-video="videos/spanish/lesson3.mp4">
+<div class="thumbnail">Lesson 3 – Buenos días</div>
+<span class="lock-icon">🔒</span>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- Subscription -->
+<section class="subscribe-section" id="subscribe">
+
+<h2>Unlock All Lessons</h2>
+
+<p>Weekly: $2.99 | Monthly: $7.99</p>
+
+<a href="https://paypal.me/YOURPAYPALNAME" class="subscribe-btn">Pay with PayPal</a>
+
+<br><br>
+
+<a href="https://revolut.me/YOURREVOLUTNAME" class="subscribe-btn">Pay with Revolut</a>
+
+<p>After payment you receive the access code.</p>
+
+</section>
+
+</div>
+
+
+<!-- Video Player -->
+<div id="videoPlayer" class="video-player hidden">
+
+<video id="lessonVideo" controls></video>
+
+<button onclick="closeVideo()">Close</button>
+
+</div>
+
+
 <script src="java.js"></script>
+
 </body>
 </html>
