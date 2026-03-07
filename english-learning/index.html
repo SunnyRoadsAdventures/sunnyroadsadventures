@@ -33,6 +33,15 @@ Language Lessons
 <p>Short immersive lessons designed for real-world language use.</p>
 
 
+<!-- Video Player -->
+<div class="video-container">
+
+<video id="lessonVideo" controls></video>
+
+</div>
+
+
+<!-- Lesson Grid -->
 <div class="lesson-grid">
 
 <div class="lesson locked" data-video="../videos/english/lesson1.mp4">
@@ -50,6 +59,7 @@ Spanish Lesson 1
 </section>
 
 
+<!-- Payment -->
 <section class="subscription-box">
 
 <h2>Unlock All Lessons</h2>
@@ -71,6 +81,7 @@ After payment you will receive an access code.
 </section>
 
 
+<!-- Unlock -->
 <section class="unlock-section">
 
 <h3>Already subscribed?</h3>
@@ -80,15 +91,6 @@ After payment you will receive an access code.
 <button onclick="unlockLessons()">Unlock Lessons</button>
 
 </section>
-
-
-<div id="videoPlayer" class="video-player hidden">
-
-<video id="lessonVideo" controls></video>
-
-<button onclick="closeVideo()">Close</button>
-
-</div>
 
 
 <script src="java.js"></script>
