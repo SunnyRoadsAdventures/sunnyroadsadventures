@@ -15,8 +15,6 @@
 
 <body>
 
-
-
 <nav class="main-nav">
 
 <a href="/sunnyroadsadventures/">Home</a>
@@ -28,7 +26,6 @@ Language Lessons
 </nav>
 
 
-
 <section class="lesson-section">
 
 <h1>Language Lessons</h1>
@@ -36,39 +33,62 @@ Language Lessons
 <p>Short immersive lessons designed for real-world language use.</p>
 
 
-
 <div class="lesson-grid">
 
-
 <div class="lesson locked" data-video="../videos/english/lesson1.mp4">
-
 English Lesson 1
-
+<span class="lock-icon">🔒</span>
 </div>
-
 
 <div class="lesson locked" data-video="../videos/spanish/lesson1.mp4">
-
 Spanish Lesson 1
-
+<span class="lock-icon">🔒</span>
 </div>
 
-
 </div>
-
 
 </section>
 
 
+<section class="subscription-box">
 
-<div id="videoPlayer" class="hidden">
+<h2>Unlock All Lessons</h2>
+
+<p>Get full access to all LingLing language lessons.</p>
+
+<a href="https://paypal.me/YOURPAYPALNAME" class="subscribe-btn">
+Pay with PayPal
+</a>
+
+<a href="https://revolut.me/YOURREVOLUTNAME" class="subscribe-btn">
+Pay with Revolut
+</a>
+
+<p class="access-note">
+After payment you will receive an access code.
+</p>
+
+</section>
+
+
+<section class="unlock-section">
+
+<h3>Already subscribed?</h3>
+
+<input type="password" id="unlockCode" placeholder="Enter access code">
+
+<button onclick="unlockLessons()">Unlock Lessons</button>
+
+</section>
+
+
+<div id="videoPlayer" class="video-player hidden">
 
 <video id="lessonVideo" controls></video>
 
 <button onclick="closeVideo()">Close</button>
 
 </div>
-
 
 
 <script src="java.js"></script>
