@@ -1,118 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curated Language Lessons</title>
-<link rel="stylesheet" href="style.css">
+
+<title>Language Lessons | Sunny Roads Adventures</title>
+
+<link rel="stylesheet" href="../style.css">
+
 </head>
+
 
 <body>
 
-<div class="language-lessons-container">
-
-<!-- Hero -->
-<section class="lessons-hero">
-<h1>Curated Language Lessons</h1>
-<p>Learn English or Spanish in 35-second micro-lessons</p>
-<a href="#subscribe" class="subscribe-btn">Subscribe to Start Learning</a>
-</section>
 
 
-<!-- Unlock Access -->
-<div class="unlock-box">
+<nav class="main-nav">
 
-<h3>Subscriber Access</h3>
+<a href="/sunnyroadsadventures/">Home</a>
 
-<input type="password" id="unlockCode" placeholder="Enter access code">
+<a href="/sunnyroadsadventures/english-learning/" class="lessons-tab">
+Language Lessons
+</a>
 
-<button onclick="unlockLessons()">Unlock Lessons</button>
-
-</div>
+</nav>
 
 
-<!-- Kids English -->
-<section class="kids-english">
 
-<h2>Kids English</h2>
+<section class="lesson-section">
+
+<h1>Language Lessons</h1>
+
+<p>Short immersive lessons designed for real-world language use.</p>
+
+
 
 <div class="lesson-grid">
 
-<div class="lesson locked" data-video="videos/english/lesson1.mp4">
-<div class="thumbnail">Lesson 1 – Hello</div>
-<span class="lock-icon">🔒</span>
-</div>
 
-<div class="lesson locked" data-video="videos/english/lesson2.mp4">
-<div class="thumbnail">Lesson 2 – Numbers</div>
-<span class="lock-icon">🔒</span>
-</div>
+<div class="lesson locked" data-video="../videos/english/lesson1.mp4">
 
-<div class="lesson locked" data-video="videos/english/lesson3.mp4">
-<div class="thumbnail">Lesson 3 – Colors</div>
-<span class="lock-icon">🔒</span>
-</div>
+English Lesson 1
 
 </div>
+
+
+<div class="lesson locked" data-video="../videos/spanish/lesson1.mp4">
+
+Spanish Lesson 1
+
+</div>
+
+
+</div>
+
 
 </section>
 
 
-<!-- Adult Spanish -->
-<section class="adults-spanish">
 
-<h2>Adult Spanish</h2>
-
-<div class="lesson-grid">
-
-<div class="lesson locked" data-video="videos/spanish/lesson1.mp4">
-<div class="thumbnail">Lesson 1 – Hola</div>
-<span class="lock-icon">🔒</span>
-</div>
-
-<div class="lesson locked" data-video="videos/spanish/lesson2.mp4">
-<div class="thumbnail">Lesson 2 – Gracias</div>
-<span class="lock-icon">🔒</span>
-</div>
-
-<div class="lesson locked" data-video="videos/spanish/lesson3.mp4">
-<div class="thumbnail">Lesson 3 – Buenos días</div>
-<span class="lock-icon">🔒</span>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- Subscription -->
-<section class="subscribe-section" id="subscribe">
-
-<h2>Unlock All Lessons</h2>
-
-<p>Weekly: $2.99 | Monthly: $7.99</p>
-
-<a href="https://paypal.me/YOURPAYPALNAME" class="subscribe-btn">Pay with PayPal</a>
-
-<br><br>
-
-<a href="https://revolut.me/YOURREVOLUTNAME" class="subscribe-btn">Pay with Revolut</a>
-
-<p>After payment you receive the access code.</p>
-
-</section>
-
-</div>
-
-
-<!-- Video Player -->
-<div id="videoPlayer" class="video-player hidden">
+<div id="videoPlayer" class="hidden">
 
 <video id="lessonVideo" controls></video>
 
 <button onclick="closeVideo()">Close</button>
 
 </div>
+
 
 
 <script src="java.js"></script>
