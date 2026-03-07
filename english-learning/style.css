@@ -1,24 +1,51 @@
+html,body{
+height:auto;
+min-height:100%;
+overflow-x:hidden;
+overflow-y:auto;
+}
+
+
+.lesson-section{
+padding:120px 20px 60px 20px;
+text-align:center;
+}
+
+
 .lesson-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 gap:20px;
 margin-top:20px;
+max-width:900px;
+margin-left:auto;
+margin-right:auto;
 }
+
 
 .lesson{
 background:#111;
 color:white;
-padding:20px;
+padding:25px;
 border-radius:8px;
 cursor:pointer;
 position:relative;
+transition:0.3s;
 }
+
+.lesson:hover{
+transform:scale(1.05);
+background:#1b1b1b;
+}
+
 
 .lock-icon{
 position:absolute;
 top:10px;
 right:10px;
+font-size:18px;
 }
+
 
 .video-player{
 position:fixed;
@@ -28,13 +55,56 @@ transform:translate(-50%,-50%);
 background:black;
 padding:20px;
 z-index:999;
+border-radius:8px;
 }
+
 
 .video-player video{
 width:600px;
 max-width:90vw;
 }
 
+
 .hidden{
 display:none;
+}
+
+
+.subscription-box{
+text-align:center;
+padding:60px 20px;
+}
+
+
+.subscribe-btn{
+display:inline-block;
+margin:10px;
+padding:14px 30px;
+background:#d4af37;
+color:black;
+font-weight:bold;
+border-radius:8px;
+text-decoration:none;
+}
+
+
+.unlock-section{
+text-align:center;
+padding:40px 20px 80px 20px;
+}
+
+
+.unlock-section input{
+padding:10px;
+margin-right:10px;
+}
+
+
+.unlock-section button{
+padding:10px 20px;
+background:black;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
 }
