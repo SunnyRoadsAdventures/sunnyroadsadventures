@@ -14,421 +14,402 @@ GLOBAL RESET
 *,
 *::before,
 *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 /* ================================
 BASE STRUCTURE
 ================================ */
-html,
-body {
-  width: 100%;
-  height: 100%;
-  font-family: "Cormorant Garamond", serif;
-  color: var(--soft-white);
-  overflow-x: hidden;
-  background-color: #000;
+html,body{
+  width:100%;
+  min-height:100%;
+  font-family:"Cormorant Garamond",serif;
+  color:var(--soft-white);
+  overflow-x:hidden;
+  background:#000;
 }
 
 /* ================================
-GLOBAL BLACK GLASS BACKGROUND
+BACKGROUND GLASS EFFECT
 ================================ */
-body {
-  background: url("kayla.jpg") center center / cover no-repeat fixed;
-  position: relative;
+body{
+  background:url("kayla.jpg") center/cover no-repeat fixed;
+  position:relative;
 }
 
-/* Cinematic edge vignette */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
+/* vignette */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(
     ellipse at center,
     transparent 55%,
-    rgba(0, 0, 0, 0.35) 100%
+    rgba(0,0,0,0.35) 100%
   );
-  z-index: 0;
+  pointer-events:none;
+  z-index:0;
 }
 
-/* Subtle royal gold reflection (top-right light) */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(
+/* gold reflection */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(
     circle at 85% 10%,
-    rgba(201, 162, 77, 0.07),
+    rgba(201,162,77,0.07),
     transparent 60%
   );
-  z-index: 0;
+  pointer-events:none;
+  z-index:0;
 }
 
-/* Subtle internal glass sheen */
-.glass-sheen {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(
+/* subtle sheen */
+.glass-sheen{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(
     120deg,
     rgba(255,255,255,0.02) 0%,
     rgba(255,255,255,0.04) 20%,
     rgba(255,255,255,0.01) 40%,
     transparent 60%
   );
-  mix-blend-mode: overlay;
-  opacity: 0.5;
-  z-index: 0;
+  mix-blend-mode:overlay;
+  opacity:.5;
+  pointer-events:none;
+  z-index:0;
 }
 
-/* Ensure all sections sit above glass layers */
-section {
-  position: relative;
-  z-index: 2;
-}
-
-/* ================================
-HERO SECTION
-================================ */
-.hero {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.hero video,
-.white-fade,
-.black-fade,
-.kayla-reveal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.hero video {
-  z-index: 1;
-}
-
-.white-fade {
-  background: white;
-  opacity: 0;
-  z-index: 3;
-  transition: opacity 2.5s ease;
-}
-
-.black-fade {
-  background: black;
-  opacity: 0;
-  z-index: 4;
-  transition: opacity 2s ease;
-}
-
-.kayla-reveal {
-  background: url('kayla.jpg') center center / cover no-repeat;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 2;
-  transition: opacity 4s ease;
-}
-
-.hero-text {
-  position: relative;
-  z-index: 5;
-  opacity: 0;
-  transition: opacity 3s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
-  top: 16vh;
-  width: 100%;
-  color: var(--royal-gold);
-  text-align: center;
-}
-
-/* Text visible class */
-.hero-text.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.text-royal { color: var(--royal-gold); }
-.text-champagne { color: var(--champagne-gold); }
-
-.hero-title {
-  font-size: 3.2rem;
-  letter-spacing: 0.18em;
-  margin-bottom: 1.6rem;
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  letter-spacing: 0.14em;
-  opacity: 0.9;
-  margin-bottom: 2.4rem;
-}
-
-.brand {
-  font-size: 1.6rem;
-  letter-spacing: 0.16em;
-  margin-top: 2.2rem;
-}
-
-.brand-tagline {
-  font-size: 1rem;
-  letter-spacing: 0.14em;
-  margin-top: 1.4rem;
-  opacity: 0.85;
-}
-
-.gold-divider {
-  width: 140px;
-  height: 1px;
-  margin: 2.2rem auto;
-  background: linear-gradient(90deg, transparent, currentColor, transparent);
-}
-
-.gold-divider.royal { color: var(--royal-gold); }
-.gold-divider.champagne { color: var(--champagne-gold); }
-
-/* ================================
-PHILOSOPHY SECTION
-================================ */
-.philosophy-section {
-  padding: 8rem 1.5rem 9rem;
-  background: transparent;
-}
-
-.philosophy-inner {
-  max-width: 980px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.philosophy-eyebrow {
-  font-size: 0.9rem;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  margin-bottom: 2.2rem;
-  opacity: 0.9;
-}
-
-.philosophy-title {
-  font-size: clamp(2.2rem, 4.2vw, 3.2rem);
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  line-height: 1.25;
-  margin-bottom: 2.8rem;
-}
-
-.philosophy-text {
-  max-width: 720px;
-  margin: 0 auto;
-  font-size: 1.05rem;
-  line-height: 1.9;
-  letter-spacing: 0.04em;
-  opacity: 0.92;
-}
-
-.philosophy-text p {
-  margin-bottom: 2.4rem;
+/* sections above background */
+section{
+  position:relative;
+  z-index:2;
 }
 
 /* ================================
-VISION SECTION
+NAVIGATION
 ================================ */
-.vision-section {
-  background: transparent;
-  padding: 80px 0;
-  text-align: center;
+.main-nav{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:40px;
+  padding:18px 40px;
+  background:rgba(0,0,0,0.65);
+  backdrop-filter:blur(6px);
+  z-index:9999;
 }
 
-.vision-inner {
-  max-width: 1100px;
-  width: 100%;
-  padding: 0 6vw;
-  margin: 0 auto;
+.main-nav a{
+  color:white;
+  text-decoration:none;
+  font-size:15px;
+  letter-spacing:1px;
 }
 
-.vision-inner video {
-  width: 80%;
-  max-width: 900px;
-  border-radius: 12px;
-  box-shadow: 0 0 40px rgba(201,162,77,0.25);
+.lessons-tab{
+  color:#d4af37;
+  border:1px solid #d4af37;
+  padding:6px 14px;
+  border-radius:6px;
 }
 
 /* ================================
-BEGINNING SECTION
+HERO
 ================================ */
-.beginning-section {
-  background: transparent;
-  padding: 140px 20px 120px;
-  text-align: center;
+.hero{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
 
-.beginning-inner {
-  max-width: 800px;
-  margin: 0 auto;
+.hero video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:1;
 }
 
-.beginning-eyebrow {
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: #bfa46f;
-  opacity: 0.8;
-  margin-bottom: 30px;
+/* fade layers */
+
+.white-fade{
+  position:absolute;
+  inset:0;
+  background:white;
+  opacity:0;
+  transition:opacity 2.5s ease;
+  z-index:3;
 }
 
-.beginning-title {
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 1.2;
-  color: #f5f1e6;
-  margin-bottom: 40px;
+.black-fade{
+  position:absolute;
+  inset:0;
+  background:black;
+  opacity:0;
+  transition:opacity 2s ease;
+  z-index:4;
 }
 
-.beginning-text {
-  font-size: 18px;
-  line-height: 1.9;
-  color: #cfc6b2;
-  opacity: 0.85;
+.kayla-reveal{
+  position:absolute;
+  inset:0;
+  background:url("kayla.jpg") center/cover no-repeat;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity 4s ease;
+  z-index:2;
 }
 
 /* ================================
-INVITATION SECTION
+HERO TEXT
 ================================ */
-.invitation-section {
-  background: transparent;
-  padding: 120px 20px 140px;
-  text-align: center;
-  border-top: 1px solid rgba(191,164,111,0.2);
+.hero-text{
+  position:relative;
+  z-index:5;
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 3s ease, transform 1.2s cubic-bezier(.22,1,.36,1);
+  top:16vh;
 }
 
-.invitation-inner {
-  max-width: 800px;
-  margin: 0 auto;
+.hero-text.is-visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
-.invitation-eyebrow {
-  font-size: 12px;
-  letter-spacing: 4px;
-  color: #bfa46f;
-  opacity: 0.8;
-  margin-bottom: 30px;
+.text-royal{color:var(--royal-gold);}
+.text-champagne{color:var(--champagne-gold);}
+
+.hero-title{
+  font-size:3.2rem;
+  letter-spacing:.18em;
+  margin-bottom:1.6rem;
 }
 
-.invitation-title {
-  font-size: 46px;
-  font-weight: 400;
-  line-height: 1.2;
-  color: #f5f1e6;
-  margin-bottom: 35px;
+.hero-subtitle{
+  font-size:1.2rem;
+  letter-spacing:.14em;
+  opacity:.9;
+  margin-bottom:2.4rem;
 }
 
-.invitation-text {
-  font-size: 18px;
-  line-height: 1.9;
-  color: #cfc6b2;
-  opacity: 0.85;
-  margin-bottom: 60px;
+.brand{
+  font-size:1.6rem;
+  letter-spacing:.16em;
+  margin-top:2rem;
 }
 
-.invitation-cta a {
-  display: inline-block;
-  padding: 16px 48px;
-  border: 1px solid #bfa46f;
-  color: #d6c7a3;
-  text-decoration: none;
-  letter-spacing: 2px;
-  font-size: 14px;
-  text-transform: uppercase;
-  transition: all 0.4s ease;
+.brand-tagline{
+  font-size:1rem;
+  letter-spacing:.14em;
+  margin-top:1.4rem;
+  opacity:.85;
 }
 
-.invitation-cta a:hover {
-  background: rgba(191,164,111,0.08);
-  box-shadow: 0 0 20px rgba(191,164,111,0.2);
+.gold-divider{
+  width:140px;
+  height:1px;
+  margin:2.2rem auto;
+  background:linear-gradient(90deg,transparent,currentColor,transparent);
+}
+
+.gold-divider.royal{color:var(--royal-gold);}
+.gold-divider.champagne{color:var(--champagne-gold);}
+
+/* ================================
+PHILOSOPHY
+================================ */
+.philosophy-section{
+  padding:8rem 1.5rem 9rem;
+}
+
+.philosophy-inner{
+  max-width:980px;
+  margin:auto;
+  text-align:center;
+}
+
+.philosophy-eyebrow{
+  font-size:.9rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  margin-bottom:2rem;
+}
+
+.philosophy-title{
+  font-size:clamp(2.2rem,4.2vw,3.2rem);
+  line-height:1.25;
+  margin-bottom:2.8rem;
+}
+
+.philosophy-text{
+  max-width:720px;
+  margin:auto;
+  font-size:1.05rem;
+  line-height:1.9;
+}
+
+.philosophy-text p{
+  margin-bottom:2rem;
+}
+
+/* ================================
+VISION
+================================ */
+.vision-section{
+  padding:80px 0;
+  text-align:center;
+}
+
+.vision-inner{
+  max-width:1100px;
+  margin:auto;
+  padding:0 6vw;
+}
+
+.vision-inner video{
+  width:80%;
+  max-width:900px;
+  border-radius:12px;
+  box-shadow:0 0 40px rgba(201,162,77,.25);
+}
+
+/* ================================
+BEGINNING
+================================ */
+.beginning-section{
+  padding:140px 20px 120px;
+  text-align:center;
+}
+
+.beginning-inner{
+  max-width:800px;
+  margin:auto;
+}
+
+.beginning-eyebrow{
+  font-size:12px;
+  letter-spacing:4px;
+  color:#bfa46f;
+  margin-bottom:30px;
+}
+
+.beginning-title{
+  font-size:48px;
+  margin-bottom:40px;
+}
+
+.beginning-text{
+  font-size:18px;
+  line-height:1.9;
+  color:#cfc6b2;
+}
+
+/* ================================
+INVITATION
+================================ */
+.invitation-section{
+  padding:120px 20px 140px;
+  text-align:center;
+  border-top:1px solid rgba(191,164,111,.2);
+}
+
+.invitation-inner{
+  max-width:800px;
+  margin:auto;
+}
+
+.invitation-title{
+  font-size:46px;
+  margin-bottom:35px;
+}
+
+.invitation-text{
+  font-size:18px;
+  line-height:1.9;
+  margin-bottom:60px;
+}
+
+.invitation-cta a{
+  display:inline-block;
+  padding:16px 48px;
+  border:1px solid #bfa46f;
+  color:#d6c7a3;
+  text-decoration:none;
+  letter-spacing:2px;
+  font-size:14px;
+  transition:.4s;
+}
+
+.invitation-cta a:hover{
+  background:rgba(191,164,111,.08);
+  box-shadow:0 0 20px rgba(191,164,111,.2);
 }
 
 /* ================================
 FOOTER
 ================================ */
-.site-footer {
-  padding: 100px 20px 60px;
-  text-align: center;
-  font-size: 14px;
-  opacity: 0.75;
+.site-footer{
+  padding:100px 20px 60px;
+  text-align:center;
+  font-size:14px;
+  opacity:.75;
 }
 
-.footer-inner {
-  max-width: 720px;
-  margin: 0 auto;
+.footer-inner{
+  max-width:720px;
+  margin:auto;
 }
 
-.footer-brand {
-  font-size: 18px;
-  letter-spacing: 2px;
-  margin-bottom: 25px;
+.footer-brand{
+  font-size:18px;
+  letter-spacing:2px;
+  margin-bottom:25px;
 }
 
-.footer-philosophy {
-  margin-bottom: 25px;
-  line-height: 1.7;
+/* ================================
+MOBILE FIXES
+================================ */
+@media (max-width:768px){
+
+.hero-title{
+  font-size:2.2rem;
 }
 
-.footer-location {
-  margin-bottom: 15px;
-  opacity: 0.6;
-}
-
-.footer-legal {
-  opacity: 0.5;
-  font-size: 12px;
+.hero-subtitle{
+  font-size:1rem;
 }
 
 .main-nav{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-display:flex;
-gap:30px;
-padding:18px 40px;
-background:rgba(0,0,0,0.65);
-backdrop-filter:blur(6px);
-z-index:9999;
+  gap:20px;
+  padding:14px 20px;
 }
 
-.main-nav a{
-color:white;
-text-decoration:none;
-font-size:15px;
-letter-spacing:1px;
+.vision-inner video{
+  width:100%;
 }
 
-.lessons-tab{
-color:#d4af37;
-border:1px solid #d4af37;
-padding:6px 14px;
-border-radius:6px;
+.beginning-title{
+  font-size:36px;
 }
 
-.hero video{
-width:100%;
-height:100vh;
-object-fit:cover;
+.invitation-title{
+  font-size:34px;
 }
-.hero video{
-width:100%;
-height:100vh;
-object-fit:cover;
+
 }
