@@ -1,22 +1,29 @@
-html,body{
-height:auto;
-min-height:100%;
-overflow-x:hidden;
-overflow-y:auto;
-}
-
-
 .lesson-section{
 padding:120px 20px 60px 20px;
 text-align:center;
 }
 
 
+.video-container{
+max-width:900px;
+margin:40px auto;
+background:black;
+padding:10px;
+border-radius:8px;
+}
+
+
+.video-container video{
+width:100%;
+border-radius:6px;
+}
+
+
 .lesson-grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
-margin-top:20px;
+margin-top:30px;
 max-width:900px;
 margin-left:auto;
 margin-right:auto;
@@ -31,7 +38,9 @@ border-radius:8px;
 cursor:pointer;
 position:relative;
 transition:0.3s;
+font-weight:bold;
 }
+
 
 .lesson:hover{
 transform:scale(1.05);
@@ -44,29 +53,6 @@ position:absolute;
 top:10px;
 right:10px;
 font-size:18px;
-}
-
-
-.video-player{
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:black;
-padding:20px;
-z-index:999;
-border-radius:8px;
-}
-
-
-.video-player video{
-width:600px;
-max-width:90vw;
-}
-
-
-.hidden{
-display:none;
 }
 
 
