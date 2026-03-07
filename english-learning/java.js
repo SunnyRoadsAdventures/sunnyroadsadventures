@@ -1,6 +1,6 @@
 const lessons = document.querySelectorAll(".lesson");
-const player = document.getElementById("videoPlayer");
 const video = document.getElementById("lessonVideo");
+
 
 lessons.forEach(lesson => {
 
@@ -17,22 +17,16 @@ let src = lesson.getAttribute("data-video");
 
 video.src = src;
 
-player.classList.remove("hidden");
-
 video.play();
 
+window.scrollTo({
+top:0,
+behavior:"smooth"
 });
 
 });
 
-
-function closeVideo(){
-
-video.pause();
-video.src = "";
-player.classList.add("hidden");
-
-}
+});
 
 
 function unlockLessons(){
