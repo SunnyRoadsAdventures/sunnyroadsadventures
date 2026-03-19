@@ -68,7 +68,6 @@ Private journeys across Nicaragua and beyond.
 
 <!-- PHILOSOPHY -->
 <section class="philosophy-section">
-
 <div class="philosophy-inner">
 
 <p class="philosophy-eyebrow text-champagne reveal">
@@ -83,54 +82,29 @@ They Are Revealed.
 <div class="gold-divider royal"></div>
 
 <div class="philosophy-text text-champagne reveal delay-1">
-
-<p>
-Every experience begins quietly — through attention, conversation,
-and understanding.
-</p>
-
-<p>
-Each journey is shaped by rhythm, atmosphere, and timing.
-The destination matters less than how it is felt.
-</p>
-
-<p>
-Some moments are shared. Others remain unspoken.
-Both are crafted with equal care.
-</p>
-
-<p>
-This is travel guided by restraint, discretion, and meaning.
-</p>
-
+<p>Every experience begins quietly — through attention, conversation, and understanding.</p>
+<p>Each journey is shaped by rhythm, atmosphere, and timing.</p>
+<p>Some moments are shared. Others remain unspoken.</p>
+<p>This is travel guided by restraint, discretion, and meaning.</p>
 </div>
 
 </div>
-
 </section>
 
-<!-- LANGUAGE (SOFT MENTION) -->
+<!-- LANGUAGE -->
 <section class="vision-section">
-
 <div class="vision-inner reveal">
-
-<p class="text-champagne" style="font-size:1.1rem;">
-Private language preparation is available upon request,
-designed to deepen your experience before arrival.
+<p class="text-champagne">
+Private language preparation is available upon request.
 </p>
-
 </div>
-
 </section>
 
 <!-- BEGINNING -->
 <section class="beginning-section">
-
 <div class="beginning-inner">
 
-<div class="beginning-eyebrow reveal">
-THE BEGINNING
-</div>
+<div class="beginning-eyebrow reveal">THE BEGINNING</div>
 
 <h2 class="beginning-title reveal">
 Every journey starts before it is seen
@@ -138,16 +112,13 @@ Every journey starts before it is seen
 
 <p class="beginning-text reveal delay-1">
 Moments of clarity arrive quietly — through conversation, attention, and trust.
-What follows is never rushed, never replicated, and never accidental.
 </p>
 
 </div>
-
 </section>
 
 <!-- CTA -->
 <section class="invitation-section">
-
 <div class="invitation-inner">
 
 <h2 class="invitation-title text-royal reveal">
@@ -156,18 +127,54 @@ Begin Your Journey
 
 <p class="invitation-text text-champagne reveal delay-1">
 Each experience begins with a private conversation.
-Share your intention, and we will quietly shape what follows.
 </p>
 
 <div class="invitation-cta reveal delay-2">
-<a href="mailto:sunnyroadsadventures@gmail.com">
-Request Access
-</a>
+<a href="#" onclick="openIntake()">Request Consideration</a>
 </div>
 
 </div>
-
 </section>
+
+<!-- INTAKE SYSTEM -->
+<div id="intakePanel" class="intake-panel">
+<div class="intake-box">
+
+<div class="intake-step active" data-step="1">
+<h2>Begin the Conversation</h2>
+<input type="text" id="name" placeholder="Your name">
+<button onclick="nextStep()">Continue</button>
+</div>
+
+<div class="intake-step" data-step="2">
+<h2>Your Intention</h2>
+<textarea id="intent"></textarea>
+<button onclick="nextStep()">Continue</button>
+</div>
+
+<div class="intake-step" data-step="3">
+<h2>Travel Timing</h2>
+<input type="text" id="time">
+<button onclick="nextStep()">Continue</button>
+</div>
+
+<div class="intake-step" data-step="4">
+<h2>Experience Style</h2>
+<select id="style">
+<option>Relaxation</option>
+<option>Exploration</option>
+<option>Luxury Retreat</option>
+</select>
+<button onclick="submitForm()">Submit</button>
+</div>
+
+<div class="intake-step" data-step="5">
+<h2>Request Received</h2>
+<p>We will respond if aligned.</p>
+</div>
+
+</div>
+</div>
 
 <script src="main.js"></script>
 
