@@ -20,17 +20,14 @@ wait(8000)
 ]);
 
 video.style.opacity="0";
-
 await wait(1000);
 
 video.style.display="none";
 
 if(whiteFade) whiteFade.style.opacity="1";
-
 await wait(2000);
 
 if(blackFade) blackFade.style.opacity="1";
-
 await wait(1200);
 
 if(kayla){
@@ -67,3 +64,30 @@ window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 
 });
+
+/* INTAKE SYSTEM */
+let currentStep = 1;
+
+function openIntake(){
+document.getElementById("intakePanel").classList.add("active");
+}
+
+function nextStep(){
+document.querySelector(`[data-step="${currentStep}"]`).classList.remove("active");
+currentStep++;
+document.querySelector(`[data-step="${currentStep}"]`).classList.add("active");
+}
+
+function submitForm(){
+
+let data = {
+name: document.getElementById("name").value,
+intent: document.getElementById("intent").value,
+time: document.getElementById("time").value,
+style: document.getElementById("style").value
+};
+
+console.log("Client:", data);
+
+nextStep();
+}
