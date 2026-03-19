@@ -19,7 +19,6 @@ new Promise(r => video.addEventListener("ended", r)),
 wait(8000)
 ]);
 
-video.style.transition="opacity 1s ease";
 video.style.opacity="0";
 
 await wait(1000);
@@ -44,12 +43,27 @@ await wait(1500);
 heroText.style.opacity="1";
 
 if(blackFade){
-blackFade.style.transition="opacity 2s ease";
 blackFade.style.opacity="0";
 }
 
 }
 
 playCinematic();
+
+/* SCROLL REVEAL */
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+const trigger = window.innerHeight * 0.85;
+
+reveals.forEach(el=>{
+if(el.getBoundingClientRect().top < trigger){
+el.classList.add("visible");
+}
+});
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
 
 });
