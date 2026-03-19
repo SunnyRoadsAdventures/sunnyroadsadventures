@@ -204,3 +204,49 @@ section{
   box-shadow:0 0 25px rgba(191,164,111,.3);
   transform:translateY(-2px);
 }
+
+/* INTAKE SYSTEM */
+.intake-panel{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.95);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;
+  opacity:0;
+  pointer-events:none;
+  transition:0.6s;
+}
+
+.intake-panel.active{
+  opacity:1;
+  pointer-events:auto;
+}
+
+.intake-box{
+  width:90%;
+  max-width:500px;
+  text-align:center;
+}
+
+.intake-step{display:none;}
+.intake-step.active{display:block;}
+
+.intake-box input,
+.intake-box textarea,
+.intake-box select{
+  width:100%;
+  padding:12px;
+  margin:15px 0;
+  background:#111;
+  border:1px solid #444;
+  color:white;
+}
+
+.intake-box button{
+  padding:12px 30px;
+  background:#d4af37;
+  border:none;
+  cursor:pointer;
+}
