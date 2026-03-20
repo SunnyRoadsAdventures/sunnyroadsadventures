@@ -5,131 +5,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Empire of White & Gold | Sunny Roads Adventures</title>
-
-<meta name="description"
-content="Privately crafted luxury journeys in Nicaragua. Each experience unfolds through conversation, intention, and meaning.">
+<title>Empire of White & Gold</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav class="main-nav">
-<a href="../index.html">Home</a>
-<a href="english-learning/index.html" class="lessons-tab">Language Preparation</a>
+<a href="#">Home</a>
+<a href="#" class="lessons-tab">Language Preparation</a>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
 
-<canvas id="goldParticles"></canvas>
-
 <div class="hero-bg"></div>
 <div class="hero-overlay"></div>
 <div class="hero-glow"></div>
 
-<div class="hero-text">
+<canvas id="goldParticles"></canvas>
 
-<h1 class="hero-title text-royal">
-Empire of White & Gold
+<div class="hero-content">
+
+<p class="hero-line small hidden" id="line1">
+Not everyone is invited.
+</p>
+
+<h1 class="hero-line big hidden" id="line2">
+Some journeys are earned.
 </h1>
 
-<p class="hero-subtitle text-champagne">
-Where Luxury Meets Meaning
+<div class="cta-wrap hidden" id="cta">
+
+<p class="cta-intro">
+This is not a booking platform.<br>
+This is a private selection process.
 </p>
 
-<div class="gold-divider royal"></div>
-
-<p class="brand text-royal">
-Sunny Roads Adventures
-</p>
-
-<p class="brand-tagline">
-Luxury Travel & Curated Experiences
-</p>
-
-<p class="brand-tagline">
-Discover Your Journey
-</p>
-
-<p class="hero-location text-champagne">
-Private journeys across Nicaragua and beyond.
-</p>
+<button onclick="openIntake()">
+Request Consideration
+</button>
 
 </div>
 
-</section>
-
-<!-- PHILOSOPHY -->
-<section class="philosophy-section">
-<div class="philosophy-inner">
-
-<p class="philosophy-eyebrow text-champagne reveal">
-A Different Way of Traveling
-</p>
-
-<h2 class="philosophy-title text-royal reveal">
-Journeys Are Not Selected.<br>
-They Are Revealed.
-</h2>
-
-<div class="gold-divider royal"></div>
-
-<div class="philosophy-text text-champagne reveal">
-<p>Every experience begins quietly — through attention, conversation, and understanding.</p>
-<p>Each journey is shaped by rhythm, atmosphere, and timing.</p>
-<p>Some moments are shared. Others remain unspoken.</p>
-<p>This is travel guided by restraint, discretion, and meaning.</p>
 </div>
 
-</div>
-</section>
-
-<!-- LANGUAGE -->
-<section class="vision-section">
-<div class="vision-inner reveal">
-<p class="text-champagne">
-Private language preparation is available upon request.
-</p>
-</div>
-</section>
-
-<!-- BEGINNING -->
-<section class="beginning-section">
-<div class="beginning-inner">
-
-<div class="beginning-eyebrow reveal">THE BEGINNING</div>
-
-<h2 class="beginning-title reveal">
-Every journey starts before it is seen
-</h2>
-
-<p class="beginning-text reveal">
-Moments of clarity arrive quietly — through conversation, attention, and trust.
-</p>
-
-</div>
-</section>
-
-<!-- CTA -->
-<section class="invitation-section">
-<div class="invitation-inner">
-
-<h2 class="invitation-title text-royal reveal">
-Begin Your Journey
-</h2>
-
-<p class="invitation-text text-champagne reveal">
-Each experience begins with a private conversation.
-</p>
-
-<div class="invitation-cta reveal">
-<a href="#" onclick="openIntake()">Request Consideration</a>
-</div>
-
-</div>
 </section>
 
 <!-- INTAKE -->
@@ -137,36 +59,32 @@ Each experience begins with a private conversation.
 <div class="intake-box">
 
 <div class="intake-step active" data-step="1">
-<h2>Begin the Conversation</h2>
-<input type="text" id="name" placeholder="Your name">
+<h2>Who are you?</h2>
+<input type="text" id="name">
 <button onclick="nextStep()">Continue</button>
 </div>
 
 <div class="intake-step" data-step="2">
-<h2>Your Intention</h2>
+<h2>Why this journey?</h2>
 <textarea id="intent"></textarea>
 <button onclick="nextStep()">Continue</button>
 </div>
 
 <div class="intake-step" data-step="3">
-<h2>Travel Timing</h2>
+<h2>When?</h2>
 <input type="text" id="time">
 <button onclick="nextStep()">Continue</button>
 </div>
 
 <div class="intake-step" data-step="4">
-<h2>Experience Style</h2>
-<select id="style">
-<option>Relaxation</option>
-<option>Exploration</option>
-<option>Luxury Retreat</option>
-</select>
+<h2>Final step</h2>
+<p>Only selected clients are contacted.</p>
 <button onclick="submitForm()">Submit</button>
 </div>
 
 <div class="intake-step" data-step="5">
-<h2>Request Received</h2>
-<p>We will respond if aligned.</p>
+<h2>Request received</h2>
+<p>If aligned, we will contact you.</p>
 </div>
 
 </div>
