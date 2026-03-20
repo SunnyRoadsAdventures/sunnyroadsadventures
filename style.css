@@ -4,17 +4,7 @@
   --soft-white: #ffffff;
 }
 
-*,
-*::before,
-*::after {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:"Cormorant Garamond",serif;
@@ -37,10 +27,7 @@ body{
   z-index:9999;
 }
 
-.main-nav a{
-  color:white;
-  text-decoration:none;
-}
+.main-nav a{color:white;text-decoration:none;}
 
 .lessons-tab{
   color:#d4af37;
@@ -49,7 +36,7 @@ body{
   border-radius:6px;
 }
 
-/* HERO SYSTEM */
+/* HERO */
 .hero{
   position:relative;
   height:100vh;
@@ -58,6 +45,14 @@ body{
   justify-content:center;
   text-align:center;
   overflow:hidden;
+}
+
+#goldParticles{
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  opacity:0.35;
 }
 
 .hero-bg{
@@ -71,21 +66,13 @@ body{
 .hero-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.6),
-    rgba(0,0,0,0.85)
-  );
+  background:linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.85));
 }
 
 .hero-glow{
   position:absolute;
   inset:0;
-  background:radial-gradient(
-    circle at 50% 30%,
-    rgba(201,162,77,0.15),
-    transparent 60%
-  );
+  background:radial-gradient(circle at 50% 30%, rgba(201,162,77,0.15), transparent 60%);
 }
 
 .hero-text{
@@ -104,37 +91,20 @@ body{
 }
 
 @keyframes fadeUp{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.hero-title{
-  font-size:clamp(2rem,5vw,3.2rem);
-  letter-spacing:.15em;
-}
-
-.hero-subtitle{
-  font-size:clamp(.9rem,2vw,1.2rem);
-}
-
-.hero-location{
-  margin-top:20px;
-  opacity:.85;
+  to{opacity:1;transform:translateY(0);}
 }
 
 .text-royal{color:var(--royal-gold);}
 .text-champagne{color:var(--champagne-gold);}
 
-/* REVEAL */
-.reveal{
+/* SECTIONS */
+section{
   opacity:0;
-  transform:translateY(40px);
-  transition:1.2s;
+  transform:translateY(60px);
+  transition:1.2s ease;
 }
 
-.reveal.visible{
+section.visible{
   opacity:1;
   transform:translateY(0);
 }
@@ -180,6 +150,9 @@ body{
   max-width:500px;
   text-align:center;
 }
+
+.intake-step{display:none;}
+.intake-step.active{display:block;}
 
 .intake-box input,
 .intake-box textarea,
