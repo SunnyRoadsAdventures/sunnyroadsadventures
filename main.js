@@ -1,35 +1,34 @@
 // LOADER
 setTimeout(() => {
   document.getElementById('loader').style.display = 'none';
-}, 2000);
+}, 1500);
 
-// GATE HOLD (DESKTOP + MOBILE)
+// GATE HOLD SYSTEM (MOBILE + DESKTOP)
 let gate = document.getElementById('gate');
 let holdTimer;
 
-function startHold() {
-  holdTimer = setTimeout(() => {
-    gate.style.display = 'none';
-    document.getElementById('app').classList.remove('hidden');
+function unlock() {
+  gate.style.display = 'none';
+  document.getElementById('app').classList.remove('hidden');
+  document.getElementById('hud').classList.remove('hidden');
 
-    // ENABLE SCROLL AFTER AUTH
-    document.body.style.overflowY = 'auto';
-  }, 1200);
+  document.body.style.overflowY = 'auto';
+
+  activateRoom(1);
+}
+
+function startHold() {
+  holdTimer = setTimeout(unlock, 1200);
 }
 
 function cancelHold() {
   clearTimeout(holdTimer);
 }
 
-// Desktop
 gate.addEventListener('mousedown', startHold);
 gate.addEventListener('mouseup', cancelHold);
-
-// Mobile
 gate.addEventListener('touchstart', startHold);
 gate.addEventListener('touchend', cancelHold);
-
-// Prevent long-press menu
 gate.addEventListener('contextmenu', e => e.preventDefault());
 
 
@@ -68,27 +67,70 @@ function animate() {
 
 animate();
 
-// RESPONSIVE FIX
+// RESPONSIVE
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
-// SCROLL TIME DISTORTION
+// ROOM SYSTEM
+const rooms = document.querySelectorAll('.room');
+let currentRoom = 0;
+
+function activateRoom(index) {
+  rooms.forEach(r => r.classList.remove('active'));
+  if (rooms[index - 1]) {
+    rooms[index - 1].classList.add('active');
+  }
+}
+
+// SCROLL PROGRESSION
 window.addEventListener('scroll', () => {
-  let speed = window.scrollY * 0.0005;
-  torus.rotation.x += speed;
+  let index = Math.round(window.scrollY / window.innerHeight) + 1;
+
+  if (index !== currentRoom) {
+    currentRoom = index;
+    activateRoom(index);
+    updateClearance(index);
+  }
 });
 
-// PORTAL EFFECT
+// CLEARANCE SYSTEM
+function updateClearance(level) {
+  document.getElementById('clearance').innerText =
+    \"CLEARANCE: LEVEL \" + level;
+}
+
+// INTEL DECRYPTION
+const file = document.getElementById('file');
+
+file.addEventListener('click', () => {
+  let text = \"ACCESSING FILE...\\nDECRYPTING...\\nMISSION DATA UNLOCKED\";
+  let i = 0;
+
+  file.innerText = \"\";
+
+  let interval = setInterval(() => {
+    file.innerText += text[i];
+    i++;
+    if (i >= text.length) clearInterval(interval);
+  }, 40);
+});
+
+// PORTAL SYSTEM
 const portal = document.getElementById('portal');
 
 portal.addEventListener('click', () => {
-  document.body.style.transition = 'transform 0.8s ease';
-  document.body.style.transform = 'scale(0.8) rotateX(20deg)';
+  document.body.style.transition = 'transform 1s ease';
+  document.body.style.transform = 'scale(0.6) rotateX(30deg)';
 
   setTimeout(() => {
+    window.scrollTo({
+      top: window.innerHeight * 2,
+      behavior: 'smooth'
+    });
+
     document.body.style.transform = 'none';
   }, 800);
 });
