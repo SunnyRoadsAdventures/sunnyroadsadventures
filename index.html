@@ -1,96 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Empire of White & Gold</title>
-
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Access Protocol</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<!-- NAV -->
-<nav class="main-nav">
-<a href="#">Home</a>
-<a href="#" class="lessons-tab">Language Preparation</a>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-
-<div class="hero-bg"></div>
-<div class="hero-overlay"></div>
-<div class="hero-glow"></div>
-
-<canvas id="goldParticles"></canvas>
-
-<div class="hero-content">
-
-<p class="hero-line small hidden" id="line1">
-Not everyone is invited.
-</p>
-
-<h1 class="hero-line big hidden" id="line2">
-Some journeys are earned.
-</h1>
-
-<div class="cta-wrap hidden" id="cta">
-
-<p class="cta-intro">
-This is not a booking platform.<br>
-This is a private selection process.
-</p>
-
-<button onclick="openIntake()">
-Request Consideration
-</button>
-
+<div id="loader">
+  <div class="scan">Initializing Secure Access...</div>
 </div>
 
+<div id="gate">
+  <div class="gate-text">Hold to authenticate</div>
 </div>
 
-</section>
+<canvas id="bg"></canvas>
 
-<!-- INTAKE -->
-<div id="intakePanel" class="intake-panel">
-<div class="intake-box">
+<main id="app" class="hidden">
+  <section class="hero">
+    <h1>Access is not granted. It’s earned.</h1>
+    <p class="sub">Some destinations aren’t on any map.</p>
+  </section>
 
-<div class="intake-step active" data-step="1">
-<h2>Who are you?</h2>
-<input type="text" id="name">
-<button onclick="nextStep()">Continue</button>
-</div>
+  <section class="portal" id="portal">
+    <div class="portal-inner">
+      <h2>Your Next Assignment</h2>
+    </div>
+  </section>
 
-<div class="intake-step" data-step="2">
-<h2>Why this journey?</h2>
-<textarea id="intent"></textarea>
-<button onclick="nextStep()">Continue</button>
-</div>
+  <section class="intel">
+    <div class="file">[ CLASSIFIED FILE ]</div>
+  </section>
+</main>
 
-<div class="intake-step" data-step="3">
-<h2>When?</h2>
-<input type="text" id="time">
-<button onclick="nextStep()">Continue</button>
-</div>
-
-<div class="intake-step" data-step="4">
-<h2>Final step</h2>
-<p>Only selected clients are contacted.</p>
-<button onclick="submitForm()">Submit</button>
-</div>
-
-<div class="intake-step" data-step="5">
-<h2>Request received</h2>
-<p>If aligned, we will contact you.</p>
-</div>
-
-</div>
-</div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 <script src="main.js"></script>
-
 </body>
 </html>
