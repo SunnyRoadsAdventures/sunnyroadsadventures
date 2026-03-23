@@ -18,20 +18,24 @@
 
 <canvas id="bg"></canvas>
 
+<div id="hud" class="hidden">
+  <div id="clearance">CLEARANCE: LEVEL 1</div>
+</div>
+
 <main id="app" class="hidden">
-  <section class="hero">
+  <section class="hero room" data-room="1">
     <h1>Access is not granted. It’s earned.</h1>
     <p class="sub">Some destinations aren’t on any map.</p>
   </section>
 
-  <section class="portal" id="portal">
+  <section class="portal room" id="portal" data-room="2">
     <div class="portal-inner">
       <h2>Your Next Assignment</h2>
     </div>
   </section>
 
-  <section class="intel">
-    <div class="file">[ CLASSIFIED FILE ]</div>
+  <section class="intel room" data-room="3">
+    <div class="file" id="file">[ CLASSIFIED FILE ]</div>
   </section>
 </main>
 
