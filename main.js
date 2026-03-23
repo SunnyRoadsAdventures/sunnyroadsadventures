@@ -1,81 +1,67 @@
-document.addEventListener("DOMContentLoaded", () => {
+// LOADER
+setTimeout(() => {
+  document.getElementById('loader').style.display = 'none';
+}, 2000);
 
-/* DELAYED HERO EXPERIENCE */
-setTimeout(()=> {
-  document.getElementById("line1").classList.add("show");
-},1000);
+// GATE HOLD INTERACTION
+let gate = document.getElementById('gate');
+let holdTimer;
 
-setTimeout(()=> {
-  document.getElementById("line2").classList.add("show");
-},2500);
-
-setTimeout(()=> {
-  document.getElementById("cta").classList.add("show");
-},4000);
-
-
-/* GOLD PARTICLES */
-const canvas = document.getElementById("goldParticles");
-const ctx = canvas.getContext("2d");
-
-let particles=[];
-
-function resize(){
-  canvas.width=window.innerWidth;
-  canvas.height=window.innerHeight;
-}
-resize();
-window.addEventListener("resize",resize);
-
-function createParticles(){
-  for(let i=0;i<50;i++){
-    particles.push({
-      x:Math.random()*canvas.width,
-      y:Math.random()*canvas.height,
-      size:Math.random()*2,
-      speed:Math.random()*0.3
-    });
-  }
-}
-
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  particles.forEach(p=>{
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-    ctx.fillStyle="rgba(201,162,77,0.5)";
-    ctx.fill();
-
-    p.y-=p.speed;
-    if(p.y<0){
-      p.y=canvas.height;
-      p.x=Math.random()*canvas.width;
-    }
-  });
-
-  requestAnimationFrame(animate);
-}
-
-createParticles();
-animate();
-
+gate.addEventListener('mousedown', () => {
+  holdTimer = setTimeout(() => {
+    gate.style.display = 'none';
+    document.getElementById('app').classList.remove('hidden');
+  }, 1500);
 });
 
+gate.addEventListener('mouseup', () => {
+  clearTimeout(holdTimer);
+});
 
-/* INTAKE */
-let step=1;
+// THREE.JS BACKGROUND
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
 
-function openIntake(){
-  document.getElementById("intakePanel").classList.add("active");
+const renderer = new THREE.WebGLRenderer({
+  canvas: document.getElementById('bg')
+});
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+const material = new THREE.MeshBasicMaterial({ wireframe: true });
+const torus = new THREE.Mesh(geometry, material);
+scene.add(torus);
+
+camera.position.z = 30;
+
+function animate() {
+  requestAnimationFrame(animate);
+  torus.rotation.x += 0.01;
+  torus.rotation.y += 0.01;
+  renderer.render(scene, camera);
 }
 
-function nextStep(){
-  document.querySelector(`[data-step="${step}"]`).classList.remove("active");
-  step++;
-  document.querySelector(`[data-step="${step}"]`).classList.add("active");
-}
+animate();
 
-function submitForm(){
-  nextStep();
-}
+// SCROLL TIME DISTORTION
+window.addEventListener('scroll', () => {
+  let speed = window.scrollY * 0.0005;
+  torus.rotation.x += speed;
+});
+
+// PORTAL EFFECT
+const portal = document.getElementById('portal');
+
+portal.addEventListener('click', () => {
+  document.body.style.transform = 'scale(0.8) rotateX(20deg)';
+  document.body.style.transition = 'transform 0.8s ease';
+
+  setTimeout(() => {
+    document.body.style.transform = 'none';
+  }, 800);
+});
