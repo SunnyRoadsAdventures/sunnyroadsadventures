@@ -1,118 +1,69 @@
-// =======================
-// THREE.JS HOLOGRAPHIC SYSTEM
-// =======================
+const btn = document.getElementById("enterBtn");
 
-const scene = new THREE.Scene();
+// --- CUSTOM CURSOR (WITH DELAY) ---
+const cursor = document.createElement("div");
+cursor.classList.add("cursor");
+document.body.appendChild(cursor);
 
-// FOG = depth realism
-scene.fog = new THREE.Fog(0x000000, 50, 200);
+let mouseX = 0;
+let mouseY = 0;
+let delayedX = 0;
+let delayedY = 0;
 
-const camera = new THREE.PerspectiveCamera(
-  75,
-  window.innerWidth / window.innerHeight,
-  0.1,
-  1000
-);
-
-const renderer = new THREE.WebGLRenderer({
-  canvas: document.getElementById('bg'),
-  antialias: true
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
 });
 
-renderer.setSize(window.innerWidth, window.innerHeight);
+// subtle lag effect
+function animateCursor() {
+  delayedX += (mouseX - delayedX) * 0.15;
+  delayedY += (mouseY - delayedY) * 0.15;
 
-// LIGHT (cursor will control this)
-const light = new THREE.PointLight(0xffffff, 2, 300);
-scene.add(light);
+  cursor.style.left = delayedX + "px";
+  cursor.style.top = delayedY + "px";
 
-// OBJECTS WITH GLOW FEEL
-const objects = [];
-
-for (let i = 0; i < 4; i++) {
-
-  const geometry = new THREE.TorusKnotGeometry(8, 2, 150, 20);
-
-  const material = new THREE.MeshStandardMaterial({
-    color: 0xaaaaaa,
-    emissive: 0xffffff,
-    emissiveIntensity: 0.2,
-    wireframe: true
-  });
-
-  const mesh = new THREE.Mesh(geometry, material);
-
-  mesh.position.z = -i * 80;
-  mesh.rotation.x = Math.random();
-  mesh.rotation.y = Math.random();
-
-  scene.add(mesh);
-  objects.push(mesh);
+  requestAnimationFrame(animateCursor);
 }
+animateCursor();
 
-camera.position.z = 60;
+// --- BUTTON RESISTANCE ---
+let attempts = 0;
 
+btn.addEventListener("mouseenter", () => {
+  attempts++;
 
-// =======================
-// CURSOR = SURVEILLANCE LIGHT
-// =======================
+  const rect = btn.getBoundingClientRect();
+  const offset = 40;
 
-let mouse = { x: 0, y: 0 };
+  if (attempts <= 3) {
+    // subtle move
+    const moveX = (Math.random() - 0.5) * offset;
+    const moveY = (Math.random() - 0.5) * offset;
 
-window.addEventListener('mousemove', (e) => {
-  mouse.x = (e.clientX / window.innerWidth - 0.5) * 20;
-  mouse.y = -(e.clientY / window.innerHeight - 0.5) * 20;
+    btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+  }
+
+  if (attempts === 2) {
+    // quick flicker illusion
+    btn.style.opacity = "0.3";
+    setTimeout(() => {
+      btn.style.opacity = "1";
+    }, 80);
+  }
+
+  if (attempts >= 3) {
+    // slightly stronger resistance
+    btn.style.transform = `translate(${(Math.random() - 0.5) * 80}px, ${(Math.random() - 0.5) * 80}px)`;
+  }
 });
 
-window.addEventListener('touchmove', (e) => {
-  mouse.x = (e.touches[0].clientX / window.innerWidth - 0.5) * 20;
-  mouse.y = -(e.touches[0].clientY / window.innerHeight - 0.5) * 20;
+// reset position slowly when leaving
+btn.addEventListener("mouseleave", () => {
+  btn.style.transform = "translate(0,0)";
 });
 
-
-// =======================
-// SCROLL DEPTH
-// =======================
-
-let scrollTarget = 0;
-
-window.addEventListener('scroll', () => {
-  scrollTarget = window.scrollY * 0.05;
-});
-
-
-// =======================
-// ANIMATION LOOP
-// =======================
-
-function animate() {
-  requestAnimationFrame(animate);
-
-  // CAMERA MOVEMENT
-  camera.position.z = 60 + scrollTarget;
-
-  // LIGHT follows cursor (this is the magic)
-  light.position.x += (mouse.x - light.position.x) * 0.1;
-  light.position.y += (mouse.y - light.position.y) * 0.1;
-  light.position.z = camera.position.z - 20;
-
-  // OBJECT MOTION
-  objects.forEach((obj, i) => {
-    obj.rotation.x += 0.002 + i * 0.001;
-    obj.rotation.y += 0.003 + i * 0.001;
-  });
-
-  renderer.render(scene, camera);
-}
-
-animate();
-
-
-// =======================
-// RESIZE
-// =======================
-
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+// --- CLICK (TEMP PLACEHOLDER) ---
+btn.addEventListener("click", () => {
+  btn.innerText = "...";
 });
