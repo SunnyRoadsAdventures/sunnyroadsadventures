@@ -2,58 +2,89 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  cursor: none;
 }
 
 body {
-  background: black;
   overflow: hidden;
+  background: black;
   font-family: Arial, sans-serif;
-  color: white;
 }
 
-/* Stage */
-#stage {
+/* SCENE */
+#scene {
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
-/* Layers */
-.layer {
+/* BACKGROUND IMAGE */
+#bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 0.2s ease, filter 0.3s ease;
+}
+
+/* HOTSPOTS */
+.hotspot {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 60px;
-  letter-spacing: 10px;
-  pointer-events: none;
-  transition: transform 0.1s linear;
-}
-
-/* Slight visual offsets */
-.layer-back {
-  opacity: 0.3;
-}
-
-.layer-mid {
-  opacity: 0.6;
-}
-
-.layer-front {
-  opacity: 1;
-}
-
-/* Cursor */
-.cursor {
-  position: fixed;
-  width: 12px;
-  height: 12px;
-  border: 2px solid white;
   border-radius: 50%;
-  pointer-events: none;
+  cursor: pointer;
+}
+
+/* === POSITIONING (TUNE THESE IF NEEDED) === */
+
+/* 🔥 CORE (center lower) */
+.core {
+  width: 180px;
+  height: 180px;
+  left: 50%;
+  top: 68%;
   transform: translate(-50%, -50%);
 }
 
-.lag1 { opacity: 0.5; }
-.lag2 { opacity: 0.2; }
+/* 📖 BOOK */
+.book {
+  width: 150px;
+  height: 150px;
+  left: 18%;
+  top: 72%;
+}
+
+/* ☕ CUP */
+.cup {
+  width: 150px;
+  height: 150px;
+  right: 18%;
+  top: 72%;
+}
+
+/* ⌚ WATCH */
+.watch {
+  width: 120px;
+  height: 120px;
+  right: 25%;
+  bottom: 8%;
+}
+
+/* 💡 LAMP */
+.lamp {
+  width: 130px;
+  height: 130px;
+  left: 12%;
+  top: 60%;
+}
+
+/* OPTIONAL DEBUG (remove later) */
+/*
+.hotspot:hover {
+  outline: 2px solid rgba(255,255,255,0.2);
+}
+*/
+
+/* LIGHT MODE (lamp toggle) */
+.light-mode {
+  filter: brightness(1.2) contrast(1.1);
+}
