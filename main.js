@@ -1,142 +1,132 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+const bg = document.getElementById("bg");
+const light = document.getElementById("light");
+
+const overlay = document.getElementById("overlay");
+const content = document.getElementById("overlayContent");
+const closeBtn = document.getElementById("closeBtn");
+
+const core = document.querySelector(".core");
+const book = document.querySelector(".book");
+const cup = document.querySelector(".cup");
+const watch = document.querySelector(".watch");
+const lamp = document.querySelector(".lamp");
+
+// ==========================
+// 🎬 DEPTH + PARALLAX ENGINE
+// ==========================
+let targetX = 0;
+let targetY = 0;
+let currentX = 0;
+let currentY = 0;
+
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
+
+document.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+
+  targetX = (e.clientX / window.innerWidth - 0.5) * 12;
+  targetY = (e.clientY / window.innerHeight - 0.5) * 12;
+});
+
+// MOBILE SUPPORT
+document.addEventListener("touchmove", (e) => {
+  const touch = e.touches[0];
+  mouseX = touch.clientX;
+  mouseY = touch.clientY;
+
+  targetX = (touch.clientX / window.innerWidth - 0.5) * 12;
+  targetY = (touch.clientY / window.innerHeight - 0.5) * 12;
+});
+
+// ==========================
+// 🎬 ANIMATION LOOP
+// ==========================
+function animate() {
+  currentX += (targetX - currentX) * 0.06;
+  currentY += (targetY - currentY) * 0.06;
+
+  // 🔥 CORE GRAVITY
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight * 0.68;
+
+  const dx = (mouseX - centerX) * 0.002;
+  const dy = (mouseY - centerY) * 0.002;
+
+  bg.style.transform =
+    `translate(-50%, -50%) scale(1.02) translate(${currentX - dx}px, ${currentY - dy}px)`;
+
+  // 🔥 LIGHT FOLLOW
+  if (light) {
+    light.style.left = mouseX + "px";
+    light.style.top = mouseY + "px";
+  }
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ==========================
+// OVERLAY SYSTEM
+// ==========================
+function openOverlay(text) {
+  content.innerText = text;
+  overlay.classList.add("active");
 }
 
-body {
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at center, #111 0%, #000 100%);
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("active");
+  resetScene();
+});
 
-  /* 🔥 cinematic breathing */
-  animation: breathe 8s ease-in-out infinite;
+// ==========================
+// RESET
+// ==========================
+function resetScene() {
+  bg.style.filter = "none";
+  bg.style.transform = "translate(-50%, -50%) scale(1.02)";
 }
 
-@keyframes breathe {
-  0%, 100% { filter: brightness(1) contrast(1); }
-  50% { filter: brightness(1.05) contrast(1.08); }
-}
+// ==========================
+// 🔥 CORE
+// ==========================
+core.addEventListener("click", () => {
+  bg.style.transform = "translate(-50%, -50%) scale(1.25)";
+  bg.style.filter = "brightness(2.2) blur(10px)";
 
-/* SCENE */
-#scene {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-}
+  setTimeout(() => {
+    openOverlay("ENTERING EXPERIENCE...");
+  }, 700);
+});
 
-/* 🔥 PERFECT FULLSCREEN FIT */
-#bg {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+// ==========================
+// 📖 BOOK
+// ==========================
+book.addEventListener("click", () => {
+  bg.style.transform = "translate(-48%, -50%) scale(1.1)";
+  openOverlay("ABOUT / STORY");
+});
 
-  width: 100%;
-  height: 100%;
+// ==========================
+// ☕ CUP
+// ==========================
+cup.addEventListener("click", () => {
+  bg.style.filter = "blur(6px)";
+  openOverlay("CONTACT");
+});
 
-  object-fit: cover;
-  object-position: center 65%;
+// ==========================
+// ⌚ WATCH
+// ==========================
+watch.addEventListener("click", () => {
+  bg.style.transform = "translate(-50%, -48%) scale(1.1)";
+  openOverlay("PROJECTS / TIMELINE");
+});
 
-  transform: translate(-50%, -50%) scale(1.02);
-  transition: transform 0.3s ease, filter 0.4s ease;
-}
-
-/* 🔥 DYNAMIC LIGHT */
-#light {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  pointer-events: none;
-
-  background: radial-gradient(circle, rgba(255,200,120,0.25), transparent 70%);
-  mix-blend-mode: screen;
-
-  transform: translate(-50%, -50%);
-}
-
-/* 🔥 DEPTH OVERLAY */
-#scene::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.4));
-  pointer-events: none;
-}
-
-/* CORE GLOW */
-#coreGlow {
-  position: absolute;
-  width: 260px;
-  height: 260px;
-  left: 50%;
-  top: 68%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,180,80,0.6), transparent 70%);
-  filter: blur(50px);
-  pointer-events: none;
-  animation: pulse 3s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-  50% { transform: translate(-50%, -50%) scale(1.25); opacity: 1; }
-}
-
-/* HOTSPOTS */
-.hotspot {
-  position: absolute;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-/* RESPONSIVE HIT AREAS */
-.core { width: 14vw; height: 14vw; left: 50%; top: 68%; transform: translate(-50%, -50%); }
-.book { width: 12vw; height: 12vw; left: 18%; top: 72%; }
-.cup { width: 12vw; height: 12vw; right: 18%; top: 72%; }
-.watch { width: 10vw; height: 10vw; right: 25%; bottom: 8%; }
-.lamp { width: 11vw; height: 11vw; left: 12%; top: 60%; }
-
-/* OVERLAY */
-#overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(20px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-}
-
-#overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-#overlayContent {
-  color: white;
-  font-size: 2rem;
-  text-align: center;
-  max-width: 80%;
-}
-
-#closeBtn {
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  font-size: 30px;
-  color: white;
-  cursor: pointer;
-}
-
-/* LIGHT MODE */
-.light-mode {
-  filter: brightness(1.2) contrast(1.1);
-}
+// ==========================
+// 💡 LAMP
+// ==========================
+lamp.addEventListener("click", () => {
+  document.body.classList.toggle("light-mode");
+});
