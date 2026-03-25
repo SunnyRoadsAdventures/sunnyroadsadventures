@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Desync Intro</title>
+  <title>Cinematic Interface</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div id="stage">
-    <div class="layer layer-back">ENTER</div>
-    <div class="layer layer-mid">ENTER</div>
-    <div class="layer layer-front">ENTER</div>
+  <div id="scene">
+    <img src="scene.png" id="bg" />
+
+    <!-- HOTSPOTS -->
+    <div class="hotspot core"></div>
+    <div class="hotspot book"></div>
+    <div class="hotspot cup"></div>
+    <div class="hotspot watch"></div>
+    <div class="hotspot lamp"></div>
   </div>
 
-  <div class="cursor real"></div>
-  <div class="cursor lag1"></div>
-  <div class="cursor lag2"></div>
-
-  <script src="script.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>
