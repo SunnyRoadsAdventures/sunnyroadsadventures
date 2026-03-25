@@ -1,98 +1,142 @@
-const bg = document.getElementById("bg");
-const overlay = document.getElementById("overlay");
-const content = document.getElementById("overlayContent");
-const closeBtn = document.getElementById("closeBtn");
-
-const core = document.querySelector(".core");
-const book = document.querySelector(".book");
-const cup = document.querySelector(".cup");
-const watch = document.querySelector(".watch");
-const lamp = document.querySelector(".lamp");
-
-// ==========================
-// 🎬 PARALLAX (MATCHED TO SCALE)
-// ==========================
-let targetX = 0;
-let targetY = 0;
-let currentX = 0;
-let currentY = 0;
-
-document.addEventListener("mousemove", (e) => {
-  targetX = (e.clientX / window.innerWidth - 0.5) * 10;
-  targetY = (e.clientY / window.innerHeight - 0.5) * 10;
-});
-
-function animate() {
-  currentX += (targetX - currentX) * 0.08;
-  currentY += (targetY - currentY) * 0.08;
-
-  bg.style.transform =
-    `translate(-50%, -50%) scale(1.02) translate(${currentX}px, ${currentY}px)`;
-
-  requestAnimationFrame(animate);
-}
-animate();
-
-// ==========================
-// OVERLAY SYSTEM
-// ==========================
-function openOverlay(text) {
-  content.innerText = text;
-  overlay.classList.add("active");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-closeBtn.addEventListener("click", () => {
-  overlay.classList.remove("active");
-  resetScene();
-});
+body {
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
 
-// ==========================
-// RESET
-// ==========================
-function resetScene() {
-  bg.style.filter = "none";
-  bg.style.transform = "translate(-50%, -50%) scale(1.02)";
+  /* 🔥 cinematic breathing */
+  animation: breathe 8s ease-in-out infinite;
 }
 
-// ==========================
-// CORE
-// ==========================
-core.addEventListener("click", () => {
-  bg.style.transform = "translate(-50%, -50%) scale(1.2)";
-  bg.style.filter = "brightness(2) blur(8px)";
+@keyframes breathe {
+  0%, 100% { filter: brightness(1) contrast(1); }
+  50% { filter: brightness(1.05) contrast(1.08); }
+}
 
-  setTimeout(() => {
-    openOverlay("ENTERING EXPERIENCE...");
-  }, 600);
-});
+/* SCENE */
+#scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 
-// ==========================
-// BOOK
-// ==========================
-book.addEventListener("click", () => {
-  bg.style.transform = "translate(-48%, -50%) scale(1.1)";
-  openOverlay("ABOUT / STORY");
-});
+/* 🔥 PERFECT FULLSCREEN FIT */
+#bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
 
-// ==========================
-// CUP
-// ==========================
-cup.addEventListener("click", () => {
-  bg.style.filter = "blur(5px)";
-  openOverlay("CONTACT");
-});
+  width: 100%;
+  height: 100%;
 
-// ==========================
-// WATCH
-// ==========================
-watch.addEventListener("click", () => {
-  bg.style.transform = "translate(-50%, -48%) scale(1.1)";
-  openOverlay("PROJECTS / TIMELINE");
-});
+  object-fit: cover;
+  object-position: center 65%;
 
-// ==========================
-// LAMP
-// ==========================
-lamp.addEventListener("click", () => {
-  document.body.classList.toggle("light-mode");
-});
+  transform: translate(-50%, -50%) scale(1.02);
+  transition: transform 0.3s ease, filter 0.4s ease;
+}
+
+/* 🔥 DYNAMIC LIGHT */
+#light {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  pointer-events: none;
+
+  background: radial-gradient(circle, rgba(255,200,120,0.25), transparent 70%);
+  mix-blend-mode: screen;
+
+  transform: translate(-50%, -50%);
+}
+
+/* 🔥 DEPTH OVERLAY */
+#scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.4));
+  pointer-events: none;
+}
+
+/* CORE GLOW */
+#coreGlow {
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  left: 50%;
+  top: 68%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,180,80,0.6), transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  animation: pulse 3s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  50% { transform: translate(-50%, -50%) scale(1.25); opacity: 1; }
+}
+
+/* HOTSPOTS */
+.hotspot {
+  position: absolute;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* RESPONSIVE HIT AREAS */
+.core { width: 14vw; height: 14vw; left: 50%; top: 68%; transform: translate(-50%, -50%); }
+.book { width: 12vw; height: 12vw; left: 18%; top: 72%; }
+.cup { width: 12vw; height: 12vw; right: 18%; top: 72%; }
+.watch { width: 10vw; height: 10vw; right: 25%; bottom: 8%; }
+.lamp { width: 11vw; height: 11vw; left: 12%; top: 60%; }
+
+/* OVERLAY */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+#overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+#overlayContent {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  max-width: 80%;
+}
+
+#closeBtn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+/* LIGHT MODE */
+.light-mode {
+  filter: brightness(1.2) contrast(1.1);
+}
