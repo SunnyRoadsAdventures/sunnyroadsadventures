@@ -10,7 +10,7 @@ const watch = document.querySelector(".watch");
 const lamp = document.querySelector(".lamp");
 
 // ==========================
-// 🎬 PARALLAX (SMOOTHER)
+// 🎬 PARALLAX (FIXED FOR NON-ZOOM IMAGE)
 // ==========================
 let targetX = 0;
 let targetY = 0;
@@ -18,8 +18,8 @@ let currentX = 0;
 let currentY = 0;
 
 document.addEventListener("mousemove", (e) => {
-  targetX = (e.clientX / window.innerWidth - 0.5) * 20;
-  targetY = (e.clientY / window.innerHeight - 0.5) * 20;
+  targetX = (e.clientX / window.innerWidth - 0.5) * 10;
+  targetY = (e.clientY / window.innerHeight - 0.5) * 10;
 });
 
 function animate() {
@@ -27,7 +27,7 @@ function animate() {
   currentY += (targetY - currentY) * 0.08;
 
   bg.style.transform =
-    `translate(-50%, -50%) scale(1.05) translate(${currentX}px, ${currentY}px)`;
+    `translate(-50%, -50%) scale(1) translate(${currentX}px, ${currentY}px)`;
 
   requestAnimationFrame(animate);
 }
@@ -47,19 +47,19 @@ closeBtn.addEventListener("click", () => {
 });
 
 // ==========================
-// 🔥 RESET SCENE
+// 🔥 RESET (FIXED SCALE)
 // ==========================
 function resetScene() {
   bg.style.filter = "none";
-  bg.style.transform = "translate(-50%, -50%) scale(1.05)";
+  bg.style.transform = "translate(-50%, -50%) scale(1)";
 }
 
 // ==========================
-// 🔥 CORE (REAL ENTRY FEEL)
+// 🔥 CORE
 // ==========================
 core.addEventListener("click", () => {
-  bg.style.transform = "translate(-50%, -50%) scale(1.4)";
-  bg.style.filter = "brightness(2) blur(10px)";
+  bg.style.transform = "translate(-50%, -50%) scale(1.2)";
+  bg.style.filter = "brightness(2) blur(8px)";
 
   setTimeout(() => {
     openOverlay("ENTERING EXPERIENCE...");
@@ -70,7 +70,7 @@ core.addEventListener("click", () => {
 // 📖 BOOK
 // ==========================
 book.addEventListener("click", () => {
-  bg.style.transform = "translate(-45%, -50%) scale(1.2)";
+  bg.style.transform = "translate(-48%, -50%) scale(1.1)";
   openOverlay("ABOUT / STORY");
 });
 
@@ -78,7 +78,7 @@ book.addEventListener("click", () => {
 // ☕ CUP
 // ==========================
 cup.addEventListener("click", () => {
-  bg.style.filter = "blur(6px)";
+  bg.style.filter = "blur(5px)";
   openOverlay("CONTACT");
 });
 
@@ -86,7 +86,7 @@ cup.addEventListener("click", () => {
 // ⌚ WATCH
 // ==========================
 watch.addEventListener("click", () => {
-  bg.style.transform = "translate(-50%, -45%) scale(1.2)";
+  bg.style.transform = "translate(-50%, -48%) scale(1.1)";
   openOverlay("PROJECTS / TIMELINE");
 });
 
