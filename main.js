@@ -10,7 +10,7 @@ const watch = document.querySelector(".watch");
 const lamp = document.querySelector(".lamp");
 
 // ==========================
-// 🎬 PARALLAX (FIXED FOR NON-ZOOM IMAGE)
+// 🎬 PARALLAX (SYNCED WITH SCALE)
 // ==========================
 let targetX = 0;
 let targetY = 0;
@@ -27,7 +27,7 @@ function animate() {
   currentY += (targetY - currentY) * 0.08;
 
   bg.style.transform =
-    `translate(-50%, -50%) scale(1) translate(${currentX}px, ${currentY}px)`;
+    `translate(-50%, -50%) scale(1.08) translate(${currentX}px, ${currentY}px)`;
 
   requestAnimationFrame(animate);
 }
@@ -51,7 +51,7 @@ closeBtn.addEventListener("click", () => {
 // ==========================
 function resetScene() {
   bg.style.filter = "none";
-  bg.style.transform = "translate(-50%, -50%) scale(1)";
+  bg.style.transform = "translate(-50%, -50%) scale(1.08)";
 }
 
 // ==========================
@@ -70,7 +70,7 @@ core.addEventListener("click", () => {
 // 📖 BOOK
 // ==========================
 book.addEventListener("click", () => {
-  bg.style.transform = "translate(-48%, -50%) scale(1.1)";
+  bg.style.transform = "translate(-48%, -50%) scale(1.12)";
   openOverlay("ABOUT / STORY");
 });
 
@@ -86,7 +86,7 @@ cup.addEventListener("click", () => {
 // ⌚ WATCH
 // ==========================
 watch.addEventListener("click", () => {
-  bg.style.transform = "translate(-50%, -48%) scale(1.1)";
+  bg.style.transform = "translate(-50%, -48%) scale(1.12)";
   openOverlay("PROJECTS / TIMELINE");
 });
 
