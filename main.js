@@ -1,4 +1,7 @@
 const bg = document.getElementById("bg");
+const overlay = document.getElementById("overlay");
+const content = document.getElementById("overlayContent");
+const closeBtn = document.getElementById("closeBtn");
 
 const core = document.querySelector(".core");
 const book = document.querySelector(".book");
@@ -7,61 +10,88 @@ const watch = document.querySelector(".watch");
 const lamp = document.querySelector(".lamp");
 
 // ==========================
-// 🎬 PARALLAX (DEPTH FEEL)
+// 🎬 PARALLAX (SMOOTHER)
 // ==========================
-document.addEventListener("mousemove", (e) => {
-  const x = (e.clientX / window.innerWidth - 0.5) * 12;
-  const y = (e.clientY / window.innerHeight - 0.5) * 12;
+let targetX = 0;
+let targetY = 0;
+let currentX = 0;
+let currentY = 0;
 
-  bg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+document.addEventListener("mousemove", (e) => {
+  targetX = (e.clientX / window.innerWidth - 0.5) * 20;
+  targetY = (e.clientY / window.innerHeight - 0.5) * 20;
+});
+
+function animate() {
+  currentX += (targetX - currentX) * 0.08;
+  currentY += (targetY - currentY) * 0.08;
+
+  bg.style.transform =
+    `translate(-50%, -50%) scale(1.05) translate(${currentX}px, ${currentY}px)`;
+
+  requestAnimationFrame(animate);
+}
+animate();
+
+// ==========================
+// 🎬 OVERLAY SYSTEM
+// ==========================
+function openOverlay(text) {
+  content.innerText = text;
+  overlay.classList.add("active");
+}
+
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("active");
+  resetScene();
 });
 
 // ==========================
-// 🔥 CORE (MAIN ENTRY)
+// 🔥 RESET SCENE
+// ==========================
+function resetScene() {
+  bg.style.filter = "none";
+  bg.style.transform = "translate(-50%, -50%) scale(1.05)";
+}
+
+// ==========================
+// 🔥 CORE (REAL ENTRY FEEL)
 // ==========================
 core.addEventListener("click", () => {
-  document.body.style.transition = "all 0.8s ease";
-  document.body.style.transform = "scale(1.2)";
-  document.body.style.filter = "brightness(2) blur(10px)";
+  bg.style.transform = "translate(-50%, -50%) scale(1.4)";
+  bg.style.filter = "brightness(2) blur(10px)";
 
   setTimeout(() => {
-    alert("ENTER SITE"); // replace with real navigation
-    // window.location.href = "home.html";
-  }, 800);
-});
-
-// subtle glow reaction
-core.addEventListener("mouseenter", () => {
-  bg.style.filter = "brightness(1.15)";
-});
-
-core.addEventListener("mouseleave", () => {
-  bg.style.filter = "brightness(1)";
+    openOverlay("ENTERING EXPERIENCE...");
+  }, 600);
 });
 
 // ==========================
 // 📖 BOOK
 // ==========================
 book.addEventListener("click", () => {
-  alert("Open About / Story");
+  bg.style.transform = "translate(-45%, -50%) scale(1.2)";
+  openOverlay("ABOUT / STORY");
 });
 
 // ==========================
 // ☕ CUP
 // ==========================
 cup.addEventListener("click", () => {
-  alert("Contact / Personal");
+  bg.style.filter = "blur(6px)";
+  openOverlay("CONTACT");
 });
 
 // ==========================
 // ⌚ WATCH
 // ==========================
 watch.addEventListener("click", () => {
-  alert("Projects / Navigation");
+  bg.style.transform = "translate(-50%, -45%) scale(1.2)";
+  openOverlay("PROJECTS / TIMELINE");
 });
 
 // ==========================
-// 💡 LAMP (MODE SWITCH)
+// 💡 LAMP
 // ==========================
 lamp.addEventListener("click", () => {
   document.body.classList.toggle("light-mode");
