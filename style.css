@@ -6,8 +6,10 @@
 
 body {
   overflow: hidden;
-  background: black;
   font-family: Arial, sans-serif;
+
+  /* 🔥 better than pure black */
+  background: radial-gradient(circle at center, #111 0%, #000 100%);
 }
 
 /* SCENE */
@@ -18,16 +20,17 @@ body {
   overflow: hidden;
 }
 
-/* 🔥 IMAGE FIT FIX (CRITICAL) */
+/* ✅ FIXED IMAGE FIT (NO MORE OVERSIZE) */
 #bg {
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  transform: translate(-50%, -50%) scale(1.05);
+
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* 🔥 KEY FIX */
+
+  transform: translate(-50%, -50%) scale(1);
   transition: transform 0.3s ease, filter 0.4s ease;
 }
 
@@ -58,14 +61,14 @@ body {
   cursor: pointer;
 }
 
-/* 🔥 RESPONSIVE SIZING (KEY UPGRADE) */
+/* RESPONSIVE HIT AREAS */
 .core { width: 14vw; height: 14vw; left: 50%; top: 68%; transform: translate(-50%, -50%); }
 .book { width: 12vw; height: 12vw; left: 18%; top: 72%; }
 .cup { width: 12vw; height: 12vw; right: 18%; top: 72%; }
 .watch { width: 10vw; height: 10vw; right: 25%; bottom: 8%; }
 .lamp { width: 11vw; height: 11vw; left: 12%; top: 60%; }
 
-/* 🎬 OVERLAY */
+/* OVERLAY */
 #overlay {
   position: fixed;
   top: 0;
